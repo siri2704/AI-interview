@@ -1,0 +1,32 @@
+ Hello friends, welcome to Gate Smashers  In this video we are going to discuss tree traversal techniques  So the tree traversal techniques we have
+ are pre-order, in-order and post-order  Pre-order means we have to write root first, 
+root node, then left node, then right  In-order means root comes
+ in between, left and right together  Post-order means first we write left, right and then root node  Node means the vertex of the tree  So here if we see xyz, so xyz is 
+a very simple graph, a simple tree  So if we see in this case, then root is
+ in the case of pre-order, x, then y, then z  So this will be the pre-order, where we write root first  In-order means first  left, then in between 
+root and in right write right element  And post-order means first left element, 
+then right element and in last root element  So when we have a very simple tree, then we 
+know that we have to write like this  But sometimes in exams we give a very complex tree  So if it is a very complex tree, then sometimes we do wrong in the option  Or we don't know how to find out the exact answer  So in this video I am telling you such a technique  With this technique, any tree, even the most complex tree  You can find the answer in very easy and very short time  So definitely do this technique before going to UGCnet GATE exam  This question has come many times  So here if we start, here we have a tree  So in binary tree, what we have to do first is  Whenever you start the tree, before starting the tree  You ensure that every binary tree 
+means at most 2 children of every tree  Does everyone have 2 children?
+ So here everyone has 2 children  No children of A, so A is actually a leaf node  So there are no children of leaf, 
+so what you have to do is  Make children like this in a dummy way  Make C like this, make E like this, make H like this  There is left of I, if there is no right of I, make
+ right of I, if there is no left of G, make left of G  So first of all you make children of dummy like this  So that every tree has 2 children  Now what you have to do after that is traversing  You have to go to the whole graph one by one  So we always start with root node, so this is the root node  So when we start with root node, 
+then what you have to do is  It is a simple way to get pre-order, in-order and post-order  When you are reaching any node for
+ the first time, then that is pre-order  When you are reaching any node for 
+the second time, then that is in-order  When you are reaching any node for
+ the third time, then that is post-order  How to do it? It is a very simple way, you keep watching  F, we started from here, so as soon as we reach F first, it is obvious  So we reached F, which time? First time we reached F  First time means pre-order  First time means pre-order  So as soon as we started from F, 
+you have to traverse left to right  So what is the second element on the left side? B  So you reached B for the first time, first time means pre-order  Let's come down to A, you reached A for the first time too  So you keep writing in pre-order  We reached A for the first time, now we came back to A  So we reached A for the second time  Second time means in-order  See we came back to A for the third time  First time was this, second time this, third time this  So post-order, because third time means post  Now we are going up to B  First time was here on B, now we reached here for the second time  Second time means in-order  Next, on D  We reached on D for the first time,
+ so first time means pre-order  Just like this you have to keep going, 
+next we reached on C for the first time  So keep writing pre-order  See we reached on C for the second time, 
+second time means in-order  And from here we reached on C for the third time  Third time means post-order  After that we reached on D, second time we came on D  First time we came here, second time here  Second time means in-order  First time is first time means pre-order  Second time on E so in-order  On E we got third time  First, second and third  So third time means post-order  Then we got third time on D  First time was here, second time is here, third time  So third time on D means post-order  If we reach third time on B, it means post order.  If we reach second time on S, first time this
+ was there, now we reach second time.  Second time means simple in order.  Coming back here, in left sub tree, sorry in right sub tree,  so we reach first time in right sub tree, first
+ time near G, first time means pre order.  Then we reach second time on G, 
+second time means in order.  And we came back on I for the first time, so in pre order on I.  After that we came on H for the first time, here 
+we came back on H for the second time.  And from here we came back on H for the third time.  So post order. From here we came back on I for the second time.  Means I will become in order. Then we came back on I for the third time.  So I will be the part of post order. Then 
+we came back on G for the third time.  So G came in post order. And finally
+ we came back on F for the third time.  So what did we get from F? Now post order part.  So see, pre order means root is first. So F was root first.  Post order means root is last. So see root is last.  And in order means root is somewhere in the middle.  Because if the element is always odd, then 
+somewhere element F is in the middle.  These are left ones, these are right ones. So this is a very simple technique.  And it will always be successful. Within 5 
+minutes you will understand this technique.  And if you get any question, even tough, 
+you can solve it within a minute.  So please guys do it properly. 
+In case you are not understanding,  then please check it again so that you
+ get to know this technique properly. Thank You.

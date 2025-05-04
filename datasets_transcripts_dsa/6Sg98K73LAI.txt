@@ -1,0 +1,1 @@
+what is a data structure a data structure is a storage format that defines the way data is stored organized and manipulated some popular data structures are arrays trees and graphs

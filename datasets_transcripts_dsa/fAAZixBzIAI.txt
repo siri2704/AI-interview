@@ -1,0 +1,1171 @@
+binary tree is a common data structure 
+used in software development.   It's also a frequent topic and technical coding 
+interviews in this course, Alvin will explain   binary tree algorithms and prepare you to use 
+them in both interviews and coding projects.   Hey programmers, Hamilton from Shruthi, elk to 
+our course on binary trees, I want to show you   how you can do well on those technical interviews 
+that have binary tree problems. So what I have in   store for this course, like usual, we'll go over 
+both the theory pines and binary tree algorithms,   as well as of course be more practical and come 
+up with a code implement those algorithms really   a one two punch. For every section, we're going to 
+be sure to draw out a pictures and visualize and   truly understand the algorithm on the whiteboard 
+notes are feeling comfortable with that,   we'll go over to the code implementation. 
+So in the description and in the timestamps,   you'll be able to find the corresponding exercise, 
+you can practice every algorithm that we go over.   In terms of the prerequisites for this 
+course, I'm going to assume that you're   not new to programming. And maybe you've dabbled 
+in some previous data structures and algorithms.   And you're also familiar with some recursion. 
+But that being said, I'm going to assume you know   nothing about binary trees, and even just trees in 
+general. with no further ado, let's jump right in.   So first order of businesses, let's actually 
+understand what the word tree even means. And   like the programming concept, right. So when we 
+visualize a tree, a tree contains many nodes,   typically we draw nodes as circles, right. And 
+these nodes can also point to other nodes. So   here I have one node. And I could point to some 
+other node, right, I could point to any number of   nodes. So here are the circles, I'm going to refer 
+to them as nodes, and the lines or hours between   them, I'm going to call edges, right. So this is 
+an example of a tree. And trees can of course,   come in many different shapes and sizes. So here's 
+quite a large tree. Let's try to understand a few   terms we can use during our technical interviews. 
+And this is something I highly recommend, right?   helps if you speak the language, it does show 
+that you have proficiency dealing with the data   structure, we could store values within the nodes 
+of our tree. For now I'm just going to put some   letters. When it comes to your programs, you can 
+store any type you want, you can store integers,   numbers, or even other objects. So because we have 
+a tree, we like to use familial relationships. In   other words, I think of like a family tree, right? 
+So if I look at node B, let's say I call them the   parent. If b is the parent, I know that children 
+of B are just the D nodes, right? their parent   and child is like a relative relationship. Let's 
+say I kind of changed my frame of reference. And   let's say I looked at a as the parent, well, that 
+scenario, then B and C are the children of a. for   the case of the C node, if I think of CSM parent, 
+it only has one child, its lone child being the F   node. So feel free to use that parent child 
+relationship when describing the relationship   among nodes within a tree. Another terminal is 
+a lot in the context of trees is the word root,   right? So a root is going to be a node that has no 
+parent. So in this tree, A is the root because a   has no parent, right? There are no arrows going 
+into the a node. On the flip side of that,   if I look at the nodes in DNF, we call 
+them leaf nodes. A leaf node is a node   that has no children, right, so d and f have no 
+outgoing arrows. Typically, in a binary tree,   we're going to have a single root and we could 
+have many leaves. One thing I want to be sure to   do is make sure you generalize your understanding 
+of a leaf, right? So in this particular example,   looks like every leaf is two edges away from 
+the root, counting the number of arrows from   the roots, any leaf, it could be the case that 
+my leaves occur at different levels, right? So   I removed that F node, which case C is now a leaf, 
+right? Although a C is on like a different level   than D and E, it's not the bottommost level, it 
+is the case that it's still a leaf, right? a leaf   node is just a node that has zero children. All 
+right. So with all of those terms out of the way,   let's hone in on the real topic here. Right, 
+I talked a lot about trees. But really in this   course, I want to go over the basics of binary 
+trees. Right? So let's look at that binary part   to begin with. That's really a dead giveaway. 
+We know binary has to do with the number two.   A binary tree is a tree where every node has at 
+most two children. Right? So currently on the   screen, I have a binary tree. If I gave a another 
+child, let's say a third node over here of f,   this would be a tree but not a binary tree. Right? 
+It would be like a ternary tree because I have at   most three children. So let's say I kind of remove 
+that extra node. Now it's back to a binary tree.   And it could be the case that a node has less 
+than two children but still be a binary tree,   right? So if I gave C, just a child of f, this is 
+still a binary tree. It's if I look at any node   within my tree, that node will have 01 or two 
+children, and no one has more than two children,   right? So you want to be sure to remember that 
+a node in a binary tree could have less than   two children. All right. So I'll be the first 
+criteria for understanding what a binary tree   is right? It's probably the easiest criteria and 
+most children per node will also want to be sure   to add into our definition Have a robust 
+understanding is to also remember that,   at least for us in computer science, we think 
+of our binary trees as having exactly one root,   meaning there should be only a single node that 
+has no parent, right? Typically when we draw,   it would be like the topmost node. So right 
+now this is definitely so far a binary tree.   If I had some other node in this drawing, 
+like G, right, g also has no parents,   I would no longer consider this a classic 
+binary tree, right? So watch out for that.   Let's go on to our final criteria, we also need 
+one more ingredient. And that's exactly one path   between the root and any node, right. So looking 
+at my example to the left, this is indeed a binary   tree that meets all three criteria. And let's say 
+I chose the root and any node, obviously, there's   only one root, so we're definitely considering the 
+a node, let's say I chose some random node like E,   this is really a binary tree, then we're 
+guaranteed to have only a single path that   connects A to E, a path is really just a series 
+of connected nodes I can travel through, right,   so to get from the root a to the node E, I 
+can go from A to B to E, and that would be   one path. And that's the only way to get from 
+A to E. That's what I mean by exactly one path.   Let's say I chose another node like F. There is 
+also exactly one way to get from the root to F,   and that's just a CF, that would be the only path. 
+If I added some additional connections or edges   within my tree, I can get a scenario like this, 
+this would no longer be a binary tree. For one,   we can see that B has three children, but also 
+does not have a unique path between the route   in any node. For example, if I chose a and the 
+note of f, one way to get there is by going ACF.   But another way to get there would be a, b, c, f, 
+right? And so do watch out for all three criteria   when you're considering a binary tree. Awesome. So 
+let's look at some smaller examples. And this is   where I think some students tend to struggle with 
+their understanding of binary trees. So if I took   out some nodes over here, this would definitely 
+still be a binary tree, right? Just looking at our   different rules, right? Let's say the root node A 
+only had one child would still be a binary tree,   right? Because the binary tree only demands that 
+we have at most two children, we still have one   root, and we still have only one path from root 
+to any node. Let's say I have the smallest tree   that has a node, which would be the singleton 
+tree, this is still considered a binary tree,   right has one route. And there's not really any 
+pass to be had here except the route to itself.   And every node does have at most two 
+children. Here we have zero children, right?   The final edge case we want to think about 
+is what happens when we have no nodes,   right? We consider this as the empty tree. This 
+is a very special case. And we should consider   any empty tree as actually being a binary tree. 
+That's going to be very useful when we come up   with some algorithms later on, right. So a common 
+edge case off to consider is what happens when we   have an empty tree, that's a tree with zero 
+nodes, right? Let's look at another example.   Let's say I had this structure to take a moment 
+look at it, and see if this meets our criteria.   This would not be considered a binary tree. So 
+we look at your different criteria. Looking at   the first one, it does have at most two children 
+per node, so that's okay. But we can't identify   exactly one root here. Remember that a root 
+node is a node that has no parent, right?   If you look at every node in this picture, every 
+node has exactly one ingoing arrow. So that means   every node has at least one parent, 
+right? So it doesn't meet that criteria.   And furthermore, there is not exactly 
+one path between the root and any node,   because we have a cycle within the structure. 
+So for example, let's say I was starting at a   right and I wanted to travel to see, one 
+way to get there would be to go A, B, C,   that'd be one path. But I could also have another 
+path or I just go around twice and go A, B, C,   again, there would actually be an infinite number 
+of paths in this scenario. Because of that, this   is definitely not a binary tree. And there kind 
+of many reasons for that. If I had a different   example, looking at this one, now I need criteria 
+one and two, right, I have at most two children   for every node. But I also still have exactly 
+one root node here I would consider z the root   node. However, there is not one path between the 
+roots in any node and because I have that cycle.   So these rules are really worth remembering, 
+they're really going to help you solve a much   more difficult binary tree problems. And if you 
+remember these three rules, you can identify   different problems in a binary tree framework. 
+In other words, the hardest problems that you'll   encounter in your interviews are problems 
+where they don't tell you straight up what   data structure you're dealing with, you're just 
+gonna have to notice the pattern. In other words,   what if I gave you some structure like this, take 
+a moment and figure out if this is a binary tree.   If you look closely, this does meet all 
+of the three criteria to be a binary tree.   I can just treat a as the root because it has no 
+parent. I can treat nodes D and F as the leaves   because they have no children. I just drew 
+this in a pretty interesting way. Right? If   you really range things in a classical binary tree 
+sense would look like this. More importantly, this   has the same relationships as a previous drawing, 
+I just show it in a top down fashion, right? So no   matter what do you understand these three rules 
+for a binary tree, right? Because sometimes may   not be as explicit as a nice triangular shaped 
+drawing. Awesome. So we've talked a lot about the   theory of how to, you know, look at and reason 
+through some binary tree definitions. Let's   go ahead and start to talk about how we could 
+represent binary tree programmatically. In other   words, how can we do this in some code? Well, 
+no matter your programming language of choice,   I think you're going to represent these as 
+objects. In other words, every node here is   going to be some objects. So it could be like an 
+instance of a class, the properties only to store   within this object would be the current value. So 
+I need something to store like the A of my current   node. But I also need to refer to some children. 
+So we'll also need some left and right pointers   to the children, right, those are just going to 
+be some properties on that object. In a classic   binary tree is very common to refer to the 
+two children using a left and right direction.   Notice that some nodes here, like the C node, 
+they're only going to have one child, right? c   only has a node dot, right? It does not have a 
+left. So we're gonna have to use some empty value,   like null or undefined. To represent a child that 
+doesn't exist, right? Especially for a node like   he, he has no left and also no, right. So here's 
+what we'll do, let's go ahead and hop into my text   editor. And I'll show you how you could represent 
+a binary tree programmatically. So transition,   here we are in my text editor. Let's start by 
+creating our node class, right. So you'll be able   to follow along any language that you choose, 
+I'm going to do mine in JavaScript, right. So   I think the best way to present a node is just 
+to use some class. So hopefully familiar with   some classic class syntax, let's create a node 
+class, there's going to be a quick constructor,   I think would be valuable to take in the initial 
+value that's going to be stored within the notes,   I'll take the ns a constructor argument, I can 
+just set this dot Val to that value, and also need   two more properties, one for my left, so I can say 
+this dot left, I'm gonna initialize it to null,   that means by default, a node will have no left 
+child the same way. By default, a node will have   no right child, right? So when you use no to 
+represent children that don't exist over here,   awesome. That's all you need to create, you know, 
+a baseline binary tree, right, we're going to use   this class a lot during the course to test our 
+algorithms. So I'm going to create a node and   eventually wire up a tree. Well, I'll just call 
+my constructor few times, I'll create different   nodes, I'll just store them to some variable 
+names. And of course, a new node to create   new instance of node, and I'll store some value 
+inside, I'm going to store some characters inside,   I'll create a bunch of these different nodes, 
+what we'll want to be sure to do is make sure   that you also set their pointers properly. So 
+I'll give each of these some different values ABC,   D, E, also do F. And then I'll just manually 
+for now set their pointers properly.   So what if I did syntax like this is since I'm in 
+JavaScript, I can easily assign these pointers,   I can say, A's left is going to be B. I can 
+say A's right? is C can also say B's left D.   and then B's right is E. And maybe Finally I can 
+say C's right is F. So by doing these assignments,   I'm connecting some nodes together, I should 
+end up with a structure like this right? Have   a as a root, because nothing points to a 
+it has no parent. But a has two children   of the NC. And then along with 
+that, B has two children of D and E.   Finally, C just has a right child of f, this is 
+actually the same tree that we looked at a lot   during the whiteboard session, right? And 
+that's how you can represent that same tree   programmatically, right? So I always think it's 
+valuable to also try to visualize your trees,   right? Obviously, we created this tree in a very 
+manual way, probably in the long run will create   applications to just maintain and create trees 
+dynamically during some input. But for now,   we'll start by creating all of our 
+trees in this very kind of static way.   Right? And so with that, now that we have an 
+understanding of how to represent a binary tree,   let's go head back to the whiteboard. And 
+I can show us our very first algorithm.   Hey, programmers, Alvin here, right? Now I want 
+to go over this depth first values problem.   So this will be a good review of the depth first 
+traversal algorithm. So what do you want to do in   this problem? Well, what we want to do is take in 
+a binary tree, and in particular, your function is   going to take in the root of the binary tree. 
+And just recall that given the root node of a   binary tree, we know that that node is going to 
+have pointers to its left and right children,   which may point to other nodes. However, if let's 
+say a node does not have left or right child, then   its point is going to be set to No. So that's how 
+I represent our binary tree programmatically. But   for now, let's just stick to the visual represent 
+of our tree. So for a depth first traversal,   we could start with the root node of a, what we'll 
+do is we'll just add that to some collection.   And we're going to have to maintain these in 
+a very particular order. And then from there,   according to a depth first traversal, I could 
+go to B. And here's where we make our really   important decision, right, we can either go to 
+C, or D, if I'm doing a depth first traversal,   I need to go deeper in the tree before I move 
+laterally. So that means I go from B to D.   And once I bought them out at D, there's 
+nowhere deeper, I can go from D. And so now   I move laterally to the E node. And this pattern 
+continues, right? I don't have anything deeper   from E. So now I go to C. And then from C, I go 
+to f. So this would be a depth first traversal   on this binary tree. Notice that it goes A, 
+B, D, E, C, F, and again, the really important   characteristic is we must go deeper in the tree 
+until we can't anymore and then we can go across   the tree. That being said, How can we actually 
+managed to implement this algorithm. If you're   familiar with depth first, traditionally, then we 
+know that it's going to use a data structure like   a stack. So let's get situated over here. So we'll 
+trace through that again. But this time, taking   a really close look at how we can use a stack to 
+accomplish that direct order. And so just recall   that a stack is a sequential data structure where 
+we can only add things to the top of the stack   and remove things from the top of the stack. 
+So a really important characteristic is   we can't really insert or remove elements from 
+anywhere but the top of the stack. So when I add   things to the stack, I was added to the top like 
+this. When I remove things, it's also from the top   like this. Alright, so when I begin at this 
+depth first traversal algorithm, I'm going to   start with the root node of a. And by default, I 
+really just take that root node and I just store   it on my stack. So it's the only thing on my stack 
+right now, I'll use these rectangles represent my   different stack frames. And really in my program, 
+that would just mean storing the actual instance   of node or some pointer to it. Cool. And then 
+from there, I actually begin my main algorithm.   So the main flow of a depth first traversal, we'll 
+check if the stack is empty. Right now the stack   is not empty, because I have at least one element. 
+And so what I do is I start by removing or popping   the top element of my stack. So I'm gonna remove 
+the A, and I'll label that as my current node   being explored. And when something leaves the 
+stack, then I can consider it being visited right   now. So I need to list out my values, because 
+that's the whole point of this problem, right?   So by now I've just visited the a node. At this 
+point, I can look at that nodes children now.   So I look at the a node in the tree, and I see 
+that it has a B child on its left and a C child on   its right. And from there, I push or add those two 
+children to my stack. So I'm going to put c first,   and I put B afterwards. And notice if I push my 
+right child first, followed by my left child,   that makes it such that my left child is 
+at the top of my stack, which means that   I would hit them next. And that actually ends on 
+my first iteration of this depth first traversal.   And now I asked that same question is my stack 
+empty, it's not. So I removed the top of my stack,   I'll call it B, my current, which means I could 
+print it out or insert it into my values list.   Nice. From there, I consider B's children, 
+B has two children. So I add them both,   I push E, followed by pushing D. That ends that 
+iteration. Now something interesting happens,   my stack is still not empty. So I know I removed 
+the top, so I call D, my current, I add D to my   list of values. But if I look at these children, 
+it actually has no children, right, and so there's   nothing to add to the stack from here. And 
+so technically, I finished this iteration.   And now I still have stuff on my stack. So now 
+I pop he off the top of my stack. Same thing   as before, right, I add to my values, he has 
+no children. So I'm done with that iteration.   Finally FC, I removed C from the stack, and I 
+printed out in my values. And then at this point,   I see that the C node only has one child, so I'm 
+just going to push the children that exists so I   would push the F node onto my stack. And that's 
+a really important thing to remember when it   comes to implementing your depth first traversal 
+you're going to have to check if your children   exist before you add them to your stack. And now 
+on the final final iteration, we have the F node   we remove it from the stack, we add it to our 
+list of values f has no children. And so I finish   this iteration and now my stack is empty and I 
+will just exit right once the stack is empty. I   know that I must have traveled through the entire 
+binary tree. So there we have it and we do get the   correct output over here. So just by using a stack 
+and just obeying the rules of the stack, that is   we got pushed to the top and removed from the top 
+we will get the correct order. important thing to   remember is you should add your values into your 
+like values list whenever something leaves the   stack. That being said, What can we say about the 
+time and space complexity of this algorithm? Well,   it's actually pretty straightforward. Let's say 
+we define n as the number of nodes in this binary   tree, then we can say that the time complexity of 
+this is O of n. And why do I say that? Well, we're   just going to add that every node eventually to 
+our stack. And that nodes also going to leave the   stack exactly once. So it's not like we're double 
+visiting any of the nodes. So I'm guaranteed to   just run in O of n steps. In a similar way, we 
+can see that the space complexity is O of n,   the only thing we stored was really the 
+stack, which is a linear data structure.   And we know that we're not going to put ever 
+more than n things on the stack. So overall,   we have a linear time and space solution for 
+this depth first traversal problem. All right,   I think we have a good understanding about the 
+approach for a depth first traversal. Now let's   go ahead to the walkthrough video. And we'll 
+implement this one in a few ways together. Hey,   programmers, Alvin here, right. And I want to go 
+over a JavaScript solution for this depth first   values problem. And so we're going to do here is 
+really just implement that same strategy that we   traced through in the approach video, pretty much 
+to the tee. And we'll start with the iterative   version. And that means of course, we will solve 
+this one in two different ways, right, we're gonna   solve it iteratively first, and afterwards, 
+we'll go ahead and solve it recursively.   Alright, so let's jump right in over here. Like 
+we said, in the approach video, we know that the   iterative version really relies on us creating a 
+stack. And for most of your programming languages,   you can just go ahead and use your like array 
+data structure for that. So I'm going to use   just a plain old JavaScript array, I'll go ahead 
+and name this one stack. And we can just use   an array to represent a stack as long as we stick 
+to two particular methods, right, I'm going to use   array push, which adds to the end of an array, 
+and also array pop, which removes from the end   of the array as well. So I'm going to consider the 
+end of my array to represent the top of my stack.   Cool, we'll go ahead and do is initialize 
+the stack with the root node on top of it.   Nice, then I can have my main loop for the 
+algorithm. So we know that we need to keep   running the algorithm while there's stuff on our 
+stack. So I can just check while stack dot length   is greater than zero. So while I have 
+at least one element on my stack,   there is some work to be done here. And that will 
+step through a single iteration of this algorithm,   we know that we start interation by just 
+removing the top of our stack, in other words,   stack dot pop in JavaScript, that will also return 
+us the element that we just removed. So I'll call   that my current const current. And that is going 
+to be an instance of nodes, it's going to be   one of these objects. Cool. So now that I 
+remove this element from the top of my stack,   let's say for now, I just I don't know, 
+print it out, maybe we'll kind of debug   this one as we go. So console dot log, current 
+dot Val, because I know that every instance of   node has a dot Val prop on the inside. And then 
+from there, I need to add this nodes children.   So you might go ahead and guess that to do that, 
+we could just do stacked up push, I'm going to   push the left child, one out here, so node or 
+current dot left, followed by the right child.   But we also need to make sure that these 
+children exist, right? Look at the prompt.   There could be instances, for example, 
+like this C node over here, this C node   only has a right child, but has no left child, 
+right. So what I don't want to do is push C's   left, because that'd be pushing no onto my 
+stack, which would give me an error later   on. Right? So I want to only push the children 
+if they exist. And I need to individually check   if the left exists and push it and also if the 
+right exists and push it, I'm just going to   add some guard statements for both of these. So 
+we'll go ahead and insert will say, all right,   if the current has a left and right side, current 
+dot left, called justice for the right hand side,   cool, maybe we can inline this, if you prefer. 
+Alright, so I'm going to only push the children   if they exist. And that should actually be the 
+heart of our depth first algorithm. So we're not   putting our values inside of an array like the 
+problem asks, but we should at least be able to   see the correct order of printing here, because 
+I'm going to print a nodes value as soon as it   is removed from my stack. So I'll go ahead and 
+actually maybe bring in maybe one literal test   case, so I could just steal this little stub over 
+here. And this will just print out the values.   Right, so I'll test this I can hit Run, if 
+I hit Run, it's just going to execute this   file just like a script. So it's not 
+going to run any automatic test cases,   just going to run my file as is. So if you want 
+to test it in this way, kind of in a manual way,   you're gonna have to be sure to call your 
+function. I do have a console dot log on   the inside. So I'll just run Run this manually. 
+And when I do that should see some output here   looks like node is not defined because I forgot 
+to bring in my class definition. So I'll do that.   give that a go. Alright, so looking at our output, 
+we didn't get our exact depth first traversal,   like we expected, right? I got ACF, B, D, if 
+you take a look at what we really printed out,   we technically did print out a depth first print, 
+but we favored the right hand side. So we did a,   c, f, and then B, E, D. So let's say we really 
+wanted the left to right version of this,   and all you have to do is flip the order that you 
+push the children, right, it should be clear by   looking at these two lines, right? When I add 
+my children looks like I push the left child,   and then the right child. If you push the left 
+child first, and then you push the right child   afterwards, that means that the right child's 
+going to be on top for the next iteration. So   if you do it like this, this will favor the 
+right hand side and travel through it first.   But if you did it like this, now you'd be 
+actually iterating to the left branch first,   toward the right. So with that small change, 
+let's just see what our print is. And there   we have a nice AB de ECF. However, in this 
+problem, they want us to actually return   those values in an array. So I can kind of 
+get rid of this little Manual Test over here,   I don't need this class definition anymore. And 
+now instead, I'll just gather up all of my values   in some results array. So I'll say, maybe result 
+over here starts as an empty array. And then as I   pop elements from the top of my stack, 
+instead of logging them, I'll go ahead and do   result dot push, and I'll push that value into the 
+result array. Once I'm done with this while loop,   that means my entire tree has been explored. which 
+case I can return, make sure I spell it right,   return my results. Cool. So this should be a 
+nice solution, it's actually run the test cases   on this. give that a go. So it looks like we're 
+doing pretty good. But for this very last example,   looks like we're getting can't read property 
+Val of na, and that's running test case 04.   So if you actually go into the prompt, those 
+test cases are actually laid out explicitly   over here. So I want to go to zero for now 
+let's look at the zero for test case. They go   ahead and they pass my function, no, right kind 
+of representing like an empty tree or an empty   node. And we can kind of trace it what happens 
+here for our code. Let's say that root was null.   That means when we initialize our stack, our stack 
+literally contains like a null value. So it's not   even an instance of note just now. So that means 
+when I entered this while we're going to check,   you know, Do I have anything in my stack, and 
+I do because my stack length is one. And then   when I pop, the top element of my stack current 
+is going to be no, then on this line 14 it says   null dot Val. And that's actually where our 
+code explodes, right on line 14, right? You   can't reference property Val, of null. And so 
+to handle this scenario, we want to make sure   that we actually never allow anything No, to enter 
+the stack. It's kind of why we had this guard over   here. mentioned also be true for even the top 
+level route, in case they give us the empty tree.   kind of seems like a corny, you know edge case. 
+But this is a pretty common one, when you actually   go into your interviews, right? What 
+happens if you have an empty input.   And so I'll just guard that explicitly, 
+I'll go ahead and check, hey, if my route,   so if my entire tree is empty. So if route equals 
+null, then what I'll do is just return an empty   array, right? Because that means there are no 
+values inside of it. And that actually is the   expected answer, according to this, right should 
+return an empty array. So let's give it a go now   should be pretty good. Nice. And there, 
+we have our nice iterative solution for   this depth first values problem. Alright, so 
+here's what we'll do. That was one solution.   Let me show you another way. let's implement 
+this. And that would be our recursive flavor.   So I'll just kind of redefine it down below. And 
+I actually recommend practicing both versions,   because they're going to serve as like the 
+basis for which you solve a lot of different   tree problems. And so when I think about the 
+recursive version, like all of our recursive code,   I must think about the simplest case of my 
+input, and that will act as my base case, right?   So in the case of a binary tree, the simplest 
+tree you can be given is going to be the empty   tree or just a no root, right? So it's not even 
+going to be about a node that's single node right   inside of a binary tree. It's going to be about 
+an empty tree, right, a tree with zero nodes. I'm   going to check if my route is no, and I have an 
+empty tree. And I think about this base case, as   if it's its own input, because it really is right 
+and so if someone They asked me to give them back   in array of all the values in the empty tree, it's 
+still the case that this must be an empty array,   right? Because there are no values, 
+there's even any nodes and the empty tree.   And then from there, I can generate my actual 
+recursive call, right. And I know what I call   my stuff recursively. That means I have to 
+reference a function and again, go ahead and   invoke it. And I'm going to call upon root dot 
+left, as well as root dot, right? So this would,   this call over here would give me back an array 
+containing all of the values in the left subtree.   And this will give me an array of all the values 
+in the right subtree. And so let's say I see these   into their own variables respectively, you don't 
+have to do this part. But I'm kind of a fan of it,   especially if it's the first time implementing 
+this. So I'll call this my left values.   I'll call this one my right values. And here's how 
+I'm able to kind of quickly create recursive codes   all about taking when I call is a recursive leap 
+of faith here. So let's say we're stepping through   test 00. And so this is our tree visual, right? 
+So we know that our root is going to be a node.   So when I actually make this top level call, 
+this base case does not fire. And so I make my   recursive calls, right? I know when I do depth 
+first value, or values, rather, let me fix that   depth first values of root dot left, that means 
+I'm going to be passing in the B node, right,   and here's how I have to actually pretend my code 
+behaves, I'm just going to get back the correct   result from this call, right? So if I passed 
+in the B node into this call, what I expect   back is the full array representing the depth 
+first traversal of that subtree, starting at B,   right. So if I got correct data over here, 
+what it would look like is just B, D, and E.   That would actually be the full depth 
+first traversal, from this subtree,   right. And I'm kind of doing that just mentally, 
+or I know the expectation for this algorithm,   it's going to be a similar story for my right 
+call, right? If I'm at a So A is still my route,   and I passed in my right child See, 
+to this call, what I expect back   is just an array of CF, which would be the 
+depth first traversal of that left subtree.   And now that I have, you know, my left subtree 
+values and my right subtree values, I have to   think about how to combine it all together, right? 
+How do I work myself into that output by combining   both of the results from my children, right, what 
+I need to do is really just take myself put it in   the array, followed by my left children, followed 
+by my right children. So I can do some nice   JavaScript syntax for that whenever returning 
+the right when I throw myself in there, so I'm   going to throw in a root dot Val, that's myself. 
+So that'd be like the a node that I just take all   the values in my left result, put them in here and 
+just use the spread operator to unpack that array.   And I'll do the same thing for the right values 
+of CF, right. So dot dot, dot, spread out right   values just so I return a single array, and this 
+pattern itself does match this output, right,   kind of taking the leap of faith and assuming 
+correctness from these recursive calls over here,   right, I have a, and I plug in substitute B, D, E, 
+and then for the right, I have CF. And even before   we run this, I'm not going to, you know, assume 
+too much JavaScript knowledge. So maybe you're   kind of new to this spread operator. So 
+in general, super quick aside over here,   let's say had an array of some stuff. So I'll 
+say, peeps there and some people over here.   So we'll throw in fleabay, we'll throw in Jason, 
+throw in Raj, throw in heavy. And what I can do is   whenever I have an array, I can just use a spread 
+operator to kind of unpack that array. So for   example, I can say const will say new peeps. And 
+I'll create a new literal array. So whenever I say   square brackets, it gives me a new array 
+literal. And what I'll do is, I don't know,   put an element at the front, we'll call it Alvin. 
+That'll spread out the elements of peeps, right?   So just imagine I took all of the elements here 
+and just remove the brackets. That way I don't add   any initial nesting. And then at the end, I don't 
+know I can add someone else. Like, right? Well,   console dot log, what new peeps looks like so I'm 
+not gonna run the test cases, we're just gonna run   this file as a script, just so we can review this 
+spreads index. So if I give that a go, we kind   of make this bigger. Notice that I have correctly 
+spread things out right? Have Alvin at the front,   and I have all of the things from peeps in the 
+middle, right, followed by Brian at the end.   So you can do this. You can also use like the 
+concat method on arrays. You're probably going   to see me use this spread syntax a lot because 
+I'm kind of a fan, right. But with that in mind,   let's go ahead and actually test this code. So 
+we'll run all the test cases. Nice. And this   is another working solution for our depth first 
+values. And it should be pretty natural that we   can solve this problem also recursively. So I know 
+that the iterative solution for this depth first   traversal requires a stack data structure. 
+And I know whenever I write recursive code,   under the hood, your programming language is 
+actually going to track all those recursive calls,   using the call stack, right? That call stack 
+behavior gives you the same type of ordering,   which is really convenient. Cool. All right. 
+So before I send you off on the next problem,   I want you to actually practice both solutions 
+for this depth first values code, it's going to be   very necessary to actually master some later 
+concepts that are coming right up. So do spend   some time on this practice makes perfect, 
+right, and I'll catch you in the next one.   Hey, programmers, Alan here, right? Now I want to 
+go over this breadth first values problem. So it's   really just going to be a little variation off of 
+the depth first one we just did, of course, but   it's really important that moving forward for all 
+of our tree algorithms and other data structures,   that we have both versions down pat. So in this 
+problem, we're going to take in a binary tree,   once again, very classic binary tree structure, 
+this time, I want to return an array or a list   of all the values according to a breadth first 
+traversal order. So a breadth first traversal   starts with the root node of a, so that's 
+nothing new. And then from there, I could   go to B. So right now I have my a node, and also 
+my B node. And here is where we diverged from our   previous problem in a breadth first traversal. And 
+breadth just refers to like the width of something   I travel across before I go deeper. So in our 
+breadth first traversal, I'm gonna move to C   and not D for now. So I add my C node c value to 
+my list. And then from here, once I finished this   entire level, and there's nowhere to go across 
+the tree anymore, now I could go downward to the   next level. Now I have D, and then E, and then F. 
+So they're really important distinction here is   the breadth first traversal starts with 
+ABC, whereas the depth first traversal   would have started A, B, D. That's a 
+really, really important distinction.   And so how can we go about implementing 
+the breadth first version of this?   Well recall that the depth first used a stack 
+data structure, well is the case that the   breadth first is now going to use the queue data 
+structure, really just the partnering version   of that structure. And so let's kind of step 
+through that in a more programmatic way. So I'm   going to use and track my queue. And just recall 
+that a queue has no sense of direction to have   the back of my queue and the front of my queue, 
+things enter the back of the queue, and they leave   the front of the queue. Right. And so no one gets 
+a skip line either. So this gives me a nice fair   ordering, think of a queue as just like waiting in 
+line at checkout at a grocery store or something.   So how do I begin my algorithm, I'm going 
+to start by initializing my queue with the   root node. So I'm just gonna start with a on my 
+queue. And then from here, now I can begin my main   algorithm. So my main algorithm should check 
+on every iteration is my queue empty, right now   it's not because I have at least one element. 
+And so I remove the front element of my queue.   And so we know that a would be removed, 
+and we label it as our current.   A node being explored when something leaves 
+the queue and is marked as our current will   say that now it's being visited. So I would add a 
+to the running list of my values. Then from here,   I need to look at his children. He has two 
+children B and C, I need to go ahead and   add them into my queue. And so let's say I 
+added B into the queue first, followed by C.   Notice that C must enter behind B, right. And 
+now I finished this iteration. At this point,   I have the next iteration of my algorithm, I take 
+the front element of my queue, and it leaves,   right So b is now my current, I add B to my 
+running list, then I look at B's children of D,   I push D followed by he behind it. At this 
+point, I have another iteration to do right.   And it's so on so forth. From here, see leaves the 
+front of my queue, I add it to my list of values,   and I look at sees children see only has 
+one child. So for that child that exists,   I go ahead and add them to the back of my queue. 
+And it's really important that I added to the back   right at this point had my next iteration. At this 
+point I continue, my queue is still not empty, so   I still have some stuff to remove. So D leaves in 
+front of my queue, I add it to my list of values.   Since D has no children, there's nothing to add 
+here. next iteration, he leaves the front of my   queue, I added to my list of values, no children, 
+so I don't need to add anything. And finally f   leaves the front of my queue, I just add it to my 
+list of values and again, f has no children. So by   now my queue is empty, which must mean that, hey, 
+I must have completed the algorithm, right? There   are no more nodes to explored, I explored and 
+added every single node to my list of values.   All right, and this output actually looks correct, 
+right, I get abcdef, just like we say. But what   about the complexity of this algorithm. So 
+let's take a closer look over here. Well,   we know from the get go, that n is going to be the 
+number of nodes in this binary tree. So that will   be the term for our sides of input. And we can say 
+that the time complexity is simply just O of n,   roughly, because we know when it comes to visiting 
+these nodes, and you know, using our loop,   we're going to add every node to the queue once, 
+which also means that that node is going to leave   the queue also wants, so it's not like we're 
+double adding a node to the queue, right,   we're not going to double visit any of these. In a 
+similar way, the space complexity is going to be O   of n at most, because, you know, we're just going 
+to add at most to all of the nodes into our queue.   And in general, it's probably going to be less 
+than Oh, event space in terms of how much space   we use in our queue. An important thing I'll 
+just mention right now that in regards to the   time complexity of this one, here, we're going 
+to say that the time complexity is O of n. And   that's if we can assume that adding something now 
+to the queue runs in constant time. And removing   something from the queue occurs in constant 
+time. So depending on how you implement this,   if you use actually, a built in an efficient queue 
+data structure, you will get this O of n time   complexity for our breadth first. But if you use 
+a less optimal, like data structure, maybe not a   perfect queue, then you might have an actual worse 
+complexity. So again, this time complexity of   O of n assumes that we have a maximally efficient 
+queue that has o of one add and remove operations.   With that being said, I feel pretty good 
+about coding this one up. I'll catch you   in the walkthrough video, and I'll show you a 
+few different ways that's implement this one.   Hey, programmers, Alvin here, right now I want 
+to walk through the JavaScript solution for this   breadth first values function. So hopefully, 
+you just finished the depth first version,   in which case, this one should be pretty much a 
+cakewalk. But of course, we will still go through   the motions of it, because it's going to be useful 
+to solve much harder problems later on, as you   always hear me say, Alright, so to tackle this 
+one, we'll start with our queue data structure,   right? So nothing fancy in JavaScript, what I 
+would do is just use an array and just stick to   using very specific methods, right? So I'm 
+going to create an array, I'll call it my   cube. And we're going to initialize that queue 
+with the route on it by default. And we'll also   guard against upfront is imagine they gave us 
+an empty tree to begin with. So in other words,   the initial route is no, which case it would 
+be like this test 04. And they just want us to   return an empty array. So I'm going to guard for 
+that explicitly. So I'll check Hey, is my route   No. And if it is, just go ahead and return an 
+empty array like that. Nice. Then from here,   I need to start in my main loop from algorithm. 
+So I iterate a while my queue is not empty,   just like we spoke about in the approach video, 
+right? So while q dot length is greater than zero,   then keep on going. Now I begin a single iteration 
+of this algorithm by just removing the front   of my queue, right? So it's really up to you which 
+methods you use, you just need to make sure you   remove from one end and add to the opposite end. 
+So for me, I'm going to treat index zero as if   it's the front of my array, I'm going to treat 
+the last index as if it's the back of my array,   right? So if I want to remove the front and say, 
+array dot shift, or for me right now, Q dot shift,   that removes the front also returns to me, that 
+element, so I'll call that my current note,   x. And then from here, I need to add this node 
+children into my queue. And that'll give me my   main flow for this breadth first traversal. 
+Right. So I'm going to go ahead and check,   hey, if my left child exists, so if, let's 
+say current dot left, that is not know, then   what I should do is go ahead and push that into my 
+queue. So I'll say q dot push my current dot left,   and it's just going to be symmetric 
+for the right hand side, of course.   So if the right exists, then push the 
+right into the queue. Just like that.   Awesome. And so that looks pretty good. And 
+then from there, I actually want to store   the nodes I visit in an array for the 
+final return just like the problem asks,   so nothing too fancy. I really want to insert some 
+code over here about and so I'll create a result   array, I'll call it values, sort of empty whenever 
+something leaves the queue. I'll just take that   and push it into my values. So I say values dot 
+push. I'll push that current Val into my queue.   And do note that, what you can't do is just take 
+like the queue and treat it like your final return   value, it must be a totally separate thing, 
+right, I use the queue just for the sake of   traveling through in a breadth first order. And 
+the order that you visit is actually derived from   the order in which things lead the queue. 
+So that's why I'm doing it over here, right,   as soon as something leaves a queue, that's what I 
+considered visited. So I added to my values list.   Nice. And after my while it's done running, 
+I'll go ahead and return my entire values array.   So let's give this a test. I'm gonna 
+run all the test cases, what we get,   have a few test cases to pass. And there we 
+have it. Here's a nice iterative solution for   our breadth first traversal. Just something I want 
+to mention, by the way, let's look at the prompt.   So looking at, I don't know, like the very 
+first example, in this kind of rendition of   breadth first, what they asked us to do is 
+really give us a breadth first traversal,   that moves from left to right, so notice it goes 
+A, B, C in terms of the resulting output, and   not a CB, right, those would both be technically 
+correct, start to a breath first. And then you can   kind of choose depending on what problem you're 
+solving, whether you want to go left to right   or right to left. For me, because I push the left 
+followed by the right, that means the left is   going to leave the queue first, right, because 
+remember, the queue is just like a line and   checkout. So if someone enters first, that is the 
+left enters first, they going to be served before   the right go. And you can just flip these around. 
+And I'll give you the right to left universal   goal. So depending on what your problem warrants, 
+you can always manipulate that code a little bit.   And this is actually probably like the only 
+solution you can have. You know, maybe aside   from just some superficial changes to like the 
+code style, this is going to be your go to and   only go to solution for a breadth first traversal 
+on a binary tree, right? A common mistake I see   people try to do a lot is there is not really a 
+straightforward way to implement a breadth first   traversal recursively. And that should make 
+some sense, because a breadth first traversal   needs a queue order right needs to use a queue. If 
+you write any recursive code, you know, under the   hood, it's using a stack. And so that stack versus 
+queue is really just going to fight against you.   And you're going to have a really tough time 
+trying to implement the correct ordering.   So always just writes the iterative version 
+for your breadth first traversal. Alright, so I   recommend before you hop into the next video, make 
+sure you're able to write this code on your own,   because we are going to level up difficulty a 
+little bit, but I'll catch you in the next one.   Hey programmers, Alvin here, right now I 
+want to walk through the approach for this   tree includes problem. So the premise of this 
+problem is I'm going to give you a binary tree,   and also a target value to look for. I 
+just want you to tell me True or false?   Is that target value found within the binary 
+tree? So for this particular example input,   the answer is obviously true or Yes, right, you 
+could definitely find e within this binary tree   for give you another target value like 
+j, you would respond with false, right?   Because that value j is nowhere to be found within 
+the binary tree. And really what I'm asking you to   do here is we're stepping through the canonical 
+like breadth first search and depth first search   problems. And I think I'll walk through both 
+approaches for you right now. So let's say I   was testing or I wanted to trace through rather of 
+the input where target was IE, how can I go about   attacking this one, right? We know that in 
+most of these problems, when they give you   a binary tree as input, they're only going to give 
+you really the root node. But that being said,   if you have access to the root node, then you know 
+you have access to all nodes that comprise of the   tree, right. So what I can do is just perform any 
+of my traversal algorithms. So maybe to get going.   Now let's just do either the breadth first search 
+or the depth first search iterative style. So I   think for this trace, I'll stick to the breadth 
+first version, which means we're going to use a   queue, right? So as we trace through this, I'm 
+thinking about this one iteratively. Right now,   hopefully you recall from our previous problems 
+when it comes to your breadth first traversal,   you start with your root node on your 
+queue. And when something leaves the queue,   you mark it as your current right. And here's 
+where I work in the new logic for this,   this particular problem. When something leaves 
+the front of my queue, I'm going to check Hey,   is that current value the same as my target value, 
+so is a the same as E. It's not. So I have not   found the thing I'm looking for, right? And what 
+I can do is now consider his children. Right? So I   look at his children. They both exist, I add them 
+to the queue. So I'd be to my queue that I add see   to my queue. And now I'm on to my next iteration 
+right? The front end element B leaves a queue,   and I have to check, hey, is B, my target, 
+it's not right my target t. So I keep running,   I look at B's children. So I take that D and 
+added it, I take the E and also add it. And this   process just continues, see leaves front of my 
+queue is see my target, it's not. So keep going,   I would add C's children to my queue. So I just 
+add F to my queue. And this process continues.   And so d leaves the front of my queue I check is d 
+my target, it's not, and D has no children to add,   right? Recall that in our breadth first traversal, 
+I only add the children if they exist, because I   don't want to add any, like null pointers into 
+my queue. And so I just continue my algorithm,   right, I still have stuff in my queue to check. 
+And finally, when he leaves the front of my queue,   I check Is he my target. And indeed it is right at 
+this point, I've just confirmed that he is found   inside of my binary tree. So what I can do is just 
+end my algorithm by like returning the true value,   right? There's no point of actually looking 
+through the rest of the tree, because I already   figured out that, hey, my target value is indeed 
+within the tree. Right? One thing you might notice   is, it looks like I only checked for IE once 
+it left the front of my queue, and not when it   was initially added to my queue. Technically, you 
+could have returned early when you added it to the   queue. But we'll kind of see when I walked through 
+the full code for this one, it would end up with   cleaner code if you just checked for your target 
+value when something leaves your queue. So we'll   see that when we go through the code. It's just a 
+small implementation detail. That being said, for   this iterative breadth first strategy, what can 
+we say about the complexity? Well, if we define n   as the number of nodes, then we know that the 
+time complexity is just O of n, it's really just   a classic breadth first traversal. So nodes 
+are going to enter the queue once and leave   the queue once that's open, right. And again, 
+that's considering if we use a efficient queue,   right, where our queue add and remove operations 
+run an O of one constant time. So we have linear   time. And for the space complexity, it's also 
+going to be O of n linear, right? Because we're   just going to store our nodes within the queue. 
+And so we just looked at the approach for a nice   iterative breadth first solution, not to this 
+problem, but I want to show you the depth first   version, and the depth first version, that would 
+be recursive, right? So obviously, you could write   the iterative debt per solution, which case you 
+just use basically the same code we just spoke   about, but just use a stack instead of the queue. 
+But let's try to solve this one. recursively,   right. And the reason I think it's really 
+important to expose yourself to recursion like   this is, as we move to more complex topics, you're 
+going to find this style of recursion. Very, very   useful, right? So we have the same input, right? 
+Let's say My target is E, and I have the same   binary tree. And now I want to check recursively 
+is E within this tree? And so how do we start   attacking this? Well, we're going to need to think 
+about our base cases, right? So we're gonna have   really two types of base cases, we'll have 
+like the affirmative base case, meaning Hey,   we found a match. And so whenever I counter a 
+node, whose value is he, or whose value matches   my target, then I'm gonna have that node or that 
+recursive call, return true, right? So that's my,   like, affirmative base case. So I'm just gonna 
+plug that return value in visually in my tree,   you know that this II nodes gonna return true. And 
+now I'll think about my negatory base case, right?   Four times where I call upon an empty 
+node, or the null node, I should return   false. And recall from our previous lectures, 
+we said that we're going to sometimes represent   explicitly our null nodes. So I'm going to fill 
+those in, for example, the C node in my picture   would have a left child that is null. So I'll kind 
+of draw that one explicitly. And I know that a   node like that is going to return false. Because 
+logically, I shouldn't be able to think about   all of my recursive calls as if they're their own 
+subproblems. Right? So if someone asked me, Hey,   can you find this E value within an empty tree? 
+Right? a null node represents an empty tree?   The answer to be no, I can't find the value in 
+an empty tree, because there's nothing there.   And so from there, I'm also going to draw 
+explicitly all of those similar null nodes,   null pointers, right? So it looks something like 
+this. Notice that from the E node, I don't need to   give it a null left and right, because I already 
+said that that node is going to return true,   right? So that's why I draw my tree like this. 
+And I have all of those false return values.   Cool. So we just labeled all of the base cases, 
+right as the leaves of our tree, and recall that   a leaf is just a node with with no children, 
+right? And from here, how do I actually combine   all of these Boolean values to get the true at 
+the very top, I know for my top level color,   that is at the a node, or the a recursive call, 
+I need to get back that value of true, right?   And the logic we should use is really just 
+to the logical OR so how does this one work.   So let's start evaluating our return values and 
+combining them at the parent. So this should be   somewhat of a similar pattern to like the tree 
+sum problem I showed you. And so what you could do   is focus on this D node over here, this node has 
+values ready on its left and right has two falses.   And when it actually gets those falses returned to 
+it, it just should do the logical OR so it's doing   false or false, which evaluates to false, right? 
+Which means that hey, in this subtree rooted in D,   I cannot find the value, which makes sense. That's 
+why it's false. I'll continue this process. If I   look at this B node, now this B node has values 
+ready on its left and right. And they're going   to bubble up a little bit. And I take the order 
+of them so I do false or true, which evaluates to   true. And this process continues everywhere in the 
+tree, right? So at this f node, false or false, is   me false. At the C node, false or false gives me 
+false. Finally, at the top level root of A, I do   true or false, give me back a final true, which 
+is indeed the correct answer. So hopefully,   you realize how similar the solution is to our 
+previous tree some problem right in the tree,   some problem, I combined my left and right, 
+child return values by doing the arithmetic   addition. But this time around, I just need 
+to use the Boolean operation of or right,   so by just adjusting the type to Boolean, we 
+have a very, very elegant solution that shout   out George Boole. And so with that, I think let's 
+go ahead and implement this one in some code,   and I'll show you it using the interest of 
+flavor or using maybe a breath for us, and also   the recursive version, which is my personal 
+favorite, using this recursive tree structure.   Hey, programmers, welcome back. Alright, and I 
+want to go over a JavaScript solution for this   tree includes problem, right? Well solve this both 
+depth first, and also breadth first. And I think   we'll start with the iterative breadth first 
+version. And so this is really just going to   be implementation of the classic breadth first 
+search algorithm, I'm just gonna lay down my   classic a breadth first traversal code, and then 
+just add some conditional logic afterwards, right?   So you should be familiar with it by now. But for 
+my breadth first traversal, I'm going to use a   cube. So I'll say const, q equals an empty array, 
+are really an array with the route thrown on the   inside. And from there, I have my main algorithm, 
+right, so I loop while my queue is not empty.   So while queue length is bigger than zero, and 
+keep on going. And on a single iteration of this   traversal, what I do is Q dot shift, so remove 
+from the front of my queue, the front of my array,   remove the first element. And I'll save that into 
+a variable called current. So that will be just   an instance of node. And for now all why don't 
+I just build up my solution slowly, I'll just,   I don't know, console dot log, what current 
+dot Val is. But once I consider this node,   what I want to do is really add its children into 
+my queue only if they exist, though, right? So in   general, I'm going to write like q dot push, 
+I'm going to add to the back of my queue,   so I get a nice cue order, push the left child, 
+so current left, likewise, the right child.   But imagine that I have an asymmetric node or 
+just a leaf node, right? Something like C would   only have a right child, so it's left would be no. 
+So if current is see, then I'd be pushing No, into   my queue as the left, which is no good, right. And 
+so I need to guard here and only push the children   if they exist. So something like this, hey, if the 
+current has that, corresponding left and right,   then I can go ahead and push it. So this is 
+looking pretty good. And that should actually be   the main traversal part of the code. So I'll 
+just test this manually. So very manually, so   maybe just this call, so I'm not gonna return 
+Booleans yet. We'll build up to that. But I   should at least see my values printed. If I kind 
+of run this manual test case, I'll bring in my   node class, I should see the values printed in a 
+correct breadth first orders, that means A, B, C,   D, E, F, recall that breadth first traversal 
+travels across our tree before going lower,   so I must finish a level before traveling to the 
+next level. So let's just run this manually as   a script. See what we get here. A, B, C, D, E, F, 
+nice, so I'm getting the right order of traversal.   And now I can work in I think, the conditional 
+logic because they want us to return Booleans   over here. So pretty straightforward stuff. We'll 
+go ahead and check once something leaves the   queue. I can check If the current nodes value is 
+equal to my target, then I've found the thing I'm   looking for. So just return true, right, you're 
+done, you don't need to travel through the rest   of the tree because you can return true. But on 
+the flip side, if my value that I'm currently at   is not the target value, that I must continue 
+looking through the rest of the tree, right.   So if I finished the entire while loop, that means 
+I've traveled through the entire tree. And I never   found the thing I'm looking for, I should return 
+false. So I need a late return false over here   are really common mistake people tend to make is,   what you don't want to do is just do like, else 
+return false here. So this is going to be wrong.   Right? Because this would only check like the very 
+first notice normally check the root, and then   check if the root is not equal to the value. 
+If it's not, you just return false, which is   not really useful, because it could be somewhere 
+else in the tree. So you're gonna need that late   return false pattern over here. But with that, I 
+think we're going to pass some of the test cases,   as well run the test cases by hitting that test 
+button. And there's probably one scenario we   did not for C. Cool, and there it is, right? Can I 
+read property value? No, we're failing tests. 055,   look at that spec. Test five gives us a null 
+node as a root, right? So just the empty tree,   you cannot find the B character inside of the 
+empty tree. So return looks like false over here.   And so I can just handle that one explicitly. 
+I'll go ahead and check at the top. If my   route is no, right, if that's the case, then just 
+return false. I can't possibly find any target   in an empty tree. Right? The reason our 
+code was failing before is if root is null,   then I initialize my queue with no. And when 
+that thing is pop, and that null is popped,   or rather shifted from the queue in the first 
+iteration, then I check null dot Val, which   is an illegal JavaScript operation. 
+So I'll run all these test cases now.   Nice. And there, we have our breadth first 
+solution for this tree includes problem.   All right, now let's work on the recursive depth 
+first version of this, it's actually my personal   favorite, because it utilizes a pattern that I 
+think is quite elegant, and one I use a lot for   much more difficult problems. So like we said, 
+in the approach video, if you haven't watched   the approach, you definitely want to check 
+it out. For this recursive version, right?   what I should do is check Hey, if my root is 
+null, if I have the empty tree, basically,   then just return false, right, because I can't 
+possibly find my target and empty tree, right,   that's just a given. And from there, I know I'm 
+going to have the general shape of some just   depth first traversal code, which means you call 
+the same function because it's recursive. That's   what recursive means. And you pass along your 
+route dot left and a separate call your route,   right. And when I should be sure to do 
+is Don't forget to pass in your target,   write the target that you're looking for, it never 
+changes. And I know that these two these two calls   are going to give me back boolean data. And I 
+know that the Boolean I get back from like this   call would represent whether or not I found the 
+target and that subtree, right. So this gives me   the result of if I found it in the left subtree. 
+Or the result if I found it in the right subtree.   And I can just do the logical OR on both of 
+these, right. So if I find it in either subtree   then return true. So I could just write in line 
+return true over here, right? So let's say it's   in my right subtree, then this left hand side 
+invites to false. And this is true, in which case,   this entire thing evaluates to true. And let's 
+say in a bad scenario, let's say it's not found in   either subtree. So this evaluates to false. this 
+right hand side also evaluates to false, false   or false gives me false. However, one thing I need 
+to be sure to add is also an additional base case,   after I check if my route is no, what I want to 
+do is then also check, hey, maybe this route I'm   currently at, maybe it actually has the target, 
+right? So if route value is equal to the target,   then you're also done, except you can return 
+true. Cool, and that was very reminiscent   of our approach video. So let's give this a shot. 
+You should be able to pass nice, and I love how   clean this code is. I will admit, you know, it's 
+pretty tricky. If you're not a fan of writing   recursion, in which case, I'll totally convinced 
+you into being a fan of recursion. But notice how   kind of clean this code is really leverages 
+recursion. One very important thing I want to   bring up is it's really keen that I put this 
+base case on line 26 after the null check,   right? So let's say I flipped the 
+order of these. Let's say you did this.   I believe that would not work out always because 
+it assumes that you even have a route Alright,   so I'm feeling a test 00. But in general, if you 
+look at this code, let's say that route was no,   right? You're gonna start by checking 
+null dot Val, and I'll throw an error,   right? Can I read property valve? No. So you want 
+to actually always lead with your base case that   checks if your root is null, right? Because that 
+should guard really the entirety of our code. So   this is actually the code you want. Over here. 
+Alright, programmers. So that's all I got for this   tree includes solution, I want you to practice 
+both versions, and I'll catch you in the next one.   Hey, programmers, Alvin here, right? Now I want 
+to go over the approach for this tree sum problem.   And so in this problem, I want to take in a binary 
+tree, just like we've been doing as of late,   this time, the values within the nodes of this 
+binary tree are going to be numbers, right,   what I want you to do is compute the total sum of 
+all the values in this tree. So for this example,   we should end up with 25. And so hopefully, you're 
+kind of gathering how to attack this problem,   especially given you know, the algorithms I've 
+been showing you as of late. So if you've been   studying our problems, and are there hopefully, 
+you know, a straightforward solution to solve   this one, we could of course, just use any type 
+of traversal algorithm. So we can use either a   breadth first or a depth first traversal. And we 
+can just add all these values into a running sum.   And of course, we probably initialize that sum 
+to zero, right? So the iterative breadth first   or depth first solution, I think, is very 
+straightforward, right. And I'm not going   to really step through that approach with you 
+over here, I think you have that one down pat,   especially if you've done the previous two 
+problems. But what I will show you here is   actually how to solve this one recursively, which 
+would be a type of depth first traversal, because   we know that hey, depth first traversal relies 
+on a stack. And if you do something recursive,   it is utilizing the underlying call stack. 
+So I will get a similar type of ordering.   And so when we trace through this type of 
+solution, this recursive solution for this tree,   some problem we're going to do is try to be 
+very explicit, I think this is really helpful,   especially if you struggle with recursion, 
+right? So given this binary tree, I know that   for particular nodes of my tree, like the four 
+node, it does not have a left child, right. And   I know like programmatically, what that means is 
+like that nodes dot left pointer points to like,   no, or it's a null pointer. And so I'm just 
+going to draw that explicitly, sort of like this.   Again, they'll just help us really understand how 
+our recursive code performs on this type of input.   And so if I know that I can put like 
+an unknown load to the left of four,   then it could be the case that other nodes like 
+the leaves have to in one, they also have both   left and right children that are also know. So 
+if I drew all of my null pointers explicitly,   it would look something like this. Cool. And this 
+is really something that helped me really get   comfortable with recursive problems, especially 
+those on binary trees. And what we're doing now   is, we know that when it comes to solving any 
+problem recursively, it's about writing a base   case, that is like the simplest version of our 
+input. And here, I'm going to argue that our   base case needs to be about the null node, right? 
+The null node basically represents no node at all,   or represents the empty tree in a sense. In other 
+words, if someone asked me to calculate the sum   of a null node or the sum of an empty 
+tree, then to me that some would just be   zero, to write elegant recursive code 
+to try to think about your base case   as a problem in itself, right? So if someone 
+gave me an empty tree, that is a null node,   I would return the total sum of zero. And what 
+that means is I know that all of these null nodes,   they would return zero as their computed sums. 
+Nice. And then from there, how can I use this   information to actually build up my main solution? 
+Right? So let's go ahead and target this for node   to the left. And what I have to do is figure 
+out Hey, know what is this subtrees total sun,   and I can compute that given the values 
+to the left and right. In other words,   if I return those two null values returns to zero. 
+Now I just have to do zero plus four plus zero,   which just equates to four, right? And that is 
+actually correct in itself, right? So what green   number above a node represents the total sum 
+of that subtree. And so it is a case that, hey,   the total sum of that four node is just four. 
+And I would do something similar for this node   over here, right? When these base cases return 
+to their color or return to their parent, I just   have to add my left and right child together 
+along with myself. So zero plus two plus zero,   gives me to not do that same thing. For this note 
+11 We're here. And now things get interesting,   right? It's a calculate the total sum rooted at 
+this 11 subtree, I would just return these values   to the top. And now I do four plus 11 plus two, 
+which gives me an answer of 17. And if you do a   quick spot check, right, this 17 does represent 
+the total sum, just in this subtree, right,   and we'll carry on over at this one node, we know 
+that this is going to return just a value of one.   And now at this four node, I can compute its total 
+sum. And recall that this four node had a left   child of zero, right? Because it has a null node. 
+And so when I compute the sum, I get five, which   is perfect. And finally, at the main route, now I 
+bring up these two values. And I compute 17 plus   three plus five. And that gives me a final answer 
+of 25. Which is indeed the correct answer. Right?   So that's how we should really think about our 
+recursive algorithms for our binary trees, right?   I kind of draw it out, I think about the 
+base case, which is typically not always   but typically about the null node. And then from 
+there, I figured out how a parents can compute   its result given its children's answers. Alright, 
+so if we take a look at the complexity of this,   it's pretty straightforward. We'll go ahead and 
+define n as the number of nodes in our input tree,   in which case, I can see that my time complexity 
+is just O of n, right? We know that we're going to   make a recursive call just for every node of the 
+tree. And we're not going to call duplicate nodes,   right, we're going to have just one call for every 
+single node. And within any single node, we're   just going to do some simple arithmetic, right, we 
+just had roughly three numbers together. So it's   not like we're going to have like a loop inside 
+of our calls at all. In a similar way, we'll say   the space complexity is O of n, just because we 
+have that implicit, a call stack space, because   we are going to solve this one recursively. And so 
+we're solving this one in O of n time and space,   which would be actually a maximum efficient a 
+solution for this problem. And so with that,   I think, let's head over to the walkthrough 
+video, and I'll show you how to code this one up.   Hey, programmers, Alvin here, right? Now I want 
+to walk through the JavaScript solution for this   tree some problem, I think this time around, and 
+I'll jump right into the recursive version, right?   So we'll start recursively. And we'll begin with 
+our base case, right? My base case is always about   the simplest version of the input, where 
+I just know the answer without needing   any additional calculations, right? I know 
+that the simplest tree here that I could be   given is going to be the empty tree, right? I 
+have the empty tree. That means my root is no.   And if your root is no, you have the empty 
+tree. What is the sum of the empty tree? Well,   kind of inherently, it's just zero. So I'll 
+be my base case. Nice. And then from there,   I'll think about how I can compute my answer, 
+given my children results. So I need to find   the results of the some of my left subtree. 
+And also the some of my right subtree. So   just call recursively. So tree, some of root 
+left, as well as tree some of root. Right?   Cool. And I know that these two calls, they return 
+numbers, right, representing the sum of my left   subtree. And the sum of my right subtree. As the 
+parent that is so rude, how can I find my total   sum? Well, it just is myself. So root out value, 
+plus everything in my left subtree plus everything   in my right subtree. Right. And we'll go 
+ahead and just test this out the gate.   But this is nothing fancy, really elegant code 
+to look at the test cases here, we do have some   a diverse output. So this code does work on trees 
+of all different shapes and sizes. Something that   helps me you know, really believe the magic of 
+recursion is to just analyze the assumptions here,   right? So let's say that I'm stepping through tree 
+some and my root is this three over here, right?   So I checked the base case, is this three node? 
+No, it's not. So I must make the recursive call,   right. And I know that when I break down this code 
+recursively, I know my route that Val is going to   be like three, so I'm kind of corresponding, this 
+comment with the thing below, right? And then   when I make the recursive call on tree, some root 
+dot left, that means I'm asking for the total sum   of this subtree starting at 11. So I'm looking 
+at the 11 for negative two subtree. Right,   if I take the total sum of just that left 
+subtree, it looks like it's going to be just   13. It's now I'm saying plus 13 over here, 
+right? If I do the same thing on the right,   subtree I know that this call is for this 
+four node, right all of its children,   that should just magically return by the 
+power of recursion that should return   five, right? I'm going to assume 
+that that recursive call just works.   So you're out the five, right? If I take the total 
+sum of these, three plus 13 1616 plus five is 21.   That would give me the correct answer, right. 
+So to have some confidence in my recursive code,   I just write the code. And then I assume 
+correctness from my recursive calls. And   I figure out how I can take those sub valleys 
+for my children, combine it with my own value,   and that should be my final answer. So here 
+is the recursive version of this solution,   which would be some sort of a depth first 
+traversal, technically, because it's recursive.   And if you'd like, I can also show you the 
+iterative version. So let's just do that.   And I always practice usually my problems doing 
+both the recursive as well as iterative version,   if it's reasonable, and is really reasonable 
+here. Hopefully, you're familiar with   our breadth first code by now, right? So I'm just 
+gonna start by checking, hey, if you're given some   root that is already know that that's kind of an 
+edge case, I'll just go ahead and return zero,   right? Because as some of that empty subtree, 
+or that empty tree, rather, is just zero,   that can begin my main code. So while my 
+queue is not empty, so I'll start with a Q,   who begins with the Route Route, I want to loop 
+while my queue is not empty. So while q dot   length is bigger than zero, I'll begin a single 
+iteration of my while loop by just shifting out   the front of my queue. So in JavaScript, for me, 
+that's q dot shift that removes the front element,   and also returns it to me. So I'll save in 
+current. And then from there, now that I have   this current, I know that contains the value 
+that I actually care about. So what I would do   is go ahead and track some running sum. So I'll 
+say let some member say let total sum equals zero.   And as I remove something from the front 
+of the queue, I'll take it to value   and add it to my total, something that will 
+accumulate all of the values right into a   sum. And from there, I just need to add my 
+classic logic of checking for my children,   right? If they exist. So if I have a left, 
+so if current dot left is not equal to know,   then what I'll do is add that left child into 
+my queue. So q dot, push my current dot left,   again, make sure you're following your cue 
+rules, right, so shifts removed from the front,   push adds to the back, it's really important that 
+my shift and my push or my add and remove methods   work on opposite sides of my queue. Otherwise, 
+it's not a cue, right? So that looks good to go.   I'll write something symmetric. For the right 
+hand side over here. By the end of my function,   I'll just go ahead and return my total sum. 
+Nice, this would be my go to enter diversion.   course, it's technically a breadth 
+first, and we'll give that a test.   Nice. And here we have that solution. So one 
+thing to note, I think it's pretty important to   be consistent how you implement these algorithms, 
+I swear possible. So you'll notice that I always   am a fan of a writing my like processing logic for 
+a node. Here I consider like the processing logic,   where I add the value of my current node into 
+my total sum. I do that processing logic,   typically when a node leaves the queue, and not 
+when the node is added to the queue, and just ends   up being less repetitive that way, for example, 
+I've seen some people write code like this,   where it's like, Alright, well, you know, I guess 
+since I'm adding my left child into my queue,   that means it exists. So not only will I push it, 
+but I'll add it so I'll do I don't know total sum,   plus equals current dot left dot Val, right, so 
+I'm kind of adding the child's value as soon as   it's added to the queue. And you can write 
+something symmetric for the right hand side,   you can see that because of this, I kind 
+of have to double up all of my code,   which does not make it super clean. And I think 
+something that is even worse than that is well   now you actually never added your root value 
+into the your, your total sum. So you'd have   to begin your total sum as root dot value at this 
+point, I'm like, I kind of just hate this code,   right? So you can run this, this would probably 
+work. So this code totally works, but it's not   what I think is the best design for this pattern. 
+So I'd rather write it like this, right? consume   your values when they leave your queue because you 
+know, eventually, everything's gonna leave, right?   So I'll prefer it at least like this. Cool. 
+So before you go on to the next problem,   recommend you practice both versions. I 
+know of this problem. So do it recursively   do it iteratively have them both down pat because 
+we're going to increase the difficulty right now.   Hey, programmers, Alan here right now. 
+One To go over the approach for this   tree min value problem. So just like we've been 
+doing as of late, we're going to have to take in a   binary tree as input into our function. And 
+we want to do is figure out what the smallest   value within the tree is. That is we want to find 
+the minimum value. So we can totally assume that   the tree is going to be non empty, right? And 
+so given that information, looking at this   particular tree example, it's pretty plain for 
+us to see that the smallest number in the tree   is just this three. Alright, so our function just 
+needs to return of the number three. So it's plain   to see that the answer is three. But how can we 
+come up with an algorithm to do this for us? Well,   we should look to our tools in our binary 
+tree toolbox. And that would mainly just be   either a breadth first or a depth first traversal. 
+One obvious way to solve this one is to use either   a depth first or breadth first iterative piece 
+of code that does a traversal and travels through   the tree, then you just need to maintain some 
+outer variable to track the current minimum.   And whenever you hit a node that is smaller 
+than your current minimum, then you replace   that minimum variable. And by the end of 
+the code, you should have the true minimum.   So the iterative version, I think, is pretty 
+straightforward. And I'll be sure to walk through   that when we get to the code walkthrough. But for 
+now, in terms of our approach, visual, I think   we'll step through this one recursively, right, 
+because it ends up being pretty succinct code.   And so let's take a look at this tree. And 
+let's pretend that we filled in all of the   null pointers, like usual, right? So these dark 
+nodes over here represent nodes that don't exist,   meaning that there are no, right. So for example, 
+if I look at the three node, its left child is no,   but its right child is 12. And that's going to be 
+very useful for us to at least visualize because   I should make a base case about those null 
+nodes, right? So I know in the long run,   what I want to do is figure out what the smallest 
+value within the tree is. And so a great default   value for our null nodes would be to return 
+infinity. And here's the reasoning why I know   that I should not really consider any of the 
+actual null nodes. And so if I have them return   positive infinity, I know that positive infinity 
+is definitely not going to be the minimum   compared to any numbers that are actually 
+within the tree. So we'll start to do is   just fill in all of these infinite values. 
+In other words, every time we call upon a   null node, or a null pointer, we're going to 
+return infinity. So I'd fill all of these in.   Now using those infinities as our basis, we 
+can actually construct our return values.   So looking at this for node to the left, what I 
+have to do is consider both of its children that   it received, right, and also the value within 
+the current node. And so what I do is I check,   alright, compared between infinity for an 
+infinity, what's the smallest value among   them? Well, I know positive infinity is a very 
+large number. So really, the smallest number here   should be four. And so this call should return 
+four, right? This node should return for   similar story for this 15 node. Once I have 
+my left and right return values ready, I do   a comparison with those values against myself, 
+right? So I check, what's the minimum among   infinity? 15 and infinity, the minimum is 15. I 
+think it's gonna interesting now that we're at   evaluating this 11 node, right? Now I have some 
+actual numbers. And so I do this comparison,   right? I compare my left subtree value, which 
+is four and my right subtree value, which is 15.   And also myself, which is 11. So among 411, and 
+15. What's the smallest number? Well, that would   just be the four, right? So this node should 
+return four. And if I do a quick spot check,   this makes some sense, because I have this answer 
+for above the 11 node, that's telling me that,   within that subtree rooted at 11, the smallest 
+value was four, which is totally correct.   Now we'll just go ahead and valuate the rest of 
+this tree. Looking at this 12 over here, I know I   can't evaluate the three because I need a value on 
+the right hand side ready. So I must evaluate this   12. And I just do the comparison, right? What's 
+the minimum among infinity 12 and infinity? Well,   let's just definitely 12. Finally, at this three 
+node, I take the minimum of infinity three and 12,   the minimum there is three. And finally at the 
+ultimate root, I do the comparison. And I check   what's the smallest among four, or five and 
+three? And the answer is going to be the three,   right, which is exactly what we expected. And so 
+just by adding a little variation to our classic   depth first recursion, we can totally solve this 
+problem. The logic we need to use to combine   our child sub solutions into our main solution 
+is to just do a comparison, right? So overall,   at every point of this tree, we asked ourselves, 
+right, given the smallest value in the left   subtree and given the smallest value in the right 
+subtree. I compare those to myself, and return the   smallest among those three. And then when it 
+comes to the complexity of this, it's pretty   straightforward. We'll go ahead and say that n is 
+the number of nodes within our input tree. And we   know that we're going to have a call for every 
+node of this tree. So that seems to be an O of   n time. In terms of the number of recursive calls, 
+right, and we know within any particular recursive   call, it sounds like we're just going to do some 
+conditional logic, right, just find the minimum   among three things. Since three is a constant 
+number, I'm pretty sure that we're going to   have just an overall time complexity of O of n, 
+considering the number of calls that we make.   Now, that being said, we'll also have O of n 
+space complexity adjust due to the call stack   that we use for baseline depth first traversal. 
+And that seems to be an optimal solution for this   problem. Because what we'll do, we'll go ahead and 
+code this one up, and I'll catch in the next one.   Hey, programmers, Alvin here, right now I want to 
+go over a JavaScript solution for this tree min   value problem. And of course, we'll solve this 
+one a few different ways. I think I'll start by   showing y'all maybe some iterative solutions. And 
+so we'll just do some classic depth first and also   breadth first, along the way, right. So you know, 
+you're going to need to iterate or hit every node   within your binary tree. So just go ahead and set 
+up either a stack or a queue. So I'll choose to   start with a stack over here. So I'll say Kant's, 
+stack equals empty. And one thing I'll have to be   aware of is looking at the assumptions in the 
+problem, they tell us that we can assume that   the input tree is not empty. And so that means I 
+won't need to add a leading if statement checking   if the top level root is null. So I can just go 
+ahead and initialize my stack with the root node   inside. Cool. And then from there, you need your 
+main loop to iterate through the different nodes.   So I'm going to loop while my stack is not empty. 
+So all stack dot length is bigger than zero. Cool.   So if that's the case, and there are still some 
+nodes to visit, and begin a single iteration of   this algorithm, let's say depth first, by doing 
+stack dot pop, so I removed the top of my stack,   go ahead and call that my current. And then 
+from there, of course, we need to check   if our children exist. And if they do, I'll 
+add them to the top of my stack, right?   So I'll write a pattern like this, I'll say if, 
+let's say current dot left, that is not equal   to No, then I can go ahead and push that existing 
+child on the stack, right? So stack dot push,   and I'll push current left retinas a few times by 
+now should it be second nature, I'll do some same   code for the right hand side. And this is kind 
+of my baseline of a depth first traversal, right.   But as I look at this current node and its value, 
+I want to by the end of my loop, have access to   the minimum value within the tree. And so because 
+I need to find the minimum value in this function,   we're going to use a variable that I'll update 
+over time, right to track the current smallest   thing I've seen. So I'll initialize this as let 
+smallest, I'm gonna have to think about a good   default value for this. And so I'll go ahead and 
+initialize this to actually positive infinity.   So if you're unfamiliar with some JavaScript, 
+infinity is basically just a number that is   guaranteed to be bigger than all other numbers, 
+except for itself infinity, right? And the reason   I'm choosing a big number, like positive infinity, 
+for my default value for the smallest variable,   is because when I see any actual values of my 
+tree, I know they're guaranteed to be less than   infinity. So these numbers would replace my 
+infinity, just gives me a good initial value,   right? That's a pretty common pattern, right? 
+If you're looking for the minimum thing, and   typically your default value is positive infinity. 
+If you're looking for a maximal thing, then your   default value might be zero or negative infinity, 
+depending on the problem you're trying to solve.   And so with that default value, where do I 
+actually want to replace it, right. And I'll   choose to do that right after or something leaves 
+my stack. That way, you only have to say it once.   If I wrote it, when I added my children into 
+the stack, what I'm saying twice, right,   which is kind of annoying. So I'll just check, 
+hey, if current value, so be sure to compare the   actual number value, current value is less than 
+the smallest, then I've just found a new smallest,   right? So just replace that variable with current 
+value. Of course, by the end of our while loop,   we should just return that variable, right? And 
+we should have the true minimum. So let's give   that a shot, run these test cases. And this 
+is our rendition of an iterative depth first,   right? Awesome. So if you wanted to switch it 
+up, you know, writing the breadth first is super   trivial in terms of the change we make, you can 
+just make sure you do stack dot shift, right,   because that would remove the front element 
+of your queue now and if you push then you're   still adding it to the back. And I guess you 
+should probably rename this guy to queue.   So very minute difference. Well, 
+tests that just give that a go.   Cool, passes all of them. Nice. And one thing 
+to note. So Alex in JavaScript, there is no   immediately when I recorded this video, there 
+is an immediately available, like optimal queue   data structure just baked in, like you can't 
+import it through a standard library. And so   when you actually do the array dot shift method, 
+that line itself is going to run an O of n time,   right, because if you remove the front element of 
+an array in JavaScript, it will have to actually   shift all the other elements over one position. 
+In other words, index one becomes index zero,   index two becomes index one, and so on. And so 
+technically, if you implemented your breadth first   exactly like this, just using a regular array, 
+and you shift out, then this would probably be   technically like an O n squared solution, which 
+isn't the fastest, but we'll be able to pass   the specs, typically n squared for most problems 
+is kind of okay. But you can avoid it if you want   to get the blazing fast solution. But now let's 
+actually go ahead and implement my favorite   version, which would be a recursive version, 
+right, which is technically of the depth first.   Right? So we'll say const, trimming value, 
+chattering min value, dream and value. And   to establish this one recursively will always 
+start with our base case, right? That's when   you saw these curly guys. So I'll start my base 
+case, I'll say if my routes is equal to null,   then that kind of means I have the empty tree, 
+what's like the minimum value in the empty tree?   While that must be infinity, right? For 
+the same reason we chose infinity before,   right? It's just a good default value, 
+because I'm going to minimize in the long run.   Cool. And now what I want to do is I want to make 
+my recursive call. So if I call treeman value   on my left child, and I call it on my right 
+child, I'll just think about what these   function calls return. Right? Although they're 
+recursive, if these calls work, they should give   me back the smallest value in the left subtree. 
+And the smallest value in the right subtree. So   maybe, just to be clear, I'll go ahead 
+and save the system variables. So I'll say   const, I'll say, left. Min. And also this 
+should be the right men, right? So I found   the smallest in the left and the smallest in the 
+right. But I also need to think about myself,   right? I am ru dot Val. So I need to choose the 
+smallest of root Val left men and Reitman, right,   so you can write like a conditional. So just 
+some if statements If you want, I think the   best way to implement this in JavaScript is just 
+to use the math dot min function. So JavaScript,   you always have access to the global capital math 
+object has a few useful methods on it. One we're   going to find useful right now is math dot min. 
+If you do that, you can pass in some arguments   and an arbitrary number of arguments. So give 
+me the smallest between route dot Val and be   sure to access the value because you 
+need to give numbers to men, right?   Smaller between route dot Val, my left men and my 
+right man. Cool. And this feels somewhat similar   to the approach drawn we did right where we had 
+to choose the smallest of these three numbers.   So before we run it, maybe you're unfamiliar with 
+math dot min, I can quickly demo that for you.   Let's say I had some numbers, we had 10, we 
+had three, we had six, and we had negative   12. And also 100. And if I console log with that 
+returns, I'll just run this file as a script. So   I'm not going to execute the tests quite yet. 
+So I should get negative 12. Because that's the   smallest perfect. And now I think we're ready to 
+go ahead and test this. So our recursive version,   there we have it. Cool. Alright, so there, we have 
+our JavaScript walkthrough for this tree minvalue   problem, recommend you practice all of these 
+different solutions, and then pick a favorite,   maybe just have in your back pocket. That way, 
+you can always solve this problem in the future,   right. So you should have no issue thinking about 
+how to solve like a tree maxvalue problem. And by   now, you know, we're getting pretty comfortable 
+with trees. And typically, we're always going to   fall back to either a breadth first or a depth 
+first traversal. But in the next few problems,   we're definitely going to look at some spin offs 
+and some variations on how we can accomplish   more complex logic using these algorithms as 
+our baseline. So I'll catch in the next one.   Hey, programmers, Alvin here, right now want to 
+go over this max root to leaf path, some problem,   pretty wordy title, let's take a look at what 
+this problem asks us to do. So we're going to be   taking in a binary tree as input, and we want to 
+do is really talk about the paths within this tree   in particular, root to leaf paths. So just to 
+review, we know that a binary tree typically   for us has a single root and you can identify the 
+root by just looking at the topmost node, that is   the node with no parent, right? And then also 
+given this tree there are three leaves, right?   a leaf is a node that has no children. So do 
+bear in mind right a root has no parent. A leaf   node has no children, some Like 11, and three in 
+this picture, there are neither roots nor leaves,   right. So it could be the case that a tree has 
+many leaves, like this tree, right has three   leaves. But a tree for us typically only has a 
+single root. And so what we want to do is consider   all three of the different root to leave paths, 
+right, so you must start at the root, and you must   terminate at a leaf. So one of those paths would 
+just be this one, right 511 for, what we want to   do is consider its total sum. So just summing 
+the values within the nodes along that path.   If I do five plus 11, plus four, that would give 
+me a total sum of 20. So that's just one of the   possibilities. If I look at another path, let's 
+say this path of 511 to five plus 11, plus two   would give me 18. That's another option. The only 
+other option is is final path from five to one,   five to five plus three plus one. That gives me 
+a total sum of nine, right? And now among those   three options, I want to choose the maximal path 
+some right? So that would be a final answer of 20.   So in the long run, we need to come up with 
+some code that computes the maximal path sum   from the root to any leaf. And that sounds like 
+a pretty hard problem, right? How can we go about   doing that one? Well, hopefully you notice some 
+similar patterns, right to problems we've done   previously. So just by looking at the name of this 
+problem, I'm reminded of a few different patterns,   right? I can think of the tree some problem seems 
+pretty related here. And can I also think about,   like that minvalue. Problem are, we had 
+some minimization logic, except now,   I want to maximize something here. And so probably 
+what I'll have to do in this one is combined some   of my previous knowledge to come up with a pretty 
+novel solution, but it's okay to rely heavily   on our previous experiences, right. And 
+so let's start with something classic,   I think we're gonna solve this one recursively. 
+And in the grand scheme of things, typically,   for tree problems, that is, a recursive code 
+is usually your best bet when it comes to like,   pathfinding things, right, and building pads and 
+determining pads. And so we'll take a look at what   we should have our base cases be, if we're gonna 
+frame this one recursively. So they tell us that,   all right, you need to consider paths, but 
+not just any paths, right? You always want to   end at a leaf node. So the leaf nodes, like 
+the ending point, belief, notice the base case.   So my base case is going to be literally about 
+a leaf node. And recall that that's a node   with no children. So for example, let's say 
+we had a node as input that had no children,   then what's the total sum of that leaf node? 
+Well would just be its inner value n, right? So   kind of think about your base cases as if they're 
+their own inputs, right? As a quick aside, right,   so a totally separate scenario, right? Now, let's 
+say I gave you a tree that contains only one node,   and its value was 42. And I asked you to, alright, 
+tell me, what's the maximum path some of this   tree, this tree is very small, right? If you 
+identify the root in this tree, it's just the 42   node, right? Because it has no parent. And I've 
+also asked you for the leaves, there's only one   leaf here. And it's also the 42, right? Because it 
+has no children, right? So the single note of 42,   in this example, is the root and the leaf, 
+which means that the maximum path, some   would just be 42. Cool. So I'm thinking about my 
+base cases as if they're their own inputs. Nice.   And what you'd probably recognize here is, in this 
+scenario, we're kind of considering a base case,   that is not about a null node, right, we will 
+need at least a separate base case that checks   if we have an actual leaf node. And that's 
+very, very inherent and given in the problem,   right? They say root to leaf path. Awesome. So if 
+that's the case, I'm just going to locate all of   my leaf nodes in this diagram. And I know that 
+they're going to return the values within them.   So just plugging those in, right? And now I can 
+start reconstructing on my higher level solutions,   right? So given this 11 node, what decision does 
+this 11 node have to make to compute its answer,   right? So let's read ourselves at this 11 node. 
+And we have to consider our left and right values,   right. And so if i route myself at 11, the 
+four represents my max path sum through my left   subtree. And the right hand side to now represents 
+the max path sum through my right subtree.   Since I want to maximize here, the key 
+is to just choose between four and two,   right? I choose the bigger of them, right? So 
+four is bigger than two, so I must use the four.   And what I do is I take that four, and 
+I add my current value of 11 into it,   and that gives me 15. And that would actually be 
+the answer for this subtree. In other words, I can   check for correctness right now, if I root myself 
+at 11. I'm returning 15 to represent this path,   right? I can either do 11 plus four, which 
+is 15. Or I can do 11 plus two, which is 13.   Right and that 13 is smaller, so I won't prefer 
+it here. Cool. So so far, it seems like we're   in good shape. Now let's take a look at another 
+node read to evaluate. Let's look at this. Three   node. So it has a value on its right hand side, 
+right? It's receiving a one from its right child,   but the left child doesn't exist, right? And 
+if you want to be a little more explicit,   we know that the left child or three dot left is 
+going to be a null pointer. All right? So kind of   plug that in here. And here's where we should 
+work in possibly another base case, sometimes   it's very natural to course correct as we go. 
+And so for a null node, what should we return?   Well, we know that whenever we have a null node, 
+it should never contribute to our final answer,   we can kind of just ignore it, I guess, we want 
+to make sure that it's compatible with the rest   of our internal logic. So bear in mind in this 
+problem, I want to take the maximum right? Recall   from our previous problem, right, the min 
+value problem, we want to take the minimum.   And so we made our null nodes return infinity, 
+right? Because if I want to find the minimum, and   my null nodes, return infinity, by default, I know 
+that infinity is never going to win a comparison,   right? Because infinity is very large. And we 
+just want to flip that logic over here, right?   So because in the long run, I want to find 
+the maximum, I'll make my base case for   the null nodes return negative infinity, right? 
+Because I know negative infinity is never going   to win any contest where we compare things, 
+looking for the larger of the values, right?   So for this null note, I'll plug in that 
+negative infinity. And now I shouldn't be   able to do the same business logic as before, 
+right? So I'm rooting myself at the three node,   and I can look at the results I get for my 
+children, right. So between my two children in   my left path, I get a negative infinity, or in my 
+right path, I get a one, and I choose the maximum   between them, right? One is bigger than negative 
+infinity. So I should use the one, right. And   what I do with that one is, I add my current value 
+of three to it. So three plus one gives me four,   right. And that makes some sense, because if 
+I look at that small subtree, rooted in three,   the biggest path from root to leaf, or sub 
+root to leaf, I would indeed be a four. Nice,   and now we have ourselves at the ultimate root 
+over here, I do that similar comparison, right?   I check the bigger of my two children, so I'm 
+going to keep the 15. But then I add myself to it   giving 20. Like we said before, this 20 logically 
+represents this path of five plus 11 plus four.   Cool, so there we have it. And if you want to take 
+a look at the complexity of this seems nothing   unusual. So we're going to have n as the number 
+of nodes, we're going to have O of n runtime,   because we're going to have to make a call a 
+recursive call that is for every node within   the tree. And if I think about any particular 
+call, we're going to make a foreign node,   we're just going to do a comparison, right, I just 
+choose the bigger of my two children. So we're not   going to have any, any loops within our calls, I 
+believe. Cool. So it just seems to be O of n time.   Like we always say space complexity is O of n, 
+just due to the call stack. Nice. So let's go   ahead and code this one up. And it should feel 
+like a combination of our previous tree some   problems, as well as some a min value max value 
+logic. Hey, programmers, welcome back, Ryan,   I want to go over a JavaScript solution for this 
+max root to leaf path, some problem. So this is   going to be a pretty interesting tree problem. 
+And we'll jump right into the code, please make   sure you watch the approach video before this. 
+So I think should be all primed up with the logic   that we want to implement here. Right? And so 
+we'll start by doing this recursively. And I'd   say that's probably the best way to solve this 
+one. So I think it's the only way I'll show you,   when I want to do is start with a base case, 
+right? So we said we want to figure out our root   to leaf paths. So our base case should be about 
+whether I have a leaf, right? So I'm going to   go ahead and check let's say, if my root left is 
+equal to No, right? And root, right? Is equal to   No, right? That's the definition of a leaf. So if 
+I have the left child and I have the right child,   then I should return the value stored at this 
+node, right? So root, dot Val. Nice. So again,   we're kind of emphasizing here is that base 
+case catches a scenario. If we're at like four,   right, we have no children. Nice. And we will need 
+another base case in the long run. For now, let's   say we left it like this, right? So we said that 
+in the context of solving this one recursively,   the decision we make at every note is I choose the 
+bigger result from my left column A right call,   and then I add myself to it, right? So I know I'm 
+going to do this recursively so I'm going to call   the same function. And right now you should be 
+familiar with all right, you call your function on   root left, and also root right? That I think about 
+what those calls return, right? They give me back,   the max pass some through my left subtree 
+on the max path, some through my right   subtree I just want to choose the 
+bigger results between Windows two.   So no I swear to you saw me use the math dot min 
+function here I'll use the math dot max function.   And I know that these calls these expressions 
+evaluates to numbers. So I can actually just   pass these guys in, in line. So I would just 
+move this up like that. So when finding the   max between these two results, and I'll 
+go ahead and call that we'll say, the   max, your child, right? Maybe I'll write 
+this online, they prefer. And then from   there, I just add myself to that max 
+child, right? So I'm going to return   route dot valance myself, plus max child. And 
+we'll call that max child path. And that should be   it except for one thing we're forgetting. So 
+take a moment, see if you can read between the   lines here. And what scenario Am I missing? We did 
+mention it in the approach video. So can you spot   what is not present here? And that's something 
+I find I do often right? If I'm able to really   come up with a nice, meaningful and consistent 
+picture, then everything I drew in the picture   should translate to some piece of code over here. 
+Let's give it a shot. Expect to fail this one.   See what we get? Yeah, so we're getting an 
+error cannot read property left have no,   right, I found on the very first example. 
+So I'll tell you that this is caused by an   asymmetric node, like this four over here, 
+right? This four has no left child. So imagine   what would happen in this instance, 
+right? So if we're evaluating this code,   we know that our route is going to be this 
+four node. And this if statement on line 10,   is not hit, right? Because four is not a leaf, 
+right? Because it has a right child's right   child does not know. So instead, it's going to 
+run until 11. And it's going to try to execute   max path, some of root dot left root that left is 
+no. And so when we actually evaluate that call,   now we're seeing is no, and we're gonna check 
+no dot left over here. And that's going to break   right? It's exactly the line that's broken. 
+And so in addition to this base case, right,   when we bought him out at a leaf node, what if we 
+just end up at a null node, so if root is null,   then we said that a good value to return would be 
+negative infinity, right? Because I'm choosing to,   in the long run, do like maximal logic and want to 
+pick the max. So if I choose a negative infinity,   that won't interfere with any of us taking a 
+max, right? Because imagine that this thing   was negative infinity. And I would just prefer 
+the right hand side if it was not infinity,   right? Negative infinity that is. And so 
+with that, let's go ahead and give this a go.   Cool. And then we have a nice solution 
+for our max root to leaf path some   problem. So notice how short the code is, 
+by no means do I think this is simple code,   though, right? At this point, it's okay if it 
+feels a little tough. But you understand how we   have some familiar patterns, right, I still 
+have those two recursive calls right over   here. And we typically only vary in how we take 
+those recursive calls or the results from them,   and combine them into our higher level answer. So 
+keep practicing this problem and I'll catch you   in the next one. All right programmers. That wraps 
+up our course on the introduction to binary trees.   If you want to explore this binary tree topic, or 
+really any other data structures and algorithms   topic more deeply. Be sure to head destructing 
+dotnet where we have all of these topics covered   through tons of problems where we have video 
+walkthroughs and illustrations for every single   problem. I think you'll find this especially 
+useful if you're repairing and really cramming   for those technical interviews. Thanks 
+for watching, and I'll see you there.

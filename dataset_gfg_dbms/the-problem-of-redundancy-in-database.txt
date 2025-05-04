@@ -1,0 +1,92 @@
+• 
+• 
+• 
+
+Redundancymeans having multiple copies of the same data in the database. This problem arises when a database is not normalized. Suppose a table of student details attributes is: student ID, student name, college name, college rank, and course opted.
+
+It can be observed that values of attribute college name, college rank, and course are being repeated which can lead to problems. Problems caused due to redundancy are:
+
+• Insertion anomaly
+• Deletion anomaly
+• Updation anomaly
+
+
+### Insertion Anomaly
+If a student detail has to be inserted whose course is not being decided yet then insertion will not be possible till the time course is decided for the student.
+
+This problem happens when the insertion of a data record is not possible without adding some additional unrelated data to the record.
+
+
+### Deletion Anomaly
+If the details of students in this table are deleted then the details of the college will also get deleted which should not occur by common sense. This anomaly happens when the deletion of a data record results in losing some unrelated information that was stored as part of the record that was deleted from a table.
+
+It is not possible to delete some information without losing some other information in the table as well.
+
+
+### Updation Anomaly
+Suppose the rank of the college changes then changes will have to be all over the database which will be time-consuming and computationally costly.
+
+All places should be updated, If updation does not occur at all places then the database will be in an inconsistent state.
+
+Redundancy in a database occurs when the same data is stored in multiple places. Redundancy can cause various problems such as data inconsistencies, higher storage requirements, and slower data retrieval.
+
+
+### Problems Caused Due to Redundancy
+• Data Inconsistency:Redundancy can lead to data inconsistencies, where the same data is stored in multiple locations, and changes to one copy of the data are not reflected in the other copies. This can result in incorrect data being used in decision-making processes and can lead to errors and inconsistencies in the data.
+• Storage Requirements:Redundancy increases the storage requirements of a database. If the same data is stored in multiple places, more storage space is required to store the data. This can lead to higher costs and slower data retrieval.
+• Update Anomalies:Redundancy can lead to update anomalies, where changes made to one copy of the data are not reflected in the other copies. This can result in incorrect data being used in decision-making processes and can lead to errors and inconsistencies in the data.
+• Performance Issues:Redundancy can also lead to performance issues, as the database must spend more time updating multiple copies of the same data. This can lead to slower data retrieval and slower overall performance of the database.
+• Security Issues:Redundancy can also create security issues, as multiple copies of the same data can be accessed and manipulated by unauthorized users. This can lead to data breaches and compromise theconfidentiality, integrity, and availability of the data.
+• Maintenance Complexity:Redundancy can increase the complexity of database maintenance, as multiple copies of the same data must be updated and synchronized. This can make it more difficult to troubleshoot and resolve issues and can require more time and resources to maintain the database.
+• Data Duplication:Redundancy can lead to data duplication, where the same data is stored in multiple locations, resulting in wasted storage space and increased maintenance complexity. This can also lead to confusion and errors, as different copies of the data may have different values or be out of sync.
+• Data Integrity:Redundancy can also compromise data integrity, as changes made to one copy of the data may not be reflected in the other copies. This can result in inconsistencies and errors and can make it difficult to ensure that the data is accurate and up-to-date.
+• Usability Issues:Redundancy can also create usability issues, as users may have difficulty accessing the correct version of the data or may be confused by inconsistencies and errors. This can lead to frustration and decreased productivity, as users spend more time searching for the correct data or correcting errors.
+
+To prevent redundancy in a database, normalization techniques can be used. Normalization is the process of organizing data in a database to eliminate redundancy and improve data integrity.Normalizationinvolves breaking down a larger table into smaller tables and establishing relationships between them. This reduces redundancy and makes the database more efficient and reliable.
+
+
+### Advantages of Redundant Data
+• Enhanced Query Performance:By eliminating the need for intricate joins, redundancy helps expedite data retrieval.
+• Offline Access:In offline circumstances, redundant copies allow data access even in the absence of continuous connectivity.
+• Increased Availability:Redundancy helps to increase fault tolerance, which makes data accessible even in the event of server failures.
+
+
+### Disadvantages of Redundant Data
+• Increased storage requirements:Redundant data takes up additional storage space within the database, which can increase costs and slow down performance.
+• Inconsistency:If the same data is stored in multiple places within the database, there is a risk that updates or changes made to one copy of the data may not be reflected in other copies, leading to inconsistency and potentially incorrect results.
+• Difficulty in maintenance:With redundant data, it becomes more difficult to maintain the accuracy and consistency of the data. It requires more effort and resources to ensure that all copies of the data are updated correctly.
+• Increased risk of errors:When data is redundant, there is a greater risk of errors in thedatabase. For example, if the same data is stored in multiple tables, there is a risk of inconsistencies between the tables.
+• Reduced flexibility:Redundancy can reduce the flexibility of the database. For example, if a change needs to be made to a particular piece of data, it may need to be updated in multiple places, which can be time-consuming and error-prone.
+
+
+### Conclusion
+In databases, data redundancy is a prevalent issue. It can cause a  number of problems , such asinconsistent data,wasted storage space,decreased database performance, andincreased security risk.
+
+The most effective technique to reduce redundancy is to normalize the database. The use of views materialized views, and foreign keys are additional techniques to reduce redundancy.
+
+The redundancy Problem in the Database is simply due to the presence of multiple data or copied data in the database that may lead in increasing the size and complexity of the database.
+
+
+### Q.2: What are the problems caused due to the Redundancy?
+Answer:
+
+Some of the problems that are caused due to the redundancy in the database are:
+
+• Data Inconsistency
+• Storage Requirement
+• Update Anomalies
+• Security Issues
+• Maintenance Complexity
+
+
+### Q.3: How is data redundancy handled?
+Answer:
+
+Data Redundancy is handled by simply a single form of data that is basically accessible by multiple users. Removing common data from multiple places helps in handling data redundancy.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• GATE CS
+• dbms
+

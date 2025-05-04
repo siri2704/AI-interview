@@ -1,0 +1,1003 @@
+Fuller: So my name
+is Alfred Fuller, and this is Matt Wilder, and we're gonna be talking
+about how to get more 9's with the high replication
+datastore. I'm a sophomore engineer on
+the App Engine Datastore team, Wilder: And I am
+a site reliability engineer on the App Engine team. My focus is distributed storage. So you may be asking yourself, "Site reliability--
+What is that?" well, um, site reliability
+is a position at Google whose focus is the performance
+and reliability of Google services, so if you'd like to know
+a little bit more about that, and what it's like running
+App Engine in production, um, I recommend that you attend
+Alan Green and Michael Handler's talk this afternoon, uh, "Life In App Engine Production." Fuller: And, uh, I can assume,
+I think, that you're all interested
+in the datastore in general, and if that's true, you should
+check out past I/O talks, name--specifically
+the ones listed here to get a better understanding of how the datastore
+works as a whole. Today, though,
+we're gonna talk about-- well, we're gonna give you a
+brief overview of the datastore, uh, highlighting the common
+infrastructure components that it actually uses, talk about the datastore
+in production, highlighting specifically
+common cases, uh, planned maintenance,
+and unplanned events, then talk about
+lessons learned, uh, from running the datastore
+for over three years now. And then give you some tips
+on how to, uh, better acclimate to
+the high replication datastore, if you so wish. So the master/slave-- um, so the datastore comes
+in two flavors now-- the master/slave datastore
+is what we launched with in April of 2008. It uses asynchronous replication
+from a master to a slave, uh, and all--
+since it has a master, all rights and reads
+go to a master, and then they're replicated
+to a slave. High replication,
+on the other hand, uh, was released this January, and what it does
+is it synchronously writes to greater than two replicas, and it has no master,
+so it's true multi-homing, in that you can read and write
+from any replica. Wilder: So, uh, in order
+to understand, uh, how the datastore works, it's important to understand
+what it's made of. So, uh, the datastore
+is not actually one large monolithic
+piece of software, but it's rather the culmination of many layers of distributed
+storage architecture. Lots of these layers
+are actually common to lots
+of Google services. So, uh, at the top
+we have the datastore, which you're all probably
+familiar with. Um, it provides
+a schemeless storage to App Engine applications, and provides, uh, arguably,
+one of the most advanced query engines of any distributed
+storage database out there. So, uh, the datastore stores
+its data directly in megastore, um, so everything I'm gonna talk
+about this layer and below is actually a common piece
+of Google infrastructure. So megastore provides
+a sort of SQL-like interface to distributed storage. Um, it, uh,
+has a strict schema, so you define tables
+and things like that, similar to an SQL database. Um, it provides
+multi-row transactions that can actually span machines. Um, where it's different
+than a standard SQL database, though, is its unit
+of transactionality, which is centered
+around an entity group. Um, Alfred will talk a little
+bit more about that later. Um, megastore stores its data
+in Bigtable, which many of you very well
+may have heard of. Um, Bigtable is, um, a large
+distributed key value datastore. Um, it's not a standard database
+like you would think. Um, you can store data
+in, uh, columns, and access them
+via the row key only. It's a very important piece
+of the datastore, we'll talk a little bit more
+about it later, and it's widely used
+at Google. Um, at the bottom, uh,
+Bigtable stores its data in Google's Next Generation
+distributed file system, which is our successor
+to GFS. Fuller: So you might
+be asking yourself, "What's an entity group?" Because up until
+the high replication datastore, you didn't really have to care
+that much. Um, uh, what it is, is it's
+a logical grouping of entities through a parent/child
+key relationship. And how it functions is,
+it's a unit of transactionality, as Matt said, so transactions
+can only read and write to entities in
+a single entity group. So if I wanted
+to change entities in the blue entity group and entities
+in the green entity group, there's no way
+to do that atomically. But if I want to do it just in
+the blue or just in the green, then you can perform
+atomic transactions on those. Um, and more importantly for
+the high replication datastore is the unit of consistency. So entity groups enforce
+strong serial consistency, so what you, uh, what you get--
+or what you put, you will always get after--
+uh, after that put, and you will never see
+part of a transaction. You will either see
+all of a transaction, or none of a transaction. Um, so here's an example
+of entities that are arranged in
+a parent/child relationship. So we have users,
+we have photos, and a child entity under photos
+of comments, so the photo owns
+those comments, their comment on the photos. Uh, it's probably created
+by the users. Uh, and then we have documents and, uh, revision history
+for those documents, and comments on those documents,
+and a blog post, which is like a combination
+of photos and documents. I'm sorry--picture--yeah,
+I said that right--cool. Uh, and has comments
+on those, as well. Um, so if we look at the entity
+groups that are here, we can see that there's these,
+uh, boundaries that are imposed
+by these entity groups, so you can operate
+on the revision history of a document atomically, um, but if you wanted to change
+a photo and a document at the same time, you'd actually have to do
+two transactions to do that. So there's some limitations
+besides just these boundaries on entity groups, um, the biggest of which
+is a throughput limitation, so we say that you can get
+at least one write per second. In practice,
+in high replication datastore, you can get, uh, five to ten. And what happens is
+if five writes come in all at the same time, four of 'em die with
+a concurrency exception and one of 'em gets through,
+so this is--it's rate limits, uh, how quickly you can write
+to these entity groups. However, it's important
+to keep in mind that a write per second does not
+mean an entity per second. If you use batch puts
+and transactions, those all count
+as a single write, so you can get high entities
+per second throughput if you, um, fan in your writes and do 'em in batches. Another thing
+it's important to note is that these can be arbitrarily
+large groups-- groupings of entities. As Matt said, uh, entity groups
+can span multiple machines and still enforce
+that transactionality, um, so we actually
+have entity groups with tens of millions
+of entities in 'em, and it's no degradation
+to performance. So here's another outline
+of the same entities, just, uh, arranged
+slightly differently, uh, taking into consideration the limitations
+of the entity group. In this case, I've grouped
+all of the comments that a user makes
+under the user, so it's in his entity group. And if I show you the entity
+group, uh, boundaries here, you can see that, um, blog posts are separate from comments, are separate from documents,
+are separate from photos. And the reason why this grouping
+may be a better grouping, given the limitations
+of entity groups, is that it's unlikely
+for a user to write to a comment greater
+than one comment per second, while a blog post,
+if it gets popular, or, you know,
+uh, someone tweets it, uh, could spike
+in the comments, um, and that--at those points, you probably want to have
+a higher write rate than one entity per second. So speaking of consistency, um, this is a very important thing
+to understand about the difference
+between the high replication and the master/slave datastore-- um, pretty much, there's only
+really one difference, and this is, uh,
+the eventual consistency for non-ancestor queries. These are queries
+where the entity group is not known ahead of time, because the query spans
+multiple entity groups, so there's no way to enforce
+that strong serial consistency that an entity group provides. An example of
+a non-ancestor query, um, is "Select star From Comment where user I.D. equals user.Id." This is what you
+would have to use in that first grouping
+of entities to find out all the comments
+that a user has made. However, in the second
+grouping of entities, you can use this, uh, query, which is
+"Select star From Comment where ancestor is user.Key," and when you do this query, you are guaranteed to see
+all the most recent results. So for a user,
+this is very important, because they want
+to have consistency. They put a comment, and you
+redirect them to the page that shows that comment,
+and they really want to see the comment they just put, or
+they think your site's broken. So let's see why
+this is the case, why this difference exists
+between master/slave and, uh,
+the high replication datastore. Um, and to do this, we have
+to look at how reads and writes operate in both systems
+in the common case. So for a write
+in master/slave, we write to the local replica,
+which is the master, and then we asynchronously
+replicate that write to the slave, so that when you
+read from that local master, you know the local master, um, saw any writes that have been accepted
+by the system, so you're guaranteed
+to see that write. And if we look at this,
+this is, uh, a very simplified layout
+of one of these replicas in a datacenter. So we have Datacenter "A" that
+is hosting your application, and we have a Bigtable "A"
+that is hosting your data. And when the datastore--
+you invoke a datastore write, it'll write to Bigtable "A", which is the local Bigtable
+in this case, and the master, and then that write will
+asynchronously replicate to Bigtable "B"
+at some later point. So it'll return to you as soon as we write
+to Bigtable "A." When you do a read, that read
+goes directly to Bigtable "A", and we know that that has seen any writes that have succeeded. However, in
+the high replication case, this is slightly
+more complicated. Maybe not slightly--
+it's pretty complicated. Uh...
+Wilder: [laughs] Fuller: Um, so a write-- you write to at least
+a majority of replicas, and you do this in two phases,
+and when you do this, it means that a minority
+of replicas may not have gotten
+that write synchronously. Then we replicate asynchronously any write that a replica
+hasn't seen, or we do it on demand
+when you do the read. Uh, we can update whatever
+replica you're reading from and force that strong
+serial consistency. Reads are slightly different,
+as well. What we will do is we'll read
+from the fastest replica, which is usually the local,
+but can be another replica, and we can catch up on demand. So if the fastest replica
+isn't up to date, what we will actually do-- I think I have it in a-- Yeah, cool, I'll do it
+in this one-- Um... [laughs] so if Replica "A"
+isn't actually caught up, what we will do is we'll
+actually fail over-- Hold on--
+There it goes-- We'll read from
+Replica "C" instead, and wait for Replica "A"
+to catch up, and as soon as Replica "A"
+is caught up, we'll start reading
+from Replica "A," and this is all done,
+uh, on a sub-RPC level, so in the middle of an RPC,
+we can switch back, and make sure you're always
+getting the fastest reads. Writes, um, are complicated,
+as I said. There's two phases.
+The first phase is a Prepare-- whoops--wrong slide, hold on.
+[chuckles] They look idintical--
+identical. Uh, the first stage
+is a "Prepare," and the second stage
+is an "Accept," which actually sends out
+the payload, which is your entity to write. And you can see that this write
+is actually talking across datacenters
+to all replicas synchronously, and as long as a majority
+of these datacenters, uh, have all your--
+or--or accept that write, then the write succeeds. And you can see in master/slave,
+I had one replica-- or one Bigtable that was dark,
+and trying to indicate that that had all the "data,"
+and in high replication, there's no guarantee
+that any replica has all your data
+at any given time. And another thing, uh,
+that's important to note about this slide is that, uh,
+there's no master in this case, so that we can run apps
+in multiple datacenters, so we can have an app
+in Datacenter "B" reading and writing, uh, to--to these, uh, Bigtables,
+and-- Ops--Oh, that's also
+important, I guess. [chuckles]
+Sorry, this is-- Yeah, I should have made
+a distinction on these slides. Um, yes, so we can have them
+going all at the same time, and everyone's happy
+and everyone can see in consistent views. And theoretically, um, if it
+was just the datastore alone, we could actually be talking
+to the same entity group and writing to the same
+entity groups, and, uh, you'd still have your
+data integrity maintained. So obviously, it's--
+the world's a little slightly more complicated in
+the high replication datastore, and if we look at the latencies,
+this is reflected. Um, we look
+at the read latencies, and you can see
+that we've optimized the high replication datastore
+for reads. In most cases,
+it's almost identical to what happens in
+the master/slave datastore, so the average read latency
+is identical. The write latency, on
+the other hand, is, uh, higher, um, because we have to do this
+cross-datacenter synchronous replication, um, and we have to talk
+to at least a majority, uh, we have
+additional latency here, and it's also
+two round trips, um, so we have about twice
+the amount of latency. However, where
+the high replication datastore really shines is in its, uh,
+error rates. So if we look at these
+average error rates, and we look at the master/slave
+error rate, we can see that this .1%,
+uh, error rate is actually 3 9's, which
+is the purpose of this talk, is trying to get
+more of these 9's, and it's the common terminology
+when we talk about it in SLA, which is
+a service level agreement. So in this case,
+3 9's actually means that your datastore is down
+for 8.7 hours a year. And I'm not taking
+into consideration here planned maintenance
+or catastrophic failures. This is the ambient error rate
+that you can expect with the master/slave datastore. With a high replication
+datastore, on the other hand, you can see
+that we actually have 5 9's, which is many more 9's, especially when you take into
+consideration its impact, uh... [clears throat] uh, which is 5 minutes a year as opposed to almost 9 hours
+of downtime in times of ambient error rates. Wilder: So let's talk about how
+these two datastores differ in some of
+the less common cases. The first one we're gonna talk
+about is planned maintenance. So Google datacenters undergo
+planned maintenance periods. During these periods, low-level pieces
+of the common infrastructure, such as networking,
+power, cooling, maybe low-level
+cluster management, distributed storage services are--undergo maintenances that require a downtime
+to accomplish. Most Google services,
+including App Engine, are able to do
+in-place upgrades. So, you know, we can
+upgrade our software, and your app
+doesn't know about it. However, with low-level things
+like power, it's kind of hard to do that. Um, so, you know, kind of hard
+to turn off machines one by one, and, you know,
+do things like that. So, uh, Google groups these,
+uh, upgrades into contiguous time periods. That way, you know, all of these
+sort of chaotic maintenances can happen at the datacenter
+at the same time or as close to the same time
+as possible. So when these cases
+are happening, you know, a datacenter can be offline
+for several days, um, depending upon the type
+of maintenance. So what does this look like for master/slave datastore? Um, so when one of these
+maintenance periods happens to the datacenter that we're serving master/slave
+applications out of, we don't want those applications
+to be offline for several days while these maintenances
+are performed. So we need to switch
+which datacenter is currently the master and
+which one is the slave. To do this, we perform what we
+call a master switch operation. Um, this operation involves about one hour
+of read-only datastore, and it's a fairly complicated
+semi-automatic procedure that requires a member
+of the engineering team to execute a very specific set
+of steps to accomplish. Um, a lot of these steps
+depend on other Google services and pieces of
+internal infrastructure. Um, if those services
+aren't working well or they're experiencing
+unavailability, it can cause us
+to slow down our process, and it can make us miss
+the maintenance window that we tell you about
+in advance or make us be read-only longer
+than we want to. So, um, we work hard
+to make sure that we catch these things
+in advance, so that if we do find them, we will cancel
+the maintenance period and move it
+to another time period. And we try to improve
+the process as much as we can. Fuller: So let's see
+what this looks like, uh, given that diagram
+that I showed you earlier. So we have an app that's reading
+and writing to Bigtable "A" and replicating to Bigtable "B". And we are notified of
+a planned maintenance period, and we notify you, in turn, that we're gonna take your app
+into read-only. And then during the window,
+we initiate a read-only period, so that your app can still read,
+but it cannot write. Then we flush the replication of anything that hasn't been
+replicated yet to make sure that Bigtable "A"
+and Bigtable "B" both have identical information and all of the most
+up-to-date information. Then we drain Datacenter "A"
+into Datacenter "B," and we switch the master
+and the slave. During this period, since they
+contain, uh, both information, your app experiences
+no interruption in read-only service,
+uh, so they can both read, 'cause they're gonna see
+the same data. As soon as we've completed
+that drain, we can enable the writing
+to your app. So now you're reading
+from Bigtable "B", and you're writing
+to Bigtable "B," and then "A" synchronously
+replicating to Bigtable "A". And at this point, there's no guarantee
+that Bigtable "A" has all of the data,
+thus is now the slave. Wilder: So what happens to
+high replication applications when we have one of these
+maintenance periods? Um, they're pretty much,
+uh, not affected at all. Um, while we do still
+primarily serve high replication applications
+out of a single datacenter, which we'll talk a little bit
+more about why in a minute, we're able to seamlessly migrate
+these applications from one datacenter to another without almost any notice
+to the developer or the user of the application. Um, furthermore,
+we're able to do this without any interaction
+from the app engine team at all. None of our team
+has to initiate this process. The reason why we can do this
+is that Google datacenters have a system for notifying
+services running within them that these maintenance periods
+are beginning, and they should move their
+traffic out of that datacenter. So when App Engine
+receives this signal, we automatically move
+the application serving in that datacenter
+to another one that's not gonna go under one
+of these maintenance periods anytime soon. As I said, this switching
+is almost transparent. Um, what is noticeable
+is a flush of Memcache at approximately one minute where you can read
+from Memcache, but it's always empty,
+and you can write, and it just pretends to succeed. The reason that this is the case
+is that we-- and the primary reason why we
+only serve HR applications out of a single datacenter
+is that--is Memcache is a very fast API,
+you know? If you've used it, you get
+requests and responses back in, like, in order
+of milliseconds. Um, that's because we don't
+replicate it to the other datacenters we serve your higher
+applications applications from. If we did, um, the time
+it would take that data to transmit
+to those other datacenters would make Memcache
+a very slow API and not as useful for what
+you probably use it for. Unfortunately, even Google is
+limited by the speed of light. Fuller: So let's see
+what that looks like in the high replication. So we get a signal
+from our infrastructure team, and our system automatically
+drains apps from Datacenter "A" and serves them
+out of Datacenter "B." And then the infrastructure team
+takes down to the Bigtable and Datacenter "A,"
+so it's unavailable. And when we do a read,
+we read from Bigtable "B". And when we do a write,
+we write to a majority. And in this case, you can see that Bigtable "A"
+is not responding to any of our writes,
+but the write still succeeds, because we have a majority
+of replicas still responding to our write. Wilder: So, uh, let's talk
+about some other reasons why the 9's and the datastores
+are different. Um, uh, no distributed
+storage system is perfect. Google is no exception.
+Um, we do have unplanned issues. Um, we tend to group
+these issues into two primary categories--
+global and local failures. So we're gonna talk
+about local failures first. Um, we, at Google,
+group local failures into two other
+various categories-- expected and unexpected. So it may sound a little strange that we have unplanned
+expected failures, but in reality,
+they're a fundamental part of storage Google. The primary reason for this
+is Bigtable. Um, as I said before, Bigtable
+is a very important part of the datastore storage stack. It's also a very widely used, important piece of software
+at Google. Bigtable is a very amazing piece
+of software. It's able to scale
+to incredibly large size. It can have an un--mind-boggling
+amounts of data in it, and it can support huge amounts
+of transactions per second, reads, and writes. And it can span many, many,
+many, many machines. Well, in order
+to make this possible, the designers of Bigtable
+made some trade-offs that result in data
+being unavailable for short periods of time. Here's why--
+Um, at its core, Bigtable splits its data up into contiguous blocks
+called tablets. Um, these tablets
+are made available by a process that's called
+tablet servers. So every Bigtable cell
+has a lot of tablet servers, and each tablet server
+has a lot of tablets loaded. Now these tablets
+can only sustain a certain threshold
+of reads and writes. If they get more reads
+and writes than that, then performance
+will be degraded. So Bigtable responds to this by splitting that tablet into
+two or more smaller tablets. And if the tablet server
+serving those tablets is experiencing too much load, it will move those tablets
+to another tablet server, which is less--less loaded. Now while these operations
+are happening, um, the data is unavailable
+for that period of time. Now these operations
+are supposed to be very fast, but occasionally, they are slow. This is one of
+the most common causes of unexpected local issues. Um, occasionally, something causes these split
+or merge operations to be slow. Um, one example
+that we have noticed is a tablet server is on a machine
+that's maybe unhealthy, or something is causing it
+to perform poorly. If this is happening, requests to this tablet server
+will be slower, and maybe those split operations aren't happening as fast
+as they should be. Another example of reasons that we have seen
+this performance happen is due to the distributed
+file system underneath. When those tablets move
+to other tablet servers, um, the new tablet server
+needs to load that tablet off of Google's distributed
+file system. If for some reason
+that operation is slow, then the data is unavailable
+for longer while the tablet server
+is trying to load that data to make it available again. One of the most causes of this
+happening is isolation. As I said, Bigtable and Google's
+distributed file system are pieces of
+common infrastructure. So multiple users
+of the datacenter use the same instants. While isolation has been
+built in from the ground up, it's not perfect. Isolation on distributed
+storage systems of this scale is a--is a very hard problem
+to solve. So what do these issues,
+uh, look like for applications that you use
+in master/slave datastore? Well, as Alfred said, um, applications that use
+master/slave datastore depend upon a single Bigtable
+to be available to support those reads
+and writes. So if that Bigtable is experiencing these
+unavailability issues, then those translate directly
+into unavailability with the datastore. Um, as I said, the type of availability we're
+talking about here is local, which means it only affects
+small portions of data, which means
+that some applications may be completely unaffected, and some applications
+may be affected. What does this look like? Um, the most common thing that this will present itself
+to its users is those random
+deadline exceeded errors that you'll see in your
+application's error logs. Typically in the stack trace, you may see a datastore RPC
+or something like that. If the problem persists
+for a long time, requests can back up
+in your request queue, and it can actually begin
+to affect requests that don't actually involve
+the datastore. If you have
+a master/slave application, you may have experienced this
+on availability, and you may have noticed that maybe this App Engine
+status site doesn't display that their
+datastore is having any issues. The reason for this
+is that at its core, the App Engine status site currently uses
+actual applications to monitor the health
+of the various APIs and present them
+on the status site. So if those applications
+aren't being affected by this local unavailability, it may not show up
+on the status site, despite the fact
+that it's affecting you. It's important to note that our internal monitoring
+does catch these issues, and when they happen,
+we are notified, and the on-call engineering team
+will respond to them as quickly as we possibly can. We're also working on improving
+the status site to better catch and report
+these type of issues. Fuller: So let's look
+at what this looks like. So your application tries to do
+a read, and it fails. We try to do a write,
+and it fails. We just get no response. We retry this,
+and eventually, it times out. However, there is one thing
+that you can do to improve the scenario
+in your application's case, which is to enable
+eventually consistent reads. In this case, what will happen is your application will try
+to read, which will fail, and then it will read
+from the slave instance, which may have stale data, but in some cases,
+that's acceptable. In these cases, we recommend
+that you enable this if you're gonna use
+master/slave. Wilder: So how do these issues
+affect applications that use
+the high replication datastore? In short,
+they have no impact at all. As we've mentioned,
+high replication applications don't depend on the health
+of a single Bigtable cell in order to perform. So if the local Bigtable
+to your application is experiencing these problems, requests will seamlessly
+fail over to another Bigtable, and this happens on
+a per-request basis with no interaction
+from anyone whatsoever. Fuller: I should point out that I made the tech lead
+of Megastore, which is--
+He's one of the masterminds behind the paxos implementation that runs
+the high replication datastore, posed for this picture. Um, so let's see what this
+looks like. So we have local failures, your app tries to do a read
+from Bigtable "A", and it'll immediately fail over
+to Bigtable "C" without any loss of consistency,
+and it can do this because we're operating
+on entity groups. And if Bigtable "C" doesn't have
+the most current data, it can on demand
+replicate that data. And, in fact,
+when we do this operation, we'll look at all the replicas and see which one does have
+the data and prefer that one, so we don't actually have
+to block on the catch-up that has to happen in a replica
+that doesn't have that data. When we do a write, it simply
+doesn't affect the algorithm because we only require
+a majority in these cases. So you don't see
+any user visible effect. And eventually, since we track
+the health of these Bigtables, uh, the health tracker will decide that Bigtable "A" is either slow
+or being unavailable, and it won't even try
+to read from it. It will actually just read
+from another replica that is the fastest replica
+to serve your writes. And eventually,
+this error will go away and will switch back to reading
+from the local replica, as it is usually the fastest. Wilder: So let's talk about
+failures on a global level. Um, these are the type
+of failures that render
+an entire datacenter either offline or unusable. Some of the examples
+of the causes of these types of errors is-- Let's say the fiber-optic cables connecting the datacenter
+of the network get cut, or there's a power outage,
+and the backup generators fail, powering off the datacenter. Maybe there's some bug
+or major issue with, you know, lower-level
+pieces of the infrastructure that just render the datacenter
+completely kaput, completely useless. Google's datacenters
+are really big, so when these sort
+of things happen, it tends to take a long time
+to recover. If we power off an entire
+datacenter, for example, you know, turning all
+those machines back on and making sure
+all the machines turn up and check their disks
+if necessary and start up
+all those processes, it takes a long time
+on Google's scale. Furthermore, you know,
+if fiber-optic cables get cut-- I don't know if any of you have
+ever experienced this-- it takes a long time
+to get those tables repaired. So these things take
+the datacenter offline for quite some time. Fuller: Now although this is
+unfortunate when this happens, they do make great stories. So I will again plug Handler's
+talk that comes after this. Wilder: So what effect
+do these outages happen on master/slave applications? Well, as you can probably guess, if that datacenter that we're
+serving at disappears, the applications disappear, too. It's important to note
+in this case that with global failures, it typically is not just
+a datastore that goes offline. But if it's like a power outage
+or networking, the whole app engine
+serving stack goes away, which means that it's not
+just the datastore that's unavailable, but your whole application
+is unavailable. So what do we do about this? Well, when this happens, we
+perform an emergency failover. This is an emergency
+switch operation so we can just
+switch applications to serve out
+of the other datacenter. Now master/slave uses an asynchronous
+replication scheme. So if we do an emergency switch, there's gonna be some data loss
+on a temporary level. Now this data loss presents
+itself in two primary ways. One is just unreplicated data. This is data that was written
+to the master and never replicated over when that master datacenter
+went offline. So this data is just missing until that datacenter comes
+back, and we can recover it. Another type is partially
+replicated data. This is when the data
+was written to the master and was in the process of being
+replicated to the slave when the datacenter
+went offline, and we performed
+this emergency failover. In this case, when we have part
+of a transaction applied or part of an update made, and the datastore knows
+that it's missing this data, and so it does not allow writes
+to this data until it receives the rest of
+that transaction or that update. Now as I said before, this datacenter may be offline
+for a while, so we don't want to wait for that datacenter to come back
+to finish that write. So what we do is once we finish
+this emergency procedure, we then go through and check
+the entire datastore for any instance of this, uh, this partially replicated data, and we manually roll back
+those transactions, making your data
+available again. Now eventually,
+this other datacenter does come back online, and that Bigtable comes back
+with it. At this point,
+we have data in that Bigtable that was not replicated over. However, we can't just replicate
+that data now, because you may have written
+to that data since or deleted it or something, and so there would be
+a conflict. So instead, what we do is we dump the data out
+of that Bigtable and provide it to the developers on an offline basis, so they can decide
+what they think is best to do. Fuller: So let's look at what this emergency failover
+looks like. Reads and writes are failing, and then we decide
+that Bigtable "A' is probably gonna be down
+for a while, and it would be much better
+for our users to have our sites active. Um, and so we initiate an emergency failover, which just force-swaps
+the master and the slave. And as you can see, Bigtable "B" hasn't had
+its replication flushed, thus does not have all the data. And as Matt said, that data
+is still durable and in Bigtable "A,"
+so we can recover it later. But the more important thing is
+to get your apps running again, so now this app is, uh,
+reading and writing from Bigtable "B." Wilder: So what effect do
+these global failures have on applications that use
+the high replication datastore? Well, as I said before, they do primarily serve out
+of a single datacenter, so when we have these major
+global failures, there is a slight bit
+of unavailability, but they recover within minutes, and there is absolutely
+no data loss. The reason why they are able
+to recover so quickly is you remember that system
+I talked about when we do planned maintenance where the infrastructure can
+notify users of that datacenter that the datacenter is going
+offline for maintenance? Well, when these
+global failures happen that take
+the datacenter offline, the same system is used
+to notify those services that, hey,
+an emergency has happened. This datacenter is unusable.
+Move your traffic now. So when we get that signal, just like with
+the planned maintenance, we seamlessly migrate
+the applications to serve out
+of another datacenter. Um, data is written
+to more than one Bigtable with high replication datastore, which means that we haven't lost
+any data at all. Furthermore, due
+to the masterless nature of the high replication
+datastore, we actually provision
+each application, so that they can lose
+multiple datacenters and still serve normally. This means that if
+the datacenter is offline for a really long time due
+to a tornado or a fire or an alien invasion
+or something like that, your application
+can still experience any of the type of failures that
+I've talked about right now and not experience
+any unavailability. Fuller: So this slide
+should be familiar, because it's exactly the same
+as a planned failover, which is important to notice. If your application-- if the global failure just
+affects the durability layer, you will see that the adaptation
+will still serve and will still
+read and write successfully, because we can always use--
+not use Bigtable "A". If it does affect
+the entire stack, and even when it just affects
+the Bigtable, the infrastructure team,
+as Matt said, will notify
+our automated system, which will do a drain, and now your app is serving out
+of Datacenter "B." And so it's important to note
+that unplanned failures have the exact same effect
+as planned ones in the high replication
+datastore. So they--they're as Matt said,
+your data is maintained. The consistency is there, and your application sees
+very little downtime, if any. Wilder: So what lessons
+have we learned from three years of running the App Engine
+master/slave datastore and building the high
+replication datastore? First is expect the unexpected. Global failures--you don't
+expect them to happen, but they do happen. They've happened a few times
+to App Engine in the past, and they will probably
+someday happen again. Another is that the improbable
+is probable when you're dealing with a scale
+of Google. Errors that have
+an incredibly small chance of happening, say,
+memory corruption or CPU bugs, things like that,
+happen on a regular basis when you're dealing with systems
+of this scale, and you have to think
+about them. Otherwise, they're gonna
+really bite you. Fuller: Another thing
+we've, um, heard from feedback from our users
+is that consistent performance is typically better
+than low latency, because low latency
+plus inconsistent performance is not something
+you can plan for. Uh, typically, applications that
+are built in the master/slave expect the consistent behavior
+that they experience when they test
+their applications. And when you experience
+these local failures, you will get random
+deadlines exceeded, and it will kind of
+speckle through-- those errors will speckle
+through all your request logs. And one important thing that we've actually heard back
+from developers is that if they know the latency
+is gonna be slower yet consistent, they can
+typically program around that and make accommodations
+for that, so consistency is generally
+better in these cases. Wilder: So another thing is the more that we can
+automatically handle failures, the less downtime we have
+for our users and the less work
+we have operationally to keep the service running. A human being is a lot slower
+at pushing a button responding to an event
+than a computer is. And if the computer can respond
+to that event by failing over or doing
+something to avoid the error that's happened, um, seamlessly, then we can hide that error
+from our users and present
+a consistent experience. Fuller: And another benefit
+of this is that we can focus on more
+features for our developers, such as Next Gen queries, if any of you remember that talk
+from last year. I don't know.
+[laughs] Um, and one thing
+we really notice is that unavailability
+is never good. Small percentages
+at Google scales have a big impact
+on--on many apps, um, so that when these
+local failures happen, they typically affect,
+uh, an app to a large degree, even though it doesn't affect
+the entire cluster. And these types of problems-- well, they're important to us
+to fix, because we want every app
+to--to have a good experience on App Engine,
+and we hope that the master-- the high replication datastore
+will address these issues. So as a recap, the high replication datastore
+is, uh, has a slightly higher
+write latency, is slightly less
+globally consistent, which is in that one case
+of global queries, um, and it--but it's
+incredibly fault-tolerant. So we have designed it to be
+geographically distributed, and it's resilient in the face
+of catastrophic failure. And we think that, uh, it will
+get you a lot more 9's. And, uh, from--since launch, we actually--we really believe
+this so much that we're gonna set it
+as a default as we announced yesterday, and we're also
+lowering the price to match that of master/slave, 'cause we really feel strongly
+in this product. [applause] Wilder: So what's next? Um, well, we may
+have convinced you to use the high replication
+datastore with this talk. And you may have an application
+and say "Wow, this is great. "Well, I have
+a master/slave application. I want to migrate to
+the high replication datastore." So we have a procedure
+for doing this now. It requires a read-only period
+while we copy your data from the master/slave datastore to the high replication
+datastore. This can be slightly less ideal for applications that have
+a large amount of data. So we're really hard at work
+on some new migration tools that will dramatically
+improve this and dramatically reduce
+the amount of read-only period you will need to migrate
+your application, and you can expect those
+to come out really soon. Fuller: So that being said, that we want you
+to migrate over, and we think it's better
+for everyone, let's talk about
+what you have to do to-- in terms of your app's logic to
+deal with eventual consistency that you see in global queries. So the first thing you have
+to do is a code audit for all global queries, queries
+without ancestors in them, um, 'cause everything else
+is strongly consistent, and you can rely on that it will
+operate the exact same way it's operated before in
+the master/slave datastore. And these global queries
+that you look for shouldn't just be the ones that
+are immediately after a put, because when you have
+change requests, like in a user experience and you put something
+in one request, and you go to the next request,
+the user usually expects what they have written
+to show up immediately. So there are many ways to handle
+this situation once you find these queries. The first one that I would
+suggest is accept it. There are a lot of queries that
+don't need strong consistency. When you have a write rate
+that is incredibly high, that it doesn't support
+a single entity group, in these cases, if you don't see the last
+hundred milliseconds to seconds, which is the type of eventual
+consistency we're talking about with a high replication
+datastore, it's not as important. So if you have a Twitter stream come flooding into your app, in these cases, eventual
+consistency is acceptable. Another thing you can do
+is avoid it, so you can isolate the cases where you actually can,
+um, have this limit of the write rate
+for the entity groups and build larger entity groups, 'cause entity group size
+can be arbitrarily big. So as long as you trickle it in, you don't have to worry about,
+uh, you know, getting over that, uh, you know, how big your
+entity group actually is. Now one of the most interesting
+things you can do, um, is work around it. And you can do this
+by mixing datastore results. So in that example
+I showed you previously where the comments were
+clustered under the user and we had the blog post
+that was separate-- in a separate entity group, if I wanted to show a user
+the comments from a blog post, I would actually perform
+two queries. One query would be
+a strongly consistent query that has the user
+as an ancestor, so it gives me all
+of the user's comments. And I know I see most or all
+of the user's comments that he's posted, and the other one that grabs
+everyone else's comments, because it's really important that the user sees
+his own comments. But if he doesn't see the last--
+the comments that were posted in the last hundred
+milliseconds, it's not that big of a deal
+in these situations. So you really have to look
+at your app and decide what one of
+these methods do you use where. Another option here
+is you can use Memcache to store writes
+to have a write cache and inject those into
+your datastore query results, as well. So that's it. Um, we're open for questions. [applause] Wilder: I guess it's
+the front mic. I don't know. Fuller: Yeah. Robert. Robert: So about Next Gen--No.
+Wilder: [laughs] Robert: Um, so I have
+a hopefully easy question. If you do a batch get across entity groups, and you do it
+with eventually consistent-- you know, if you set up the RPC
+eventually consistent, will that cause the tablet
+that winds up getting hit to catch up if it's late?
+So it'll--I know it'll fetch and return what's there.
+Fuller: Yeah. Robert: But does it initiate
+the catch-up sequence in the background?
+Fuller: So you--you still have a benefit of doing
+eventually consistent reads in the high replication
+datastore. It will not catch up
+the replica, and always just pick the fastest in that case.
+Robert: Okay. Fuller: So you're guaranteed
+to have a little boost in many cases. Uh-- Wilder: The reason for this
+is that we don't know what the entity group is
+if it's spanning entity groups. Fuller: Oh, this
+is different, though. Wilder: Oh, sorry. [chuckles]
+Fuller: So yeah. This is for batch gets. Yeah.
+Wilder: Batch get, oh, okay. Robert: Yes. Yep. Okay, cool.
+Wilder: Thanks. man: Is there any information
+or ways to control where the data goes and especially for the case
+of Megastore, if you start running paxos across, say,
+the Atlantic Ocean, um... Wilder: So we--we don't
+currently offer any sort of um, uh, different geographic
+distributions for our data. man: Okay, so it runs
+in a single datacenter? Fuller: No.
+Wilder: No. So we have one set of specifics...
+Fuller: Ev-- Wilder: One geographic set
+of distributed data bases-- or datacenters, but we don't
+offer any sort of locality. Fuller: So we--they each run
+in a different datacenter, and all datacenters are
+currently in North America. man: Okay.
+Wilder: Yeah, right. Fuller: But if you want
+to have fast operations in other places,
+you should use caching headers. man: Okay, thanks. man: One question I had.
+Wilder: Oh, go ahead. man: When you mentioned
+about the tablets and how it stores the data in
+the tablets and splits that, what's the decision path about what data gets stored
+in what tablet where and how does it know
+what tablet to go get it from? Wilder: So all this is built
+into Bigtable, basically. Fuller: [whispers]
+Repeat the question. Wilder: Oh, the question was,
+How does the tablet logic work? How does it know where to fetch
+the data and when to split, stuff like that? So it's all part
+of the Bigtable service. Um, there's many data
+and things involved, uh, that is updated
+when these things happen, which is part of the reason why
+there's brief unavailability, is because the tablet moves, and certain things
+have to be updated, and that takes just a little bit
+of time to happen. man: So is it like a hash off of
+the key or something like that? Wilder: I can't
+really comment much on the specific implementation.
+man: Okay, thanks. Fuller: [normal voice]
+There's some Bigtable papers. I don't know if they actually go
+into that much detail, but they're a nice read...
+Wilder: Yeah. Fuller: If you're
+really interested in that level.
+man: Okay. Fuller: There's also a Megastore
+paper that is very accessible, and I would really recommend
+anyone who is interested in the exact details
+of this algorithm-- This was a very, uh,
+glossed overview of what actually happens
+in terms of writes. And so if you're interested, I highly recommend checking out
+that paper. man: For the, uh,
+high replication datastore writing to the majority
+of datacenters, how many datacenters
+are we talking about? Is that something...
+Wilder: More than two. Fuller: So we--we can't tell you
+the exact numbers... man: Yeah.
+Fuller: But it's more than two, and we can withstand multiple
+datacenters going down. man: Right.
+man: I think it's also-- it's an odd number, right?
+Wilder: Yes, it is an odd number. Yeah.
+[laughter] Wilder: It's hard to have a
+majority without an odd number. man: Um, I wanted to ask about the, uh, entity groups. Is there a prac--
+What are the practical limits on how big an entity group
+could be? I mean, from what you described,
+it sounds like you can just throw everything
+into one entity group... Fuller: Yes, it--
+man: And obviously, that's probably not wise. And do those,
+uh, limitations change with the high replication
+datastore? Fuller: So the limitation
+is just on throughput. And J.J., uh, the picture I showed of the guy who actually designed
+entity groups and was kind of the mastermind
+behind that would suggest to you
+that you put all your entities and an application
+into a single entity group. Now we want your application
+to scale. If you get hit
+really hard with traffic, and that's good for you
+and good for us, so we won't make that exact
+same recommendation. But if you're expecting
+a write rate of less than one write per
+second for your app forever-- say it's an Enterprise app-- you can definitely put
+all of your data into a single entity group. Fuller: Okay.
+man: One question about the, uh,
+high replication strategy. So how can you decide the global
+order for the transaction if the transaction comes through
+different server-- I mean, the, no,
+in the cluster? Fuller: So the question is, uh, How can we decide the global
+order of transactions if they come in
+from multiple servers? man: Yes. Uh, yes.
+Fuller: Yeah, okay. She told me
+to repeat the question... [laughter] Fuller: Even though
+you're miked. Um, uh, so, um, before you-- So we use optimistic locking,
+right? So what happens is the transaction will start
+on both, uh, replicas, but only one will succeed if
+they're happening concurrently. So the serial consistency
+is enforced in that we know that only one can s--can--can--
+succeed in this case. And we use optimistic locking, because someone who starts
+a transaction may die or may stop or may never
+complete it or may take forever, so that we know that we can push
+writes through even in the case of failure
+or long-- Like if we use
+pessimistic locking, you would have to wait
+for the lock to expire if the writer disappears, so we
+use this for fault tolerance, and it also makes it
+so that it works well. man: So this part...
+[speaking indistinctly] or it's...
+Wilder: It's part of a Megastore.
+Fuller: So the-- So the Prepare and Accept...
+man: Mm-hmm. Fuller: is what happened,
+how it gets around. So if you prepare,
+and then someone else prepares, they, um, they overwrite
+your prepare. And if you try to get everyone
+who agreed to your prepare to accept,
+you'll get rejected. And then we have a backoff to make sure that this pattern
+doesn't keep on going, because the next thing you do
+is you try to prepare again. So you fight back and forth,
+and there's a backoff to make sure that this doesn't
+go on forever, and someone eventually wins. man: Thank you. man: I have a question about
+the performance limitation of tablet splitting when you have them autonomically
+increasing indexed value, like a date time stamp. Is that less of a problem with
+the high replication datastore than the master/slave? Fuller: Um, I--yes. It's still a problem.
+So the question is, is when you're writing
+to the same spot in a table-- uh, say I'm autonomically
+increasing index based on a time stamp-- That creates a hot spot
+on the table, and the tablet can only split in the existing data
+that it has, and the smallest it can split
+is a single row. So if you write to a row,
+a lot of times, you would have a hot spot
+that you can actually split. But this will limit your
+write rate in master/slave to empirically about 200 writes
+per second to that spot in that index. Um, and it's a problem that Bigtable
+can't really resolve for you. Um, and so the master/slave-- what would happen in this case is those writes would fail
+in one datacenter that's getting a lot of traffic, and then that traffic
+would bleed over to the other datacenters
+where the write wouldn't fail, because the asynchronous
+replication isn't hammering it as hard. So in this case, it will help, but it will not solve
+the problem. To really solve that problem, you have to use some sort
+of sharding on that index to make it, uh, split
+among different tablets. Wilder: Yeah, it'll help
+for a while, but eventually, all of the replicas
+will have this same problem. And so you're
+just kind of delaying the inevitable, basically. Fuller: But, you know, you get
+up to 400 instead of 200... Wilder: Yeah. [chuckles]
+Fuller: or 600 instead of 200, but I don't know
+the exact numbers, and the numbers
+that I am saying right now are definitely empirical that I heard from Brett Slatkin who runs PubSubHubbub.
+man: [chuckles] man: All right, thank you.
+Fuller: Yeah. man: Um, along the same lines of the guy asking about entity
+groups and recommendations, do you guys
+have any documentation about, um, the best use
+of entity groups or any recommendations
+about how to group your data, um, aside from coming
+to Google I/O or watching the videos? 'Cause that's the only place
+I've been able to find it in the past. Fuller: I think
+that's a very good point. I think we should improve
+our documentation around this, and I know that, um, we are-- There's several people who are
+try to do that internally. The Megastore paper
+is a good resource, and my recommendation would be to look at the throughput
+you need and base it on that. And usually, well,
+you can think about this is a lot of micro databases. Each entity group
+is like a micro database. and so from the example I gave, the micro database is based
+around a user, right? So where the user really cares
+about that consistency, whereas the interactions
+between you-- there can be a little less. Uh... You know, it can get a little
+looser around that consistency, so... Oh, and Anderson?
+Wilder: Dan Sanderson. Fuller: Sanderson. Yeah,
+Dan Sanderon's App Engine book apparently goes into talking
+about this, as well. man: Yeah, I have some question
+about this writing part. Fuller: Mm-hmm.
+man: Uh, I read those Google file systems,
+and they usually-- when you write, usually
+they kind of serial write. When you write one, and then they will just write
+replica each other like that. When I see your,
+uh, presentation, it looks like one
+write application talk to all the replica
+at the same time. Is it like do you change it, or you are using some kind of
+group communication to do that? Or is it just the serial still? Fuller: We use--
+we write asynchronous-- Or we write in parallel
+to multiple datacenters... man: Mm-hmm. Mm-hmm. Fuller: Using
+inter datacenter band width. So we go around
+these boundaries, but inside the datacenter
+is probably-- I can't really speak to it. man: But usually in datacenter, they have closer locality,
+right? so I saw in Google...
+[indistinct] version 1, they're just using
+one close replica, and then that replica will find
+their neighbors, like that. Fuller: Yeah, so--
+man: And then the final will return, say,
+everything complete. That was what I understood,
+but is it-- Fuller: So that would happen
+inside a single datacenter, but we--we write to multiple
+of them, right? man: Yeah, but, I mean--
+Fuller: So on that level, I don't know exactly how it
+works, but it sounds reasonable. man: Yeah, so I was just
+wondering if you change it or if you change it, then the underlying should be
+a lot of different things need to be done.
+Fuller: Yeah, so, um... Wilder: So the underlying stuff
+is a little bit different, um, but, um, we haven't really released
+any information about how it's different,
+so I can't really comment much. Fuller: Yeah.
+man: Yeah, but I read some paper about this Google file system
+you've probably seen. Fuller: Yeah. So we're using
+another version of that that's similar but not the same. Wilder: The primary difference
+that we've actually talked about is that the original one
+had a single master, and this one has multi master.
+man: Okay. Wilder: That's
+the primary difference. man: Yeah, okay. Thank you. Fuller: Any more questions? Fuller: Well, I guess that's it.
+Well, thank you all for coming. [applause]
+Wilder: THANK YOU.

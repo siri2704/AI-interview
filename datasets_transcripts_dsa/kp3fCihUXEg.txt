@@ -1,0 +1,222 @@
+These are the 7 most important algorithms
+you have to know if you’re preparing for coding interviews. We’ll start off with
+the three search algorithms, binary search, depth-first search, and breadth-first search;
+then, we’ll take a look at the three sorting algorithms, insertion sort, merge sort, and
+quick sort; and lastly, we’ll take a look at a special type of algorithm called a greedy
+algorithm. We’ll cover what each algorithm is and give
+a visual demonstration, explain when to use them, and discuss how efficient they are.
+Quick note. You should understand basic data structures before learning these algorithms.
+If you don’t know the data structures or need a refresher, check out this video here
+first, linked in the description below. Knowing time complexity will also help you during
+this video, so for a 2 minute recap, check out this video.
+Let’s not waste any more time and get right into it.
+Binary search is a search algorithm that is used to find the position of a specific element
+in a sorted list. I find it’s best explained with an example,
+so here’s a visual demonstration and example. Let’s say we were playing a guessing game
+with a friend, where your friend chooses a number from 1-100 and you have to guess what
+the number is. With each guess, your friend will tell you if the correct number is higher
+or lower than the one you guessed. One possible way of guessing is to start at
+1, and go up by 1 each time until you guess it. This is called linear search. While this
+would work well if the number was close to 1, imagine if the correct answer was 100.
+It would take 100 guesses to get the correct answer. On top of that, what if our guessing
+range was instead between 1 and 10,000? As you can see, this becomes inefficient when
+scaled, which is NOT optimal for a computer algorithm. This algorithm has a runtime of
+O(n). Now, let’s take a look at a different way
+of guessing the number between 1 and 100. Instead of starting at 1, let’s start right
+in the middle, at 50. Now, when our friend tells us if the correct answer is higher or
+lower, we are getting rid of half of the possible numbers to guess. We can keep guessing the
+middle number of the remaining possibilities, and eventually, we reach our answer. This
+algorithm has a runtime of O(log(base 2) n), commonly written as just O(logn).
+Let’s compare this to the linear search algorithm we just looked at before, with a
+range of 1 to 10,000. Well, let’s look at the worst case scenario,
+which is when the number is 10,000. For linear search, it’s pretty clear how long it would
+take: 10,000 guesses! We start at 1, and go through all the way to 10,000. But what about
+for binary search? Feel free to try it yourselves, but I’m going to go ahead and instead use
+binary search’s time complexity, which we know is O(log n). So, log (base 2) of 10,000
+comes out to 13.3, so it would take 14 guesses to reach the worst case! That’s MUCH better
+than the 10,000 guesses linear search took us.
+So there we go, that’s binary search. It’s a pretty simple algorithm that you’ve probably
+used in real life to sort through a sorted list of things. The important thing to remember
+here is that it only works when the list is sorted. If you ever see a sorted list that
+requires you to find an element, binary search is usually a good place to start.
+If you’ve reached this point in the video, don’t click off now, because these next
+two search algorithms are the most important to know. Depth-first search, and the one we’ll
+look at next, breadth-first search, are two algorithms used to search through trees and
+graphs, which as you might remember from the Software Engineering Interview Process video,
+are the most common questions asked at interviews just behind arrays. So yeah, they’re extremely
+important. We’ll be starting with depth-first search,
+commonly referred to as DFS. The idea with DFS is to start at the root node, and go as
+far down one branch as possible, all the way to the end. Once we hit the deepest point,
+which is where the “depth” part of DFS comes from, we come back to an unvisited branch,
+and go down that one. This process of coming back to an unvisited branch is called backtracking.
+Here’s a visual demonstration of how we might traverse through this graph using DFS.
+Before doing any type of DFS, we want to create a visited array, that keeps track of nodes
+we’ve already visited. To begin the DFS, first, we’ll start at
+the root node, and go down the first branch to the next node. We’ll also add both the
+root node and the next node to our visited array. From here, we continue going down this
+same branch, adding each node we hit along the way to our visited array. Once we reach
+the bottom, we backtrack up to the previous node, and see if there are any unvisited nodes
+we can go through. As you can see, there is one, so we’ll go down to it, and add it
+to the visited array. Now, we backtrack to the previous node again. Do we have any more
+unvisited nodes here? No, so we backtrack up again. We repeat this process of traversing
+unvisited nodes and backtracking up until we’ve gone through the entire graph.
+One real-life example of where depth-first search might be useful is for solving a maze,
+which is actually what they were originally created for! Starting from the entrance of
+the maze, we look through each path all the way to the very end to see if it contains
+the exit. If we hit a wall, we backtrack to the nearest opening, and continue.
+The time complexity for this algorithm is given a notation of O(V + E), where V represents
+total nodes AKA vertices, and E represents total branches AKA edges. We’ll explore
+the why behind this a bit more in a video dedicated to depth-first search, but for now,
+all you need to know is that the runtime is Big O of V + E.
+Now, let’s move on to DFS’s counterpart. Now that we’ve covered DFS, breadth-first
+search, commonly referred to as BFS, will be a bit easier to understand. In BFS, instead
+of going all the way down each branch and backtracking up, we’ll look at every node
+at one level before continuing further down. Let’s look at a visual demonstration.
+As was the case with depth-first search, for breadth-first search, we will also create
+a visited array to keep track of what nodes we’ve already visited. We’ll also create
+a neighbours queue, which we’ll add all neighbours of a node to.
+To begin with BFS, we start at the root node, add it to the visited array, and we’ll add
+all of the nodes it’s connected to, to the neighbours queue. We’ll then take a look
+at the first node in the neighbours queue, mark it as visited, and add all of it’s
+direct neighbours to the end of the queue. This process continues, and as you can see,
+we’ll have visited each node on the first level before we progress down to the next
+level of nodes. One real-life example of where breadth-first
+search is used is for Chess algorithms. For those of you who don’t know what this is,
+it’s where a computer program predicts what the best move is at any given point in a game.
+The way they work is by starting a certain player’s turn, and taking a look at each
+possible move they have next. The algorithm looks at all possible moves for the next turn,
+and then looks at all possible moves from all of those possible moves. As I’m hoping
+you can start to see, this is just depth-first search, where the nodes are moves, and the
+levels are turns. Just like with depth-first search, the runtime
+for this algorithm is also O(V + E). Again, this will be covered more in-depth in a dedicated
+video to breadth-first search, but we’ll save that for another day.
+And there we go. We’ve covered all 3 search algorithms! Next we’re going to cover the
+3 sorting algorithms, but before I do, just a quick ask. If you’re enjoying this video,
+please like, subscribe, and share it with friends. I’m usually putting 12+ hours into
+each video, and trying to balance that with a full-time schedule sometimes requires me
+to stay up until 2am or 3am to get videos done. I’d love to keep making more and more
+videos, so I’d really appreciate it if you could share these videos with anyone you know.
+Thanks so much, let’s continue with the algorithms.
+Sorting algorithms are used to sort lists of elements, usually in ascending order. There
+are tons of different types of sorting algorithms, but today we’re looking at the 3 most important
+for interviews. Insertion sort is the first of the sorting algorithms, and the easiest
+to start with. Insertion sort works as follows. The algorithm
+looks at the first element in the list, and compares it with the second. If the second
+is less than the first, swap the two. Then, compare the element in the second position
+with the element in the third position. If the 3rd element is less than the 2nd element,
+swap the two. If this element is also smaller than the 1st element, swap them again. As
+you can see, we’ll continue with this pattern until we reach the end and voila! We have
+a sorted list of elements now. Insertion sort is a simple sorting algorithm,
+and that’s where its limitations are. Insertion sort has a best-case run-time of O(n), and
+a worst-case run-time of O(n^2). It is O(n) when everything is already sorted, as it only
+goes through each element, and O(n^2) when nothing is sorted, because it has to go through
+every element times the total number of elements. As a result, insertion sort is best used for
+lists that are already mostly sorted, or for lists of smaller sizes. Once the lists grow
+larger and more unordered, the O(n^2) run-time starts to become problematic.
+Now, let’s take a look at a sorting algorithm that might be better for large lists.
+Merge sort is a sorting algorithm that falls under the category of “divide-and-conquer”
+algorithms, because it breaks up the problem into smaller problems, and solves each smaller
+problem. Does this sound familiar to you? Well, if you watched my video explaining recursion,
+I hope you recognized that this is actually a recursive algorithm!
+As per usual, let’s take a look at a visualization for this. We start by splitting the array
+in half, and we continue to split each subarray in half until the array has been split into
+pairs. Then, at the same time, each pair is going to do a comparison of the 1st element
+and the 2nd element, and swap them if the 2nd is greater than the 1st. Now we have sorted
+pairs. The next thing our algorithm does is combine two sets of pairs, and do the exact
+same thing as before, sorting the numbers for each group of 4. This process continues
+all the way back up until we reach the full array, which is now sorted.
+Merge sort has a run-time of O(n log(n)) in the best and worse-cases. Comparing that to
+insertion sort, we can see when you might want to use one over the other. For smaller,
+already somewhat sorted lists, insertion sort has a runtime closer to O(n), whereas merge
+sort is O(n log(n)), so that’s where we might want to use insertion sort. For larger,
+less sorted lists, insertion sort has a runtime closer to O(n^2), whereas merge sort remains
+at O(n log(n)), so that’s where we might want to use merge sort.
+I’m hoping this is all making sense so far, and you’re understanding how the algorithms
+work, and when we might want to use one over the other. Now, time to look at our last sorting
+algorithm. Quick sort is our final sorting algorithm,
+and the most complicated of the three. However, once you understand how the other two work,
+it becomes a lot easier, which is why I left it for last. Like merge sort, quick sort is
+a divide-and-conquer algorithm, and is recursive. The idea is to pick a pivot number, ideally
+as close to the median of the list as possible, and split the list into two lists, one where
+all the numbers are less than the pivot, and one where all the numbers are greater than
+the pivot. We continue this process on each sublist, until we’ve reached our sorted
+list. Let’s look at the visualization for it.
+We start with our list, and try to pick a number close to the median. Once we’ve selected
+that number, we move it to the end of the list. Now, we place a pointer at the left-most
+element, and the right-most element, and we compare the two. If the left-most element
+is greater than the pivot, and the right-most element is less than the pivot, we swap them;
+otherwise, we leave them as is. We continue through the list until our pointers cross;
+once they do, we replace the element at the left pointer with our pivot. Now, everything
+before our pivot is less than the pivot, and everything after our pivot is greater. We
+will do this same process on both of these lists now, choosing a median pivot for both,
+and sorting the same way. Once we finish, the list is completely sorted.
+Quick sort has a best-case run-time of O(n log(n)), but a worst-case run-time of O(n^2).
+You might be wondering why we would ever use this algorithm, as it has a worse time complexity
+than both of our previous sorting algorithms. Well, this is where it gets interesting, and
+a bit complicated. Quick sort, when implemented correctly, is actually the fastest of the
+three on average. The complexities behind it are best saved for another video, but for
+a simple reason, the code in the inner loop of the quick sort algorithm can be optimized
+to significantly reduce probability of worst-case, and is on average, 2-3x faster than merge
+sort. On top of that, quick sort has a space complexity
+of O(log n), whereas merge sort has a space complexity of O(n), so quick sort is better
+for memory. However, one of the largest drawbacks to quick sort is that all of this relies on
+the code being optimized. Any little mistake or inefficiency in the quick sort code can
+cause the algorithm to run much slower, and it is a much harder algorithm to implement
+than merge sort. That wraps up our sorting algorithms. Before
+this video ends, I want to take a look at one more type of algorithm, which is a special
+type of algorithm. When you think of someone being greedy, what
+do you think of? Usually it’s someone who always wants and does the best thing for themselves
+in any scenario. Well, that’s exactly what this algorithm does.
+Greedy algorithms are algorithms that make the best possible choice at every local decision
+point. Put more simply, every time they have to make a decision, they just look at what
+the next best move is, without looking too much into the future.
+We’re first going to look at when NOT to use greedy algorithms, and then when you should
+use them. Greedy algorithms are not used for efficiency,
+because typically, they’re not looking at every possible outcome, just the best outcome
+at each stage. Here’s an example of where a greedy algorithm doesn’t work optimally.
+Consider this scenario: for each decision you make here, you have to spend a certain
+amount of money, indicated by the number on the path. Think for a moment – what should
+you do? Hopefully you came up with this path as the
+correct solution. However, using a greedy algorithm, we might not get this. The algorithm
+first looks at the first two choices – 7 and 8. It chooses what’s best right then,
+which is a 7, and moves on. From here, it looks at its next two choices – 9 and 10.
+Again, it chooses what’s best in the moment, which is a 9, and reaches the end. The algorithm
+reached the end spending $16 total, but if we did it ourselves, we could reach the end
+spending $3 only! So why ever use them if they’re inefficient?
+Well, for a scenario like the one above, we could have easily developed a DFS or BFS algorithm
+to find the optimal solution. That’s because the problem is simple enough for a computer
+to solve that way. In fact, we could even brute force it and have the computer calculate
+every possible outcome. But what happens when we have impossibly large amounts of outcomes
+to go through? Sometimes, even modern-day computing can’t go through every single
+scenario to get the optimal answer. This is where greedy algorithms are used.
+If you can’t get the exact right answer using an optimized algorithm, it’s best
+to use a greedy algorithm and get something that’s relatively close, even if not 100%
+efficient. One of the most famous examples of this is
+called the travelling salesman problem. This problem provides a list of cities and distances
+between each city, and asks for the shortest possible route that visits each city once
+and returns to the origin city. The formula for total possible routes is (n-1)! / 2.
+If our salesman wanted to visit 5 cities, that gives us 12 possible routes. If our salesman
+wanted to visit twice the amount of cities, 10 cities, that gives us 181,440 possible
+routes. Just doubling our city number gives us an exponential growth in route possibilities.
+But still, 181,440 routes can be solved by a computer in milliseconds. Now, let’s consider
+that the travelling salesman wants to visit every capital city in every US state. As there
+are 50 US states, that gives us 50 total cities. Take a guess as to what the possible route
+count is. A few million? Maybe even in to the billions or trillions?
+Well, if you guessed anywhere near there, you’re not even close, because the total
+number of routes is THIS (304140932017133780436126081660647688443776415689605120000000000). Yeah. And while a super computer might be
+able to calculate that one day, that’s only 50 cities. Just for fun, let’s say it was
+1,000 cities. Ready for the number? 201193630038546886771851216961501992859687432105357316271899955214969256199314510296022104243484702400239994305098598029315833436497404279450661914834972295498712252043536879959411813863594366259889752975497638060437487731248521800709139047323248145528196943718943243668559590522912891823924988506238316444917977867716256592661979231537778704557131208737174673776714323288305833898698334410145603689571926859794124904063433919187279865873068042689767262110793296600964045439148654215696422201640615779305518488400678652108084373804837935674156012739294660383584566224213118065706254390104000130841575513670913988852392317934085082182512076845699140632405106546380622448179964352557482487709954671110783416286040410666593058405776807918273492023354487801450475268808237923864210944839823122472580382676704099450692721243992479976659550861677778301069725199868140375068918807653563880963424517176312600007944267573665805851051984087960755453894009696589057097272628611932770730531446093980111919485738044253138431483573337348781455617041219604080076890444946982259131621835808381089584454889955951877015637311144994002597722207141006093680872996321478290873314151477785149512162076590808605232916018393453058630079391760375758142112770132585241652113071987143466530845448984241295062729163584113229033263384979326341136403537890695929089444826104082174172412996633021683830088499806415930394193075139732977565578276018046994090306069279300150717847263612103172315898730297341286551895042012216219232828622507201410942626235467595310464511568246636748782756979360279827114374887005706673481357711422931188693769115241932844488230963691907450070383655223320129949745111110882952169950943009283263242530899851178096948508930020405944864959155510585614922950820960534442193560927823062480399361454259648409686194321307419828691145561562512093324676571985068714265963324937668609470347140717059260079007061672414007525699847145076741538822284549536576216639144134932301394932160569541753108547501298694931777138598371411124378793382876172110103786815284749412543984464081376924431698454979913140478060725497435850622258230630189514654560444543471014255320091077199728578402970936374499047127371086791200531838702297870892580414615067679040920048498186262115280427951850312135621708454502076845052966991917888969705485013876736000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+As you can see, we definitely won’t be finding the exact optimal route from every possible
+route. Here’s where our friend the greedy algorithm comes in. Let’s choose an arbitrary
+starting city, and write a simple algorithm that always chooses the next city that’s
+the least far away. We can continue this process until we reach the end, and then return to
+our starting city. This is definitely not the most efficient way to do it, but as we’ve
+seen, we can’t calculate the most efficient solution, and we’ll still get an answer
+that is far more efficient than randomly choosing cities.
+So, to summarize all of that. Greedy algorithms are used when finding the optimal solution
+might not be possible, so we want to find something that’s relatively accurate.
+Those are the 7 most important algorithms for interviews. This is my longest video yet,
+and took the most amount of time to make, so if you could smash the like button and
+share this video I’d really appreciate it. I put a ton of effort into these videos, and
+I’d love it if as many people as possible could see them and learn from them.
+Thanks so much for watching, and I’ll catch you in the next video!

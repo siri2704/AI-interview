@@ -1,0 +1,30 @@
+• 
+• 
+• 
+
+An entity is a “thing” or “object” in the real world. An entity contains attributes, which describe that entity. So anything about which we store information is called an entity. Entities are recorded in the database and must be distinguishable, i.e., easily recognized from the group. In this article, we will see the difference between strong and weak entities.
+
+
+### What is a Strong Entity?
+A strong entity is not dependent on any other entity in theschema. A strong entity will always have a primary key. Strong entities are represented by a single rectangle. The relationship of two strong entities is represented by a single diamond. Various strong entities, when combined together, create a strong entity set.
+
+
+### What is a Weak Entity?
+A weak entity is dependent on a strong entity to ensure its existence. Unlike a strong entity, a weak entity does not have any primary key. It instead has a partial discriminator key. Aweak entityis represented by a double rectangle. The relation between one strong and one weak entity is represented by a double diamond. This relationship is also known as anidentifying relationship.
+
+
+
+In ER models,strong entities can exist independently, whereasweak entities depend on strong entities.If you want to solidify your understanding of ER diagrams and entity relationships, theGATE CS Self-Paced Coursecovers database concepts in-depth, including practical exercises on ER modeling
+
+
+### Difference Between Strong and Weak Entity
+
+### Conclusion
+It is important while designing a database to comprehend the difference between strong and weak entities. That is, strong entities have all the necessaryattributesfor their existence and have unique attributes while weak entities have at least one attribute that depends on the attributes of their related strong entities to form an identification. Its also facilitates help in placing these entities in the right category and defining them properly so that thedatabasecreated can have the best structure that fits and are efficient in making real-world scenarios.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• Difference Between
+• GATE CS
+

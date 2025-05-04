@@ -1,0 +1,107 @@
+Hi, I'm Gayle Laakmann McDowell, author of Cracking the Coding Interview. Today we'll talk about a topic that a lot of candidates
+forget about, heaps. Heaps come in one of two forms, a min heap or max heap. We'll
+just focus on min heaps today because a max heap is essentially the reverse. In a min
+heap the elements are all smaller than their children so the root node will be
+the very smallest element and then looking down the tree down the heap, the
+elements get bigger and bigger and bigger. So that's the basics of what a heap is but
+how do we actually create and maintain such a data structure? So let's start
+with just insertion. So when we insert an element it always goes in the next empty
+spot looking top to bottom left to right. So we go, first we insert an element here,
+and then here and then here and then here and so on through the tree, through
+the heap. So that's how insertion works. But then of course what happens if
+that's not really where the element should go? What we can do is we can insert the
+element there and then bubble it up until we get to the right spot. So we
+take the inserted element, we compare it with its parent, if it's out of order,
+swap them and then keep going up the tree in this process. Now what about
+removing the minimum element? So we know the minimum element will always
+be the root node and so that's easy to find but then if we want to remove it we
+might have an empty spot. So what we do here is we remove the min element
+there, so we take out the root and then we swap that value at the root with the
+last element added. And then of course that element might not be in the right spot,
+so we take the root element and bubble it down to the next spot so we compare
+the root with its children, its left child and its right child, and then swap it
+with the smaller of the two. And then we keep going down the tree until the heap
+property is restored. So that's how a tree operates, let's think about
+implement- that's how a heap operates, let's talk about implementation now. So
+implementation is kind of interesting. You might have assumed that we'd
+implement it a simple class node with a left node and a right node, and
+certainly we could do it that way. But there's an even better way of
+implementing it. Note that when we add elements to the
+heap they're always getting added in a very particular spot. There aren't gonna
+be any gaps in the heap so we have the zeroth element here and then the first
+second third fourth etc and so that means that we can actually use an
+array instead to store these values and that makes it very compact. And a simple
+simple equation can map from an index to its left child its right child or to
+its parent. And so we can still get to the left and right child but we don't
+need to have this overhead of a node class. So now that we've covered the
+basics of what a heap is let's turn to the actual code for this. We'll implement
+min heap with a simple class that wraps this items array. This is going to be
+an array of a fixed length but if it gets too big we'll increase the capacity.
+Now I'm gonna get a little bit of a head start and cheat a little bit by just
+adding a whole bunch of simple helper methods. So these are just simple
+methods that get the left and right child of the parent index. Actually you
+know check if they exist, or actually get the values themselves. So I'm
+just getting a little bit of a head start here and I'll get another little
+bit of a head start by adding in two extra methods here. One is a swap method that
+swaps the values of two indices and another one is an insure extra capacity
+method. Now what this does is it checks if the array is full and if so, it creates a new
+array of double that size and it copies all the elements over. And this by the
+way is the basics of how an arraylist operates. Now let's turn to the real code.
+The first method I'll implement is a peek method and this first checks if the array is empty if so
+returns an exception because there's nothing at the front. Otherwise it just returns
+the first element in the array which will always be the minimum element, and
+essentially the root of the heap. The next method we'll do is a pole method. Now what this does
+is actually extract the minimum element and actually so actually removes it from
+the array. So first we'll check if the arrays empty, if so throw an exception. Otherwise I need to actually get the
+value so item is item of 0 then I need to take the very last element in the array
+and move it into the very first element then I need to shrink my array. Or shrink essentiall the size of it. And
+then I need to go and actually re-heapify. So I removed the root element so I
+need to heapify down and I'll go fill this in, this method in shortly. So in this case if we remove the ten, the
+minimum element, it's going to get deleted. Then the 17 is going to get
+moved up to where the ten is, so seeing the array, that's like this, the 17 gets put in here. And then we go
+and adjust the heap to shift elements down as needed. My next method is going to actually add
+an element in here. So first thing I want to do is I wanna make sure there is
+capacity, so I'll call my insure extra capacity method. Then I'm gonna add
+my element into the very last spot so items of size equals this new item then
+increase my size. And then I need to actually heapify up so I need to
+fix the heap looking upwards. Swapping each element with its parent as
+necessary, so in this case if we want to add an element say, 8, we'd add it at the
+very last element and then we'd go and adjust our heap moving things up as
+necessary. Now for the real fun. I need to actually
+implement these heapify methods so heapify up is going to start with the
+very last element added which is that size minus 1 and then it's going to walk
+up as long as there's a parent item and as long as essentially I'm out of order.
+So as long as my parent item is bigger than me then hey, things are out of order,
+so swap my parent index, swap my value with my parent and then walk upwards. So let's walk through this on the 8
+that was inserted. So what we do here is we'll compare 8 to this 15, it's out of
+order so we'll need to swap those values. So 15 goes down here and 8 goes up here
+or on the array it will look like this. Then we compare this 8 to the 10 and then
+that's still out of order, and so we'll go and move the 10 down and swap the 8
+up there and now we've returned to the root, to the heap properties. We have 8 at the top, 10 and 20 below it then 17 and 15 below that. Heapify down is a
+little bit more complicated but it's still quite manageable. First we're going
+to start off with our root element which is at index zero. And then we're going to
+say well as long as I have children, keep walking down and trying to fix up my
+heap. Now I only need to check if there's a
+left child because if there's no left child then there's certainly no right
+child. Then I'm gonna set this smaller child index equal to the smaller of the
+left and the right child so I'm going to take it guess with, set it equal to the left
+child, and then I'm gonna say hey if there's a right child, and my right child is even smaller than my
+left child, small child index should equal my right child. Now what I'm going
+to say, remember I'm looking downwards on the
+heap, so now what I'm gonna say is hey, if items of index, if I'm smaller than the smaller of
+my two children then everything's good, and everything's back in order here and
+I can just exit. If that's not the case then our heap is
+still out of order and then I need to swap my value with my smaller child and
+then move down to my smaller child. I'll just actually move this out here. Alright so that's the basics of how
+heapify down works. Let's walk through this on an example. I'll make this example
+slightly larger so if we do an extract min such that 20, 10 gets removed then
+we remove 10, we replace it with 25. I'll do it on the array too so you can see what's
+going on there. Then we compare 25, the root, and replace it with the smaller of
+its left and right child. So we swap the 25 and the 15, so 25 comes down here, 15
+comes up there, and we can do it down here too. So 15 goes here 25 goes here
+then we compare 25 to 17. It's still out of order since 25 is bigger than
+17 so we do 17 comes up here we swap those and 25 goes down here. So now we
+have a heap again that looks like 15, 17 20, and 25 and as you can see our min
+heap property has been restored. So now that you understand what a heap is and
+how it works, why don't you try out using a heap
+on a new problem. Good luck.

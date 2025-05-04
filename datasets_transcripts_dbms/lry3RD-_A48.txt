@@ -1,0 +1,1 @@
+it seems like no SQL is a positive SQL but that's not true no SQL means not only SQL that means whatever your SQL can do even this can also do but apart from that it can do something additional in simple words SQL can deal with only structured data SQL means structured query language right so SQL can deal only with structured

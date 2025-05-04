@@ -1,0 +1,257 @@
+Hi. I'm Bear. And in this
+video, we'll be walking through some more advanced ERD
+concepts. We'll talk about primary keys, foreign
+keys, and bridge tables. Then we'll go into more detail
+about how to export an ERD into a database management system. And if you're new to ERDs
+or need a quick refresher, we recommend watching our
+first video where we cover ERD entities, attributes,
+relationships, and cardinalities. Otherwise, we'll continue where we left
+off with our simple diagram from the last tutorial. So as
+you can see, we have entities for customer, order, and product with the correct
+cardinalities in between. You'll notice that next to
+each attribute is the word key. This column lets us
+distinguish certain attributes as either primary keys or foreign keys. Let's
+start by learning about primary keys. They're probably easiest to understand
+if we step out of the diagram and into
+the table it represents. Remember, each entity in
+our diagram represents a table within our database. So let's view the customer entity
+as a table with rows, and columns. We've got all these different
+instances of the customer. And if we're Amazon
+or something, we've got millions of customers
+all within this table. Wouldn't it be nice if we
+could use a single trigger to quickly and accurately distinguish
+who's who in this massive list? That's where primary keys
+come in. A primary key is an attribute or field
+that uniquely identifies every record within a certain table. And since a single attribute
+can accomplish all of this, it makes sense that we'd need
+only one primary key per entity. So for this customer table, the primary key is going to
+be a value that makes this customer distinct from
+any other customer. And for one of these
+attributes to qualify, they need to follow a few
+basic rules. First, a primary key has to be unique and
+identify with only one record in our table. Second, it
+needs to be never changing. It'd be pretty difficult to
+keep an accurate record of our customers if we were using an
+attribute that could change at any moment. And finally, a primary key
+needs to be never null. This just means that the value
+can never be left blank. So if we look at a
+specific customer like John here. What data could we use to
+uniquely identify him? Well, we can't rely on names
+because two totally different customers could share the same
+first and last name. Like we have a John Smith
+here, and another John Smith here. But they're two completely
+different customers, so it's not a unique record
+in the table. We can't even rely on address because two separate customers
+could live at the same address, not to mention that customer
+could move homes at any time, thus breaking the rule
+of never changing. A phone number could also
+change leaving us with one remaining record in our table,
+customer ID. By design, any sort of ID is typically
+programmed to increment for each addition to the
+table. For example, when this customer signs
+up, their assigned customer ID three zero zero one six,
+then the next customer signs up, they're assigned three zero zero
+one seven, and so on. We can see how customer ID
+passes all of our rules. John's customer ID will
+completely identify him as a particular instance
+in our database, and that value will never
+be repeated in this table. So we're good to make
+customer ID our primary key. While we're on the topic, here's something
+interesting to think about. Have you ever tried to create
+a username for an account and then later wanted to change
+your username to something else? But then you couldn't because
+the site wouldn't let you. Well, That's probably because your username
+was being used as a primary key that's in the
+site's database. And as we know, primary keys
+can never change. That's how the site is linking
+you the customer to your account. You're not allowed to change
+the primary key because their system relies on it
+for accurate records. Or how about when you try to
+set up a new account and get an error message saying that
+the username has already been taken? Again, this could be happening because
+that username is being used as the primary key
+for someone else, and it's not allowed
+to be repeated. In our example, though, we're just using a randomly
+assigned customer ID number as our primary key because we know
+it will always be unique and never be repeated. So let's jump back into our
+diagram and note this by putting pk for primary key
+next to our customer ID. And while go ahead and clear
+out all this other text to make things a little bit clearer. Now let's apply these same
+rules to figure out the primary keys for our other entities. We'll jump over to the order
+table for order entity and zero in on a specific
+instance. If we look here, we can see that John placed
+an order to ship to this address at this specific time. So
+after looking at the data, what do you think we could
+use as our primary key? We already know that names
+and addresses won't work, and ship date isn't
+going to work either. Two orders could be shipped at
+the exact same time so that's not a unique attribute. This leaves us with order
+number as our primary key. So we'll put a pk next to
+that attribute in our diagram. And finally, we'll look at the
+table our product entity represents. Let's say our customer John
+purchased this product here. A new styling pair of crocs.
+Well, similar to the unique IDs in our other entities, we'll
+use product ID as the primary key for our table. And just
+like that, we have primary keys for each of our entities that
+are unique, never changing, and never null. By now, you've probably noticed
+that I'm using a diagramming software to modify these ERDs. And while you could make these
+changes on pen and paper, it's gonna be much easier
+to use a diagramming application. Today, I'm using Lucidchart, and
+you can too, for free, actually. Just
+click on the link, enter your email address and you
+can follow along with me as we continue to make our ERD. Now that we have our
+primary keys nailed down, we need to talk
+about foreign keys. A foreign key is the
+same as a primary key. It's just located in a
+foreign place. For example, maybe you have primary
+key in one entity, but it'd be really helpful
+to pull that data into another. That's where you
+get a foreign key. And we wanna note these
+foreign keys so we can better understand how our entities
+relate to one another. So let's see how this
+plays out in our diagram. We've already established
+customer ID as the primary key for the customer entity, but that same attribute is also
+over here in the order entity. Why? Because for each order, we want to know exactly
+which customer placed that order. The order entity is
+simply referencing the customer ID from the customer entity. That makes it a foreign key
+here so we'll mark it as such. And we can further show
+this relationship in our diagram by adjusting the relationship to line
+up with the primary and foreign keys. Just move these crow's
+feet to line up the pk and fk attributes. It just helps visually
+reinforce the fact that foreign key in the order entity is
+referencing the primary key of the customer entity. Let's review how this foreign key works
+by looking at it in the order table. So here are all of our orders. If we look at this
+specific order, it has a customer ID of three
+zero zero one six. This is a foreign key because it
+references the primary key in the customer table.
+Because of this, we know exactly which customer
+we're dealing with when we look at this specific order. So John made this order here.
+But if we look farther down, the same customer ID is
+repeated because John placed another order,
+unlike a primary key. A foreign key does
+not have to be unique. It can be repeated
+inside a table. And if John's an avid shopper,
+his customer ID is going to be repeated a lot. Another difference between primary
+and foreign keys is that it's possible to have
+multiple foreign keys in one entity. Let's say
+that for each order, we also want to know what
+product is being sold. We'd add product
+ID to our table, and this is what it would
+look like in our diagram. We just add another
+field. Type in product ID, and since product ID is
+a primary key over here, that makes it a foreign
+key in this entity. Now we have two foreign
+keys in our order table. Now there's also something
+called a composite primary key. Composite primary keys are used
+when two or more attributes are necessary to uniquely identify
+every record in a table. So let's say we created
+a shipment entity. And it's got these
+attributes here. And then let's take a
+look at what the corresponding table might look like in order
+to explain this a little better. Let's say John ordered a
+classic pair of crocs. And then a pair of croots.
+It's all one order, but they're getting sent
+in two different shipments. And when we look at these
+two rows and each of these attributes, We wouldn't be able to rely on any
+single one to give us a unique record. The product number is
+duplicated when someone else buys that same pair of croots. So it's not a unique record
+in this table. An order could be parsed into a couple
+different shipments, like John's was, so order number is
+also not unique. Charge card time would be
+duplicated if someone else pays for their shipment at the exact
+same time and same for packing time and ship date. All not unique. So it doesn't look like any
+of these attributes will give us the primary key
+we're looking for. But what if we took two of
+these attributes and combined them to create a new
+unique value you, like product ID and order number. Take those
+two values for any instance, combine them together and you've got
+a value that won't be repeated. That's a composite primary key.
+Now, the primary key for this shipment is different from the
+primary key for this shipment. You could technically call this
+a compound key because we're combining two foreign keys, but usually people just say
+composite key as an umbrella term. Anyway, jumping
+back over to our diagram, we'll note a composite primary
+key with multiple pk marks. This doesn't mean there
+are now two primary keys. It just means that both of
+these attributes are needed to create a composite primary key. Here are two rules to
+follow when creating composite primary keys. One, use the fewest
+number of attributes as possible. And two, don't use attributes
+that are apt to change because that can make things messy.
+Now, you may be asking, why not just create a shipping
+ID attribute so we don't have to deal with this kind
+of scenario? Well, the answer is that we could, and
+it would be totally valid. In fact, there's actually quite a debate
+as to whether or not composite primary keys should
+ever be used. But ultimately, it all depends
+on the database being built. And if you think there'd be
+a scenario where a composite primary key just
+makes more sense. Something else we should
+talk about are bridge tables. When we're building an ERD, we should be asking ourselves
+if there's anything else that should be recorded
+into the database. For example, there may be times where
+we have two entities connected to each other with more happening
+between them than is currently being shown. That's when
+we use a bridge table. To illustrate this point, we're going to strip down
+our diagram to customer and product. Now, couldn't we create a
+direct relationship between these two entities? I mean, a customer could purchase
+zero or many products, and a product could be
+purchased by zero or many customers. And sure, conceptually,
+that would work. But if we set it up that way, we wouldn't know when a
+customer purchased the product. And we also wouldn't know
+if they purchased the product all at once or if they returned
+at another time to buy more. In fact, there's a lot of
+information we'd be unable to see. This usually occurs when
+we have a many to many relationship, and that's
+when we need a bridge table. Bridge tables allow for
+an intermediary one to many relationship and help us view
+the information that we're lacking. In this example, a bridge table would
+be the order entity. So let's move it back
+into our diagram. Now, we can see how it
+breaks up the mini to mini relationship, and how it provides us with
+the information we were originally missing. And if we wanted to get
+even more specific with our ERD, we could add data types
+for each attribute. This is especially helpful when
+we're planning on doing some programming from our diagram. So we'd use an entity
+shape with three columns, and we'd specify the type of data
+we want on the far right side. For customer ID, we'd
+return an integer. That will give us a number like
+five zero one four two two. And all these other
+attributes will be varchar, meaning we can use
+various characters, and then set a character limit
+in parenthesis like this. For example, the standard phone
+number consists of ten digits, so we'd place the number
+ten in parentheses here. There are several other types of
+data that we won't get into. But just know that we could
+include these in our ERD if we wanted to get more technical. So now we have a lot of
+detail to our ERD. But what are we actually going to do with
+it? Well, like we've mentioned, ERDs are a great way to
+conceptualize and visualize before actually
+building a database. But once we've finished
+building our ERD, we're going to need to
+translate it into a database management system, or DBMS. Typically, we'd have to frequently
+reference this diagram and then manually enter code to
+create the database. Well, that's gonna be a lot of work, and can be extremely time
+consuming. But with Lucidchart, we can export the diagram
+and it will automatically generate the code we need for
+our database. Here, we can see the table
+command with the entity it's referencing. We can also see the attributes
+for this entity with the data parameters that we set. It even shows our
+primary and foreign keys. Then we just specify
+which database management system we're going to be using, copy the
+code, and paste it in. Just like that. Our database is ready
+to go. Conversely, if we already have a database
+that we've created and we wanna visualize it, we can. We'll just click here
+to import the database, and then Lucidchart will
+populate all of our tables. Then as we drag each one out, Lucidchart automatically
+creates the entity with the appropriate attributes,
+primary keys, and foreign keys. Better yet, if we drag
+out another entity, the correct relationship
+will automatically connect between them. That's huge. Lucidchart makes it easy to
+quickly visualize our database, make changes to it, and then export those changes
+back into our database via code. As always, thanks
+for watching the video, and be sure to check out
+our next video where we share even more information about how
+to build ERDs in Lucidchart. And if you're interested
+in learning more ways Lucidchart can help you visualize
+your data, check out training.lucid.co. As
+always, happy diagramming.

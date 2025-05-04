@@ -1,0 +1,47 @@
+I got this question on Twitter Hey 
+live overflow how good should I be   at data structures and algorithms for 
+reverse engineering low level hacking   and all that stuff that's a really good 
+question so let me tell you my opinion this video is sponsored by hackstreet.io if 
+you want to learn hacking web security reverse   engineering and exploitation and all this kind 
+of stuff check out our Discord and our courses   on hex3.io alright so first of all I have to say 
+what does it even mean to be good like how do you   measure good usually in terms of algorithm and 
+data structures you're obviously in a university   or School environment and good that means good 
+grades but it's very difficult to say you need   this great and this is exactly what you need for 
+reverse engineering that doesn't really make sense   also school grades are often about memorization 
+and in the real world you can usually look it up   however generally there's one principle I love 
+to say and that is the more you know the more   you know I also give an example of that if you are 
+able to understand French language that can help   when you are reversing some French malware because 
+there are some maybe some French words and those   French words have a certain meaning and that helps 
+you better understand what the malware maybe is   doing so you never know like what what kind of 
+knowledge is really useful and you can kind of   imagine if you would know everything on the world 
+then of course you would be a very skilled hacker   because you know everything so having heard of 
+different algorithms and data structures can of   course be helpful to recognize them in code and 
+especially in assembly if you know about linked   lists and the concept how that is implemented in 
+memory then it's probably easier to recognize that   in assembly and it turns out I actually have a 
+practical example of that also in one of my videos   a while ago I made this pseudo Series where from 
+start to beginning we basically discover and then   exploit a vulnerability in pseudo the pseudo-edit 
+vulnerability and in episode 10 where we were   developing a tool to find function pointers on the 
+Heap we were looking at the stack Trace in GDB and   there was something I recognized it's something 
+small it's not necessarily important but it helped   me to better kind of understand like what what 
+even are we looking at here and it's here I'll   be fine and it says here it's a struct rb3 so 
+this is probably a red black tree which is like   something you learn about maybe in University so I 
+feel like that made it a bit easier for me it was   not necessary and obviously you don't need to be 
+an expert or anything like this but the more you   know the more you know also stack smashing was 
+chiming in and sharing his opinion as well and   he said in his opinion algorithms are not that 
+important but data structures is very important   for reverse engineering but then also that 
+are two color answered that some familiarity   with most common algorithms like searching and 
+sorting algorithms can be very useful you know   if you find a function that does some crazy 
+stuff and you realize oh it's just sorting   these array of strings or something like this 
+then that also helps a lot so it can help you   save time recognizing common data structures and 
+various trees and graphs but yeah it's difficult   to say like how good do you then know algorithms 
+and data structures is difficult to you know rank   this hopefully this motivates you to pay attention 
+in data structures and algorithms these were one   of the more you know boring classes I guess in 
+University they feel very dry and theoretical but   I mean you don't have to go for the best grade 
+or anything like this but having heard of all   the different algorithms and data structures it 
+definitely helps maybe you recognize them like I   recognized rb3 red black tree in the code and 
+then you can again read up on it how it works   and so having generally a good understanding 
+and knowing what you don't know like knowing   what exists out there that already will help you 
+a lot if you're looking for more videos about   hacking and I.T security and computer science yeah 
+check out some of these videos here and of course   check out hexfree.io if you are interested in some 
+online courses on web security reverse engineering   and all that kind of stuff we also have a 
+great Discord community so go check out hex3.io

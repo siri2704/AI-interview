@@ -1,0 +1,95 @@
+Hi. My name's Bear, and
+today we'll be learning all about Entity Relationship
+Diagrams or ERDs. We'll start off with
+a high level overview, and then we'll dive in
+and create one together complete with Entities, Attributes, Relationships,
+and Cardinalities. By the end of this video,
+you'll be able to create an entire ERD from scratch. Have you ever wondered why
+you get error message telling you that your ideal social media
+handles already been taken? Or, maybe you're curious how an
+online store like Amazon keeps track of so many
+different orders, customers, and products. The answer to these questions lies
+within the creation of a database. A database is a
+collection of information that's organized for easy storage, management,
+updates, and retrieval. As you can imagine, there's a lot of moving
+information in a database and understanding how each of these
+elements interacts with one another can be
+difficult to grasp. ERDs provide engineers with a
+visual way to understand how this information is related
+and how it works together. So, we make one? Today, I'm gonna be using
+Lucidchart, and you can too for free, actually. By clicking
+on the top right corner, you can access Lucidchart's
+website, enter your email address, and have a free
+account in just a few seconds. That way you can follow along
+with me and create your own ERDs in the future. Okay. So in order to build ERD, we need to better
+understand its individual components. And this starts with entities. An
+entity is an object, like a person, place, or thing,
+that's tracked in the database. For example, if we were to
+buy something on Amazon, say a rockin pair of Crocs, "These aren't the droids
+we're looking for." An entity could be the
+customer, the order, and of course our Crocs, the product. Now, each of these entities
+will have attributes, which are properties or
+traits. In this case, under the customer entity, we
+have customer ID, first name, last name, street, city, zip, and phone. It's important to note that
+entities in your database will always be depicted as rows
+and that attributes will always be depicted as columns. And now that we have these
+different entities and attributes on the screen here, we can talk about the
+relationships that exist between them. Relationships describe how
+these entities will interact with each other. So when I
+draw a line between these particular elements, I'm showing that there's some
+sort of interaction or connection. And now that we
+have our relationships in place, we'll see an interesting
+notation attached to our lines. This is called cardinality. Cardalities help define the
+relationship in a numerical context. Particularly within
+minimums and maximums. For example, this list shows some
+of the different cardinalities that can appear in an ERD. We
+have one, many, one and only one, zero or one, one
+or many, and zero or many. And if this isn't
+making sense yet, don't worry. We'll walk through a
+few examples to help piece everything together. Let's start by talking
+about the relationship and cardinality that exists
+between customer and order. The best way to do this is
+to think about it logically. So we should ask
+ourselves two questions. What is the minimum number
+of orders that a customer could have? And two, what is the
+maximum number of orders that a customer could have? Well,
+a customer could exist, but he or she could have
+zero orders. So to show that, will have that zero sign. Now we need to think
+about the maximum. And as you've probably assumed, a customer could have
+an infinite number of orders, especially when
+it comes to Crocs. You can never have just one
+pair. So to show that, we'll use this zero or mini
+crows foot notation. Now, let's talk about the minimum
+and maximum relationship between orders and customers. We'll start by applying
+the same logic. So we'll ask ourselves what
+is the minimum amount of customers that an order may have. And what's the maximum amount of
+customers that an order may have? A specific order can have
+one and only one customer. Imagine the confusion that
+would come if the same specific order had a lot of customers.
+So in this case, there can be one and only one number of
+customers to order. And we show that using this sign here. Now let's talk about the
+relationship or cardinality between orders and products. We'll ask ourselves
+a similar question. A certain order can
+have how many products? Well, for an order to exist,
+it has to have one product, but a lot of different products
+can be part of that order. So to show that in our diagram,
+we'll change this notation. Now we'll ask ourselves
+that question in reverse. A product can be a part
+of how many orders. Well, a product could be a part of
+no orders, but it could also be a product of many orders. So
+we're going to use this zero or mini notation on our diagram.
+And just like that, we've built an entire entity
+relationship diagram. And even though it's
+a simple example, you should now have the basic
+skills needed to build a complex one. And not only that, but because you
+used Lucidchart, you also have the option to
+export this diagram directly into a database. Using the export feature, boosted chart can automatically
+generate code that can be imported into the database
+management system that you're using, helping you be
+more efficient than ever. As always, thanks for watching. And be sure to check out
+our next video where we dive into the complexities of ERDs
+by discussing things like Primary keys, Foreign keys,
+and Bridge tables. And if you're interested
+in learning more ways Lucidchart can help you visualize
+your data, check out training.lucid.co
+Hope to see you there!

@@ -1,0 +1,36 @@
+ Hello friends, welcome to Gate Smashers. In this video, we are going to 
+discuss the definition of algorithm.  So what is algorithm? It is a finite set of
+ steps to solve a particular problem.  If you want to define algorithm in the simplest way,  then algorithm is actually a finite number of steps to solve a particular problem.  Let's say I have a problem of sum of two numbers.  Now I can write sum of two numbers in C program also. I can write its code in multiple languages like java or python  But what I actually have to write here is that in a layman language, I have to write a blueprint  that rather than going into a particular programming language,  I want to write behind the scene.  like I wrote here step 1 read A, step 2 read B, step 3 let's say sum is equal to A, plus B,
+ step 4 what I wrote? Print sum.  Means my problem is being solved in these 4 steps. What can I do further in C language or any programming language?  We can convert it and execute it. So here the basic definition of algorithm is finite number of steps.  Remember here that the characteristic of algorithm, first it should be containing the finite number of steps.  Means you can also say instruction instead of steps. Sometimes you see instructions. 
+So instruction is also kind of the same.  What work you have to do actually. Finite means that number of instructions should also be finite.  And if I talk about an instruction,  then in executing the instruction, 
+finite time should be taken. Means let's say if I write while 1,  let's say int A=1, while1
+ and inside that A=A+1.  Now here what I have is, if I write while 1 here, then obviously what will happen?
+ It will get stuck in infinite loop.  This statement will execute infinite number of times.  So whenever you are writing any 
+program or any algorithm of this type,  then where is it going? It is going to infinite.  So you don't have to write any algorithm of this type. It should contain finite number of instructions.  And each instruction should take finite time to get executed.  If I talk about the second one, the second characteristic that there should not be ambiguity. 
+Means it should be unambiguous.  Ambiguity means that let's say
+ you wrote instruction multiple times  or let's say you wrote the symbol wrong.  Instead of plus, if you are writing any other symbol then you don't have to write symbols of this type.  It should contain the relevant symbols.  It should contain the unambiguous instructions.  Then we have analysis. Whenever you talk about algorithm, 
+then we will always talk about analysis.  What is analysis? It is a process of comparing two algorithms.  Means I have multiple algorithms.  Like if I talk about searching, then 
+I have binary search and linear search.  Let's talk about sorting. I have heap sort, 
+quick sort, merge sort, radix sort, counting sort.  There are multiple sorting algorithms. If I want to compare them, which one is better, then I need some constraint for that.  I need some parameter. That parameter is  time, space, number of registers, network bandwidth.  Means how many components are being used here. But out of all these parameters, the most used is time and space.  Means you are comparing two algorithms 
+based on the time and space they are using.  So analysis is the most important part of the algorithm  that how you are taking out 
+time complexity and space complexity.  Now we do analysis in two ways. Either priory or posterior.  Priory means analysis before execution  and posterior means analysis after execution.  So whenever we do analysis before
+ execution , then it is independent.  Independent of a particular hardware. Let's say if we write code here, main and I have int a, b.  And let's say I have taken sum1 here. I have done scanf here, values of a and b.  I have done sum1 as a plus b. 
+And printf the value of sum1.  I have written simple values here, number of lines. Now whenever you are executing this program.  Now in executing it, definitely it will take some time.  Now when you execute it, then after 
+executing means posterior analysis.  So you got the output but you got time. Let's say 0.4 seconds.  Now whenever there will be posterior analysis,  it will give you a fixed amount of 
+time and that time is 0.4 seconds.  But if I change this whole program,
+ let's say if I change my hardware,  let's say I take it from Pentium 4 to I3 or I7.  So this time will be 0.3, 0.2, 0.1. Means it is decreasing.  So whenever you do posterior analysis here, it means that it is dependent on a particular hardware. What we are talking about in the prior, 
+we are just finding iterations.  That how many times each instruction is running, how much is its frequency, how much is its magnitude,  how many times the function is 
+calling itself, we calculate it like this  Like if we talk about this, I did 
+not convert it into any program,  instead of posterior, if I do it in prior analysis,  then I am writing here, read A. Now how much time will it take to do read A?  It will take a constant amount of time. Let's say how many times it will be executed.  Instead of time, you calculate
+ how many times it will be executed.  Iteration, so obviously it will be executed once.  How many times will it be? 
+Once, this one time, this one time.  So you can write this, its time complexity is 4. No need to put second or millisecond.  You are just calculating iteration.  If we talk about any factorial, let's say factorial of n.  Now factorial is recursion based. So factorial will call in this way n-1, n-2, n-3.  So how many times the function is calling
+ itself, you have to write that count.  So whenever we do prior analysis, 
+it gives me an approximate value.  And whenever we do posterior, it gives me exact value. But who do we have to go on?  On approximate or prior value. What is its reason?  It is independent. There is no dependency on hardware. 
+What I have here? Dependency!  And due to the dependency
+ uniform value will not come.  Always the different values will come. 
+Because if you do good hardware,  if you run this program on super computer, 
+then 0.00001 second will come.  So that means whenever I do good 
+hardware, my time will keep changing.  So now there is uniform value,
+ this uniform value is coming here.  But it contains always the uniform value.
+ What we will do in this? Let's say I will take out the worst case in this.  How much answer is coming in the worst to worst case?  How much is coming in the best case? 
+And it will give me approximate value.  And whenever we represent it, to represent it, I have asymptotic notations.  Big O notation, big omega, theta, small o and small omega.  Which we will discuss in the next video. Thank you.

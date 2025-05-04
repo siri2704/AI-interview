@@ -1,0 +1,141 @@
+• 
+• 
+• 
+
+Keys are one of the basic requirements of a relational database model. It is widely used to identify the tuples(rows) uniquely in the table. We also use keys to set up relations amongst various columns and tables of a relational database.
+
+
+### Why do we require Keys in a DBMS?
+We require keys in a DBMS to ensure that data is organized, accurate, and easily accessible. Keys help to uniquely identify records in a table, which prevents duplication and ensures data integrity.Keys also establish relationships between different tables, allowing for efficient querying and management of data. Without keys, it would be difficult to retrieve or update specific records, and the database could become inconsistent or unreliable.
+
+
+### Different Types of Database Keys
+
+### Super Key
+The set of one or more attributes (columns) that can uniquely identify a tuple (record) is known asSuper Key. For Example, STUD_NO, (STUD_NO, STUD_NAME), etc.
+
+• A super key is a group of single or multiple keys that uniquely identifies rows in a table. It supports NULL values in rows.
+• A super key can contain extra attributes that aren’t necessary for uniqueness. For example, if the “STUD_NO” column can uniquely identify a student, adding “SNAME” to it will still form a valid super key, though it’s unnecessary.
+
+Example:
+
+Table STUDENT
+
+
+```python
+Consider the table shown above.STUD_NO+PHONE is a super key.
+```
+Relation between Primary Key, Candidate Key, and Super Key
+
+Now Try Questions discussed inNumber of possible Superkeysto test your understanding.
+
+
+### Candidate Key
+The minimal set of attributes that can uniquely identify a tuple is known as acandidate key. For Example, STUD_NO in STUDENT relation.
+
+• A candidate key is a minimal super key, meaning it can uniquely identify a record but contains no extra attributes.
+• It is a super key with no repeated data is called a candidate key.
+• The minimal set of attributes that can uniquely identify a record.
+• A candidate key must contain unique values, ensuring that no two rows have the same value in the candidate key’s columns.
+• Every table must have at least a single candidate key.
+• A table can have multiple candidate keys but only one primary key.
+
+Example:
+
+
+```python
+STUD_NO is the candidate key for relation STUDENT.
+```
+Table STUDENT
+
+• The candidate key can be simple (having only one attribute) or composite as well.
+
+Example:
+
+
+```python
+{STUD_NO, COURSE_NO} is a compositecandidate key for relation STUDENT_COURSE.
+```
+Table STUDENT_COURSE
+
+
+### Primary Key
+There can be more than one candidate key in relation out of which one can be chosen as the primary key. For Example, STUD_NO, as well as STUD_PHONE, are candidate keys for relation STUDENT but STUD_NO can be chosen as theprimary key(only one out of many candidate keys).
+
+• Aprimary keyis aunique key, meaning it can uniquely identify each record (tuple) in a table.
+• It must haveunique valuesand cannot contain anyduplicatevalues.
+• Aprimary keycannot be NULL, as it needs to provide a valid, unique identifier for every record.
+• A primary key does not have to consist of a single column. In some cases, acomposite primary key(made of multiple columns) can be used to uniquely identify records in a table.
+• Databases typically store rows ordered in memory according to primary key for fast access of records using primary key.
+
+Example:
+
+
+```python
+STUDENT table -> Student(STUD_NO, SNAME, ADDRESS, PHONE) , STUD_NO is a primary key
+```
+Table STUDENT
+
+
+### Alternate Key
+Analternate keyis any candidate key in a table that isnotchosen as theprimary key. In other words, all the keys that are not selected as the primary key are considered alternate keys.
+
+• An alternate key is also referred to as asecondary keybecause it can uniquely identify records in a table, just like the primary key.
+• An alternate key can consist ofone or more columns(fields) that can uniquely identify a record, but it is not the primary key
+• Eg:- SNAME, and ADDRESS is Alternate keys
+
+Example:
+
+
+```python
+Consider the table shown above.STUD_NO, as well as PHONE both,are candidate keys for relation STUDENT butPHONE will be an alternate key(only one out of many candidate keys).
+```
+Primary Key, Candidate Key, and Alternate Key
+
+
+### Foreign Key
+Aforeign keyis an attribute in one table that refers to theprimary keyin another table. The table that contains the foreign key is called thereferencing table, and the table that is referenced is called thereferenced table.
+
+• Aforeign keyin one table points to theprimary keyin another table, establishing a relationship between them.
+• It helpsconnect two or more tables, enabling you to create relationships between them. This is essential for maintaining data integrity and preventing data redundancy.
+• They act as a cross-reference between the tables.
+• For example, DNO is a primary key in the DEPT table and a non-key in EMP
+
+Example:
+
+
+```python
+Refer Table STUDENT shown above.STUD_NO in STUDENT_COURSE is aforeign key to STUD_NO in STUDENT relation.
+```
+Table STUDENT_COURSE
+
+It may be worth noting that, unlike the Primary Key of any given relation, Foreign Key can be NULL as well as may contain duplicate tuples i.e. it need not follow uniqueness constraint. For Example, STUD_NO in the STUDENT_COURSE relation is not unique. It has been repeated for the first and third tuples. However, the STUD_NO in STUDENT relation is a primary key and it needs to be always unique, and it cannot be null.
+
+Relation between Primary Key and Foreign Key
+
+
+### Composite Key
+Sometimes, a table might not have a single column/attribute that uniquely identifies all the records of a table. To uniquely identify rows of a table, a combination of two or more columns/attributes can be used.  It still can give duplicate values in rare cases. So, we need to find the optimal set of attributes that can uniquely identify rows in a table.
+
+• It acts as a primary key if there is no primary key in a table
+• Two or more attributes are used together to make acomposite key.
+• Different combinations of attributes may give different accuracy in terms of identifying the rows uniquely.
+
+Example:
+
+
+```python
+FULLNAME + DOB can be combinedtogether to access the details of a student.
+```
+Different Types of Keys
+
+
+### Conclusion
+In conclusion, the relational model makes use of a number of keys: Candidate keys allow for distinct identification, the Primary key serves as the chosen identifier, Alternate keys offer other choices, and Foreign keys create vital linkages that guarantee data integrity between tables. The creation of strong and effective relational databases requires the thoughtful application of these keys.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• GATE CS
+• DBMS-Relational Model
+

@@ -1,0 +1,100 @@
+I have interviewed at all these companies
+and received offers from Google, Meta, Amazon and some others. As a naive beginner, I learnt Data Structures
+like Segment Trees, B-trees and Bloom filters. After embarrassing myself in many many coding
+interviews, I realized that none of this complex stuff is really asked in the interviews. You see, most good online courses on Data
+Structures are taught by professors of some of the best universities. And these courses are designed to be as comprehensive
+as possible. These courses never claim to be tailored towards
+helping you crack interviews for programming jobs. But since there aren’t many courses created
+by industry experts on the subject, we are left with no choice but to use these very
+advanced university level courses that might not be best suited for coding interviews. To make your life a little easier, I’ll
+share the Top 5 most asked Data Structures from my own interviewing experience. I will also tell you when exactly to use these
+data structures. Let’s do this. At number 5, we have Heap. Heap is a tree based data structure that is
+used to store a partially sorted set of elements. What does that even mean? Let’s examine this tree-like structure closely. If you pick any element or node in the tree,
+it’s going to be greater than or equal to both its children. This kind of heap is called a Max heap. What this means is that the root or the topmost
+node of the tree is always the maximum of all the elements. This type of heap is called Max heap. We also have a Min heap where every element
+is smaller than or equal to both the children and the root node is the minimum of all the
+elements. Now the heap I showed you might look like
+a tree but it’s actually implemented using an array. So, the heap in the example can be written
+as this array which is partially sorted. For an element at index n, its children can
+be found at the index 2n + 1 and 2n + 2. Any array can be converted into a heap by
+using an algorithm called Heapify. I will not go into the details of Heapify
+but I just want to make sure you know all the important concepts for every data structure
+that we’ll discuss today. So, when do we use a heap? The most important property of a heap is that
+it makes getting the maximum or minimum of all the elements very easy. So, whenever you need quick access to max
+or min, think about Heap. For example, we can use a heap to implement
+Priority Queues. A Priority Queue is a data structure where
+each element has a priority or score associated with it. And when we remove an element from this data
+structure, we get the element with highest priority or score first. A Heap is the perfect candidate to achieve
+this. Other famous algorithms where Heaps show up
+are HeapSort, Dijkstra’s algorithm and Median maintenance for a stream. Please read about all these concepts yourself. At number 4, we have a Binary Tree. Each element or Node of the tree stores a
+value and links to its left and the right child. The topmost node of the tree is called root
+node and the bottommost nodes are called leaf nodes. Binary trees are used in database indexing,
+sorting algorithms and decision trees etc. All of that theory is fine. But when should you really be thinking about
+binary trees in a coding interview? Well, it’s very simple. The interviewer will ask you to think about
+a binary tree herself. Binary tree questions are usually like “Given
+a binary tree, do this”. So, you rarely have to think about whether
+you need a binary tree to solve a particular problem. But, there are two very important things that
+you need to know about Binary trees. Number 1, Binary trees are a perfect candidate
+to use recursion. For those who do not know, in a recursive
+algorithm, a function calls itself with a smaller input value and uses the result to
+return its output. Most binary tree problems can be solved using
+recursion. Number 2, You also need to know different
+ways to traverse a binary tree. Traversal is nothing but the process of visiting
+all the nodes of a tree. A few popular types of traversals that you
+should read about are: Pre-order, Post-order, In-order and Level order traversals. A few popular binary tree problems are Lowest
+common ancestor, left view of the tree and maximum path sum. At number 3, we have a HashTable or HashMap. HashMap is a data structure that provides
+fast access to data based on a key. When you provide a key-value pair to a hashmap,
+a hash function is used to map the key to a unique index in an array and the value is
+stored at that index. For now, you can think of a hash function
+as a black box that takes a key as an input and gives an index as the output. If this index already contains a value, multiple
+values can be stored using a list at this index. Enough about the theory, when should you think
+about a HashMap in an interview? While solving the problem, if you feel the
+need to get a particular information quickly without doing much work, you should think
+about using a HashMap to store this information. For example, going through an array, you want
+to find the index of another number in the array that can be added to the current number
+to make the total sum equal to 100. All you want is the index of 100 - the current
+number in the array quickly without doing a lot of work. If you have a hashmap that contains all the
+numbers as key, their index as value, you can quickly look up the index of 100 - current
+number. But here is one thing that you should be very
+careful about when using Hashmaps. Quick lookups in Hashmaps come at the cost
+of using extra space. And this might mean that your solution is
+suboptimal. So, after you have found a solution that uses
+a hashmap, you should always be thinking if there are better solutions that don’t use
+the extra space used by a Hashmap. It’s not always possible to achieve that
+but you should always try. At number 4, we have a Stack. I will also include Queues here because they
+are very similar to Stacks. Stack is a data structure that supports 2
+main operations: Adding an element which is also called pushing and removing an element
+which is also called popping. In a Stack, when you remove or pop an element,
+you get the last element that is added to the stack. Last in First Out. Moving on to the Queue, adding an element
+on Queue is also called Enqueuing and removing is called Dequeuing. When you remove or deque an element from a
+queue, you get the first element that was added to the queue. First in First Out. Under the hood, both Stack and Queues are
+implemented using Arrays or Linked Lists. I highly recommend reading about Linked Lists
+on your own. Moving on, a more important question that
+we still have not answered is “When to think about a Stack or Queue in a coding interview”? To be honest with you, Stacks or Queues are
+the hardest data structures to think about as it’s not obvious when to use them. Anyway, I will try to share a few tips using
+the patterns I have seen. Wherever you have some previously seen values
+and you know you will need the last seen value first, use a Stack. For example, in this very hard problem where
+you need to calculate a math expression, you will be going into these nested brackets. And you need to keep track of what the sum
+was in the parent bracket before you entered the current bracket. Since you only care about the sum in the parent
+bracket, you should think about using a Stack here. Now I know that this explanation is not super
+clear. But I just want to give you examples to think
+and read about. Another very interesting question that uses
+a Stack is Largest Rectangle Histogram. I highly recommend you read about both these
+problems. Moving on to the top Data Structure on the
+list. At number 1, we have Graphs. Many difficult problems asked in coding interviews
+use graphs. A graph is a data structure that contains
+a set of vertices and edges that connect these vertices. When the edges of a graph have a direction,
+it’s called a directed graph. Otherwise, it’s called an undirected graph. Wherever you spot relationships between different
+entities in a coding problem, you should be thinking about graphs. For example, if you are given bus routes that
+go through different bus stops. And you need to find a route from stop number
+15 to stop number 12 with the minimum number of bus changes. You should be thinking about Graphs because
+there is a clear relationship between entities Bus, Bus Stop and Route. Now that you know when to think about the
+graphs, I want to tell you a few important graphs related concepts that you should read
+about. First is Graph search. Some famous graph search algorithms that you
+should read about are Depth First Search, Breadth First Search and Dijkstra’s algorithm. The last 2 algorithms that I mentioned are
+used to find the shortest path between 2 nodes on the graph. I also recommend reading about topological
+sort and how to find a loop in a graph. As you might have already observed from this
+video, knowledge of data structures will not take you very far if you don’t know different
+algorithms associated with them. If you want to know the top 5 algorithms from
+all the interviews I gave, watch this video. My name is Sahil and I will see you in the
+next one.

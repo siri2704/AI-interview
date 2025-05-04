@@ -1,0 +1,148 @@
+Every programmer has ran into at least one
+sorting algorithm at one point in their career. Today, I'm going to easily
+explain ten of the most popular sorting algorithms,
+as well as the pros and cons of each. Let's go bubble
+sort is one of the most popular sorting algorithms,
+probably because it's the easiest. Bubble sort has an index
+that goes to the entire list. If the number is on is larger than the next item,
+it switches them and then moves forward and then repeats this until every single
+item in the list has properly been solved and understandably,
+Bubble sort has terrible performance and is only ever used to teach
+how sorting algorithms work. so algorithms are usually determined
+by time and space complexity. No, Einstein, not that time in space. Meaning what's the best and worst case
+scenario of how fast it can go, as well as the amount of space
+it consumes. so the worst case for bubble sort
+as big O of and squared while the best case is big O of n here's
+what that means in English and is universally understood as the number of items in the list
+you want to sort list array. Sorry, my python is showing. In our best case scenario,
+the array is already sorted so we need only one loop through them all
+to determine that. But on the worst case scenario,
+we would have to exponentially do an operation through this array
+in order for it to be sorted. meaning that if there were five items
+needing to be sorted, we would have to do over 25 operations
+in order for it to be sorted. So do yourself a
+favor and just skip this one Selection saw is known as an in-place comparison sorting
+algorithm. And it's actually fairly easy. This algorithm divides the unsorted array
+into a sorted sub list, which starts empty, and the remaining items to store,
+which is all of it for now. The algorithm then goes one by one over
+the unsorted array, looking for the smallest number once the array has been completely
+looked over this iteration, it then puts the smallest number
+at the end of this sub list. This happens until all elements are gone
+and the array is fully sorted. So selection
+sort has a worst case of big O and square as well as a best case
+scenario of big O and squared consistency, meaning just like bubble saw
+selection saw is not ideal at all and by the looks of it, arguably worse
+right? Well, selection sort always seems to
+outperform bubble sort in most scenarios, but there's better choices.
+So let's move forward so insertion store is very similar
+to selection store. this sorting algorithm does one at a time
+by constantly comparing. Here's how it works
+insertion sort like selection. So it creates two arrays,
+one sorted and one unsorted. It goes through each element, one by one
+and the unsorted array with the element that is on. It determines where in the sorted list
+the element belongs to by iterating over each element
+to see if the number is between them. now the worst case
+scenario is big O and squared, while the best case is a big O
+and the thing with insertion saw is that it's been implemented in C++
+with only three lines of code. and what's funny is that
+this is a sorting algorithm that you use when you're holding up a bunch of cards
+and you need to sort them. so for very small list,
+this might be a great option. But when you're looking big, no, Merge Sort is a really popular and a really effective comparison
+based sorting algorithm. Merge Sort fits in a category You'll see a lot in this video
+under the divide and conquer algorithms. First, take the unsorted array
+and divide it into the smallest unit, which is usually just one element. Then you compare each element with the
+array next to it And Saw and merge sort list continue until you have one
+array that is completely sorted. Merge Sort has a worst case
+performance of Big O and Log n. Here's what that means. And of course represents
+the amount of numbers in our list. Log n represents
+the amount of times and is divided. So if our unsorted array is 16
+then log n would be four. Since we can divide 16 down
+to one and four iterations. and best case is omega n log n, meaning
+it doesn't get faster than this. Essentially whether your list is a bit
+sorted already or completely random. Merge Sort
+takes about the same amount of time to do its job,
+making it reliably efficient. But where are these divide and conquer
+algorithms? Really excel
+is the ability to do things in parallel since things are being split into many,
+many, many sub lists, dividing, sorting and then merging
+can exponentially make things faster. actually a really awesome algorithm. QuickSort
+is also one of the most popular algorithms that also uses the divide and conquer
+sorting strategy programing languages like JavaScript, Ruby
+and PHP use quicksort and their standard library features. Is that a flax or so quicksort works
+similar to merge sort, but requires something called a pivot
+in the unsorted array. Pick a number to be your pivot. This could be the first number,
+the last number or the middle number. The number that is chosen as the pivot is
+then used to compare all values into one of each list less than or equal
+to the pivot or more than the pivot. A pivot point is then chosen within the newly
+created list and do another comparison. If it's greater or smaller, once
+it does this recursively to all sub arrays
+and is that considers sorted. So the worst case is a big O and squared, while the best case is big O and log n but
+as you can probably guess, getting that pivot is an extremely important factor
+in the performance of this algorithm. So some do the first middle
+or last element, others just do it randomly and then others choose the minimum of three small samples
+in order to get a general idea. Otherwise, quicksort is coded heap sort is another comparison
+based algorithm also known as selection sort,
+using the right data structure. So yeah, but first let's talk about the
+heap data structure and computer science. Heap is a tree based data structure
+where all levels are filled except the lowest and is filled
+from the left to right. often used in a priority queues. Max heap is the same concept,
+but where the highest numbers start at the top and lower numbers
+are pushed down and this data structure is used all the time to give fast operations
+as well as a great priority management. Okay, so here's how Heap sought works. Heaps sort will take an unsorted array and then start building a max heap
+and a process called heapify. know very creative. This process will constantly validate if the tree is following proper guidelines
+for how a max heap works. Once the tree is built, the top elements,
+which is with the element at the end, the heap is then rebuilt
+and the numbers switch again. Rinse and repeat until sorted. And this means that the worst and best
+case scenario is a big O and log n almost exactly like insertion sort,
+but doesn't do linear scan of unsorted numbers. Instead using the data structure,
+it provides. okay. That was a lot of explaining. Ok so Counting Sort is kind of hilarious. So here's how it works. Counting sort consists of three arrays
+the unsorted array, the counting array, also known
+as a collection, and the output array. First,
+we defined the maximum value in the array. This defines
+the size of the counting array. You iterate over the unsorted array
+and for each element you add to the count in the counting array. We then calculate the sum of each number
+to the number to the right sequentially. These numbers
+represent the amount of numbers before it. Then we go in
+reverse order in the input array where we insert in the index that is
+specified by the value of the number. Then subtract by one repeat
+until everything is sorted. So the worst case scenario is a big O and plus K
+work is the range of the smallest number and the largest number It's a funny one,
+but sadly it only works on integer values. You can't use it to sort
+colors or names, whatever. saw is an in-place comparison algorithm that is a lot like insertion
+sort by on steroids. It works by using intervals. This starts with the length of the era
+divided by two. We then compare the first of each array
+within the given interval, If the first number is larger than the second,
+it swaps this array then looks like this. We then divide our interval in half again
+with four elements per sub list. We iterate over and sort each
+When interval hits one, we use insertion. So in order to sort the whole array. so the best scenario is big O and log. And while the worst case
+scenario is a big O and squared and the reason why this goes so fast
+despite using insertion sort is because it creates a partially sorted array
+before it does that final sort, Tim Sort was made in 2002 and is still being used to this day
+in Python. Well, except for 3.11 plus Tim separates an array into small sub
+arrays called runs. These runs are then sorted using insertion
+sort. Once all the runs have been sorted, it
+then starts to use merge saw on the two smallest arrays. After those have been sorted, it takes the next run and source it
+into the merged array. Rinse and repeat
+until everything has been sorted. So Tim saw it has an average performance
+of big O and log n and Tim saw. It works really fast
+because it gives insertion sort and Merge Sort a partially sorted
+or a small array to work with. also the inventor of Tim, saw
+it named after himself Tim Peters that's like the biggest
+flex of all time. Come on, So Radix Sort works a lot like counting saw,
+except it's a little bit weird. Radix Sort starts looking at the last digit in the array
+and then sorts it by that number. It then looks at the number
+before the last analyze number and then uses that
+to sort the array again. And if during an iteration a number is not
+present, it just treats it like a zero. It keeps doing this over and over and over
+again until the array is fully sorted and the time complexity for it
+saw as a big sorry one second D times and a plus B D is the amount of numbers
+in the largest number and is the number of elements and B
+is the base of the numbers being used. So ten will represent 0 to 9. just like a lot of the algorithms
+we've already talked about, Radix Sort can be used in parallel to go
+even faster and fun fact. Radix Sort is old and I mean really old,
+like around 1887 old. It was also used in the old IBM
+punch card machines that go all the way back to the 1920s. me know in the comments
+if you want me to go a little bit more in depth on these algorithms, Let me know what concept you want me
+to easily explain on this channel. if you're interested, I have a video where I get 40 APIs
+you should use for your next project, as well as a video where I give $10,000
+to the worst training I've ever built.

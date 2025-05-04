@@ -1,0 +1,117 @@
+• 
+• 
+• 
+
+TheHAVINGclause in SQL is used to filter query results based on aggregate functions. Unlike theWHEREclause, which filters individual rows before grouping, theHAVINGclause filters groups of data after aggregation. It is commonly used with functions likeSUM(),AVG(),COUNT(),MAX(), andMIN().
+
+In this article, we will learn the concept of the HAVING clause, and its syntax, and provide several practical examples
+
+
+### What is the SQL HAVING Clause?
+The HAVING clause is used to filter the result of theGROUP BYstatement based on the specified conditions. It allows filtering grouped data usingBoolean conditions(AND,OR). It was introduced because theWHEREclausecannot be used with aggregate functions. Similar toWHERE clause, it helps apply conditions but specifically works withgrouped data. When we need to filter aggregated results, theHAVINGclause is the appropriate choice.
+
+Key Features of the HAVING Clause
+
+• Used to filter grouped data based on aggregate functions.
+• Works withBoolean conditions(AND,OR
+• Cannotbe used withoutGROUP BYunless an aggregate function is present.
+• Must be placedaftertheGROUP BYclause andbeforetheORDER BYclause (if used).
+• Helps generatesummary reportsfrom large datasets.
+
+Syntax:
+
+SELECT column_name, AGGREGATE_FUNCTION(column_name)FROM table_nameGROUP BY column_nameHAVING condition;
+
+Here, the function_name is the name of the function used, for example, SUM(), and AVG().
+
+
+### SQL HAVING Clause Examples
+Here first we create a database name as “Company”, then we will create a table named “Employee” in the database. After creating a table we will execute the query.
+
+Query:
+
+
+```python
+-- Create the Employee table with appropriate data typesCREATE TABLE Employee (EmployeeId int,Name varchar(50),Gender varchar(10),Salary int,Department varchar(20),Experience int -- Changed to int for years of experience);-- Insert multiple rows into the Employee table in a single queryINSERT INTO Employee (EmployeeId, Name, Gender, Salary, Department, Experience)VALUES(5, 'Priya Sharma', 'Female', 45000, 'IT', 2),(6, 'Rahul Patel', 'Male', 65000, 'Sales', 5),(7, 'Nisha Gupta', 'Female', 55000, 'Marketing', 4),(8, 'Vikram Singh', 'Male', 75000, 'Finance', 7),(9, 'Aarti Desai', 'Female', 50000, 'IT', 3);SELECT * FROM Employee;
+```
+Output:
+
+
+
+
+### Example 1 : Using HAVING to Filter Aggregated Results
+This employee table will help us understand the HAVING Clause. It contains employee IDs, Name, Gender, department, and salary. To Know the sum of salaries, we will write the query:
+
+Query:
+
+
+```python
+SELECT Department, sum(Salary) as SalaryFROM EmployeeGROUP BY department;
+```
+Output:
+
+
+
+Now if we need to display the departments where the sum of salaries is 50,000 or more. In this condition, we will use the HAVING Clause.
+
+
+```python
+SELECT Department, sum(Salary) as SalaryFROM EmployeeGROUP BY departmentHAVING SUM(Salary) >= 50000;
+```
+Output:
+
+
+
+
+### Example 2:Using HAVING with Multiple Conditions
+If we want to find the departments where the total salary is greater than or equal to $50,000, and the average salary is greater than $55,000. We can use the HAVING clause to apply both conditions.
+
+Query
+
+
+```python
+SELECT Department, SUM(Salary) AS Total_Salary, AVG(Salary) AS Average_SalaryFROM EmployeeGROUP BY DepartmentHAVING SUM(Salary) >= 50000 AND AVG(Salary) > 55000;
+```
+Output:
+
+
+### Example 3:Using HAVING with COUNT()
+If we want to find departments where there are more than two employees. For this, we can use the COUNT() aggregate function along with the HAVING clause.
+
+Query:
+
+
+```python
+SELECT Department, COUNT(EmployeeId) AS Employee_CountFROM EmployeeGROUP BY DepartmentHAVING COUNT(EmployeeId) >= 2;
+```
+Output:
+
+This query counts the number of employees in each department and uses the HAVING clause to filter for departments with more than two employees.
+
+
+### Example 4:Using HAVING with AVG()
+In this example, let’s find out theaverage salaryfor each department and use the HAVING clause to display only those departments where the average salary is greater than $50,000.
+
+Query:
+
+
+```python
+SELECT Department, AVG(Salary) AS Average_SalaryFROM EmployeeGROUP BY DepartmentHAVING AVG(Salary) > 50000;
+```
+Output:
+
+
+### Having vs WHERE
+
+### Conclusion
+TheHAVING clauseis an essential tool in SQL for filtering results based onaggregated data. Unlike the WHERE clause, which applies conditions to individual rows, HAVING works on groups of data that have been aggregated using functions likeSUM(),AVG(), andCOUNT(). Understanding how and when to use the HAVING clause allows you to perform more complex data analysis and generate meaningful insights from your datasets.
+
+Ready to go from coding beginner to development pro? OurDSA to Development CodingGuide has everything you need to crush coding interviews and ace real-world projects! Limited spots available!
+
+• Class 12
+• Databases
+• School Learning
+• School Programming
+• SQL
+• mysql
+

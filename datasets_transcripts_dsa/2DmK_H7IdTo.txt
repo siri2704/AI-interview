@@ -1,0 +1,25 @@
+today we're going to learn heapsort let's start 
+with some terminology a heap is simply an ordered   binary tree a max-heap has a restriction that 
+the value of the parent nodes are greater than   the value of the child nodes here's an example 
+of a max-heap we'll make use of a few functions   when running heapsort first we have build max 
+heap this creates a max heap from an unsorted   array will also use heapify this is similar to 
+build max heap except faster because we assume   part of the array is already sorted you'll 
+see what I mean one note for this video I'm   less concerned with you knowing how these methods 
+work but rather that they exist and when to use   them once you understand the basics of heap 
+sort you'll understand these functions from   their pseudocode let's get started we are the 
+following array that were tasked to sort in the   nutshell will continuously create max heaps to 
+find the largest item will then remove that item   from the heap and into a sorted partition will 
+begin by representing our array as a tree to see   how we did that simply look at the array from 
+left to right and the tree from top to bottom now that we have a tree let's create our first   heap we assume this is an unsorted 
+array so we call build max heap now that we have our max-heap 
+we know the largest item 9 we   swap 9 with the item at the end of the array 1 finally we remove nine from the tree and consider 
+it sorted looks good so far except we're back to   having a tree and not a heap this time we call 
+heapify since only the item one is out of place one floats down to the bottom and 
+the largest number heads to the top we're back to having a max-heap let's swap 
+the largest number 8 with the item at the   end of the unsorted part of the array 
+2 we remove 8 and consider it sorted again we need our heat back so let's call heapify I think you see the pattern I'll let you 
+watch the rest of the video without voice over you we're all done our array is fully sorted 
+here's the pseudocode for heapsort the time complexity of heapsort is Big 
+O of n log n build max-heap takes o of   n time heapify runs in O of log n time but 
+we end up calling it n minus 1 times thank   you for watching if you enjoy the 
+video please like it and subscribe

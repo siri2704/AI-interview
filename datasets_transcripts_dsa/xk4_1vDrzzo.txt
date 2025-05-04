@@ -1,0 +1,917 @@
+how's it going everybody it's bro hope
+you're doing well and in this video i'm going to teach you
+guys everything you need to know to get started with java so
+sit back relax and enjoy the show if you wouldn't mind please like comment
+and subscribe one like equals one prayer for the
+youtube algorithm here's an outline of the topics covered
+in this video if you would like to skip ahead to a certain section
+feel free to click on any of the timestamps posted in the description
+also at the end of this video we're going to be discussing some tips and
+tricks so be sure to watch until the very end
+i'll give you three reasons why you need to learn java besides being one of the
+top three most popular programming languages worldwide
+java is an extremely flexible language it's used extensively by
+business enterprises android apps games and if you learn java you could land a
+job as a java developer according to glassdoor entry-level java
+developers have an average starting salary
+of 70 000 that's nothing to sneeze at so why not learn java are you still here
+okay cool let's begin with the basics computer
+languages are on a spectrum between being high level
+and low level computers only understand binary it's referred to as machine code
+it's a low level format that a machine can understand
+however humans have difficulty reading binary since it's all ones and zeros
+to create machine code we write in a format called source code
+which is understandable by humans and compile
+to machine code when we create javasource code the file ends with a
+dot java file extension think of compiling code as
+transforming source code to machine code we do this because machines can't read
+source code and vice versa humans have trouble reading machine code
+unless you're a robot or an android or something
+however when we compile our source code to machine code it's
+machine specific if we write source code and compile on a mac
+we can only run that code on a mac and the same concept
+applies for pcs although the java language has a solution for this problem
+with java we have an intermediary step where we can compile our source code to
+a format called bytecode bytecode is cross platform and
+ends with a dot class file extension here's an
+example of java source code and here's an example of that same
+source code after we compile it to bytecode
+it's kind of funky right since bytecode is cross-platform you could write your
+code on a mac and then send your bytecode file to your
+friend who can then run it on their pc using a jvm to translate the bytecode
+to machine code but we are going to need the help of a jvm to translate bytecode
+to machine code but where can we get a jvm well it's included with a
+jdk and what is a jdk well jdk is an acronym for java development
+kit it contains developers tools to help us
+code as well as a jre a java runtime environment which
+contains a library toolkits and our jvm which is another
+acronym for java virtual machine which
+translates by code for us to machine code so all you need to worry
+about is downloading a jdk and everything else
+will be included and now that we know what a jdk is it's
+time to download one so open up the internet and go to
+any search engine and look this up java jdk download
+go to the first link java se downloads sc stands for
+standard edition go to jdk download scroll down and find the
+appropriate file for your operating system since i'm
+running windows i'm going to download this exe version agree to whatever and download
+and when this finishes downloading i'm going to open this
+open when done on my computer i currently have a jdk
+already installed but i'm going to go ahead and reinstall it for the sake of
+this video click next next then wait a little bit
+and close i would also recommend an ide that's another acronym and it
+stands for integrated development environment think
+of it as software that helps us write other software
+you could write code with a text editor such as notepad
+and then compile the text file but doing so is not really beginner friendly
+so an ide provides an interface for us to write code
+check for errors compile and run code there's two ides that i would recommend
+they are both eclipse or intellij idea it doesn't matter which one you download
+because the code that we write is still the same
+so let's download an ide now it's time to install the
+ide i would recommend either the eclipse ide
+or intellij idea i'm more comfortable with eclipse so i'm going to stick with
+the clips so go back to the interwebs and look up
+either eclipse ide or intellij idea ide
+so i'm going to look up the clips click the first link
+click this orange download button go to download packages and select eclipse ide
+for java developers and select the correct download for your
+machine i'm going to select the download for windows
+and click download and then just wait a little bit again like usual
+for me this is currently a zip file so i need to select this file
+and extract all with the newly extracted folder navigate
+to this eclipse application so you can select this to launch eclipse
+for convenience i'm going to create a desktop shortcut
+so for me i'm going to go to where is it send to create desktop shortcut and then
+click to launch you can select a workspace i'm going to
+use the default and click launch we are now within eclipse and we can
+begin a new project we are now ready to rock and roll so
+let's begin by creating our first java program but in order to do so we
+need to create a java project if you're brought to this
+welcome screen you can close out of this because it's
+annoying and in order to create a java project
+navigate to your package explorer and select create a java project
+if you're missing the package explorer you can go to file
+new dropper project and that will take you to the same place
+we need a unique name for this java project i will call this
+my first program and i will want to configure the jre
+the java runtime environment and we downloaded that
+with the jdk because the jre is a component
+of the jdk so i'm currently using 13. i'm going to change this to 15. that was
+the one that i more recently downloaded just now so go to configure
+jres and i'm going to click add select standard vm vm is virtual machine
+click next go to jre home go to directory and i'm going to make
+sure that i'm selecting the most recent jdk for me that is 15
+select folder finish apply apply and close then finish
+if this window pops up you can select don't create that's to create a module
+if you look to the left hand side within the projects folder we now have a java
+project called my first program but we will need to add
+what is called a class to this project a class is a
+collection of related code so in order to add a
+class to this project i'm going to select this project folder
+then go to file new class and we need a unique name for this class
+i usually call this main but you can name it whatever you want
+and then we are going to check this public static
+void main checkbox and then click finish with that out of the way take a look
+back within your project folder and you should now have
+a java file that shares the same name as your class name
+my class name is named main therefore my java file is also called main so
+this has the dot java file extension and with what we discussed before this
+is source code it's in a format that humans can easily
+read and understand and when we compile this source code to
+bytecode we're going to create a new file that
+has the dot class file extension and with that
+bytecode file we can run that and translate it using a
+jvm a java virtual machine here's our java
+file and we have our class and mine is called main so all
+the class is is that it's a collection of related
+code we won't be exploring in depth on the
+topic of classes until we reach the subject of
+object-oriented programming which is about 20 videos into this playlist
+so you have some time so this is our class mine is called main anything
+within the outer set of curly braces belongs to the class and is contained
+within and within our class we have what is
+called a main method our program won't run without
+this method because when we run our code we begin by calling the main method so
+if we were to compile and run this code you can do so by clicking the screenplay
+button all output is displayed to the console
+window and nothing appears to happen because we haven't written anything yet
+so if we were to remove this main method and tried to do this again
+we would encounter an error because our main method was not
+found in the class main it's asking us to please define
+the main method now looking back when we created our class we went to
+file new class and in order to generate the main method we checked this checkbox
+here that states public static void main
+so the main method generated for us when we created
+this class but if we're missing it we can easily just type it in
+a textbook that i read in college said to think of the main method
+as a magical spell or incantation that we have to say
+in order to get this program to run so we are currently missing a main method
+but we can easily just type it in so repeat after me public static
+void main then we need some parentheses string straight braces args and then
+a set of curly braces and that is it we now have a main method
+and our program runs and compiles just fine
+so any code within the main method will execute starting at the top
+and then work its way down so with the main method
+any code you place at the top will be executed first
+so let's print something to the console window in order to display some text
+all you have to do is type this system with a capital s dot out
+dot print then you need a set of parentheses
+and then a semicolon at the end so within the parentheses
+of this print method we can type some text to display to the console window
+but we need to make sure that our text is within a set of double quotes
+and we can display some text let's say i don't know what's a food you like i
+love pizza so if i were to run and compile
+this it's now going to print i love pizza to
+the console window let's say that we would like to display
+another line of text directly underneath the first we can
+accomplish that by using another print statement so for
+convenience i'm going to copy this first line
+paste it directly underneath and display some other text
+such as it's really good so when i compile and run this pay
+attention the output is one long line of text the reason that
+this is all displaying as one long line of text is because after
+printing the first statement our cursor does not move down to the
+next line in order to do so we could use a print
+ln statement short for print line it's as if we're
+hitting enter when we finish outputting our text
+so let's try this again using a print ln statement
+and now each line of text is on its own individual line so that's what
+distinguishes a print and print line statement a print line will
+add a new line character as if you're hitting enter when you finish outputting
+your text whereas a print statement does not so
+that's the difference between the two an alternative to using a print line
+statement is that we could stick with the standard print statement and at the
+end of our text add what is referred to as an escape sequence for a new
+character now an escape sequence is a character
+preceded with a backslash and one of a few characters
+that follows directly afterwards this is an escape sequence for a new
+line character when we add this escape sequence for a
+new line it's as if we're hitting enter wherever we place
+this escape sequence so within our string of text
+for our first line at the end we're going to add
+backslash n and this will have the same effect as
+a print line statement it's going to display our text
+and then move the cursor down to the next line as you can see there is no
+additional change to the output within the console window
+now what if we reverted our print statements back to print line statements
+and kept the additional escape sequence in for a new line character
+well we're going to have an extra empty line of text because we're displaying
+our line of output plus an additional character for a
+new line and then we're hitting enter at the end via
+the print line statement so we're going to have an additional empty line between
+these two lines of text if we were to do that
+so a few other escape sequences that you might be interested in
+include the following a backslash t will add a tab
+so let's precede our text with an escape sequence for
+a tab which is backslash t so this is if we're hitting tab before
+displaying our text and we now have some empty space
+preceding our line of output if you need to put something within
+quotes let's try to do so normally so our compiler is actually going to be
+confused because we cannot normally add a set of quotes because our text already
+needs to be surrounded with quotes so if we need to literally display some
+quotes some double quotes we need to precede
+our double quotes with an escape sequence so backslash
+then quotes so this will allow us to literally
+print some double quotes so we're going to surround our first line of text
+with some double quotes now and if you need to display
+a backslash then you need to use double backslashes because if you use
+just one your compiler thinks you're trying to use an escape sequence
+and that's how to display a backslash in summary anything preceding with a
+backslash is the beginning of an escape sequence and there's one of a multitude
+of characters that could follow afterwards and
+depending on the character this has special meaning for your
+compiler to do something specific now anything that is following two
+forward slashes is the beginning of a single line
+comment i could write this is a comment and this line of text
+is going to be ignored by the compiler so there's going to be
+no change to this program with the additional comment
+anything that is a comment is ignored by the compiler so it's useful if you need
+to leave yourself a note or for somebody else that's looking over
+your code if you need a multi-line comment
+that is a forward slash followed by an asterisk
+and anything up to an asterisk and another forward slash
+will be the bounds of this comment so i could write
+on a new line for each word this is a comment and all of this will also be
+ignored by the compiler so that's how to write a multi-line
+comment a forward slash and an asterisk and anything up to another asterisk and
+forward slash so those are comments alright ladies and
+gentlemen it's time for this section on tips and tricks and for my first trick
+i'm going to change the color scheme of my ide
+we're currently using the light theme but i much prefer the dark theme
+i'm going to be joining the dark side so in order to change
+the color scheme of your ide go to if you're using eclipse
+window preferences under the general tab go to appearance theme and you can
+change the theme here i will click dark i'm going to select
+apply okay and then apply and close so the
+dark theme is great if you want to feel like a pretend elite hacker for my next
+trick i'm going to change the font color as well as the background
+color of my console window in order to do so
+head back to window preferences under run debug go to console and you
+can change the color schemes here i'm going to change the text color to a
+bright green click ok as well as the background color
+to a slightly lighter shade of black
+that should be good when you're finished click apply
+and then apply and close and you may need to run this again to see the
+changes so that's how to change the font color
+as well as the background color of your console window so it's
+somewhat tedious to have to write a print line statement correct
+system dot out dot print line normally that's a lot to type
+so a shortcut would be to type sys out then hold control space and your ide
+will auto generate the rest of this print line statement for you
+let's move on to trick number four let's say that we have
+hundreds of different print line statements and we need to change the
+text to print because we made a mistake so
+there's a feature where we can replace some text in your
+program with another so let's pretend we would like to
+replace print line with print so go to edit find replace and we can
+replace some text with something else let's find
+each instance of print line and replace this with print then click
+replace all so that will take care of all that for you
+let's move on to some final tips so with spaces spaces don't make much of a
+difference within your code for example after this dot and my print portion
+of this print statement i could add a bunch of spaces
+for no reason and this would run and compile just fine
+i'm not sure why you would do that but that's just to reinforce the point that
+spaces don't make much of a difference unless you're using a space to split up
+some keywords then you might run into an issue or if
+you're adding space to a string well then that's going to have a
+noticeable effect so spaces for the most part don't really matter
+too much depending on where they are here's a trick on zooming in
+or out hold control minus to zoom out or control plus
+to zoom in or you could go to window editor
+then zoom in or zoom out within this menu
+here's my last tip for you let's say you accidentally close out of your package
+explorer or your console window you can easily
+bring those back by going to window show view and then they are all
+listed here so i would like to bring back my package
+explorer as well as my console window alright guys and gals you should be
+ready to get started with java be sure to check out the full 100 video playlist
+as well and if you could do me a small tiny
+favor i would greatly appreciate it if you could help
+me defeat the youtube algorithm by smashing the like button drop a comment
+down below and subscribe if you'd like to become a
+fellow bro hey you yeah i'm talking to you if you
+learn something new then you can help me help you in three
+easy steps by smashing that like button drop a
+comment down below and subscribe if you'd like to become a
+fellow bro [Music] hey how's it going everybody it's your
+bro hope you're doing well and in this video i'm going to teach you guys all
+about variables in java so sit back relax and enjoy the show if you find this video helpful please
+remember to like comment and subscribe your support will
+help keep this channel running all right guys and gals let's talk about
+variables now a variable is a placeholder for a
+value and it behaves as the value that it
+contains do you remember from either elementary school or middle school when
+we were working with algebra we usually had to solve for some
+sort of variable like x or y and x or y contained
+some sort of numeric value and for all intents and purposes
+this variable behaved exactly as this value
+well with programming we can perform something similar to that
+but we are not limited to just numbers we could also store
+words whole sentences and these things called boolean values which hold either
+true or false but if we're going to store a
+value within a variable we have to list the data type of what
+we're planning to store within that variable is it going to be a number
+a word a boolean so we need to discuss data
+types there are eight primitive data types and
+a special reference data type called a string
+anything that i have noted with a star is particularly important
+so i would pay special attention to these our first data type
+is boolean this has a size of one bit so it can only hold two values that
+being true or false if we're attempting to
+sign a boolean value we would type either equals true or
+equals false something similar would be let's say we
+have a light switch program well if the light switch is on we could
+say that the light switch has a value of true if it's off
+it has a value of false so this is binary that's why it only uses
+one bit it only needs one bit of memory to function
+next we have byte this isn't as important as a few others
+but with one byte we can hold an integer number between negative 128 to 127
+because a byte only has one byte of memory
+a short has two bytes of memory so can hold a
+larger number between negative 32 000 and some change
+to 32 000 and some change so integers integers are important these use 4 bytes
+of memory and they can store a number to just
+under 2 billion to just over 2 billion because they use
+4 bytes of memory and a long they use eight bytes of memory so they
+can hold a very large number in fact they can hold a
+number between just under negative nine quintillion to
+just over positive nine quintillion now a float
+they can store a fractional number specifically
+up to six to seven digits what makes floats different from
+these data types on the top here is that bytes shorts integers and longs can only
+store a whole integer they cannot store this decimal
+portion so if you're working with a program or a
+variable that uses a fractional number you'll
+need to use either a float or a double and a double has more
+precision it uses eight bytes of memory and it can store a fractional number up
+to 15 digits so in comparison with a float this has
+less precision than a double and for an example i just
+listed a few of the digits of pi with this example we can only store six
+to seven digits of pi but with a double we can store up to 15. there is one
+strange convention with floats if you're going to assign a value to a variable
+that's of the float data type you need to follow the value
+with the letter f with double variables you actually do not need to do so
+so that's one major difference when assigning values between
+these two now let's move on to characters pronounced
+char for short think of charizard this uses two bytes of memory
+and this will store a single character letter or ascii value
+an example would be the letter f but a common convention with
+assigning values to a char variable is that you need to surround
+this value with a pair of single quotes and our last data type is the string
+data type the size really varies because these are
+reference data types they store a sequence of characters
+like a word or a sentence you could store a single character within a string
+but chars and strings behave differently because
+chars are primitive data types and strings are reference data types
+so let's distinguish the difference between primitive and reference data
+types here's a super quick description between
+the differences of primitive and reference data types primitive data
+types there are it and we just discussed them they are boolean by
+short integer longs all those cool things that we just
+discussed reference data types like strings well there's an unlimited
+amount because they are user defined primitives store
+data reference data types store an address
+primitives can only hold one value reference data types could hold more
+than one value primitives use less memory compared to
+reference data types which use more memory and primitive data
+types are faster compared to reference data types
+which are slower now you're probably thinking cool story bro but how do we
+create a variable well i'm glad you asked that question so
+the first process with creating a variable is that we need to
+declare the data type of what value that this
+variable is going to store so come up with a variable name like x
+and we will precede this variable with the data type of the value that we're
+planning to store within this variable and then with all
+statements we follow this with a semicolon at the end the next
+step is called assignment we will take our
+variable and assign it equal to some sort of value of the data type
+that we declared this variable to be but you could combine steps one and two
+together and this process is called
+initialization we would take the data type followed by
+the variable name and set it equal to some value and then add a semicolon at
+the end to finish the statement so you can either do this in two steps
+with declaration and assignment or combine them both together which is
+initialization how about we create a few variables does
+that sound good to you guys so let's begin with creating an
+integer variable let's say int x this step is called declaration we are
+declaring the data type of what value is going to be contained
+within this variable the second step is called assignment we can assign our
+variable a value let's say x equals 123 and
+this step is called assignment or we could combine both of these steps
+together and this process is called initialization intex equals 123
+and this would be initialization so we can do stuff with this variable it
+will behave as the value that it contains
+we could print this to the console window so within a print or print line
+statement we could print the value of x so make
+sure you do not write this within quotes right now this will display the value
+that is contained within x which is 123 because this variable
+behaves as the value that it contains if you were to surround this with quotes
+what we are doing now is printing a string literal
+you can also print text as well as a variable together
+let's say we have a sentence a string literal that states
+my number is and then if we want to do some string
+concatenation with a variable we would add plus and then the variable
+name make sure this is not within quotes so this will display the sentence my
+number is plus our variable and in the console window it states my
+number is 123. so with integer variables the largest number that you can store
+within an integer variable is just over 2 billion let's say we are
+working with an extremely large number like the amount of student debt that i
+owe well this number is too large to store it within an integer variable
+we would probably want to use the long data type
+and one convention with assigning values to a long
+variable is that you need to follow this number
+with a capital l for some reason so we can now work with extremely large
+numbers so this might be useful if you're
+working with numbers like the speed of light or something
+so we now have a long variable and we can display
+this value a few of the other data types that we mentioned were
+bytes and shorts they have a lesser number that they can store
+so with bytes you can only store up to i believe 127
+so we could store like 100 within here and this would be fine but 130 would
+be a little too much though so we don't tend to use bytes and shorts too much as
+a beginner because it's just way more convenient to work with integers
+um but you might use longs every once in a while too but
+as beginners we're mostly going to be sticking with integers
+now a double can store a number with a fractional portion with integers we
+cannot store a decimal portion so if this was 123.01
+well we cannot store this decimal portion
+we can only do so with a float or a double
+so with a float you would type in float for the data type let's create a new
+variable like y float y equals 3.14
+and a common convention for assigning numbers
+well values to float variables is that you have to follow this
+with f so you can store a number with a decimal portion within a
+float or a double and then we could display
+whatever this value is so y is equal to 3.14
+but people tend to use doubles more because they have more precision
+and then you do not need this f at the end
+so this will store up to 15 digits after the decimal portion
+so we also have booleans let's say boolean
+z equals this holds either true or false and then we can display
+what value is within this boolean so if we print
+our variable z this will display false or we could hold true and this will
+display true but we can't display anything else
+besides those two like we cannot hold the word pizza
+because booleans only hold true or false we have characters
+char for short char and we don't necessarily need to
+come up with a variable that's only one letter we could have a name or something
+that's descriptive for this let's say we have a variable called
+symbol char symbol equals and then place
+a character within single quotes let's say we
+want the at sign so we now have a variable called symbol that contains
+the at sign so if i were to display this variable
+symbol to the console window it will display the value that is
+contained within which is the at sign and lastly we have strings so with
+strings these start with a capital s because they are of the reference
+data type anything that's a reference data type begins with a capital letter
+and let's say we want to store our name so string is the data type
+let's say the variable name is name equals
+and to store a string it works similar to a string literal
+we're going to use a set of double quotes and display
+or add a bunch of text like my name and then i can now display my name to
+the console window or i could do some string concatenation
+too and display the word hello plus my name
+and within the console window it's now going to display hello
+bro so that is everything you need to know to get started with
+variables in java if you would like a copy of all this code i will post all of
+this in the comments down below don't be afraid to smash that like
+button drop a comment down below and subscribe
+if you'd like to become a fellow bro how's it going everybody it's your bro
+here hope you're doing well and in this video I'm going to teach you guys how we
+can swap two variables using Java let's get into it if you find this video helpful please
+remember to Like comment and subscribe your support will help keep this channel
+running alright well here we got two variables we got variable X which
+contains water and variable Y which I'm gonna put kool-aid in more specifically
+black cherry kool-aid so let's just put this in good enough and let's mix it perfect so we're going to create two
+variables and these are going to be of the string datatype so we'll have string
+x equals the word water and string y equals the word kool-aid and then let's
+display these with a simple print line statement and within here I'll just type
+in X colon space plus the variable X and then let's do the same thing for y so
+we'll change X to Y and let's display these so X currently has water and Y
+currently has kool-aid so what happens if we set X to equal Y well we get
+kool-aid for both x and y okay we're gonna assign variable Y to variable X
+shit so yeah it looks like we have kool-aid in both variable X and variable
+Y let's try again maybe we can set Y to equal X no we just got water everywhere
+let's try this again we're gonna assign variable X to variable Y this time okay
+that doesn't seem to work guys my floor is getting really sticky so it appears
+that we're going to have to store one of these values within another variable in
+order to switch these so one thing though we can do is introduce another
+variable and let's call this temp and temp is empty let's create another
+string so we'll create string temp and we can either set this to null or
+can assign no value at all where we simply just declared temp a variable so
+what we're gonna do is actually take X and store X whatever value isn't here
+within temp so we're gonna type temp equals x so now X can be filled with
+something so we're going to fill it with variable Y so on our next line we're
+going to set X to equal Y then we're going to take our temp variable and
+store this within Y and lastly y equals temp breaking news ladies and gentlemen
+we have switched the contents of X and white with the help of our variable temp
+now back to you bro thank you for the live update news anchor bro it appears on
+our end that we have also switched the contents of X and y as well so in
+conclusion if the programming language you're using doesn't have any direct
+function to switch to variables you could do this manually and you can
+create another variable such as temp and temp is a temporary value to temporarily
+store one of these values you can set temp to equal X or you can do this with
+Y and then set X to equal Y and then Y to equal temp so your assignment for
+today is to post two variables in the comments down below and the code that
+you used to swap them and that ladies and gentlemen is how you can swap two
+variables hey how's it going everybody it's you
+bro hope you're doing well and in this video i'm going to teach you guys how we
+can accept some user input in java so sit back relax and enjoy the
+show make sure you like comment and subscribe
+one like equals one prayer for the youtube algorithm
+welcome back ladies and gentlemen i'm going to explain how we can use a
+scanner to accept some user input the scanner class is found in the java
+utility package of your library and we need to import that before we can use
+the scanner so outside of the class at the top of our program
+this is what we're going to type import java dot util and the name of the class
+we would like to import which is scanner then a semicolon now we can use the
+scanner class to create a scanner object so we're going to be
+performing a little bit of object oriented programming
+we'll be covering object oriented programming in the later part of the
+series so don't worry so repeat after me scanner then we need
+a name for the scanner let's call it scanner a lowercase equals
+new scanner then a set of parentheses and a
+semicolon within the parentheses we're going to
+type system dot in and there we go we have our scanner so
+we can use the scanner to accept some user input
+so let's let the user know that we would like them to type in something
+maybe a name let's create a prompt that will ask somebody for their name
+so within a print line statement we'll type what
+is your name and next what we'll do is take our user
+input and assign it to a variable perhaps a string variable
+called name string name equals and now we're going
+to use our scanner so we type in the name of the scanner dot and to enter
+a line of text we're going to use a
+certain method of the scanner it is the next line method
+and when we type in user input we type it into the console window
+here at the bottom so let's do something with this name
+maybe display this within a message system.out.printline hello
+plus whatever your name is so let's compile and run this
+what is your name now our program is currently paused
+until we type in some user input and then press the enter key
+when you press enter that's how you submit some user input into the console
+window so i'm going to click within my console
+window and type in something i'm going to type in bro and to submit
+some user input you press the enter key and it states hello plus my name which
+is what i entered bro now there's different types of input
+that we can accept this time let's accept only an integer
+number perhaps we can ask somebody for their age
+so let's write a prompt for that system.out.printline
+how old are you and this time we will declare an integer
+variable maybe called age int age equals
+scanner dot next and we are looking for int
+so we can only accept a whole integer u r
+plus age plus years old
+okay let's try this again what is your name
+bro how old are you let's just say that i'm
+18. hit enter hello bro you are 18 years old so what happens if we
+do not enter in a number so let's try and break this
+what is your name bro how old are you we're not going to
+enter a number this time let's type in the word pizza and see
+what happens well we encountered an exception we encountered an input
+mismatch exception because when our scanner is
+looking for an integer we typed in a string so we need to make
+sure that the input type the data type matches in a future
+lesson we'll be covering exception handling where we can prevent
+this very thing from happening but for now since we're beginners we'll
+just have to be sure to type in the correct data type of the input that
+our program is looking for now there's one more
+thing that i want to show you guys this is a common problem
+if you use next line after next int or anything else that's not next line so
+let's ask somebody for their favorite food this time
+so let's add that at the end system.out.printline
+what is your favorite food then we'll create a string variable
+called food string food equals scanner dot
+next line and we will display this system.out.printline you
+like plus food all right so here are the questions what
+is your name bro how old are you 18. now pay
+attention to this when i press enter when we reached the question on
+what is your favorite food well our program skipped our user input
+and continued on with the rest of the code
+so it states hello bro you are 18 years old but we were not able to
+input anything for our favorite food here's the reason why
+here's what's going on let's pretend that this box
+is a representation of our scanner and we're going to use the next
+line method of our scanner to read a line of text
+so we type in our name and then press the enter key to submit
+so this backslash n is an escape sequence for a new line
+the next line method will read an entire line of text
+and stop when it reaches a new line character so
+after we call the next line method our scanner is going to be empty
+however if we were to call a different method that doesn't read a new line
+character such as next ins so we type in our input such as
+the number 18 and then press the enter key that will
+add a new line character so our next int method is only going to
+read this numeric portion of our scanner and then when we submit it well this new
+line character is still going to be within our scanner
+and if we were to use our scanner again and call a different method
+like next line well our next line method thinks that we're at the end because
+there's this new line character within our scanner so we would need some way to
+clear out that new line one easy fix for this is that after you
+call the next and method what we could do is call
+the next line method to clear our scanner so i'm
+just going to copy this portion and paste it we're not really
+going to do anything with that newline character this will just clear the
+scanner for us so now we should be able to answer all
+three questions so type in your name what is your name
+it is bro how old are you let's say i'm 18. what
+is your favorite food and you can see that it paused to this time
+unlike the first time and my favorite food is pizza
+press enter hello bro you are 18 years old you like pizza
+well then that is one way in which you can use a scanner to accept some user
+input scanners are capable of much more you
+can also use them to read the contents of a file and a few other
+things but we'll learn about those in future videos
+and if you need to use a scanner be sure to include this import at the top
+import java.util.scanner because the scanner class is found within the
+utility package and then you'll need to create a scanner
+object just by following these steps scanner you can call it scanner equals
+new scanner well guys and gals that is how scanners
+work in java before you go i would greatly appreciate it if you
+could do a favor for me and like this video leave a comment down
+below and subscribe if you'd like to become a fellow bro how's it going everybody it's you bro
+hope you're doing well and in this video i'm going to teach you guys about
+expressions in java so sit back relax and enjoy the show you can become a hero and save our
+channel by smashing that like button drop a comment down below and subscribe
+if you'd like to become a fellow bro now an expression is a combination of
+operands and operators an operand is the values
+variables numbers or different quantities that you might see
+in a program and operators they are those
+arithmetic symbols that you might see such as the plus sign for addition
+subtraction multiplication division and then modulus so let's go over a few
+examples just so that we know how they work let's
+say i have an integer variable called friends and i
+will set this equal to maybe 10. so we can change the value of the
+friends variable by using an arithmetic expression
+so let's say that we make a new friend so we're going to add one
+to my variable of friends to increment my variable friends i can just use the
+plus operator and then add a new operand to
+my variable friends so if i would like to assign a new value
+to my friends variable i'm going to type in the name of my variable
+equals friends plus one because we made a new friend
+and then i will print the value of friends so
+our friends variable now contains 11. so we could also subtract take a wild
+guess as to what's gonna happen we just lost a friend let's multiply
+uh let's multiply our friends by two and now we
+have 20 friends and let's divide we're going to divide our friends into
+two and we have five friends now the modulus gives you the remainder
+of division so we have 10 friends what if we had
+modulus 3 well that does not divide evenly so
+we're going to have a remainder of one friend it's kind of like in group
+projects where everybody has to get into a group of three
+and there's always somebody that's left over think of it that way
+although if our group of friends was divided into groups of 2
+there would be no remainder because 10 divided by 2
+equals 5 evenly and there is no remainder so that's all what the modulus
+is it gives you the remainder of any division that occurs
+now there is a shorthand to increment a variable by one
+so normally the long way of writing this out would be type in the name of the
+variable equals because we're going to reassign a
+value friends plus one right well there's a shorthand
+way of incrementing this and that is to use the increment
+operator which is just plus plus and then a semicolon so this
+will add one to a value and now we have 11 friends
+if you want to decrement that would be minus minus and now we have nine friends
+hold up wait a minute before you go i gotta discuss
+integer division because i forgot to talk about it so
+if we divide a number by an integer if there is normally a remainder well
+our program is going to truncate the remainder
+here's an example let's say we have 10 friends and we're going to divide our
+friends by three so we're dividing by a
+whole integer so our result should be 3.33 repeating right
+wrong it's three that's because with integer division
+we truncate any decimal portion because we cannot store it one easy fix for that
+is we can cast our result as a double value or a float as well
+to cast a value as a different data type to the left hand side
+of our expression we're going to list the new data type that we would like to
+convert this value to so we would like to convert our integer
+as a double value because we would like to
+retain that decimal portion of our result
+however our data type friends is an integer so
+it cannot store a double data type so we should probably convert
+this to a double so that we can store this value and now
+this program will successfully store this decimal
+portion of our expression well that's really all you need to know
+to get started with expressions if you would like a copy of all this i
+will post this in the comments down below
+and if i could ask for a favor of you guys just to like this video
+drop a comment down below and subscribe if you'd like to become a fellow bro hey what's going on everybody it's your
+bro hope you're doing well and in this video i'm going to teach you guys how we
+can make a very basic gui application in java so sit back
+relax and enjoy the show if you find this video helpful please
+remember to like comment and subscribe your support will
+help keep this channel running all right guys and gals i'm going to
+teach you all how to create a very basic gui program gui is an acronym for
+graphical user interface it's a visual program
+that we can see and interact with kind of like this
+so we'll be using the j option pane class and be creating a few message
+dialog boxes before we begin we'll need an import so
+outside your class let's type this import java x dot swing
+dot j option pin so we will be working with the j option
+pane class now what we would like to do is
+type in some user information into a sort of
+dialog box and we'll store this as a string variable called
+name kind of like what we did on the video on user input
+string name and in order to create an input dialog box we're going to type
+the name of the class j option pane dot and there's a few options what we
+would like is show input dialog and you can really
+just pick any of these and we can type in a message so with
+this message let's state enter your
+name and when we run this this is what we have we have the small
+gui dialog box and we can type in our name and submit it
+but it currently doesn't do anything so let's create another message dialog box
+that will display our name along with a message
+so j option pain dot show message
+dialogue for now you can just type in no comma and then a message let's say
+hello plus name and let's try it so our first
+dialog box is the show input dialog message
+and we can type in our name and submit a name
+and our second box here is a message dialog box this just displays some
+information such as a string of text and it says
+hello bro this time let's ask for an edge and
+store this value within an integer variable called age int
+age equals and we can just copy all of this
+j option pane dot show input dialog and the message will be enter your edge
+there is one issue though when you use the show input dialog box
+it's going to return a string and we're attempting to assign
+the string into an integer variable so what we would need to do is
+convert this to an integer and there is actually a
+method to do that so what i'm going to do is use the
+integer wrapper class and use the parseint
+method and within the parenthesis we're going
+to take all of this and copy it within our parseint method
+and then add a semicolon at the end so this will return
+a string based on what the user types in and the parseint method will convert it
+to an integer that we can store it within our integer variable of age
+and then we can display this so let's display this with another
+message dialog box j option pane dot show message dialog
+null will be the first argument and our message will be
+u r plus age plus years old
+and let's try it enter your name bro press okay
+hello bro then when we click okay again it's going to go to our next
+input dialog box enter your age let's say that i'm 18
+click ok you are 18 years old now let's try this with a double data type this time let's create a variable called
+maybe height this will be a double value and the
+variable name will be height so since we're working with double
+values we're going to change integer to double double with a capital d dot parse
+double and the message will be enter your height and our message dialog
+will be u r height and let's say this is in centimeters
+tall so we have to be sure that we're getting
+the right data type because when you use the input dialog box it's going to
+return a string so if you're attempting to assign that
+string to a certain data type you have to convert it
+to that specific data type so let's try this
+enter your name bro okay hello bro what is your age let's say i'm 18 press
+okay you're 18 years old enter your height i
+don't know what a good height is 240 centimeters and then click ok
+you are 240.0 centimeters tall in conclusion ladies and gentlemen what
+we have made is a very simple graphical user interface for
+fun this is completely optional at this
+point but we will be learning more about gooeys later in this playlist
+so if you would like a copy of all this code i will post all of this in the
+comments down below and if you could do me a favor down
+below smash the like button drop a comment and subscribe if you'd
+like to become a fellow bro how's it going everybody it's your bro
+here hope you're doing well and in this video i'm going to teach you guys a few
+useful methods of the math class and at the end of this video we're going to
+create a program where we will find the hypotenuse of a
+triangle so sit back relax and enjoy the show
+make sure you like comment and subscribe one like equals one prayer for the
+youtube algorithm alrighty then guys and gals in this
+video i'm going to demonstrate a few useful methods of the math class to
+begin we'll need maybe two numbers let's say that these will be double
+variables double x let's set the sequel to 3.14
+and double y we will set this to let's say negative 10. all right the
+first useful method is the max method this will find the larger of two numbers
+so in order to use the max method we're going to type math with
+a capital m dot and there's a few recommendations
+here what we would like is the max method that is right here so there's
+a few to choose from we can compare two integers two long values two
+floats and two doubles i'm going to compare the
+values of x and y so i'm going to put these within
+the parentheses of my max method and then we can either display
+the result or assign this to a new variable let's say double
+z equals math.max and we'll compare x and y and assign the larger number to
+variable z and we will display the result
+system.out.printline z and the larger of these two numbers
+is in fact x which is 3.14 and there is also a min method which
+will find the lesser of two values which is
+variable y which is negative 10. another useful
+method is the absolute function method it's
+just abs like abs six-pack abs and we'll pass
+in y and this will display the absolute value
+of y which is 10. so the absolute value is
+basically a number without the negative sign i'm not a mathematician so
+i could be wrong in that definition all right we also have the square root
+function that is sqrt square root of
+y i don't know what the square root of negative 10 is but we're about to find
+out uh i don't know i guess that didn't work
+let's change y to 10. 3.16 blah blah blah blah
+all right that is the square root function we can also round
+let's round x so x rounded is 3.0
+on the other hand seal like ceiling this will always round up
+so 3.4 or 3.14 always rounded up is four and floor will always round
+down so 3.14 always rounded down is 3.0
+here's a project that we can work on let's create a program
+that will find the hypotenuse of a triangle
+and we will ask the user for side x and side y so to begin let's declare two
+variables double x and double
+y actually i take that back let's declare
+double z as well because z will be the result
+the hypotenuse we'll also need a scanner to accept some user input
+scanner scanner equals new scanner within the parentheses we're
+going to type system.in we'll need an import so
+include this import at the top import
+java.util.scanner we'll need a prompt for side x and side
+y we can do that with a print line
+statement enter side x
+i can't type today and we will store the result within
+variable x x equals we need some user input
+scanner dot next double because we would like a double value
+let's repeat the process for side y enter side y will store the result
+within variable y now here's the tricky part
+there is a mathematical formula to calculate the hypotenuse given
+two angles well two sides of a triangle so this is what we're going to do first
+we'll multiply x times x plus
+y times y then we need to put this within the square root
+function of the math class math make sure it's with a capital m dot sqrt
+and we are going to take all of this and place this within
+the square root function and we will assign this to
+our variable of z so z equals math
+dot square root x times x plus y times y and with a print line statement
+we can display the hypotenuse is plus z that should be good
+oh then it's good practice to close your scanner i always forget to do that
+although it's not necessary scanner.close all right let's test this
+enter side x that is four enter side y let's say five the hypotenuse is
+six point four add some change all right so that's just
+a simple program that you can make using a function of the math class
+so if you would like a copy of this code i will post this in the comments down
+below but yeah that's a few useful methods of
+the math class oh and i forgot to tell you guys like
+comment and subscribe how's it going everybody to bro hope
+you're doing well and in this video i'm going to teach you guys how we can
+generate some random values in java so sit back relax
+and enjoy the show you can become a hero and save our
+channel by smashing that like button drop a comment down below and subscribe
+if you'd like to become a fellow bro all right welcome back ladies and
+gentlemen in this video we're going to be generating some random values
+some random integers doubles and boolean values
+so if you're interested in game design at all this video is a must for you
+so in order to use random values we should probably
+import the random class bond within the library
+so outside of the class this is where we're going to type we're going to
+import java dot util dot random semicolon and now we have
+access to the random class and that provides us a few options
+we need an instance of the random class for us to use
+within the main method we're going to create an instance of the random class
+by typing random with a capital r it's the same name as the class random
+we need a name for this instance let's call it random all lower case kind
+of like what we did with that video on scanners
+random random equals new random that's kind of random
+then a set of parenthesis then a semicolon we now have access to this
+random instance to generate some random values for us
+but there's a disclaimer here these are not true random numbers but something
+called pseudorandom numbers which are pretty
+darn close so i just wanted to give you that disclaimer before we got started
+so you don't call me a liar let's generate a random integer
+and store this within an integer variable like
+into x into x equals and to generate a random integer
+we're going to type the name of our random instance
+random dot next and there's also a few others like next
+boolean next double next float i'll get to those later what
+we would like for now is next int and then we will display
+the result with a print line statement we will display the value of
+x so the results are on a scale between i would say just under
+negative 2 billion to just over positive 2 billion so you'll probably
+want to limit that let's pretend that we're going to roll a
+six sided dice so to limit the scale or the size of the
+random number that will generate we can pass in a value to our next
+int method so within the parentheses of our next int method
+we'll limit the size of the integer that's going to generate
+if we would like a six-sided dice we're going to place
+six here but there's one catch with this though
+this will generate a random number between zero and five
+because computers always start with zero and let's see if i can roll a zero
+nope there we go all right so one way to solve this is that if we want the
+numbers one through six we can just add one so
+now we'll get a random number between one and six just like
+that this time let's generate a random double
+value for now i'll turn this line into a
+comment and let's create a new variable called
+double y double y equals random
+dot next where is it double and we will display
+the value of y next double is going to give us
+a random value between zero and one so this probably has some uses for
+something what that is i'm not really sure but hey
+you know you can do this now let's also generate a random boolean
+value so boolean z equals random
+dot next boolean and we will display the value of z so
+this is going to give us either true or false well everybody that's how we
+can use the random class to generate some
+pseudo-random values for us if you would like a copy of this code i will post
+this in the comments down below but yeah that's a few uses of the random
+class also be sure to leave a like drop a random comment down
+below and subscribe if you'd like to become a
+fellow bro

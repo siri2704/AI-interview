@@ -1,0 +1,19 @@
+hello everyone today we are going to look at how 
+we can make this E R diagram, Chen E R diagrams   with chat G P T. without wasting our time I'll 
+go to chat G P T and I will put the prompt   there. you might have to follow this prompt as 
+it is without making any changes except for this   part. I am making an example of an e-commerce 
+application you can put your own thing there,   or put some details there. And then you have to 
+run this prompt and then you have to go to Google   colab. So basically you have to go this URL and 
+you might need to log in with your Gmail account,   if you are using this the first time. then 
+you have to start a new notebook it will look something like this. okay. it might take a 
+little time. but it will prompt you to start   a new notebook and then you just have to click on 
+new notebook. yep and hopefully we have our code   ready. then yeah so before running the r code we 
+have to go to runtime and select change runtime   type and select R here and then click on save. 
+so we know this run time is for the R language   and then we'll put our code 
+here and we'll run our code   this may take like 4 to 5 minutes. 
+it will have to install some libraries and yes after this is done running, it will 
+give you some file. and then you'll download   this file. okay so you have to click this
+folder here and there should be your file and   when you and on when you'll download this file 
+by clicking on this three dotted menu download   it and open this and you will see something 
+similar to this or whatever you prompted it   so that is it that's all there is to  E R
+diagram making with chat g p t. thank you for watching

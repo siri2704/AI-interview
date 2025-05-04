@@ -1,0 +1,204 @@
+• 
+• 
+• 
+
+The Entity Relationship Model is a model for identifying entities (like student, car or company) to be represented in the database and representation of how those entities are related. The ER data model specifies enterprise schema that represents the overall logical structure of a database graphically.
+
+We typically follow the below steps for designing a database for an application.
+
+• Gather the requirements (functional and data) by asking questions to the database users.
+• Create a logical or conceptual design of the database. This is whereER modelplays a role. It is the most used graphical representation of the conceptual design of a database.
+• After this, focus on Physical Database Design (like indexing) and external design (like views)
+
+
+### Why Use ER Diagrams In DBMS
+• ER diagrams represent the E-R model in a database, making them easy to convert into relations (tables).
+• ER diagrams serve the purpose of real-world modeling of objects which makes them intently useful.
+• ER diagrams require no technical knowledge of the underlying DBMS used.
+• It gives a standard solution for visualizing the data logically.
+
+
+### Symbols Used in ER Model
+ER Model is used to model the logical view of the system from a data perspective which consists of these symbols:
+
+• Rectangles:Rectangles represent entities in the ER Model.
+• Ellipses:Ellipses represent attributes in the ER Model.
+• Diamond:Diamonds represent relationships among Entities.
+• Lines:Lines represent attributes to entities and entity sets with other relationship types.
+• Double Ellipse:Double ellipses represent multi-valued Attributes.
+• Double Rectangle:Double rectangle represents a weak entity.
+
+Symbols used in ER Diagram
+
+
+### Components of ER Diagram
+ER Model consists of Entities, Attributes, and Relationships among Entities in a Database System.
+
+Components of ER Diagram
+
+
+### What is an Entity
+An Entity may be an object with a physical existence: a particular person, car, house, or employee or it may be an object with a conceptual existence – a company, a job, or a university course.
+
+
+### What is an Entity Set
+An entity refers to an individual object of an entity type, and the collection of all entities of a particular type is called an entity set. For example, E1 is an entity that belongs to the entity type “Student,” and the group of all students forms the entity set. In the ER diagram below, the entity type is represented as:
+
+Entity Set
+
+We can represent the entity set in ER Diagram but can’t represent entity in ER Diagram because entity is row and column in the relation and ER Diagram is graphical representation of data.
+
+
+### Types of Entity
+There are two types of entity:
+
+
+### 1. Strong Entity
+AStrong Entityis a type of entity that has a key Attribute. Strong Entity does not depend on other Entity in the Schema. It has a primary key, that helps in identifying it uniquely, and it is represented by a rectangle. These are called Strong Entity Types.
+
+
+### 2. Weak Entity
+An Entity type has a key attribute that uniquely identifies each entity in the entity set. But some entity type exists for which key attributes can’t be defined. These are calledWeak Entity types.
+
+For Example,A company may store the information of dependents (Parents, Children, Spouse) of an Employee. But the dependents can’t exist without the employee. So dependent will be aWeak Entity Typeand Employee will be identifying entity type for dependent, which means it isStrong Entity Type.
+
+A weak entity type is represented by a double rectangle. The participation of weak entity types is always total. The relationship between the weak entity type and its identifying strong entity type is called identifying relationship and it is represented by a double diamond.
+
+Strong Entity and Weak Entity
+
+
+### What are Attributes
+Attributesare the properties that define the entity type. For example, Roll_No, Name, DOB, Age, Address, and Mobile_No are the attributes that define entity type Student. In ER diagram, the attribute is represented by an oval.
+
+Attribute
+
+
+### Types of Attributes
+
+### 1. Key Attribute
+The attribute whichuniquely identifies each entityin the entity set is called the key attribute. For example, Roll_No will be unique for each student. In ER diagram, the key attribute is represented by an oval with underlying lines.
+
+Key Attribute
+
+
+### 2. Composite Attribute
+An attributecomposed of many other attributesis called a composite attribute. For example, the Address attribute of the student Entity type consists of Street, City, State, and Country. In ER diagram, the composite attribute is represented by an oval comprising of ovals.
+
+Composite Attribute
+
+
+### 3. Multivalued Attribute
+An attribute consisting of more than one value for a given entity. For example, Phone_No (can be more than one for a given student). In ER diagram, a multivalued attribute is represented by a double oval.
+
+Multivalued Attribute
+
+
+### 4. Derived Attribute
+An attribute that can be derived from other attributes of the entity type is known as a derived attribute. e.g.; Age (can be derived from DOB). In ER diagram, the derived attribute is represented by a dashed oval.
+
+Derived Attribute
+
+The Complete Entity Type Student with its Attributes can be represented as:
+
+Entity and Attributes
+
+
+### Relationship Type and Relationship Set
+A Relationship Type represents the association between entity types. For example, ‘Enrolled in’ is a relationship type that exists between entity type Student and Course. In ER diagram, the relationship type is represented by a diamond and connecting the entities with lines.
+
+Entity-Relationship Set
+
+A set of relationships of the same type is known as arelationship set. The following relationship set depicts S1 as enrolled in C2, S2 as enrolled in C1, and S3 as registered in C3.
+
+Relationship Set
+
+
+### Degree of a Relationship Set
+The number of different entity sets participating in a relationship set is called thedegree of a relationship set.
+
+1. Unary Relationship:When there is only ONE entity set participating in a relation, the relationship is called a unary relationship. For example, one person is married to only one person.
+
+Unary Relationship
+
+2. Binary Relationship:When there are TWO entities set participating in a relationship, the relationship is called a binary relationship. For example, a Student is enrolled in a Course.
+
+Binary Relationship
+
+3. Ternary Relationship:When there are three entity sets participating in a relationship, the relationship is called a ternary relationship.
+
+4. N-ary Relationship:When there are n entities set participating in a relationship, the relationship is called an n-ary relationship.
+
+
+### What is Cardinality
+The maximum number of times an entity of an entity set participates in a relationship set is known ascardinality. Cardinality can be of different types:
+
+1. One-to-One:When each entity in each entity set can take part only once in the relationship, the cardinality is one-to-one. Let us assume that a male can marry one female and a female can marry one male. So the relationship will be one-to-one.
+
+One to One Cardinality
+
+Using Sets, it can be represented as:
+
+Set Representation of One-to-One
+
+2. One-to-Many:In one-to-many mapping as well where each entity can be related to more than one entity. Let us assume that one surgeon department can accommodate many doctors. So the Cardinality will be 1 to M. It means one department has many Doctors.
+
+one to many cardinality
+
+Using sets, one-to-many cardinality can be represented as:
+
+Set Representation of One-to-Many
+
+3. Many-to-One:When entities in one entity set can take part only once in the relationship set and entities in other entity sets can take part more than once in the relationship set, cardinality is many to one. Let us assume that a student can take only one course but one course can be taken by many students. So the cardinality will be n to 1. It means that for one course there can be n students but for one student, there will be only one course.
+
+many to one cardinality
+
+Using Sets, it can be represented as:
+
+Set Representation of Many-to-One
+
+In this case, each student is taking only 1 course but 1 course has been taken by many students.
+
+4. Many-to-Many:When entities in all entity sets can take part more than once in the relationship cardinality is many to many. Let us assume that a student can take more than one course and one course can be taken by many students. So the relationship will be many to many.
+
+many to many cardinality
+
+Using Sets, it can be represented as:
+
+Many-to-Many Set Representation
+
+In this example, student S1 is enrolled in C1 and C3 and Course C3 is enrolled by S1, S3, and S4. So it is many-to-many relationships.
+
+
+### Participation Constraint
+Participation Constraintis applied to the entity participating in the relationship set.
+
+1. Total Participation:Each entity in the entity set  must participate in the relationship. If each student must enroll in a course, the participation of students will be total. Total participation is shown by a double line in the ER diagram.
+
+2. Partial Participation:The entity in the entity set may or may NOT participate in the relationship. If some courses are not enrolled by any of the students, the participation in the course will be partial.
+
+The diagram depicts the ‘Enrolled in’ relationship set with Student Entity set having total participation and Course Entity set having partial participation.
+
+Total Participation and Partial Participation
+
+Using Set, it can be represented as,
+
+Set representation of Total Participation and Partial Participation
+
+Every student in the Student Entity set participates in a relationship but there exists a course C4 that is not taking part in the relationship.
+
+
+### How to Draw an ER Diagram
+• The very first step is to identify all the Entities
+• Represent these entities in a Rectangle and label them accordingly.
+• The next step is to identify the relationship between them and represent them accordingly using the Diamond shape. Ensure that relationships are not directly connected to each other.
+• Attachattributesto the entities by using ovals. Each entity can have multiple attributes (such as name, age, etc.), which are connected to the respective entity.
+• Assign primary keys to each entity. These are unique identifiers that help distinguish each instance of the entity. Represent them with underlined attributes.
+• Remove any unnecessary or repetitive entities and relationships
+• Review the diagram make sure it is clear and effectively conveys the relationships between the entities.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• GATE CS
+• DBMS-ER model
+

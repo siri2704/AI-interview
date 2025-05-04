@@ -1,0 +1,868 @@
+MICHAEL FINK: My name is Michael
+Fink, and I'm the product manager Google Chart
+Tools, which is the team within Google that's responsible
+for building visualization tools both for
+Google products and for the external developer community. And before I start,
+I want to-- this is a talk about data
+visualization and live data visualization. So we want to collect live data
+from you guys and use that data in heard order to
+present all of the great tools that our team has
+been building in the last two months. Now we're going to collect data
+using a game, which we call The Unique Game. So what I need is, actually,
+open your laptops, which you've probably already done. And I'll tell you a bit
+about the rules of this very simple game. So The Unique Game is a game
+where each and everyone of you should choose a number,
+a natural number. And so far it's fairly easy. And you have to choose a number
+that you will be the only person that will choose
+that number, OK? So it still sounds
+fairly easy. And the last rule, which puts
+in the twist, is that the winner will be the person that
+chooses the lowest, unique natural number. So I'll let you ponder
+on that for a second. And I'd like you to go into this
+URL here on the bottom, io2011charts. And we need each and every one
+of you to participate in this game, because otherwise we won't
+have data to visualize. And now, what you can see here,
+is once you enter that URL, you'll see this
+small form. Let me put in some data, so I
+think that the lowest number will probably five. OK, and I could put in my email
+because the person that will win will get
+a grand prize. And I won't tell
+you, all right? And I'm exposing my email here,
+but that's great so you could feel free to send
+me emails later on. And I'll submit it. And what you see here, on the
+bottom right is a gauge that should be reflecting
+the number of votes that we're receiving. Is there like a severe
+connectivity issue? AUDIENCE: Yeah. MICHAEL FINK: OK, so we just
+killed live, and we'll stay with data visualization
+without live. If half of the demos that we're
+planning will still work, we'll be happy
+with that. So what we have here
+is this live gauge. What's nice about these slides
+is that all visualizations that you'll see are essentially
+embedded into this HTML page. And all of the slides are
+essentially one HTML file that we'll make accessible
+later down the road. And you'll be able to pull it,
+and take a look at all of the source code behind what
+we're presenting. So The Unique Game, maybe if
+you've written down the URL and if connectivity comes back
+later on, you could try and fill it up. So as I said, my name
+is Michael Fink, I'm the product manager. And what we're going to talk
+about today is data visualization and a lot of great
+tools that our team has been building in the
+last few months. And the climax of the talk
+will be in a short demonstration on how you can
+create full interactive dashboards, using the tools
+that we've built. Now the talk will be composed
+of two parts. The first part will be called,
+charts for everyone, and I'll be delivering that
+part, AKA fluff. No actual code there. And then the second part will
+be delivered by our two tech leads: Riccardo and Amit. And that will be a
+hands-on session. And if we still don't have
+connectivity, it will be a virtual hands-on session. And they will be covering how
+to use charts in the context of app scripts. They will be talking about our
+new ChartWrapper, which is a new syntax for very simply
+writing and spec'ing out a chart, and serializing
+it later on. They'll be talking about our new
+chart editor, and how you could embed a full chart editor
+into your website. And then Riccardo will conclude
+with an introduction to controls and dashboards,
+which will explain how to use multiple charts and multiple
+controls into creating a full data exploration experience. Now if you look up out on a few
+efforts that Google has gone into in the last few years,
+you could see that in a very systematic way, we took
+domains that were specialized domains to experts, and we
+try to democratize them. So we've done that with map
+maker, and democratizing cartography, so suddenly
+everyone could create his own map. And we've done that
+with YouTube, and democratizing video. So, until a few years ago, if
+you wanted to have any chance to have a video that reaches
+millions of people, you had to probably work in a studio
+in Hollywood. And today, you could sit for
+one afternoon, and make a viral video, and suddenly
+that capability is available for everyone. And we've democratized 3D
+modeling, using Google SketchUp other tools. And what I want to challenge us
+as a community, is can we democratize data
+visualization? Can we make the process of data
+visualization something that everyone could do in
+an effortless manner? So how many people are familiar
+with this chart? OK, that's all the XKCD
+readers here, great. So what's nice about
+this chart-- it kind of explains our
+motivation in democratizing data visualization is the fact
+that one chart is often worth 1,000 images. And this beautiful chart
+explains why the gravity wells are in our solar system. And you can see that it nicely
+explains in that small box why going from a very low well, like
+Earth, all the way to the moon requires a fairly
+big rocket. But if you want to return from
+the moon back to Earth, you need a very small rocket,
+because you the only barrier that you have to pass
+is the small gravity barrier of the moon. So a nice visualization, a
+nice chart, could really communicate a lot
+of information. And we were inspired by the
+work of Randall Munroe and XKCD over the last recent years,
+by observing how time and time again Randall was able
+to create different chart types and different
+visualizations that we were all familiar with, but give
+them a new flavor. So he's been using
+scatter plots. And you can see a scatter
+plot here to the left. The y-axis is whether
+the fruit is tasty. The x-axis is how difficult or
+easy it is to eat that fruit. And does anyone know what this
+scatter plot was titled? "Fuck Grapefruit." Now let's understand why: so
+grapefruit is all the way here on the bottom because it's
+difficult and un-tasty, OK? And you have seedless grapes
+here in the top, because they're easy and tasty. Grapes with pits are
+not that easy. And one visualization, one
+scatter plot can really communicate a lot
+of information. He's been using bar charts
+along the years. This is a bar chart that shows
+that a lot more people search for the sentence, I should have
+kissed her, rather than, I shouldn't have kissed her. And I won't even go into this
+heat map down here. Oops, I'm trying to switch
+a slide, but. Are we stuck on this slide? Let me try to refresh, maybe? Complete browser crash. OK, perfect now. Everyone close your eyes for
+three seconds, so you won't have to see the entire talk. OK perfect. So taking these great examples
+as inspiration, we defined our team's mission to make the
+world's structured data universally accessible and
+useful using visualizations. And our motif is to try to build
+charts that could be used by anyone. And anyone, we mean like the
+end-users, the end-consumers, that we might be dealing with,
+developers such as yourself, people that work in the apps
+and enterprise contexts. So we really tried to build set
+of tools that anyone could use, and I'll try to
+demonstrate that. So let's start from consumers. We view consumers as people that
+don't write code at all. So we want something that
+is complete UI based. And if you want to create
+a chart, and that's the limitation that you have to
+start with, then we provide, within Google Spreadsheets,
+a set of charts. Here's the spreadsheet that
+actually connects-- oh I see that a lot of people
+did manage to respond. So here all of the responses
+that we got. Who provided 65,000? Guys, you're way off. And here's a short histogram
+of the actual selection. So we see that 20 people--
+the smart-asses-- chose one. And if I just want
+to add a chart, I select the data range. And I could get a chart
+with one click. And this new chart editor that
+we've created is very cleverly done, in a way that if you
+select a data range, we observe the data and try to
+filter out, or prioritize the charts that are best compatible
+with the data rage that the user has selected. And so that's one feature
+of this chart editor. And you know, you could easily
+switch over to customize it, or select a different flavor,
+you know, if you want to change different colors,
+you want to change the legend position. All of these are options that
+could be easily done. So even as a consumer, you're in
+a position where you could really, in a very quick
+manner, provide data visualization that was
+not available. But that's obviously less
+exciting for the audience here, and what's more exciting
+is the offering that we have for developers. So what's nice about Google
+Chart Tools is that we have-- and this is an advanced talk,
+so I assume that most of you are familiar with our tools. So I'll just glance through
+it, and assume that you're familiar with this stack. But Google Chart Tools provide
+a very rich gallery of charts and visualizations that
+you've already seen. But we also provide a common
+data structure, which we call the data table that all
+visualizations work over that same data table. So if you want to switch between
+visualizations, since they all work over the same data
+structure, that's a very simple task. And there are a lot of utilities
+over that data table, where, if you want to
+create views, or add rows on the fly, all of these
+are things that you could very easily do. And then we have even a deeper
+layer that goes back to the data sources that you might
+have. And we also provide some built-in data sources, like
+Google Spreadsheets, and Fusion Tables, and others,
+that could hook up into your data. And we provide Java and Python
+libraries that help you hook up your data and layout in
+back end to the actual visualizations that you want
+to [UNINTELLIGIBLE]. So we really provide an entire
+stack of the tools. And what I want to talk about a
+bit is kind of give you the highlights, and what's
+new in the stack. So what we've had it for a while
+already is the option to customize charts. So this is a very important
+thing for developers, is make sure that we have very coherent
+experience with the general site. This is a great pie chart that
+tries to convey the fact that the ninja turtle, Michelangelo,
+right now is more popular, or is searched
+more in Google, than the actual Renaissance artist.
+So the green slice is Michelangelo, the ninja turtle,
+and the brown one is Michelangelo, the artist. And you can see that this is
+the XKCD original, and you know, with two very simple
+options, you could say, oh, put the legend in the bottom. Make sure that the colors are
+this shade of green, and here's the appropriate
+shade of brown. And voila, I have the customized
+chart that I could take and plug into my website. Another demonstration of
+customization is-- so here's that stacked area
+chart of the gravity wells that we saw earlier on. And here's the version that you
+will get if you use the visualizations out of the box. And say this is not really
+working for you. You don't really need the grid
+lines, you don't really need the numbers on the
+x- and y- axes. You definitely don't like this
+color palette, so you could easily customize pretty much
+anything that you want and make sure that it fits nicely
+into your website. By the way, quick question,
+what's our favorite moon in the solar system? Io. Very good. OK cool. So those are things that were
+available for a while and then on the new stuff is we're fully
+committed to switching over to HTML5. And people here that are
+familiar with our gallery know that we still had some flash
+visualizations in our gallery. And we are pretty much in the
+process of phasing them out and coming out with new versions
+that are completely HTML5 compatible. You could see this GeoMap here
+on the top of the chart, which is purely SVG-based. And what we see in this charge
+is the gradual popularity overtime of Dilbert
+versus XKCD. So how many people here have
+ever read Dilbert? A nice crowd. How many people have
+ever read XKCD? Everyone, no? I don't know, I always assumed
+that that was the case. So what we can do now is we can
+see over time, we can see that way back in 2006 there
+was no XKCD, right? And Dilbert was pretty much a
+common thing, specifically around California which is a
+Silicon Valley stronghold. And then around 2008
+XKCD came in. And I think Randall Munroe
+started from Massachusetts. And you could see that he had
+his followers develop there. And by today, XKCD is
+a lot more popular than Dilbert worldwide. So what's nice about this is
+that there was this GeoMap visualization on the top, but
+then there's this time control on the bottom. And we built it in a very
+generic way, so you could pretty much plug and play
+between any visualization that you would like on the top, and
+the independent time selector on the bottom. And Riccardo will talk a bit
+about selectors later on, and hopefully this will be available
+by our next release. OK so, other new things that
+we've been working on. So we completely redesigned
+our website. I encourage you all to go to
+code.google.com/apis/chart/. So we kind of unified the two
+APIs that we previously had there and we're releasing a new
+version of our data source library in Java. So you could easily hook up any
+data source that you have in your backend to create
+[UNINTELLIGIBLE] tables in the client. And I mentioned earlier on that
+Fusion Tables are now an official, compliant
+data source. So you could hook up your
+visualizations to any Fusion Table that you might have. And
+we're, almost on a weekly basis, releasing new charts and
+new visualizations that you could start playing
+around with. And then you could see this
+candlestick chart, and many others that are coming out
+in the next few weeks. Cool. So now, the grand winner
+of our Unique competition is Tom J. Could you raise your hand? Is Tom J. here? Are you Tom J.? No. Could you stand up? Could you come over? So, lower your expectations
+as you step by, OK? Now lower them a bit more. You get a T-shirt. Not anything more sophisticated
+than that, but congratulations. Now what's cool about this is
+that, you know, you see this projected here. But if each and every one of you
+could look into your email right now, you see that you got
+a chart sent over to you with live results of how
+unique you were. So if you chose three, probably you're not very unique. You're one of nine. If you chose six, you're
+the winner. Congratulations, Tom. And now I'll switch over to Amit
+who will explain how we were able, as the talk went on,
+to send out all of these emails, using the Google
+App Scripts. AMIT WEINSTEIN: Thank
+you, Michael. So my name is Amit Weinstein,
+and I'm a software engineer in the Google Chart Tools team. And let's talk about Google app
+scripts and how we sent you all these emails. So most of you are probably
+familiar with the Google apps script, but just in a few words,
+Google apps script is a framework to run code, script,
+in the Google cloud. So you have the benefit of
+Google running the scripts for you, at the time that you
+specify, or according to triggers that you define
+in advance. And it has the resources that
+Google has, so you can access your email, you can access
+your calendar, you can access Docs. And in that example that we
+showed, we sent you an email to all the players that
+played the game. And how is this related
+to charts? So until today, you couldn't
+actually create charts inside the Google [? apps ?] framework. But it's something that
+is very natural. So if I have a Google
+spreadsheet with all the inventory that I have in
+my store, for example. And I want to, every week, to
+get an email summarizing the inventory and what happened
+this week. How much did I sell, and how
+much is left in the inventory. Then it's very natural for me
+to ask for such a script. And it's really easy to write
+such a script if I had support for charts in the framework. So coming up pretty soon you
+would have built-in support for charts in the Google
+Apps Scripts platform. What does it mean? You will be able to collect the
+data as you already do in the Google Apps Scripts. So you have the spreadsheets
+maybe from your email, so you collect all the data, and
+you create the chart. And you customize the chart
+according to whatever you want the chart to look like, as
+we will see in a minute. And then you embed that chart
+whenever you want. So one option is to send the
+chart as a separate image into your email, as we did
+in the example. But there are other examples,
+such as any adding the chart into your doc list, so you can
+just see all the statistics from each week you will have an
+additional item in your doc list with the new chart. So you can look at the flow that
+we have in our case, we have spreadsheets, which
+stores all the data. And you submitted the form as
+we gave you the link today. So the form answers are
+aggregated into a spreadsheet and then the script
+was triggered. So you can trigger the script
+by form submission, for example, or to define it
+at a specific time. And then the script just ran
+over the votes that you submitted and created
+individual charts for each player. So the chart that you saw before
+was a chart specific for the control group
+number three. So it showed that
+[UNINTELLIGIBLE PHRASE] chose three, and the winner
+chose six, and how is the distribution of the other
+players in the game. So let's take a look at
+some code snippets. So the first part is collecting
+the data. I won't get that too much into
+it, because this is part of the Google apps general
+framework and if you're interested, there just a talk
+in room two just following this talk about that framework
+in general. So let's assume that I already
+have the data, so I create a new data table. Michael already mentioned that
+we have some protocol to shift data from one place to another,
+and to fit it to a visualization. And I just create a
+new data table. And I fill in the values that
+I had from the Google spreadsheet. So I add different columns
+according to the series that I need to have in my chart. Once I have the date
+ready, I want to create the charge itself. So I initialize a new
+column chart. And I customize a chart
+according to what I need. So one important thing
+is to fit the data itself into the chart. So this can be done using the
+set data table method. And the other thing, I can
+customize the chart as I want. For example, I can set the
+dimensions, I can set the title, and eventually just
+build the chart. And now I have a
+chart instant. And the question, what do I
+do with the chart instant. We have several options. I our example we
+sent an email. So in order to send an
+attachment in an email, I first convert the chart
+into PNG image. So I can get the bytes of the
+PNG image using this line. And then I just attach to the
+email and send it to each different user. So that's about it. It's a very small script,
+short script. And it's very easy. And hopefully in a few weeks,
+you will be able to play with it in your own rule abstracts. So the next topic that I want
+to cover is ChartWrapper. So the point of ChartWrapper
+that we introduced in the release that we shipped
+yesterday is making things simpler. So let's take a look at the
+example of loading a Google visualization without
+using ChartWrapper. So we have several sections
+in our page. The first one is loading
+the visualization API. So here I write Google
+load visualization. And I ask for a version,
+number one. And I specify the package that
+they want, specifically here I ask for [UNINTELLIGIBLE PHRASE] package. And then I have [UNINTELLIGIBLE] method. And assuming that I want the
+data to come from the Google spreadsheets, I have
+some specific spreadsheets URL that l query. And I send that query. And I specify the handler
+to be run when the query is returned. And the handler makes sure that
+the query was successful, that there was no error, and
+assuming there was no error, I have a data table
+from the query. And I just initialize the
+chart, and draw it. So let's see how we can make
+this snippet a bit shorter. So this is a new snippet
+with ChartWrapper. So first I load the
+visualization API without specifying any specific chart. I only want the core part of
+the API, only what contains ChartWrapper. And then once I have the core
+API, it just initializes a ChartWrapper, and I
+specify all the parameters that I need. So I specify the data source
+URL, which is the same URL from the previous slide. I specify what chart type I
+want to present, which is column chart. And then I specify the container
+ID, where in the page I want to display
+the chart. And that's it. My next call is to
+the Draw method. And this handles all
+things for me. So it loads the correct package
+from the visualization API dynamically. It sends the query to Google
+spreadsheet without me having to specify-- to query it myself. And it then draws the
+visualization into the view that I specified. In addition, it also allows
+you to modify the chart very easily. So now let's say I want to
+change the chart form from column chart to area chart. I adjust chart type
+with area chart. And for example, I can also set
+some option like the title to be, My New Area Chart. And to call the draw
+method again. So everything is taken care
+of behind the scenes. So the new package is being
+loaded, and the new chart is being initialized and drawn
+to the [? supreme. ?] So we already discussed some
+of the features of ChartWrapper. Here is a list of some more. So we saw that we created from
+JSON that has all the information that the
+chart needed. Basically, encapsulated the
+information that represents a chart that we draw later
+on the screen. It loads the packages for us,
+and it runs a query for us, provides the handler. We can easily modify and
+redraw the chart. And another feature that we
+haven't discussed so far, is that this object is serialized
+and clone-able. So basically once we have that
+ChartWrapper, and we modify it, we can store it. And we can store it so that the
+next time we want to show the chart, we would be able
+to show the unmodified version of the chart. So we can hold a state. And one more thing that in order
+to make life easier, we have a function named
+GoogleVisualization creates snippets that takes the JSON
+format of the ChartWrapper, and create a snippet that you
+can embed in your site. So I can modify the chart
+dynamically, and then take the snippet of the chart and
+embed it in whatever web page that I want. And we will now see an example
+how this encapsulation helps us to work with the
+visualization API. So the next topic
+is Chart Editor. So Michael only showed the Chart
+Editor inside the Google Spreadsheet environment. But sometimes you have the data
+outside of the Google Spreadsheet environment, and
+freely want to allow your users, or even yourself, to
+easily modify the chart and customize it. So the Chart Editor's a powerful
+tool for customizing the charts. So we already saw some
+of the features. And as of today, you can
+embed the Chart Editor inside your own pages. So for example, we embedded the
+Editor inside the slide on this doc, so I can just
+click the open Editor. And [UNINTELLIGIBLE] and I have the data from the
+game that we played before, the live game from the results
+that you submitted. And I have it here. And I can modify the chart. So if Tom would say what
+is his favorite color. Let me see. Is he here? OK, so let's say we want to
+change the color of the winner, and let's say that his
+favorite color is pink. Then I choose pink, and
+then I press OK. And then the chart is embedded
+inside these slides. And it's persistent. So now when I go back to
+the slide, the color would remain modified. And I can modify the chart
+again, and I can change, for example, the title
+and say, specify the name of the winner. And it's immediately reflected
+to the slide that we see. So you can embed your Editor
+inside your own page. OK so here is a very short
+concept on how to create this on your own. So first we create
+a ChartWrapper. As we said, the ChartWrapper
+encapsulates the information that the visualization needs
+in order to be drawn. And in this case, we only
+specify the data source URL because everything else will be
+defined by the user in the Chart Editor. So we don't need to specify the
+options, and we don't need to specify the container
+at this time. And we don't need to specify
+the chart type. Everything will be defined
+in the Editor. And the next step is to
+create the Editor. So we initialize a Google
+visualization Chart Editor object. And we listen to the OK event. So we want to decide what
+happens when the user clicks on the event button in the
+Chart Editor window. And in this example, we take
+the Editor, and we ask the Editor for the current,
+up-to-date ChartWrapper instance, which has
+the serialized representation of the chart. And we just call the draw method
+to the container that we specify. And that's it. The chart is immediately updated
+and is persistent. And then we just need
+to open the dialogue whenever you want. So we decided that it would be
+open on the click on the open dialog button that you can have
+whatever trigger that you want to open the Editor. That's it. Now I will hand over to Riccardo
+to tell you about Controls and Dashboards. RICCARDO GOVONI: Welcome,
+everybody. My name is Riccardo, and I'm
+going to guide you through the last part of this presentation,
+which is going to be Controls and Dashboards. So, before we start, let
+me spend a minute with a small story. How many times has it happened
+to you that you tried to solve a problem using a chart, and
+if you're [UNINTELLIGIBLE] it would only solve part
+of the problem. It would only give you
+a partial answer. For example, a few weeks back,
+my manager came around and he asked me, can you show me the
+number of bugs that a team created over the last week. And I said, OK, here is a pie
+chart, number of bugs created over the last week
+by the team. He was happy, went away, came
+back five minutes later and said, can you also show me
+the trend over time. I said, OK. I aggregated the data
+over time, then created a line chart. He was happy, went away. Came back five minutes later
+and asked me again, can you show me the data maybe
+aggregated over months and year. OK, two more pie charts,
+month and year. Should be fine. Went away, came back. And, can I see the data also
+aggregated maybe by geography because your team is distributed
+and you have people all over the place and
+I want to see the bugs that they created in other places? OK, go through the data
+again, aggregate by geography this time. Sum everything up. Put a GeoChart in place. And he was happy,
+but I was not. By this time, I was reasonably
+annoyed because I created a very sketch dashboard with logic
+to keep everything in place, and everything was a bit
+of Javascript nightmare. Why was that? Well for two reasons. One is that, today,
+visualizations are helpful, but they offer a single
+perspective. You have to choose one or a few
+of dimensions out of all the data that you might have,
+out of the data table that you might have, and it might span
+multiple dimensions, and use them for your chart, right? And in a pie chart, you can
+only pick one dimension. And maybe the dimension does not
+give you the full picture. It only gives you a partial
+presentation of the data that you have. The other issue is that so far
+wiring together multiple visualizations has been hard. You had to take care of all the
+events, making sure that all of the visualizations
+were ready. And maybe taking care of
+distributing the correct data to each visualization, because
+they have different rules for the kind of columns
+that they expect. And so, so far it
+has been hard. And you had write a lot of
+JavaScript boilerplate. And in the end, I mean, it's
+not really that fun. And so we thought, can
+we make anything-- can we do anything to
+make this simpler? And we thought about
+it for a while. And at least to make my life
+simpler, so I don't have to create that many dashboards
+for my code, we decided to introduce two entities. The first one is a control. Well what is a Control A control
+is a UI widget that collects user input and uses
+that information to decide which data to hand over to
+the charts that followed. So for example, a control could
+be an auto-completer, a slider, a data picker, range
+selector, you name it. And that will let you the
+user specify and give us information about the
+data that he wants to see in the charts. And here you see an example of
+the gallery of widgets that we're going to roll out as
+part of the controls and dashboard APIs. And as you can see here, we
+have sliders, we have [UNINTELLIGIBLE] pickers, we have
+auto-completers. You can imagine, for example,
+having a data chart and a [UNINTELLIGIBLE] slider on top of that. And let the user, with the
+slider, select the fraction of the data that he cares about,
+and he might be more interested in. So now you need to wire
+everything together, and for this we're introducing
+a dashboard. What is a dashboard? A dashboard is just a collection
+of controls and charts that play together
+over the same set of underlying data. It's the wiring, it's the
+binding logic, so that you don't have to, that takes care
+of basically propagating the data through all the controls
+and charts that are part of the dashboard and making
+them behave like a [? query info. ?] So let's look at how the
+API would look like. So we tried to keep the API
+simple, and thus similar to the ones that you're already
+familiar with. Well what would you do then? Well, the first thing is we
+said, they're going to probably create some charts. And for this, they're going to
+use the google.visualiza tion.ChartWrapper that
+Amit just introduced. And as we said, it's a single,
+self-contained wrapper that describes what the
+chart should be. It has a type, for example,
+a pie chart, there's some options. And it has a place older
+in the page that would contain it. Then you're going to have
+controls that will let the user play with the data,
+and affect the charts. And for this, we're going
+to introduce-- we're introducing now-- an equivalent class which
+has the same semantics-- google.visualiza
+tion.ControlWrapper. It is configured in the same
+way with a JSON object, and you use that to specify the
+kind of controls that you would like to have. In this
+case, we are introducing a control of type number range
+filter, which is going to be a slider, a range selector
+over numbers. And it's going to have
+a few options. It's going to work on the
+data table column, which is called, salary. It is going to limit the
+range from 10 to 100. If you don't specify it, it will
+figure itself out from the data that you gave it. And it has a container where
+it's going to render itself. Then you need to wire
+the two together. And for this, we're
+going to use google.visualization.dashboard. And as you can see, it
+has a bind method. And in the bind method, you
+specify the controls and the charts that will be part
+of your visualization. Controls first, charts second. The dashboard will take care
+of everything for you. So it will take care of wiring
+all of the events of propagating the data through
+all of the elements, making sure everybody gets
+the right data. And finally while clearly we
+need the data at some point. So until now, you were used
+to giving the data to the chart itself. But now we have a dashboard
+that props everything up. And so you're going to give
+the data to the dashboard through a familiar
+[UNINTELLIGIBLE] method. And so in the end, what you have
+is a hopefully short and simple API that will let you
+specify a dashboard, which is a composition of controls and
+charts and [UNINTELLIGIBLE], with letter table
+that you have. So let's recap a bit. As we said, we have introduced
+the google.visualiza tion.ChartWrapper as a single,
+self-contained descriptor for what the chart should
+look like. We have the google.visualiza
+tion.ControlWrapper, single self-contained descriptor
+for what the control should look like. And again, it is a user
+interface element that collects the user input, and
+uses it to decide which data goes to the charts. As you can see, again, it has a
+type that decides which kind of control you want to have, a
+placeholder for the position in the page, where you want to
+render it in, [? pairs ?] options, the edition
+is the state. State describes basically the
+user input that we collected. For our range slider, it would
+describe the position and the value of the two
+[UNINTELLIGIBLE] of the range slider. You can define an initial
+state, so if you want to prepare the control in the
+defined state when you initialize the dashboard. And it can also-- it change
+after the fact, programmatically, for example,
+to integrate with your own logic. And then we have the
+google.visualization.dashboard and simple constructor, a bind
+method where you specify which controls are part of the
+dashboard, which charts are part of the dashboard, and we
+will take care of wiring everything together. It also as a method-- it also lets you drop-- sorry, bind together controls
+with other controls to create sort of the dependency chains. And we will go over this
+later if we have time. And finally, you have
+draw method that accepts a data table. And once you give the data table
+to the dashboard, then the entire dashboard
+will go live. And it would work on its own
+from that point onward. Whenever the user will interact
+with a control, the dashboard will take care of
+updating all the affected jobs and keeping the old
+page coherent. But enough with the slides, and
+let's see if we can cover it with a demo. So many of you are familiar with
+this data site that was, I think, originally presented
+by Rosling, and shows the correlation between life
+expectancy kids per woman. Not many? OK. For those of you that are not,
+this was a great presentation that showed basically a life
+expectancy and number of kids per women, change over time, for
+all the countries in the world and showed basically the
+world evolved to where countries where people lived
+longer and because of having fewer kids. It's a very powerful
+presentation-- visualization. But it's monolithic, right? You cannot really change
+and [? doubt ?] the radius. It's kind of a flash component,
+where, suppose you want to change the bubble chart
+with a GeoMap, or with a different kind of
+visualization. Or suppose you want to present
+another kind of information along with this bubble
+chart as the time slider moves along. It's not really easy to
+change this chart. I cannot actually
+do it right now. But maybe we can create
+something similar with the APIs that we just introduced. Let's see if we can build
+something like this, not this one. So ideally, what we would like
+to assemble in the next few minutes is something
+like this one. You see on the top, we have
+a bunch of controls. We have a year selector, we have
+a country selector, we have a life expectancy slider. And whenever you operate one
+of the controls, all the charts in the bottom will
+react in real time. In this case we are showing
+different metrics, for example, life expectancy and
+GDP per capita, which is an indication of how rich
+were the people on average in that country. So for example, for 2008, if
+you look at which countries have a life expectancy below
+60 years, you will see that unfortunately most of Africa
+sill has a low life expectancy. But at the same time, you have
+seen how the charts and everything updated in
+real time when the user applied the control. So let's try and build
+something like that. So the first thing we're
+going to start with is with the data. The data that we are using is a
+selection of basically here, country name, GDP for that
+country, and life expectancy over a range of 40 years for
+different countries. This is a data set that I have
+prepared beforehand, and it's stored in a data
+table locally. So on the left, you can see
+that we are visualizing it using a ChartWrapper. We are specifying that the type
+is going to be a table. We have a container, because
+there is the element that it's going to contain the chart in
+a webpage, the data, a few options, and the draw method. So far, so good. So let's change it a bit. On the right, now you see that
+I've added a control. A year-- basically a category
+picker for year. And whenever I operate the
+control, so let's move to the '60s, the data on the
+bottom changes. So here we are saying, data from
+the '60s, move to '77, and we've got the data
+from year '77. And let's go over this code
+on the left side. So again, we have the
+ChartWrapper on top, for the table, as we said before. Here in the middle, you see a
+ControlWrapper instance that says I'm going to use
+the [UNINTELLIGIBLE] filter. It's going to apply itself
+on the column, which is named here. It has a few options for
+the user interface. It says, will it allow multiple
+entries or not? Will it allow the user to type
+something in an auto-completer fashion or not? It used to have the initial
+selected year as 2008. And then we have a dashboard
+instance. Create a dashboard instance, and
+as I demonstrated to you before, you kill the
+bind method. You tell that you want the year
+selector to affect the chart, and then you call draw
+with the data table. From this point onward, whenever
+I operate the year selector, but chart updates. But a simple table is not really
+that helpful for our case, so let's try and change
+it to something else. So what we're going to do is
+change it to a pie chart. We're going to change
+the options. So we're going to say that the
+width is going to be 500 pixels and 500 pixels. And the slide's visibility
+threshold-- sorry, a bit boring-- is going to be 160, because
+we don't slides that are too small. We're going to use the view
+option to say which columns we want from the data table. Since a pie chart only allows
+you to pick two columns. We're going to use column
+one, country name, and column two, GDP. And that's pretty much it. And we just redraw it, and
+we got the pie chart now. So let's move back
+to the sixties, the pie chart updates. What was a good place where
+we should have been living in the '60s? Well, the United States seem
+pretty good, big slice. Here we are representing the
+GDP, so, how much money the average person used to
+have in the '60s. Luxembourg, pretty good. What about the '80s? Where do you think we should
+have been living in the '80s? Any idea? Who said that? Monaco! Good choice. But as you can see, the pie
+chart itself is still a bit confused, right? There are too many slices and
+not really very helpful. So let's add another control. It would be nice if we could
+let the user choose the country and select between
+multiple countries. So we're going to copy
+this control here. There we go. And we're going to introduce a
+new control over the country. So we're going to call
+it, country. It will still be a
+category filter. We'll call it, country. We'll work on the column which
+is called country name. And, for a change, let the
+user type something in. Allow multiple choices. We don't really care about
+the initial state. OK, we defined a new control,
+here, using the control wrapper object that
+we described. And next, the only thing that
+we're going to say is, OK, when both the country or the
+year control are operated by the user, please update
+the chart. OK, good enough. Let's move back to
+the '60s again. We got a category picker here,
+with all the nations here. Since we specified that it
+should work from the country name column, and the country
+name column contains all the countries, it's already
+auto-populated itself with all the countries that it could
+find over there. And so we can say, I don't
+know, in the '60s, China versus Thailand. Wealth distribution seems
+to be pretty equal. Let's move to the '80s. Thailand got over. You can start adding
+countries-- United States, United
+Kingdom, et cetera. And you get the picture. You see how the charts
+update in real time. From this point onward, well,
+it's only a matter of adding a lot more charts, and more
+controls, and using the same simple logic that I already
+described to you. Create a ChartWrapper, create
+a ControlWrapper-- one for the charts, one
+for the controls-- create a dashboard, and use
+the dashboard to bind everything together. And you should be able to
+get to this final result reasonably quickly. And this, from this point
+onward, is just a matter of applying, right? So for example, you could say,
+let me show only the countries that have a life expectancy over
+70 years, and let's look how we change it over time. In the '60s, all in the Nordic
+countries and Canada. In the '70s, America's come in,
+Australia, most of Europe. In the '80s, strengthen
+their position. In the '90s, South
+America comes in. 2008, a lot of countries
+have a life expectancy over 70 years. Southern Africa is
+still missing. And so you can see how easy
+it is to combine together multiple charts and control and
+assemble an interactive dashboard out of that. OK. So good. So these are controls
+and dashboards. Word of warning, they are an
+experimental package that we are rolling out-- we actually rolled
+it out yesterday. So they are in version 1.1. So when you load the Google
+visualization API, saying google.load/visualization and
+you specify a version number, use version 1.1 if you
+want the controls. Being experimental, they might
+break and change over time, but we are very interested in
+learning from you-- what you think they should be, or what
+you think they should be, what you think we should do on top of
+them, what kind of features they should have, and whatnot. So please, give them a try. We're going to listen
+to your feedback. We have some ideas on our
+own, but give them a try, and let us know. And that's pretty much it. So for all the four topics that
+we covered, starting from consumer, create your own
+charts, tricks, spreadsheets, the integration for enterprise
+with app script, and finally for developers with controls
+and dashboards. The main communication
+link is over there: code.google.com/apis/charts. We rolled out the brand new
+version of the documentation yesterday, and we are now
+open for Q and A. So if the police want to come
+back, any questions that you might have. AUDIENCE: [APPLAUSE] Have you guys thought about
+hooking up, instead of passing the data table, passing
+it a data source. So I'm not sure if you've seen
+things like Spotfire where you actively, dynamically slide
+in your running queries essentially in the background. Is that something that
+you guys are planning for in the future? RICCARDO GOVONI: You mean
+for the dashboard thing? AUDIENCE: Yep. Having a control, actually,
+maybe control a data source API. RICCARDO GOVONI: Yes, so
+version 1 is local data source, but version 2.x
+is going to remodel the sources as well. AUDIENCE: Do you plan on
+releasing some of the extra features from the annotated
+timeline from Google Finance? AMIT WEINSTEIN: Yeah, so the
+control that Michael showed today, that you can select the
+time range dynamically is one step in the direction of
+creating an HTML5 version of the annotated timeline charts. We are heading there. AUDIENCE: So things like real
+time updates will be available, and that
+kind of stuff? AMIT WEINSTEIN: I didn't hear. AUDIENCE: Like real
+time updates from the annotated timeline? AMIT WEINSTEIN: We will send an
+email to the group in the next few [UNINTELLIGIBLE] that we add another component
+on the way to enriching the chart. AUDIENCE: Hi, as I understand
+correctly, we don't have a way to connect to a database, and
+run a query and create a chart, right? AMIT WEINSTEIN: You can
+create the data table locally if you-- AUDIENCE: Locally, but with a
+query that's just for it? AMIT WEINSTEIN: No, no, you
+can create the data table without any query, just
+in Javascript. AUDIENCE: OK I can
+use something else to load the data. But in the future need you may
+have a version which would run the queries live and
+create charts? Did I understand
+that correctly? AMIT WEINSTEIN: I think I don't
+understand the question. AUDIENCE: A person before me
+asked that question, that you could run a query, or line of
+running queries and creating charts at the same time. I'm more concerned about
+enterprise applications where you have large databases and
+you don't have smaller data sets, so what would the utility
+in such applications? AMIT WEINSTEIN: OK so the new
+data source library that we submitted a little while
+back allowed you to sample the data. So if you have a
+[UNINTELLIGIBLE] data source which is big, we
+added some capabilities to the query language to allow
+it to sample it. And currently the dashboard only
+works with a local data table, so we have to
+store all the data locally in you browser. But in the future version, we
+hope that we would be able to connect to remote data sources
+and combining with sampling, every time that you narrow
+your view, you would use less sampling. So a chart would remain with a
+reasonable amount of data, and it would reflect the
+current slice that you are looking for. AUDIENCE: How easy is it going
+to be to customize a team of the [? skin ?] of this, of the dashboard
+and the tools? RICCARDO GOVONI: So hopefully
+it should be easy. If you go through the APIs,
+you will see that they all have a consistence with
+standard API. You create an instance of the
+kind of thing you want, a chart, a control, or a
+dashboard, you configure it with some standard options. And then you just draw it. And it's very-- sorry, go ahead. AUDIENCE: So something like,
+a scattered chart to have a custom background or something
+like that, is that possible? Or does it all have to be
+solid colors for now? RICCARDO GOVONI: You can
+customize, I think you can customize the background
+as well, already. AMIT WEINSTEIN: So there are
+two different things. Customizing the chart is
+something that we provide as part of the chart. So every chart has its own
+customization options. And you can send us an email
+if you need some other customizations if they're
+currently not there. And I think that Riccardo, he
+meant that controllers, hopefully in the future, you
+would be able to create your own controller that blends more
+smoothly in your page to interact with the chart
+that you provide. AUDIENCE: Hi, I still
+have questions about the data source. What data source options are
+there currently for this? And what options maybe in the
+future will you guys be looking at? AMIT WEINSTEIN: There are
+several data sources that already exist today. So one example is Google
+Spreadsheet, another is Fusion Tables, and it's
+also by Google. I think there's also Salesforce,
+data is provided as a Google Fusion
+data source. And you can create your
+own data source. We have open source libraries
+in several languages, including Java and Python,
+that you can create. If you have the data stored in
+your location, you can just include our code, and become
+a proper data source. If you have the data in a
+specific place, you can just plug in our library. If you have it in some third
+party that doesn't support the data source API, then I guess
+the only option is to ask them to support it. AUDIENCE: Just a quick question
+about the interface with the dashboard. You know with current charts you
+have some events that are kicked off when you select a
+data series or when you click on a data point, are those
+events going to be able to kick off things in other parts
+of the chart the way you guys have implemented it? RICCARDO GOVONI: Right, so if
+I understand correctly, the question is whether interaction
+on a specific chart would propagate to the
+rest of the dashboard. Again, not in the experimental
+version that we're rolling out. But one of, basically, the
+first pictures that we're going to roll out is the fact,
+for example, that when you select a specific data point
+in a chart, like we've [UNINTELLIGIBLE] representation of that
+to the point, across the entire dashboard. So if it's a country, maybe the
+country in the GeoMap will be highlighted as well. So for example, the selection
+event will propagate across the dashboard. AUDIENCE: So you guys might have
+gone through this stuff a little quickly, so I might
+be wrong, but then the interactions on the
+dashboards-- you know, the controls for the
+past parameters, or whatever, filters to the charts-- that's hardwired together,
+right? You wire a controlled
+two-way chart. Is there some sort of more loose
+type coupling you guys were thinking of, like
+event-to-run mechanisms or something, just so you can do a
+bit more easily, instead of hard-wiring it all together? RICCARDO GOVONI: So under the
+scenes, it's all event-based, and asynchronous, so the bind
+method that you see is basically shortcut, shorthand to
+wire everything up quickly. But at the moment, it's already
+a sort of fairly detached model. I'm not sure what kind of-- you would like an event-based
+[UNINTELLIGIBLE]? AUDIENCE: It might be right. In this case, I guess, if you
+have a country name, and if there's a bunch of charts and
+I'm looking for country name, if the control is filtering on a
+country name, all the charts just kind of obey it, right? Yeah, so then that's great. I just wanted to
+[INTERPOSING VOICES] RICCARDO GOVONI: Yeah, so by
+the bind method, you can specify any number of jobs. You can do one-to-one,
+one-to-many, many-to-one. So you can have one control
+driving 10 charts or no-- AUDIENCE: Can you have a click
+on a chart drive other elements on the page,
+right now? Like if I were to select say,
+Australia, on one of the charts, like the map, can I
+actually have, instead of selecting Australia from a
+control, can the chart itself behave like a control? RICCARDO GOVONI: We are about
+to have something similar. Maybe I can go back
+1,000 slides. The time selector control
+that Michael showed up initially, maybe-- it's certainly not this
+slide too fast. OK, this one. So you see this one on the
+bottom is a control that lets you choose, in this case it's
+a time interval, and it's built on top of an underlying
+line chart. So there's already the concept
+of combining controls with a specific chart. We may not have, right out of
+the box, the kind of control over a GeoMap that you are
+talking about, but there's already something like that. Good. Anything else? Then we're good. AMIT WEINSTEIN: Thank
+you very much.

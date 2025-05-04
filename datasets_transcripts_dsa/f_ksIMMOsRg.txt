@@ -1,0 +1,230 @@
+hi guys Shouvik here welcome back to our YouTube 
+channel so today we'll solve another question from   uh lead Cod so let's get started yes so today we 
+we have tacked as an easy question but yeah like   obviously the way you will going to be solved that 
+on that perspective the question can be medium or   even hard so yes so first try to understand 
+the question there there is maximum value of   an order triplate one so what they have given 
+they have given a zero index integer and nums   return the maximum value over all the triplets 
+if of indices i j and k such that I J K should   be should be follow these conditions so so you 
+can choose indices i j k and and what is the   conditions among them so all of them all of them 
+should be should be one after another should be   one after another so I should come first J then 
+and K then like this way so you can choose any   arbitary three indexes called triplets and out of 
+them this order should be followed now if all such   triplets have a negative value then then we should 
+return a zero now what is the operations they have   performed after that we can say it is a negative 
+value so uh that they have provided on the next   line so the value of the triplet of indices i j 
+and k is equals to is equals to nums of I minus   nums of J into nums of K so so let's suppose 
+here nums of I is smaller than your nums of J   then on that case this this negations is going 
+to give you a negative value and and no matter   with a negative value and all the elements in our 
+uh nums array is positive so nums of K is all all   cases nums of K is positive and this Factor this 
+negation Factor can be negative can be negative so   if if there is if there is if there is if all the 
+all the tripletes are going to give you a negation   negative values then on that case they have asked 
+to return a zero on that case how how like all the   cases all the cases uh you are not going to get 
+any positive values so let's go to our favorite   one note we we we can understand sure so so what 
+we we have it so let's suppose so let's suppose   what we have what we have so let's suppose we we 
+have a we we we have a we have a uh num set so I   think the question is very straightforward guys 
+uh I guess you guys are able to got the gist of   the question but if not then let's just quickly 
+uh do a quick iterations to our one note and then   obviously you guys will get the gist yes so so 
+let's suppose we we have an are so that is that is   our are and on this aray so that is the partition 
+of our aray so let's suppose that is our I so   let's suppose you choose your I point this pain 
+man let's suppose our I pointer is at this index   how I can write what leave it so let's suppose 
+that is our array and let's suppose this is the I   index and you choose this index as our J index and 
+let's suppose this is our K Index right and let's   suppose the array is monotonical IND increasing 
+monotonically increasing so let's suppose it is   two it is five right it is five it is 7 it is 
+9 and it is let's suppose 12 let's suppose it   is 15 something like this so so so your nums of 
+I your nums of I what is the elements you choose   as your as your ey pointer why your ey pointer 
+your ey pointer let's suppose you choose your   ey pointer here and your J pointer here no matter 
+any point no matter any points you are going to   choose your J pointer as as the J side as the as 
+our this side as our right side as our right side   is higher as our right side is higher right side 
+is higher so so so all the cases nums of I nums   of I minus nums of J is always going to be always 
+going to be negative your nums of nums of I nums   of I right not sure why it is creating so much 
+problem today minus nums of G only this portion is working okay make this my mobile also yes so so 
+so if if on the arrangements the is monotonically   increasing then on that case your nums of I 
+minus nums of G is always going to give you   a negative Val and all the elements are positive 
+so so nums of K is always positive so so the so   multiplication between a positive and negative is 
+going to be give you a negative value so if all   the such cases we are going to get only negative 
+value on only negative value sorry then on that   case you can return a zero from uh that particular 
+test case so yes guys the question is as simple   as that and now now now for this uh I guess the 
+constant is very very small so if you can write   a n Cube solution then also like 100 into 100 
+into 100 so that means 10^ 6 is also going to   be fine because we we we have a like 10 to the^ 8 
+capacity in one second system can process so yes   so you can write a very standard root and that is 
+of obviously a b of NQ so yes so this is something   like this I am not going to explain what it is 
+but you can see like we are we are starting your   starting our nums pointer at I index J pointer as 
+I + 1 to n index and K pointer is J + 1 to n index   and we are doing maximize of maximize of answer 
+with this formula they have given to us given   to us and we have initialized our answer to zero 
+because if if the test Cas that we just discussed   if all are monotonically increasing monotonically 
+increasing on that case so here here here you also   can see like it is a monotonically increase so 
+all the all the triplets are going to give you a   negative value so in that case you can your answer 
+should be always store the maximum so answer is   initialized zero only so you you will uh provide 
+a uh zero for this particular test yes so now uh   that is a NQ I think it is quite Ro now obviously 
+your interviewer is going to be no M so it it   is dependent which which company perspective 
+the question has asked so if if you are like   giving very loose level companies interview they 
+they are not focusing on DSA then they just want   to like see how you are going to are you able 
+to write the code as simple as that so uh but   if such question has asked to a product based 
+company then get ready for yourself to uh the   followup question so on the followup interviewer 
+will definitely ask you can you reduce the time   complexity from n Cub to something under n squ can 
+we can you do that can you do that do that so yes   so what actually what actually what actually we 
+are looking for what actually so so now your n   squ solution from n Cube to n Square what actually 
+you are looking for so when you are standing to a   particular index so right so when you are standing 
+to a particular index so so let's suppose let's   suppose your your this things your your this K 
+pointer your K pointer is your K pointer we we   we are lying at here let's suppose that is our K 
+pointer we are pointing at this particular Index   this particular index fine if we are pointing to 
+this particular index so so if we are pointing   to this particular index if somehow if somehow I 
+know what is the difference who who of who of the   all the elements to my left to my K left K left 
+what is the what is the what is the maximum value   we can achieve what is the maximum value of the 
+triplet we can achieve what is the maximum value   of the what is the maximum Gap we can achieve 
+what is the maximum Gap maybe my I maybe my I   pointer it is not work actually so my pain is dead 
+bro so let's suppose uh that is my are and and we   we we have a liberty to choose our I and choose 
+our J from from this particular this particular   segment this particular segment because our K is 
+landing at this particular particular particular   uh Index right so if if I know if I somehow know 
+if I somehow know what what all the values till   till smaller than my K till smaller than my K if 
+I can store if I can store all the all the not   triplate all the all the pairs all the pairs Gap 
+all the pairs Gap so I will start a i Loop I Loop   uh from from 0 to n from 0 to n we will run it 
+right and and we will start a jth loop this and I   can start a j loop from from where from obviously 
+J should be my I + 1 I + 1 J should be my I + 1 to   n to n so if if I can like this way very initially 
+I can store all the all the gaps all the gaps all   the gaps all the gaps so so so maybe I can carry 
+a carry a frequency things a dictionary where I   can store where I can store if I'm standing at 
+J index if I am standing at J index what what is   the maximum Gap what is the maximum Gap we we we 
+have we have encountered what is the maximum Gap   we have encountered standing at P of G so what all 
+the I what all the I giving giving me the maximum   gap of the J index with the J index so that is 
+nothing but I I can I can write a Max function   and whatever the d of J is D of J is I can do a 
+I can do a maximizations to maximizations of nums   of I the outer loop is going to be I only and and 
+I will do a negation of nums of J nums of J so so   after this iterations my D of G my D of G these 
+things will store what is the maximum Gap what is   the maximum Gap till this point till this point 
+with all of its all of its left leftmost ey with   all of its whatever the left most left most side 
+so now now I think we are we are quite good we are   quite good so so we we know all the gaps we know 
+all the gaps we know all the gaps and now now we   can run a k uh K Loop we we will run our K Loop k 
+k should be start from where at least where 0 1 2   it should start from it should start from 2 index 
+it should start from 2 index and and it will run   and it will run till n Index right it will run 
+till n index and and for every index every index   what is the possibility what is the possibility 
+what is the what is the what is the possibility   what is the possibility like like we can we can 
+choose we can we can choose so now now we can do   we we we should run we should run a another loop 
+which are which are less than my K which are less   than my K right so uh give me one minute what 
+we have done here what we have done here so this   portions on these portions we we we do the very 
+standard things we do the very standard things   like we we have our default d and and we have put 
+all nums of I and nums of J to to D of J and we   have maximized our D of J to nums of I minus nums 
+of J that's exactly what I do and now now we are   running a i i loop from 1 to n and inside okay 
+okay sorry so here what I am explaining that is   also fine but you can you can do on this way like 
+like you can uh you can set your you can set your   I pointer you can set your ith pointer uh that 
+that is going to be ited for your dictionary   value that is going I pointer actually itating 
+to your dictionary value and and you are going   your J pointer to I + one you can start your J 
+pointer to so I is going to be start from one   to so J at least so rather than j i i can name it 
+as a k you can name it as a k so that is your K   pointer is going to start from I + 1 to n and you 
+are going to maximize it maximize your answer to   maximize your answer to so these are K so this 
+Loop is iterating for K this Loop is iterating   for your K what is the what is the maximum value 
+what is the maximum value you can you can find   what is the maximum value you can find so on the 
+right side so so when this Loop is iterating this   Loop is going for our dictionary and for every 
+dictionary value so dictionary value is storing   till this point what is the maximum get till this 
+point what is the maximum G so so this Dictionary   d of J is storing that value D of J D of D of 
+sorry D of i d of I is storing that value and for   this for this particular maximum value what is the 
+K what is the K we can what is the maximum K what   is the maximum so that we can get from this list 
+we can get from this list so standing at I index   what is the maximum K we can we can get to my D 
+to by D so this is going to be assigned to MX and   finally we are maximize our answer to answer and 
+MX is MX is our K pointer we are multiplying it   with d ofi with d ofi right so that is I I have to 
+say we we are running two for Loops now one is for   this to initialize our dictionary and another one 
+is like this for Loops to calculating the answer   so that is of B of n Square you can say or big of 
+2 N Square for sure and the space complexity also   Associated for this particular solution that is of 
+big of in that is of big of in so that is I have   to say a better versions from Brute from better 
+versions from brute but if it is a if interviewer   actually looking for the big of in solution or the 
+or you are giving the interview of that level of   company then obviously interviewer is going to ask 
+you can you linearize your solution can you linear   linearize Your solution can you write a linear 
+solutions for this particular problem so then   actually the challenge is going to be so now now 
+I'm I don't have to say it is a challenge but but   there is a small I you have to put to your i j and 
+k pointer to your i j and k pointer so so we will   do the same things we'll do the same things we our 
+K is always going to be constant our K is always   going to our nums is always going to be our nums 
+and and and when we have so let me go to the one   note only so so we we we don't have any options 
+we we can't do anything to our K loop our K Loop   is going to be iterate K Loop is going to be itate 
+for sure of for sure of sure of big of in sure of   going to be iterate for big of in so that is of 
+0 to it's not working so this is this is going to   be ited from 0 to n that is for sh is going to be 
+ited your K Loop is for sure going to be iterate   from 0 to n and and so you you have your Factor 
+knows you know your Factor right that is the for   loop I think you guys are able to understand so 
+that is our fall Loop this fall Loop is iterating   from 0 to n now now now what actually we are 
+looking for for k for K we are looking we are   looking the maximum Gap we are looking for maximum 
+Gap so so can we start with a gap variable also   can we start a gap variable also and initially 
+we can we can assign it to zero we can assign   it to zero after that after that after that for 
+every iterations for every such iterations we are   we are we are so initially though initially we we 
+are going to maximize our answer we are going to   maximize our answer we are going to maximize our 
+answer with we are going to maximize our answer   with Max of answer to what is the max of answer 
+with till till have at two two two what is the K   value that is let's suppose that is our nums 
+of K that is our num nums of K right nums of   K into nums of K into Gap Gap means what is what 
+is because you guys are able to understand right   because Gap we just pre-calculated Gap we Gap we 
+just pre-calculated so so so as we Computing our   Gap later so so when we are landing at the K 
+index when we are landing at the K index we we   we know our last maximize Gap we we know our last 
+maximize Gap we definitely know so we can maximize   our answer so if we know maximize Gap and if we 
+are at K index at K index what is the left maximum   Gap so that is that is exactly what we stored in 
+the last solution right big of n Square where we   store everything in a dictionary right what is the 
+maximum Gap to my left to my left to my left right   so that is to be stored to our Gap variable now 
+now now after that after processing this nums of K   after processing this nums of K can should also we 
+we have to after processing not before processing   we also have to maximize our Gap we we also have 
+to maximize our Gap to to what two what two what   how we how you can maximize your Gap how you can 
+maximize your Gap so current value current value   current value is what current value is our each 
+that is of that is of our that is our nums that is   that is of each that you are going to iterate that 
+is your nums of K to the to the high value to the   high value and what is the maximum Gap what is 
+the maximum Gap what is the maximum elements   still now we have found so so we want to put our 
+I pointer which actually which actually increasing   our Gap your Gap is nothing but what your Gap is 
+nothing but your your Gap is nothing but your why   your nums of I where your where your nums of I 
+basically standing your your nums of I your nums   of I where your nums of I basically standing I'm I 
+know it's not writing anything but let me write it   so where my nums of I is actually standing where 
+my nums of I so my Gap is nothing but where my   nums of I is standing where is the maximum value 
+of the I minus nums of J nums of nums of J right   right correct so if so we we need to maximize 
+maximize these things maximize this Factor this   Factor so how we can maximize so what is the 
+as as big as NS of I we can determine our our   Gap is going to be more our Gap is going to be 
+more so so till left what is the maximum value   we have encountered what is the maximum value we 
+have encountered so let's suppose we have stored   to a stored to a high variable stored to a high 
+variable named as named as named as high and and   we are also like every iterations we are maximize 
+our we are maximize our uh high high also with   high also with nums we are doing maximize of high 
+also with nums and after that after that how you   can calculate your Gap Gap is nothing but your 
+max Gap that you have at currently that you have   at currently to two what is the high value what is 
+the high value because we we want our n ofi should   be as big as possible as big as possible minus of 
+minus of minus of your each minus of your each so   so that means till my till my each or till my 
+K what is the to it to its left I am choosing   a what is the highest value and I am doing the 
+negations between them so like that way we are   going to get our maximum Gap ready maximum Gap 
+ready and when and very next when our K pointer   is moved to very next index we have multiply then 
+we have multiplying them like this way like this   way you are always going to get your answer to be 
+on maximum set maximum set so here actual trick   is the order you are the order you are updating 
+your answer Gap and high so that is actually the   trick that is actually the trick so here you 
+can see that I have initialized everyone to 0   and after that I am initial first I am maximize my 
+answer because because I know my Gap is Absol for   the current index I I can't use that gap for the 
+current index because Gap basically what is the   maximum Gap to my left to my left where my each is 
+pointing where my each is pointing to its left to   its left what is the maximum Gap I can't initial 
+I can't like make the Gap maximize to the current   index and then I am doing the multiplication no so 
+Gap means what is the maximum IUS C I have figured   out to left of my K to left of my K so each is 
+going to be iterate on K index only so that's   the reason we are multiplying with each only we 
+are multiplying with each only so so what is the   last iterations what is the maximum Gap we have 
+found we have multiplied with each each nothing   but nums of K and after that after that so now we 
+we have to update our Gap now we have to update   our Gap so to update our Gap to update our Gap 
+what is the high value what is the high value   we we have at 2 its left to its left to its left 
+so so that's the order so so we still not updated   our high we still not updated so maybe my current 
+elements is going to the maximum so on that case   so on that case our Gap is going to be if so high 
+is also going to the maximum and Pi high is pi   minus H each is also going to be uh High only so 
+your Gap is going to be zero your Gap is going   to be zero but that is not correct right so your 
+Gap should be what is the maximum High till its   left till its left you have at two to my current 
+elements to my current elements if if that is also   maximum if that is also maximum when it is going 
+to be maximum when my each is very small when my   each is very small so in that case my Gap is going 
+to be my Gap is going to be my very left my Gap is   going to be very high considering that particular 
+IND and after that it's very straightforward we   are also updating our high because because we 
+will use that high value to the to the next   next calculation to the next calculations and yeah 
+and finally we are returning that answer so this   I have to say is the most most possible Optimal 
+Solutions to this particular questions which is   working for sh of big off in we are not using 
+we are doing a single pass only right and and   we are use playing our entire games with three 
+variables with three variables on so on Space   perspective also it is of figure one but yeah 
+so let's clearly right that we do for every of   our problems so the time complexity for the 
+most Optimal Solutions is Big of in exactly   big off in no big of 2 and 3 and nothing that is 
+of exactly big of in and the space complexity for   this particular uh question is also big of one we 
+are not using any extra space we are able to solve   this with a constant space constant space so yes 
+guys so the question is as simple as that and I   I if if you are solving it big of n Cube and n s 
+also I think it's it's quite simple but the big   off in the order you you you have to update the 
+variables there is actually the trick uh basically   uh attached to this particular question the trick 
+is only how you are going to update your answer   and how you are going to make your other variables 
+Gap High what else you are going to pick but how   you are basically updating them the order you are 
+updating them that is actually the challenge for   this particular question yeah so that's it guys 
+that's it for this particular uh question and   particular question solutions that is the most 
+optimal time and space complexity that I am able   to find out and I am pretty sure that is running 
+of I think 0 milliseconds that is of % first that   all the submissions in the lead code we have it 
+so and uh uh you can also try to submit your owns   and uh uh yes that's it for today and I know and 
+if you are able to understand till this point you   know what you have to do you you have to you have 
+to subscribe to our Channel and and please turn   on the notification so that we are when we are 
+going to live to our next video you will get the   very earliest notifications for this particular 
+and please guys please please share the videos   to the to your uh connections who are actually 
+uh preparing for product based companies and   also brush up for their DSS skills please please 
+please share the videos to your connections also   so that they also going to get uh most of that 
+uh uh that you are also getting so that's it guys   that's it for today bye guys let's meet tomorrow 
+with another beautiful question bye- bye bye

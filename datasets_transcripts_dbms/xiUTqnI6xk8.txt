@@ -1,0 +1,378 @@
+SQL. It's more than an
+injection outta here. It's the love language of
+our databases. You know, the massive Excel spreadsheets
+that run the world. You need to learn SQL probably right now, especially if you want
+this job or this job, or this job are pretty much any job in it. And it's a skill I've actually had to use
+a lot, almost too much, too much more. My comfort. Cameron, have
+you had to use SQL? Yeah. Whenever I was a AWS cloud engineer,
+I dealt with databases all the time. So whether you're an aspiring hacker
+looking to do some SQL injections, get outta here, or you're a cloud engineer wanting
+to query all your qualms away. See that 10 times fast query all your
+qualms away query. I can't do it one time, two times. Oh my gosh. This is definitely a skill you want
+to add to your toolbox right now. Now before you freak out,
+we're not going too deep here. You don't need to become a SQL expert
+unless you wanna become a DBA or something. You pour brave, stupid soul,
+but you're making bank and you're rich. But knowing the basics like, Hey, what even is a database that goes a long
+way in pretty much every area of it. So in this video, I'm
+going to teach you SQL, not too much like a
+Goldilocks amount of sequel, just enough to make you
+dangerous, but not too dangerous. I don't want you dropping elbows
+on some poor unsuspecting tables. So by the end of this video, you
+will know how to create your own, my sequel or my SQL database. And you're gonna add some stuff into it
+or remove some stuff, query some things. So get your coffee ready. Mine is
+right here and let's learn some sequel. Now while you're sipping that
+coffee, getting all fueled up, ready to go to learn some sequel.
+Let me tell you a scary story. Did you know that your usernames and your
+passwords they're often stored inside a sequel database and sometimes
+these databases spring a leak, spilling your username and password
+all over the dark web David Bumble. I'm disappointed. You
+gotta protect yourself. This is where our sponsor
+Dashlane comes in. Dashlane does a great job at protecting
+you from yourself. Come on John Hammond. I love their password health feature,
+which obviously I got some work to do. I got 28 compromised passwords and
+two weak ones, no weakness allowed. And I also love their dark web monitoring, cuz I wasn't kidding these databases
+full of your passwords and emails and all kinds of stuff. Get hacked and
+leaked all the time in the dark web. They monitor that stuff for
+you. And they'll tell you, Hey, change your day and password. And then right here is my
+favorite feature of Dashlane. It's got two factor built right into it. So it'll log into network Chuck academy.
+I've got my security code right here. Oh, don't copy that.
+Nah, it's gonna change. So I pretty much use Dashlane for
+everything, including my business. I force all of my employees to
+use Dashlane cuz they're crazy. And they still write their passwords
+down on post-it notes. Come on. So if you have a business use Dashlane,
+they've got a great admin section, little admin console where you can manage
+all your passwords for your employees. Gotta keep them suckers in line.
+And it's not just passwords. You can put secure notes. You
+can put your payments in here. I use this all the time. It makes
+paying for things so much easier. So don't let someone else's
+bad database put you at risk. Get yourself the password manager. I recommend Dashlane go out to
+dashlane.com/network Chuck 50. And you do get a discount. Let me double
+check what that is. I forgot. Oh sweet. You get 50% off. So use that code. You can use it on pretty much any device
+you have, which I do on every device. Thank you to Dashlane for sponsoring
+this video. Now let's get back to SQL. Here we go. So SQL or SQL, it stands for structured query language. Focus on that term language because it
+is kind of like a programming language, similar to Python, except the primary
+use of SQL is to talk to databases. I told you it's their love language.
+They love it. That's my database. By the way, I'm gonna label
+it using this query language. We'll talk to our database. We'll
+create things. We'll read things. We'll update things. We'll delete
+things. Crud. You've heard a crud, right? Well you just did. So here we go. We are
+gonna learn some sequel here in a bit. But first let's talk about what's a
+database I joked earlier how it's just one big giant Excel spreadsheet.
+That's kind of true. You've probably seen an Excel
+spreadsheet before, right? It has columns or fields. It has rows or we might call those records
+and these rows or records contain our data. And while Excel might work
+for carrying the accountant, keeping track of your budget, you bought 45 raspberry pies
+for bigger sets of data. Like websites might have companies,
+even network Chuck coffee. They won't store these in Excel. They'll store them inside a database
+which will function very similarly to an Excel spreadsheet. Cuz we're still working
+with this, which we'll call a table, but we might need more than one
+and we might need a lot more data. So in my network, Chuck coffee database, I might have three Excel spreadsheets or
+three tables, one for all my customers, which did you know that Marvel
+characters love my coffee. Thor can't get enough of
+the help desk. He loves it. And they don't have a table
+of all the coffees I offer. And then of course an order table
+tracking all the orders that are placed. And this is a very, very small abbreviated
+example of all the data. My network, Chuck coffee database might
+have, which it does have. So the takeaway here is that databases
+are used to store large amounts of data, data that Karen and her spreadsheet
+in Excel couldn't even dream about. Now these databases, they need a manager.
+They need someone to control them, to get them in line cuz they can act
+pretty crazy if they don't have someone watching him. That's why we have DBMS
+at David Bumble management system. No, I'm just kidding. I pick out him
+a lot in this video. Love you. David DBMS stands for database management
+system and actually you probably heard of a few of them. Microsoft SQL
+server, my SQL or I'm sorry, my SQL that post gray SQL. Am I saying
+that right? I don't know Oracle. There's a lot out there, but just
+know that whatever DBMS you choose, whether it be my SQL, SQL Oracle, whatever their job is to manage your
+databases. They will have different ways. They do that. But they're
+all going to use sequel. The structured query Lang I can't
+even say it structured query language. There we go. 10 times fast on that one. This is actually a standard that's
+been ratified by the ISO ISO. So if you learn SQL, you can pretty much approach most
+databases with relative ease. Now there are some nuances, some differences going from
+like Microsoft SQL to my SQL, but it's nothing you can't Google. As
+long as you understand the concepts. Now, just so you know, we're going to
+create these three databases ourselves. We're gonna install one and
+actually make it happen with my, but before we do that, there
+are two database types. You have to know about this one. We're
+talking about here. This is a relational. Database. You might see
+it abbreviated as R D BMS. And they by far are the most
+popular. It's what I drew out here. And what makes it relational is these
+tables here are kind of like they're related they're cousins or brothers.
+I don't know they're in the family. And what I mean is like when in
+this table here on my orders table, it says for order 0, 0 1, the coffee
+was one. And you're like, what is, what does that mean? Well, it's actually
+tying back to the coffee database. And then when it says customer
+is three, you probably guessed, it's looking back at the
+customer database saying, Hey, Tony stark ordered the default route.
+He loves that stuff. Now again, we're gonna zero in on
+the relational database. But the other type you wanna
+know about is the non relational. This one doesn't have any family
+or any friends. He's very sad. We're not gonna cover what it is here. But one type or one DBMS you
+might hear about is no sequel, which fire ship did a
+great joke on Twitter. When I asked you guys if you know SQL
+well plate, sir, but a non relational. It's not like this. It's not related.
+It's kind of unstructured data. And it definitely has
+its use case and purpose, but we're not gonna cover that right
+here. Okay. Enough about databases. Let's actually make one right now. It's
+completely free and completely fun. Now here's what you need.
+You won't need much, pretty much any computer
+ that's it. We're gonna be playing
+with my sequel or my SQL. And you can pretty much install that
+anywhere for free, including windows. Now I will be walking you through Linux
+because I love Linux and it's so easy. So if you wanna follow along
+with me exactly from the
+beginning, from the start, I'm gonna be running the latest version
+of a BTU desktop inside a virtual box VM. If you're like, wait,
+what what's he doing? I've got a video right here on how to
+set up virtual machines and what they are and why they're incredible. You should
+go watch that if you haven't already. And it's completely free to run
+this and yeah, that's it. Oh, I forgot you need coffee
+because everything in it, it requires coffee never checked
+out coffee. So here in new BTU, we're going to launch our terminal first. Like always we'll get
+our repositories updated, pseudo PT update and quick sip of
+coffee while it does its thing. Next we'll install SQL server with
+one command pseudo P T install. My SQL dash server. We'll do a tick Y at
+the end and that's it. It'll take just a few moments and
+perfect time for a, a coffee break. We can never have too
+much. Now at this point, you're pretty much running my SQL.
+Let's verify it real quick though. Let's make sure the service is up and
+running. We'll do a pseudo system, CTL status. My SQL and fingers crossed. You should see active and running.
+That means it's healthy. Good to go. And just hit hu to get outta there. Now
+go ahead and play with your database. Just go crazy.  you're like,
+wait, where is it?  to access it. All you have to do is type
+in my sequel. That's it. Well not it you're gonna
+have to do pseudo my SQL. Let's try it now. Yeah. We're
+there. Look at, look at that. We got a nice little, my SQL command
+prompt down here. Just waiting for us. The cur is blinking. Ready
+to go. Now just so you know, the command mind without any parameters
+at all worked for us because we're connecting to our local host. It also worked because we
+don't have a password set, which is fine for us as
+we're just playing around. But often you might see something
+like this, specifying a username, a remote server. You wanna connect to the port and
+then saying dash P for password. But we don't have to do that here.
+So we're not gonna worry about it. So here in SQL, let's get the lay of the
+land first. What's happening right now. We're first do a show databases command. Now just know every time you
+type a command at my SQL, you have to end it with a
+semicolon. Otherwise it's like what? You're not done yet. Come
+on. So do that and boom, some good old default databases.
+What do you say? We create our own. Let's do that right now. We'll create
+the database for a network. Chuck coffee. This one's very hard. I'm just
+kidding. It's gonna be so easy. Simply type in create database. The name of your database, which will name N C underscore coffee and then semicolon. That's it done?
+ and how hard was that? Right? You just created a database.
+That's awesome. If we do
+show databases once more, there it is our very own database, but
+he's just sitting there doing nothing. He's got nothing going on. Let's change
+that now to play with our database, to do things with it, to use it. We're gonna type in the command use and
+then the name of our database and see underscore coffee semicolon.
+And that's it. Database change. Now we're interacting with that guy
+right now. Now remember a database. We'll have a bunch of tables
+assuming you created them, but right now ours won't have
+any and I can prove it to you. Let's type in the command
+show tables with a semicolon empty set, nothing there.
+So let's change that. Let's create our first table and this
+is so cool. This is gonna be fun. The first table we'll create
+is our coffee table. But, um, and right now I want you to just ignore
+the rose. Don't worry about the rose, the, the data. All right here, all I
+want you to focus on are the columns ID, name, and region and roast. We're
+gonna deal with that right now. So to create a table, we're gonna
+type in create table crazy. Right? And then right after that, we'll name
+our table. Of course we gotta name it. Coffee table. Don't wanna
+miss that opportunity. And then right after that, we'll do an open parenthesis
+and go ahead and hit enter it. It'll be fine because we
+didn't put a semicolon. Semicolon means you're done doing
+anything else means like I'm not done yet. That's that's what it means. Now
+here, inside these parentheses, we'll be defining our columns. What we
+saw before ID name, blah, blah. You know, you got it. So our first column will
+simply call ID. And then right after that, I'm gonna type in I N T no. What
+is that? So here with our column, we're defining the name of a
+column, that guy right there, but then we also have to define what type
+of data is gonna be in that column or in the rows that we're gonna
+have underneath it here. We're saying we want it to
+be an integer or a number. That's the type of data that
+we'll live in that column. And that's pretty much all there is to it. We'll type in a column
+to tell them that, Hey, we're not done with our
+columns just yet hit enter. Our next column will be name. And then we'll define what type of
+data we want inside that column here. I'm gonna type in V R C H
+a R or variable character, which is an end determinant length
+string data type.  basically, it's just letters 
+and stuff. It's a string. I can also define how long I want that
+to be how many characters are allowed. So I'll just say 255 and parentheses
+just like that. And let's keep going. Comma, next thing or column it was region. This will also be a string
+or variable character. It'll keep going until we're done.
+Oh, we'll have one more roast. Now my last column here, I'm
+not going to add a comma. You only add a comma when you're
+saying, Hey, I have more to say, we don't have more to say
+we're done. I'll hit enter. I'll do a closing parenthesis. And then to end our command
+like we do in all my SQL stuff, we're gonna type in a
+semicolon. That's it. We're about to create our first table
+and set our database. Ready? Set, enter, go. Let's take a look at it. Show tables.
+There it is. There's our coffee table. Now that's just the name
+of it. What do you say? We look inside and see the
+actual columns we made. We can type in and describe coffee table. And that'll give us some more
+info. We got our field and our type, and we'll cover more on this stuff
+here in a minute on, by the way, when we're defining our table and
+defining that columns and everything, the fields that's part of
+defining our schema or how our databases are arranged and, and organized. We're not gonna go too deep into that.
+Just know that when people say schema, that's pretty much what they mean. Now
+there's nothing on our coffee table. Let's ask some stuff to it,
+looking at our database, let's add the default route. Let's insert a row into our table
+and my sequel we'll type in insert in two. And then we'll specify
+our table, which was coffee table. Then we'll say, here are the
+values. We'll actually use the word, the command values. And we'll define
+our values inside parentheses. The first one's an en integer, and
+I'm just gonna put it in as one. That's the first ID. Second one was name, which will be a string
+default wrap. Then origin, Ethiopia, also a string and
+finally roast, which was light. So what's happening here. We
+have the insert into command. So we're telling my sequel,
+we're inserting into 
+the coffee table table. And it's like, what are you inserting?
+Well, here are our values, bam. And notice we're going in order of
+our columns. And we have to do that. Got the ID, the name, the region,
+and the roast. Then once we're done, what do we do? We type in semicolon to say
+we are done and awesome. Now what I love about my SQL and most
+SQL things is, uh, it'll tell us, Hey, the query it's okay.
+We got this. It's good. And it tells us there was one
+row affected, which row? Well, the one we just added now, I know you want to see that data
+inside your database, but so far, I haven't shown you how to do that. Cause if we do show tables
+or describe coffee table, it doesn't show us the data inside yet. So I guess I can go ahead and show you
+your first select statement. Um, ah, should I wait? Yeah, no, let's do
+it right now. I know you can't wait.  so here's how we
+look inside of our table. Let's pull some data out of
+there. We'll type in select. We'll do an asterisk and I'll
+explain this here in a second. And we'll say from our table
+coffee table semicolon. Now what's happening here. We're telling
+my sequel, I wanna select some data. And it's like, well, what
+data from what column? And we're saying all of it
+ I want everything. That's what the asterisk means. And then
+it's like, okay, fine. From what table? Where are you getting this from? Well,
+we're getting it from our coffee table. I wanna see my coffee stuff. And
+that's what we're doing here. It's a very basic select statement.
+You'll see this one all the time. But if you just wanna pull all the info
+from a table, that's how you do it. Let's take a look. There it is. How
+cool is that? So if you just did this clap, pat yourself on the back, that's
+a big deal. You created a database, you created a table inside the database
+and you added some data to it, simple, but killer. Now here's
+a challenge for you. What I want you to do is fill
+out the rest of this database, all the rest of our coffees. Go ahead
+and pause the video. Pause, UN pause. Let's see how you did. Let's do
+our select statement once more, select everything from coffee table and we should see a lot more things.
+ yes, it's so nice and neat. I love it. If yours looks like
+this, congrats, that's awesome. Now, another challenge for you. I want you to select only the names
+of the coffee from that table. That's all I wanna see. Can you
+do that? Let's try it out. Select, instead of saying everything, let's just select the
+name from coffee table. Bam just got the names
+of our coffee. That's it. Now here's the next challenge for you. I want you to create our next
+table and do this by yourself. I'm not gonna show you, create our customer table with all of
+our Marvel customers and also name your table. Avengers, just like
+this. Okay? Pause the video. Go and pause. Let's see
+how you did now. Again, I wanted you to create this table and
+if you haven't already go ahead and fill it out with all this information.
+It'll take about two minutes, but it gives you practice. But if you
+did it right, it should look like this. Let's go ahead and select
+everything from that table. Select all columns from Avengers. Let's see how it looks.
+ oh, nice. Clean, tidy data. I love it. Now here
+with our Marvel characters, let me show you some of the power 
+of SQL and how we can find or query our data. So let's try this.
+Let's do a select statement, just like we did before
+everything from Avengers. But let's say we only wanna see
+the Avengers that are from earth. That's all we wanna see. How
+do we do that with where? No, I'm not losing my mind.
+ watch this. I can add another filter saying
+where origin equals the string earth semicolon. So let's break it down. I'm selecting all columns
+from the table, Avengers, but I only wanna see where the
+column origin equals earth. That's it let's see what happens. Bam.
+I only got the earthlings, check it out.  isn't that cool though.
+If you had a large amount of data, being able to just select, pinpoint
+the data you want, like that is killer. And that's just a basic SQL statement.
+Let me show you a few more quick ones. Let's pull up that same statement. Let's say we wanted to see all the
+Avengers from earth and Asguard how we do that. It's pretty simple. Actually. All I have to do is add one more
+filter to it. I'll just say, or, or, or a G equals Asgard.
+So my filter says, Hey, origin can be earth or,
+or origin can be Asgard. Let's see what happens. Bam. Just
+add a Thor. Let's try this one. Maybe I wanna see all the Avengers that
+are under the age of 30. Let's try that. In fact, actually pause the video. See
+if you can do this pause, UN pause. We'll select the alias
+column from a vendors where age is less than 30. We can do stuff like that.
+Bam. How cool is that? I just got the aliases
+Spider-Man and well tree. And that's pretty much an endless
+combination of how you can filter things. I can say where not origin equals earth. I wanna see everyone. That's not
+from earth using our not statement. So you can go crazy with queries. And often you may be typing in a terminal
+doing these queries, or it could be a, a gooey application or it's programmatic. You're programming things in Python to
+search for data with queries like this. It's super powerful. Now so far, I've
+shown you how to add data to a table, but what if you wanna remove stuff?
+Cuz did you notice this? Look at this. Some dude named Jeff snuck into
+my table. He's not in Avenger. How do you even get in there? So real
+quick, um, go ahead and add Jeff, add this data to your table
+and then let's remove him. So pause the video real quick,
+Adam, and then let's remove him. We can remove the records from our
+tables, with the delete command. We'll say delete from we'll specify
+our table Avengers and we'll tell them what we're wanting to delete. We could
+delete a lot of things all at once. Gotta be careful, but all
+we care about is Jeff. So we'll say where we'll
+use our filtering again, where we'll say first name equals Jeff. That should do it. That should take
+out Jeff goodbye. Jeff. And he is gone. I think let's do our select statement
+once more. Woo. Okay. Jeff is gone. Now we can also update these
+stuff in our table. For example, I was informed of this grot. Doesn't have
+a last name. Let's just Groot my bad. So let's change that. Let's delete that we can update entries
+in our table with the update command. We're gonna update Avengers and
+we'll use the set command to set a certain column equal to something. So we'll set last name
+equal to null, to nothing. That's how we do that empty. And because we don't wanna set every last
+name to Noel will say where first name equals group. That should do it. Let's
+try it out. Awesome. So actually I, I didn't test this before. I wanna
+make sure it works. Excellent. GT is now accurate and you guys
+can stop yelling at me. Now, last thing on this before
+we get kind of crazy, let's go ahead and select
+all the Avengers. Once more, all the columns let's say we wanna
+see them in order of their age, youngest to oldest, let's see that
+we can do that by typing in order, by the column age. And we'll say, because
+we're going from younger to older, it'll be ascending. So we'll do a S C
+let's try it out. Perfect. Look at that. 17, 18 35 to 42 5000. That's a
+big jump. Let's do it in reverse. Let's do oldest to youngest. We'll
+change that to D S or  sorry. D E S C descending. Awesome. Okay.
+Last thing I'm gonna show you. Maybe I, I might get too excited and
+show you something else, but we'll see. Okay. Let's try this right now.
+Our tables looking pretty amazing. All the Avengers are here.
+Well, some of them, well, let's say we wanna know
+one more thing about them. I wanna know if they have a beard, so
+it'll be beard. It'll be yes or no. We're actually true or false. Let's do
+that. So here in our database, our table, we're gonna alter the table to have
+another column after it's already created. Let's do it right now. Pretty simple.
+Actually the command is alter. We wanna alter it. We gotta
+tell SQL what we wanna alter. We're gonna alter a table,
+specifically the Avenger table. We're going to add a new
+column. We'll name it, beard. And then we'll tell it what type of data
+it's going to be now because I want it to be true. False. I'm gonna type in
+bullion. Cuz bullion is true or false. That's a special data type. So here we're telling SQL we wanna alter
+the table of vendors and the way we're altering it is by adding the column, beard with the ion data
+type at enter done. Now let's select and see
+what it looks like right now.  look at that new
+information, new column. Now here's a challenge for you. I want you to go in and update the record
+for the beard column for each of these Avengers, whether or not
+they have a beard, you should
+know that already. Right? So go ahead and do it real
+quick. Pause the video on pause. Here's how you would do that. Like we
+just covered with the update command. We'll update the table of Avengers. We'll set beard equal to
+true where let's just say first name equals Thor. Cuz
+we know a Thor has a beard. Bam. Let's see what happens. Perfect.
+And for group, he doesn't have a beard. So we'll set beard to false
+where first name equals groups. Let's see what happened.
+Noticing that one is true. Zero is false. Okay, we're gonna
+stop here. I could keep going. There are things I have not covered, but
+I don't wanna make this video too long. But I hope in this video I gave you
+enough to make you like feel semi CT. Like I know what a database is.
+I create one. I can select things, but also I wanna give you that hunger
+that drive to learn just a bit more, go beyond what I'm showing you here
+because there are things I didn't cover. Like look here. We did build these
+two tables inside our database, but we never built the orders table.
+And more importantly, we never. Built the relationships
+between all these tables, which would involve making the
+ID field of both our customers, our Avengers and our
+coffee, the primary key. And then when we reference
+those fields in our order table, those will be foreign keys. And that unlocks the full
+power of relational databases, allowing us to do things like
+joins and creating views, which basically is pulling data from
+all these tables and only seeing what we want to see, like how many times
+does Spider-Man order the dark roast. We could find stuff like that.
+So I'm not gonna cover that here. If you want me to create a video on
+that, let me know below. But anyways, that's all I got for today. Thank you for taking some time to have
+some coffee with me and talk about SQL or SQL. Well.

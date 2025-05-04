@@ -1,0 +1,23 @@
+Hello and welcome to this video on relational 
+databases versus object-oriented databases. What is a database? A database is a collection of data that is   organized and stored in a way that 
+allows easy access and retrieval.   There are two main types of databases: relational 
+databases and object-oriented databases. What is relational database? A relational database is a type of 
+database that stores data in tables,   with rows representing records 
+and columns representing fields. These tables are related to each 
+other through relationships,   which are established using foreign keys.   This allows for data to be linked 
+and queried in a structured way. Benefits of Relational Database 1- Simplicity of Model,
+2- Easue of use,  3- Data Integrity and Accuracy,  4- Normalization,
+5- Data Security Examples of Relational Database Some examples of relational databases include 
+MySQL, Oracle, and Microsoft SQL Server. What is Object-Oriented Database? On the other hand, an object-oriented database   is a type of database that stores data in the 
+form of objects, rather than tables and rows. These objects are organized and stored in a way   that reflects the relationships and 
+structures found in the real world. Benefits of Object-Oriented Database 1- Ability to store complex data structures,
+2- Support for object-oriented   programming languages, and
+3- Ability to handle large amounts of data. Examples of Object-Oriented Database Some examples of object-oriented 
+databases include MongoDB and Cassandra. So, which type of database is right for you? It really depends on the needs of your project. Relational databases are great for 
+structured data and complex queries,   and they offer strong 
+consistency and transactions. Object-oriented databases, on the other hand, 
+are better suited for handling complex data   structures and large amounts of data, and they 
+offer more flexibility in terms of data modeling. Ultimately, the choice between 
+a relational database and an   object-oriented database will depend 
+on your specific needs and goals. Thank you for watching. Please 
+subscribe to our channel!

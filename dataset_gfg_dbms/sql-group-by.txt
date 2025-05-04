@@ -1,0 +1,135 @@
+• 
+• 
+• 
+
+TheGROUP BYstatement in SQL is used fororganizingand summarizing data based on identical values in specified columns. By using the GROUP BY clause, users can apply aggregate functions likeSUM, COUNT, AVG, MIN, andMAXto each group, making it easier to perform detailed data analysis.
+
+In this article, we will learn the SQL GROUP BY syntax, explore practical examples with single and multiple columns, and demonstrate advanced use cases with theHAVINGclause for conditional grouping. Whether you’re new toSQLor an experienced professional, this article will help you master the GROUP BY clause for efficient data querying.
+
+
+### GROUP BY Clause in SQL
+TheGROUP BYstatement in SQL is used to arrange identical data into groups based on specified columns. If a particular column has the same values in multiple rows, theGROUP BYclause will group these rows together.
+
+• GROUP BY clause is used with theSELECTstatement.
+• In the query, the GROUP BY clause is placed after theWHEREclause.
+• In the query, the GROUP BY clause is placed before theORDERBY clause if used.
+• In the query, the Group BY clause is placed before the Having clause.
+• Place condition in thehaving clause.
+
+Syntax:
+
+SELECT column1, function_name(column2)
+
+FROM table_name
+
+GROUP BY column1, column2
+
+Key Terms
+
+• function_name: Name of the function used for example, SUM() , AVG().
+• table_name: Name of the table.
+• condition: Condition used.
+
+
+### Examples of GROUP BY in SQL
+Let’s assume that we have two tablesEmployeeandStudentSample Table is as follows after adding two tables we will do some specific operations to learn about GROUP BY.
+
+Employee Table:
+
+
+```python
+CREATE TABLE emp (emp_no INT PRIMARY KEY,name VARCHAR(50),sal DECIMAL(10,2),age INT);
+```
+Insert some random data into a table and then we will perform some operations in GROUP BY.
+
+
+```python
+INSERT INTO emp (emp_no, name, sal, age) VALUES(1, 'Aarav', 50000.00, 25),(2, 'Aditi', 60000.50, 30),(3, 'Aarav', 75000.75, 35),(4, 'Anjali', 45000.25, 28),(5, 'Chetan', 80000.00, 32),(6, 'Divya', 65000.00, 27),(7, 'Gaurav', 55000.50, 29),(8, 'Divya', 72000.75, 31),(9, 'Gaurav', 48000.25, 26),(10, 'Divya', 83000.00, 33);SELECT * from emp;
+```
+Output:
+
+Emp TABLE
+
+Student Table:
+
+
+```python
+CREATE TABLE student (name VARCHAR(50),year INT,subject VARCHAR(50));INSERT INTO student (name, year, subject) VALUES('Alice', 1, 'Mathematics'),('Bob', 2, 'English'),('Charlie', 3, 'Science'),('David', 1, 'Mathematics'),('Emily', 2, 'English'),('Frank', 3, 'Science');
+```
+Output:
+
+Student TABLE
+
+
+### Example 1 : Group By Single Column
+Group By single column means, placing all the rows with the same value of only that particular column in one group. Consider the query as shown below:
+
+Query:
+
+
+```python
+SELECT name, SUM(sal) FROM empGROUP BY name;
+```
+Output:
+
+Output
+
+Explanations:
+
+As you can see in the above output, the rows with duplicate NAMEs are grouped under the same NAME and their corresponding SALARY is the sum of the SALARY of duplicate rows. The SUM() function of SQL is used here to calculate the sum. The NAMES that are added are Aarav, Divya and Gaurav.
+
+
+### Example 2 : Group By Multiple Columns
+Group by multiple columns is say, for example,GROUP BY column1, column2. This means placing all the rows with the same values of columnscolumn 1andcolumn 2in one group. Consider the below query:
+
+Query:
+
+
+```python
+SELECT SUBJECT, YEAR, Count(*)FROM StudentGROUP BY SUBJECT, YEAR;
+```
+Output:
+
+Output
+
+Explantions:
+
+As we can see in the above output the students with both the same SUBJECT and YEAR are placed in the same group. And those whose only SUBJECT is the same but not YEAR belong to different groups. So here we have grouped the table according to two columns or more than one column. The Grouped subject and years are(English,2),(Mathematics,1)and(Science,3). The above mentioned all groups and years are repeatedtwice.
+
+
+### HAVING Clause in GROUP BY Clause
+We know that theWHERE clauseis used to place conditions on columns but what if we want to place conditions on groups? This is where the HAVING clause comes into use. We can use theHAVING clauseto place conditions to decide which group will be part of the final result set. Also, we can not use aggregate functions like SUM(), COUNT(), etc. with the WHERE clause. So we have to use the HAVING clause if we want to use any of these functions in the conditions.
+
+Syntax:
+
+SELECT column1, function_name(column2)FROM table_nameWHERE conditionGROUP BY column1, column2HAVING conditionORDER BY column1, column2;
+
+Key Terms
+
+• function_name: Name of the function used for example, SUM() , AVG().
+• table_name: Name of the table.
+• condition: Condition used.
+
+
+### Example:
+
+```python
+SELECT NAME, SUM(sal) FROM EmpGROUP BY nameHAVING SUM(sal)>50000;
+```
+Output:
+
+Output
+
+Explanation:
+
+In the result, only employees whose total salary (SUM(sal)) exceeds50,000are displayed. For example, ifAnjalihas a total salary less than50,000, she will be excluded from the output.
+
+
+### Conclusion
+TheGROUP BYfunction inSQLorganizes identical data into groups, enabling aggregate analysis on each group. It is commonly used with aggregate functions likeSUM(), COUNT(), AVG(), etc., to summarize data efficiently. TheHAVINGclause further refines the results by applying conditions to these grouped records.GROUP BYcan operate on single or multiple columns, making it a versatile tool for data retrieval and reporting.
+
+Ready to go from coding beginner to development pro? OurDSA to Development CodingGuide has everything you need to crush coding interviews and ace real-world projects! Limited spots available!
+
+• Databases
+• SQL
+

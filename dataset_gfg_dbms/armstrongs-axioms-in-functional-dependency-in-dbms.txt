@@ -1,0 +1,53 @@
+• 
+• 
+• 
+
+Prerequisite –Functional Dependencies
+
+This article contains Armstrong’s Axioms and how Armstrong’s Axioms are used to decide about the functional dependency on the database. We will be also learning about the Secondary Rules and Armstrong Relations. We will learn each thing in detail. Before moving ahead, you must have a knowledge of Functional Dependency.
+
+
+### Armstrong Axioms
+The term Armstrong Axioms refers to the sound and complete set of inference rules or axioms, introduced by William W. Armstrong, that is used to test the logical implication offunctional dependencies. If F is a set of functional dependencies then the closure of F, denoted as F+, is the set of all functional dependencies logically implied by F. Armstrong’s Axioms are a set of rules, that when applied repeatedly, generates a closure of functional dependencies.
+
+
+### Axioms
+• Axiom of Reflexivity:If A is a set of attributes and B is a subset of A, then A holds B. If B⊆A then A→B. This property is trivial property.
+• Axiom of Augmentation:IfA→Bholds and Y is the attribute set, thenAY→BYalso holds. That is adding attributes to dependencies, does not change the basic dependencies. IfA→B, thenAC→BCfor any C.
+• Axiom of Transitivity:Same as the transitive rule in algebra, ifA→Bholds andB→Cholds, thenA→Calso holds.A→Bis called A functionally which determines B. IfX→YandY→Z, thenX→Z.
+
+
+### Secondary Rules
+These rules can be derived from the above axioms.
+
+• Union:IfA→Bholds andA→Cholds, thenA→BCholds. IfX→YandX→ZthenX→YZ.
+• Composition:IfA→BandX→Yhold, thenAX→BYholds.
+• Decomposition:IfA→BCholds thenA→BandA→Chold. IfX→YZthenX→YandX→Z.
+• Pseudo Transitivity:IfA→Bholds andBC→Dholds, thenAC→Dholds. IfX→YandYZ→WthenXZ→W.
+• Self Determination:It is similar to the Axiom of Reflexivity, i.e.A→Afor any A.
+• Extensivity:Extensivity is a case of augmentation. IfAC→A,andA→B, thenAC→B. Similarly,AC→ABCandABC→BC. This leads toAC→BC.
+
+
+### Armstrong Relation
+Armstrong Relation can be stated as a relation that is able to satisfy all functional dependencies in the F+Closure. In the given set of dependencies, the size of the minimum Armstrong Relation is an exponential function of the number of attributes present in the dependency under consideration.
+
+
+### Why Armstrong Axioms Refer to the Sound and Complete?
+By sound, we mean that given a set of functional dependencies F specified on a relation schema R, any dependency that we can infer from F by using the primary rules of Armstrong axioms holds in every relation state r of R that satisfies the dependencies in F.By complete, we mean that using primary rules of Armstrong axioms repeatedly to infer dependencies until no more dependencies can be inferred results in the complete set of all possible dependencies that can be inferred from F.
+
+
+### Advantages of Using Armstrong’s Axioms in Functional Dependency
+• They provide a systematic and efficient method for inferring additional functional dependencies from a given set of functional dependencies, which can help to optimizedatabase design.
+• They can be used to identify redundant functional dependencies, which can help to eliminate unnecessary data and improve database performance.
+• They can be used to verify whether a set of functional dependencies is a minimal cover, which is a set of dependencies that cannot be further reduced without losing information.
+
+
+### Disadvantages of Using Armstrong’s Axioms in Functional Dependency
+• The process of using Armstrong’s axioms to infer additional functional dependencies can be computationally expensive, especially for large databases with many tables and relationships.
+• The axioms do not take into account the semantic meaning of data, and may not always accurately reflect the relationships between data elements.
+• The axioms can result in a large number of inferred functional dependencies, which can be difficult to manage and maintain over time.
+
+• DBMS
+• GATE CS
+• dbms
+

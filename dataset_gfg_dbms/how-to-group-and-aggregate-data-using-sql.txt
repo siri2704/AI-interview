@@ -1,0 +1,80 @@
+• 
+• 
+• 
+
+In SQL, grouping and aggregating data are essential techniques for analyzing datasets. When dealing with large volumes of data, we often need to summarize or categorize it into meaningful groups. The combination of theGROUP BYclause and aggregate functions likeCOUNT(),SUM(),AVG(),MIN(), andMAX()makes it easy to perform such tasks.
+
+In this article, we will explain how togroupandaggregatedata inSQLto make our queries more efficient and insightful.
+
+
+### Grouping and Aggregating Data
+Grouping Data: TheGROUP BYclause in SQL is used to arrangeidentical datainto groups based ononeormore columns. Once data is grouped, aggregate functions can be used to summarize the information within those groups.
+
+Aggregating Data: Aggregate functions perform calculations onmultiple rowsof data and return a single result. Commonaggregate functionsincludeCOUNT(),SUM(),AVG(),MIN(), andMAX(). These help us get summaries liketotals,averages, andcountsfor different categories or groups
+
+Syntax:
+
+SELECT column1, column2, …, AGGREGATE_FUNCTION(column3)FROM table_nameWHERE conditionGROUP BY column1, column2, …HAVING conditionORDER BY column1;
+
+
+### Example 1: Grouping Data and Counting Occurrences
+Let’s consider theSales_Ordertable in aSalesdatabase. This table stores information aboutsales orders, including theclient number,order date, and order status.TheSales_Ordertable contains details about orders made byclients, including theirorder status.
+
+Sales_Order Table
+
+
+
+Let’s say we want to count how many orders are still “In Process” for each client. To do this, we use theCOUNT()function along withGROUP BY
+
+Query:
+
+
+```python
+SELECT CLIENTNO, COUNT(ORDERSTATUS)AS Order_In_Processfrom Sales_Order WHEREORDERSTATUS='In Process' GROUP BY CLIENTNO;
+```
+Output:
+
+Explanation:
+
+In this case, we grouped the data byCLIENTNOand counted how many orders are in the “In Process” status for each client. From this output, we can easily see that clientsC00001andC00006each have one order that is still “In Process“.
+
+
+### Example 2: Summing Values in Groups
+Now, let’s move to another table calledOrdered. This table containssales datafor different places, where each sale is associated with alocationand a price.  TheOrderedtablestores data onproducts sold, including thelocationandpriceofeach item sold.
+
+ORDERED Table
+
+Let’s say we want to calculate the total revenue from sales in different places. we will use theSUM()function along with theGROUP BYclauseto calculate thetotal sales price for each place.
+
+Query:
+
+
+```python
+SELECT place, SUM(price) AS Total_RevenueFROM OrderedGROUP BY place;
+```
+Output:
+
+
+
+
+### Example 3: Using Multiple Aggregate Functions
+SQL allows us to use multipleaggregate functionsin a single query. This can provide a more comprehensive view of your data. In this example, we will use theAVG(),MAX(), andMIN()functions to calculate theaverage,maximum, andminimum pricefor sales in each place.
+
+Query:
+
+
+```python
+SELECT place,AVG(price) AS Avg_Price,MAX(price) AS Max_Price,MIN(price) AS Min_PriceFROM OrderedGROUP BY place;
+```
+Output:
+
+
+### Conclusion
+Groupingandaggregatingdata inSQLare powerful techniques for summarizinglarge datasets. By using theGROUP BYclausealong with aggregate functions likeCOUNT(),SUM(),AVG(),MIN(), andMAX(), we can efficientlyanalyzeandsummarizeour data in meaningful ways. With this knowledge, we can start writing more efficient SQL queries, performing complex analyses, and gaining deeper insights from our datasets.
+
+• Databases
+• SQL
+• TrueGeek
+• SQL-Server
+• TrueGeek-2021
+

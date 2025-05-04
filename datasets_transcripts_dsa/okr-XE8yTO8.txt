@@ -1,0 +1,181 @@
+In our previous lesson, we introduced you
+to Queue data structure. We talked about Queue
+as Abstract Data Type or ADT. As we know when we talk about
+data structure as Abstract Data Type, we define it as a mathematical or
+logical model. We define only the features or
+operations available with the data structure, and do not go into implementation
+details. In this lesson, we are going to discuss
+possible implementation of a Queue. I will do a quick recap of what we have
+discussed so far. A Queue is a list of collection with
+this restriction with this constraint, that
+insertion can be performed at one end, that we call rear of Queue or tail of Queue and Deletion can be performed at other end that we
+call the front of Queue or the head of Queue. An insertion 
+in Queue  is called enqueue operation. A deletion is called dequeue operation. I have defined Queue ADT
+with these Four operations that have written here, in an actual implementation all these
+operations will be functions,  front operation should simply return the
+element at front of Queue should not remove any element from the
+Queue, Isempty should simply check whether Queue is
+empty or not and all these operations must take constant
+time. Enqueue, dequeue or looking at element at front, the time taken for any of these
+operations must not depend upon a variable like number of elements
+in Queue or in other words, and complexity of all
+these operations must be O(1). Okay! So let's get started, we are saying
+that a Queue is a special kind of list, in
+which elements can be inserted or removed one
+at a time and insertion and removal happen at different ends of the Queue. We can insert
+an element at  one end and we can remove an element
+from the other end, just the way we did it for stack. We can
+add these constraints or extra properties of Queue to some implementation of a list and
+create a Queue. They're two popular
+implementations of Queue, we can have an array based
+implementation and we can have linked list based implementation. Let's first discuss array-based
+implementation. Let's say we want to create a Queue of
+integers. What we can do is we can first create an array of integers. I have created an array
+of 10 integers here.  I have named this array A, now what
+I'm going to do is, I'm going to use this array to store my Queue, what I'm going to
+say is that at any point, some part after array
+starting an index marked as front, till an index marked as rear will be my Queue. In this array I'm showing front of the
+Queue toward left and the rear towards right.
+In earlier examples I was showing front towards right and rear towards left. Doesn't really matter, any side can be
+front and any side can be rear, it's just that an element must
+always be added from rear side and must always
+be removed from front. So if at any stage a segment of the array from an index
+marked as front till an index marked as rear is my Queue and rest of the positions in the 
+array are free space, that can be used to expand the Queue. To insert an element to enqueue, we can
+increment rear, so we will add a new cell in the Queue
+towards rear end and in this cell, we can write
+the new value element to be inserted can come to this
+position. I fill in some values here at these
+positions. So we have these integers in the Queue and let's say we want to insert number 5. To
+insert we will increment rear ofcourse there should be an available
+cell in the right, an available empty cell in the right and
+now we can write value 5 here. After insertion new rear index
+is  7, and value at index 7 is 5. Now dequeue means we must remove an
+element from front of Queue. In this example, here a dequeue operation
+should remove number 2 from the Queue to dequeue, we can simply increment front because at any point only the cells
+starting front till rear are part of my Queue.
+By incrementing front I have discarded index 2 from the Queue and we do not
+care what value lies in a cell, that is not part of the Queue, when
+we will include cell in the Queue we will overwrite
+the value in that cell anyway. So just incrementing front is
+good enough for dequeue operation. Let's quickly write
+pseudocode for whatever we have discussed so far. In my
+code I will have 2 variables named front and rear, and
+initially I'll set them both as -1. Let's say for and empty Queue both front and rear will be -1. To check whether Queue is empty
+or not we can simply check the value of front
+and rear and if they're both -1 we can say that
+ Queue is empty. I just wrote isempty function here. -1
+is not a valid index. For an empty Queue there
+will be no front and rear. In our implementation we are saying that
+we will represent empty state of Queue by setting both front and rear as -1. Now let's write the enqueue function.
+Enqueue will take integer x as argument, there will be a
+couple of conditions in enqueue. If rear is already equal to maximum
+index available in array A, We cannot insert
+or enqueue an element in such scenario we can return and exit. I would rather use a function named 
+isfull to determine whether Queue is full or not.
+If Queue is already full, we can't do much we should simply exit, else if Queue is empty we can add cell to the Queue, we can add cell at index 0 in the Queue, and now the
+we can set value at index rear as x. In all other cases,
+we can first increment rear, and then we can fill-in value X at index rear. I can get a statement a[rear] = X
+outside these two conditional statements because it's common to them, so this is
+my enqueue function. In the example array that I'm showing
+here let's enqueue some integers. I'll make calls to enqueue function and
+show you the simulation. In the figure here, let's say first I
+want to insert number 2 in the Queue, I'm making a call to
+enqueue function passing number 2 as argument. The Queue is empty, so we will set both front and rear as 0. Now we will come to this statement, we
+will write value 2 at index 0. So this is Queue after one enqueue
+operation, front and rear of the Queue is same. Let's make
+another call to enqueue, this time I want to insert number 5.
+this time Queue is not empty, so rear will be incremented. We have
+added a cell to the Queue by incrementing
+rear and now we will write the value 5 at the new rear index. Let's enqueue 1 more number. I have 
+enqueued 7. Let's not write dequeue operation. There will be
+couple of cases in dequeue. If the Queue is already empty, we cannot
+remove an element In this case we can simply print or throw
+an error, and return or exit. There will be one more
+special case, if the Queue has only one element. 
+In this case, front and rear will not be -1 but they
+will both be equal, because we are already checking
+for -1 case in isempty function in the previous if. In
+this else if we can simply check whether front is equal to rear
+or not, if this is the case a dequeue will make the Queue empty, and to mark to
+ Queue as empty, we need to set both front
+and rear as -1. This is what we had said, that we
+will would represent and empty Queue by
+marking both front and rear as -1. In default or
+normal scenario, we will simply increment front, we
+should really be careful about corner cases in any implementation, that's fair most of the Bugs come. Okay,
+so this finally is my dequeue function. In this example here at this stage, let's
+say be want to perform a dequeue, Queue is not empty and we do not have
+only one element in the Queue. So people simply increment front,
+before incrementing we could set the value in this cell at index 0 as something, but the
+value in a cell that is not part of Queue anymore doesn't really matter. At this stage it
+doesn't really matter what we have at index 0 or index 3 or any other index apart the
+segment between front and rear. When we will add a cell in the Queue, we will
+overwrite the value in that cell anyway. Let's now perform some more enqueues
+and dequeues. I'm enqueuing 3 and then I'm enqueuing 1, with each enqueue we are
+incrementing rear. I just performed some more enqueue here. Now
+let's the perform a dequeue. If I'll perform one more enqueue here, rear will be equal to the maximum index available
+in the array. Let's enqueue one more now at this stage, we cannot enqueue an element anymore because we cannot
+increment rear. Enqueue operation will fail now. 
+There are two unused cells right now but with whatever
+logic we have written, we cannot use these two cells that are
+in the left of front in fact this is a real problem. As we
+will dequeue more and more, all the cells left of front index will
+never be used again they will simply be wasted. Can we do something to use these cells? Well, we can use the concept of a Circular
+array. Circlular array is an idea that we use in a lot of scenarios. The idea is very simple, as we
+traverse an array we can imagine that there is no end in
+the array, from 0 we can go to 1, from 1, we can go to 2, and finally then we will reach the
+last index in the array. Like in this example, when we are at index 9 the next index for me is index 0. We
+can imagine this array something like this, remember this is
+only a logical way of looking at the array. An circular interpretation of array, if I'm
+pointing to a position and my current position is i then the next position or next index
+will not simply be i + 1, it will be i + 1 Modulo the
+number of elements in array or the size of array.
+Let's say, N is the number of elements in array,
+then the next position will be i + 1 Modulo N. The modulo
+operation will get us the remainder upon dividing by N for any i other than N - 1. This modulo
+operational will not have any effect, but for i = N - 1 next position will
+be N module N which will be equal to 0.
+When you divide the number by itself, the remainder is 0. Previous
+position in circular interpretation of array, will be I + (N - 1) modulo N. We could simply say I-1 modulo N,
+just to make sure this expression inside the parenthesis is always positive, I'm adding N here. Give this some thought.
+You should be able to get why it should be (i + (N - 1)) modulo N. Now
+with this interpretation of array, we can increment rear in an enqueue operation as long as there is any unused cell in
+the array. I'm going to modify functions in my
+pseudo code now. Isempty will remain the same we are
+still saying that, for an empty Queue front and rear will be -1. Let's scroll down and come to enqueue. Now, in
+circular interpretation I will call my Queue full, when the position next to
+rear in circular interpretation that we will
+calculate as (rear + 1) modulo N, will be equal
+to front, so we will have a situation like this.
+Right now, the next position to rear in circular
+interpretation is front. So there is no unused cell.
+The complete array is exhausted. Nothing will change in
+this condition. If Queue is empty, we can simply set
+front and rear as 0. In the last else condition, we will
+increment rear like this, we will say 
+rear = (rear+1) modulo N where N is number of elements in the array.
+With this much change, my enqueue function is good. Now let's make a call to enqueue and insert
+something in this array here, I want to insert
+number 15. We will come to this last else condition,
+Rear right now is 9, so this expression will be (9 + 1) modular N, N is 10
+here the size of this array A is 10 here. This will evaluate to 0, now my new rear is 0. I'll write number 15 here. Let's now see what we need to do in dequeue
+function. Nothing will change in the first two
+conditions, if Queue is already empty or if there is only one element in the
+Queue, we will handle these cases in same manner in the final else when we are
+incrementing front, we need to increment it in a circular
+manner so we will say  fornt = (front + 1) modulo N where N is the number of elements in the array, 
+total number of elements in the array, or size of array. Now let's perform a dequeue, we will come to
+this condition front right now is 2 so this will be (2 + 1)
+modulo 10, one more cell is available to us now. This much is the core of our
+implementation. Front operation will be really straightforward, we simply need to
+return the element at front index. Here also, we first need to check whether the
+Queue is empty or not, we should return a[front] only
+when front is not equal to -1. All these
+operations all these functions that have written here will take constant time, there complexity will be O(1). We
+are performing simple arithmetic and assignments in the functions, and not doing anything costly like
+running the loop, so time taken will  not depend upon size
+of Queue or some other variable. I leave this here it should not be very
+difficult converting this pseudo code to a running program in a language of your
+choice, If you want to see my code you can check the description of this
+video for a link. Thanks for watching.

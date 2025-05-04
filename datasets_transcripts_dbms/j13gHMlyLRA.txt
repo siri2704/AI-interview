@@ -1,0 +1,1 @@
+and uh now next we move on to a partial dependency let's see what is a partial dependency for partial dependency we say that it is a sub when a subset of a primary key or a candidate key refers to or implies a non-prime attribute

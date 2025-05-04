@@ -1,0 +1,78 @@
+Hey guys, today is the start of a series on 
+Python data structures and algorithms to get   you ready for interviews. Today we’re covering 
+hash maps, also known as dictionaries – we’ll   start the video off by explaining what hash maps 
+are, why we use them, and how to code with them.   After that, we’ll solve a practice 
+interview coding question together   that requires hash maps, so you get a 
+better understanding of how to use them.  In the future I’ll be recreating this same series 
+for Java, C++, and other popular languages. Even   if you don’t know Python, you should still watch 
+this video because the explanation of the data   structure is applicable to all coding languages.
+Enough of the intro, let’s dive in.  A hash map, referred to as a dictionary 
+by Python, is a data structure that stores   information, called values, and pairs them 
+up with unique identifiers, called keys.   A simple example to understand 
+this is a university GPA directory;   each student likely has a unique student ID (key) 
+that has a respective GPA along with it (value).   Or think of a list of capital cities. 
+If we make the keys countries,   we can just look up the country to find 
+the capital city, which is the value.  HashMaps are useful for two main reasons.
+The first is, when working with big   software systems, readability becomes 
+incredibly important, and being able   to customize keys can be quite helpful.
+The second is that HashMaps allow for   searching of specific values in O(1) runtime, 
+which is faster than arrays and linked lists,   which have a search time complexity of O(n).
+Now you know what HashMaps are, and why they’re   useful. But let’s dig a little deeper, 
+and understand how HashMaps actually work.  HashMaps are commonly built off of a predefined 
+data structure like an array. Like HashMaps,   arrays do also have keys that store values – for 
+arrays though, the key is a pre-set number called   an index, which starts at 0. A HashMap is created 
+from an array through the use of a Hash function,   which takes in custom data that we want to assign 
+to a key, like a country from our example earlier,   and maps this data to an index on the 
+array. These Hash functions can get complex,   especially as they have to tackle issues that 
+come up when mapping data to indices. The most   common issue that comes up is called a collision, 
+and occurs when a Hash function tries to assign a   data to an already used index. In this case, the 
+Hash function has to have some efficient way to   reassign this data to a different, non-used index.
+Hash functions are a bit outside the scope of this   video, and in almost all modern programming 
+languages, HashMaps are already implemented,   so you don’t have to worry about building them 
+yourselves. The one thing you should know about   Hash functions however, is that once they map 
+data to a key, they cannot change this key.   This means that any key in a HashMap must always 
+be immutable. If you try to assign a mutable   type of data as a key, such as an array, you’ll 
+get a Type Error that says “unhashable type”.   If you see this error, it means you tried 
+to assign a mutable data type to a key.   To fix this, simply convert the data type to 
+something that is immutable. As we got the error   from using an array, our solution would be to 
+convert it to a tuple, which makes it immutable.   Now, this tuple can be used as a key.
+Now hopefully it’s all coming together,   and you can start to understand why HashMaps are 
+efficient. If we used an array for our capital   city to country scenario, we would have to make 
+something like this. For a program to find a   capital city, they would have to search through 
+each index until they reached the correct value.   With a HashMap, the program just 
+has to receive the country name.   From here, it can put the country name into the 
+Hash function, which spits out the right index,   without needing to go through 
+every element in the list.  It's time for us to look at how HashMaps 
+are actually implemented. In many languages,   HashMaps have different names. When it comes 
+to Python, HashMaps are called dictionaries,   but I generally refer to them as HashMaps anyways.
+We first create a HashMap by initializing it.   Let’s call ours “city_map”. We can 
+initialize it in either of these two ways.  city_map = {}
+city_map = dict()  Now, let’s add our first key-value pair. I want 
+to add in “Canada” as a key, and have an array of   cities as values. To do that, this is our syntax:
+cities = [“Calgary”, “Vancouver”, “Toronto”]  city_map[“Canada”].append(cities)
+Oh no! We got a KeyError. Why did this happen?   This is a very common mistake people make 
+with HashMaps. We tried to assign the 3   cities to the key of Canada, but that 
+key doesn’t exist in our HashMap yet!   So, we first need to initialize this key.
+city_map[“Canada”] = []  Now, we can add these cities to this empty array.  city_map[“Canada”] += cities
+This is what our result will look like:
+   Here’s a neat trick – to avoid having to 
+initialize an empty array for your keys   every single time, we can use a specific type 
+of dictionary in Python called a DefaultDict,   which will have an empty array, or other 
+type of data, assigned to a key by default.  Here’s what the code would look 
+like if we chose to do it this way.  One of the reasons Python is awesome is because 
+of it’s huge library, and this is a prime example   of this. I highly recommend taking advantage 
+of DefaultDicts for solving coding problems,   as it’s an incredibly useful feature that 
+will help you avoid unnecessary mistakes.  The other major thing you should know about 
+HashMaps is how to retrieve information from them.   There are three methods for 
+this: .keys, .values, and .items.  .keys method returns all of the keys from 
+the dictionary, in the form of a list.  .values method works similarly, 
+returning all of the values of the   dictionary, in the form of a list.
+.items works as a combination of   the two. It returns a list of all 
+of the key-value pairs as tuples  Here’s an updated version of 
+our city_map from earlier.   As you can see, it now has 
+multiple countries and cities.  If we wanted to get only a list of the 
+cities, we could do so by calling the   .values() method like this:
+city_list = city_map.values()  Now we have a list of cities in city_list 
+that we have extracted from the HashMap.  Great! Now that we’ve learned how 
+HashMaps work, and how to code with them,   let’s use our new knowledge to solve 
+a popular coding interview problem!

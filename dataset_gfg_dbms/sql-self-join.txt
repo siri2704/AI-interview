@@ -1,0 +1,129 @@
+• 
+• 
+• 
+
+A Self Join inSQLis a powerful technique that allows one tojoin a tablewith itself. This operation is helpful when you need to compare rows within the same table based on specific conditions. ASelf Joinis often used in scenarios where there is hierarchical or relational data within the same table, such as when one employee reports to another in an organizational structure.
+
+In this article, we will learn a self-join, itssyntax, and use cases and provide practicalexamplesto demonstrate how it works.
+
+
+### What is SQL Self Join?
+A Self Join is simply a regularjoin operationwhere a table is joined with itself. This allows us to compare rows within thesame table, which is particularly useful when working withhierarchical dataor when comparing related rows from a single table.
+
+For example, a Self Join can help us retrieve employee-managerrelationships, where each employee in the table has a reference to their manager’s ID.
+
+Syntax:
+
+SELECT columns
+
+FROM table AS alias1
+
+JOIN table AS alias2 ON alias1.column = alias2.column;
+
+Explanation:
+
+• SELECT columns:With the help of this we specify the columns you want to retrieve from the self-joined table.
+• FROM table AS alias1:With the help of this we specify the name of the table you want to join with itself.
+• JOIN table AS alias2:In this, we use the JOIN keyword to show that we are performing a self-join on the same table.
+
+
+### Example: SQL Self Join to Retrieve Employees and Their Managers
+Let’s use an illustration to further understand how theself-joinfunctions. Assume that we have a table called “GFGemployees” with the columns employee_id, employee_name, and manager_id. Each employee in the company is assigned a manager, and using the manager-ids, we can identify each employee. We need to extract the list of employees along with the names of their managers because the manager_id column contains the manager ID for each employee
+
+Step 1:First, we need to create the “GFGemployees” table with following query inSQL.
+
+
+```python
+CREATE TABLE GFGemployees(employee_idINT PRIMARY KEY, employee_name VARCHAR(50), manager_id INT);
+```
+Step 2:Now we will add data into the ‘GFGemployees’ table usingINSERT INTOstatement:
+
+
+```python
+INSERT INTO GFGemployees (employee_id, employee_name, manager_id)VALUES  (1, 'Zaid', 3),  (2, 'Rahul', 3),  (3, 'Raman', 4),(4, 'Kamran', NULL),  (5, 'Farhan', 4);
+```
+Output:
+
+employee_id
+
+employee_name
+
+manager_id
+
+1
+
+Zaid
+
+3
+
+2
+
+Rahul
+
+3
+
+3
+
+Raman
+
+4
+
+4
+
+Kamran
+
+NULL
+
+5
+
+Farhan
+
+4
+
+Step 3: Explanation and implementation of Self Join
+
+Now, we need to perform selfjoinon the table we created i.e.”GFGemployees” in order to retrieve the list of employees and their corresponding managers name and for that we need to write a query, where we will create two different aliases for the “GFGemployees” table as “e” which will represent the GFG employee’s information and “m” will represent the manager’s information. This way byjoining the tablewith itself using the manager_id and employee_id columns, we can generate relationship between employees and their managers.
+
+Step 4: Query for Self-join
+
+
+```python
+SELECT e.employee_name AS employee,m.employee_name AS managerFROMGFGemployees AS e JOIN GFGemployeesAS m ON e.manager_id = m.employee_id;
+```
+Output:
+
+The resultant table after performing self join will be as follows:
+
+employee
+
+manager
+
+Zaid
+
+Raman
+
+Rahul
+
+Raman
+
+Raman
+
+Kamran
+
+Farhan
+
+Kamran
+
+
+### Applications of SQL Self Join
+• Hierarchical Data:Self joins are particularly useful when working with hierarchical data such as organizational structures, where each employee has a manager.
+• Finding Relationships:Self joins can be used to find relationships within the same table, such as identifying employees with similar attributes or roles.
+• Data Comparison:Self joins allow comparing records within the same table based on specific conditions, like comparing sales figures of employees working in the same department.
+
+
+### Conclusion
+The Self Join in SQL is a powerful tool for querying data from a single table where relationships between rows need to be established. It is especially useful for hierarchical data, such as employee-manager relationships, where records in a table are related to each other. By using table aliases and matching conditions, you can effectively retrieve and compare data within the same table.
+
+• Databases
+• SQL
+

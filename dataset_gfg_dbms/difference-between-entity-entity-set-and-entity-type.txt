@@ -1,0 +1,108 @@
+• 
+• 
+• 
+
+The Entity-Relationship (ER) Model is one of the primary components of Database Management Systems and is very important for designing the logical structure of databases. It helps define data, and the relationship between the data entities and it makes the system easier to visualize. This is the reason that the ER Model is commonly employed while designing the structure of relational databases. Through the use of the ER Model, hierarchies such as how data will be stored, accessed, or even managed can easily be constructed. In as much as discussing the usage of the ER Model such terms as Entity, Entity Set, and Entity Type need to be understood since they explain how data is classified and organized in a database.
+
+
+### What is Entity?
+An entity is anything real that has a defined and separate existence. It can be anything that can be described, named, or identified in separation from the rest of the items. This is vital in database design since entities are the fundamental components of information that are kept and controlled in a database. Each of these entities has attributes that help in describing the nature of the entity, distinguishing it from the other entities. For instance, a student, a car, and a bank account are all considered entities as each of them has a roll number, registration number, and account number that can identify them respectively.
+
+An entity can be of two types :
+
+• Tangible Entity:Entities that exist in the real world physically.Example:Person, car, etc.
+• Intangible Entity:Entities that exist only logically and have no physical existence.Example:Bank Account, etc.
+
+Example :
+
+• A student with a particular roll number is an entity.
+• A company with a particular registration number is an entity.
+• A specific book with a unique ISBN number is an entity.
+
+Note :
+
+• An entity may be concrete like a student, or a book, or abstract like a holiday or a particular concept.
+• An entity is represented by a set of attributes.
+• In a particular relation in RDBMS, a particular record is called an entity.
+
+
+### What is Entity Type?
+Anentity typecan be defined as a framework or a class of entities which are the focal point of this research. It is smaller to a schematic diagram, which defines the properties of the objects of this class. Entity types assist in classifying the same kind of entities into one group, which comes in use when dealing with their properties and relations in the database. For example, for an entity type called Student, there will exist students and their respective attributes such as studentID, name and age. Entity types are essential parts of creating relations because they determine the values that will be inserted for each row in the table.
+
+
+
+Example :
+
+• A table named student in a university database.
+• A table named employee in a company database.
+• A table named “product” in an e-commerce database is an entity type for all products.
+
+Note :
+
+• The category of a particular entity in the relation in RDBMS is called the entity type.
+• It is represented by the name of the table and its schema.
+
+
+### What is Entity Set?
+An entity set is a comprehensive representation of all entities of the same type at a specific time. The use of an entity set helps to aggregate and thus manage similar entities withindatabases. The entities of the entity-set have common attributes for each entity, but the values of those attributes are different. Entity sets are important components in database structure because they illustrate how information is organized and put away in tables. For instance, a record of students in a “Student” table is by each student and the total record or collection would form an entity set. However, entity sets are not static because they have the potential to grow and shrink with the addition or removal of entities.
+
+
+
+Example :
+
+• The collection of all the students from the student table at a particular instant of time is an example of an entity set.
+• The collection of all the employees from the employee table at a particular instant of time is an example of an entity set.
+• The collection of all products in stock from the “product” table forms an entity set.
+
+Note :
+
+• Entity sets need not be disjoint. For example, the entity set of Article Writer (all content creators for GeeksforGeeks) and the entity set of Article Reader (all students who read the article of GeeksforGeeks) may have members in common.
+• The collection of all the entities in the relation of RDBMS is called an entity set.
+
+Relation With Table :
+
+Consider a table student as follows :
+
+Table Name : Student
+
+Entity :Each row is an entity.
+
+Example :
+
+Entity Type :Each entity belongs to the student type. Hence, the type of entity here is a student.
+
+Entity Set :The complete data set of all entities is called entity set. For the above table, the records with student id 1, 2, 3, 4 are the entity set.
+
+
+### Difference Between Entity, Entity Set  and Entity Type
+Entities can be tangible or intangible.
+
+Defines attributes shared by entities of that type.
+
+Represents a snapshot of all entities at a given time.
+
+It is identified uniquely through akey attribute.
+
+It represents the structure of the table without data.
+
+It can grow or shrink as entities are added or removed.
+
+Example:A student with ID 1.
+
+Example:“Student” table schema.
+
+Example:All records in the “Student” table.
+
+
+### Conclusion
+Being aware of the variance among entities, types, and entity sets is very crucial for modeling a database effectively using the ER Model. Entities are objects that exist in the real world and depict individuals, while entity types define those objects, and an entity set defines a collection of entities that exist at a given time. This classification of groups of data can be useful to design logically structured databases, which in turn lead to efficient retrieval and management.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• Difference Between
+• GATE CS
+• Accolite
+
+• Accolite
+

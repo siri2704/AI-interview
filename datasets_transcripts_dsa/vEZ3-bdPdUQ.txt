@@ -1,0 +1,77 @@
+ Hello friends, welcome to Gate Smashers. In this video we are going to discuss how to create the AVL tree.  Means if you want to draw AVL tree,
+ if you have given the keys or data, then how do we draw AVL tree?  So here before drawing AVL tree, as I told you in the last video introduction to AVL,  that we find out the balance factor and
+it should be either - 1, 0 or 1.  It should be of these three values otherwise we call it unbalanced.  And if it is coming in these three, that is called balance.  So what we call balanced binary search tree is AVL tree.  So here let's say I have given values, I will insert these values later or later we will
+ make AVL tree on the basis of these values.  First I am going to discuss 4 important cases here.  Means when we call BST or Binary Search Tree unbalanced.  So the first case is, let's say if I have data 8, 9, 10.
+If the data is coming in this way, 8, 9, 10.  So see first we put 8, 9, we are making
+BST so 9 on right, 10 on right of 9.   So this is a BST that is Binary Search Tree.
+Now to balance the Binary Search Tree,  what we are doing is whenever we are inserting
+node, whenever we are inserting element,  at that time we check its balance factor.
+So first let's say 8 came, balance factor is 0.   9 came, so see the balance factor of 8 is
+height of left - height of right.  So height of left is 0, height of right is 1.
+So 0 - 1, - 1 which is fine.  When I inserted 10, so what is the
+balance factor of 10? 0 - 0, fine.  See its balance factor of 9, 0 - 1,
+- 1 which is also fine.  But see the balance factor of 8 is
+0 - 2, 0, height is 0 in left, 2 in right,  so 0 - 2 is - 2 which is not in this range.
+ So what will you call it? It is unbalanced.  So what is unbalanced? Means what type
+of unbalanced is it? We call it RR.  Because how it is growing? Right Right.
+ So what will you call it? RR unbalanced.  So whenever you have this type of scene, this
+type of case will come, there are 4 cases,  so the first case is this one we are discussing.
+If this case comes, what you have to do is  you have to do one rotation, in
+ single rotation it will be balanced.  So how you have to do single rotation?
+Means let's say if we talk about a compass,  then you keep your compass here, on 9 and 8
+and what you do is you move it anticlockwise.  How? You move it anticlockwise like this. If I move it anticlockwise,  then what will it become? 9 will go up,
+8 will come here, 10 will come here.  So it will draw like this. So how many rotations did you have to do?  Remember, questions like this come after
+how many rotations did AVL tree become?  So I did one rotation and how I did rotation?
+I rotated it, I rotated it in the middle.  Where? Anticlockwise.  And it became like this. 9, 8, 10.
+ Now see balance factor.  Balance factor is 0, 0-0, 0-0, 1-1.
+So what is 1-1? 0 which is also fine.  So here this balance is made. Next, let's
+suppose this is your case of RR transformation.  If R is unbalanced in RR, then how you have to balance it?  Next comes to us. If let's say data is 10, 9, 8.   If data is like this, then let's say I put 10 first,
+checked balance factor, no problem.  Put 9, checked balance factor, 1-0, no problem. Put 8.  When you insert data, you have to check from that point.  Whenever you insert data, you have to go
+to the root from that point while checking.  So I inserted 8, see the balance factor of 8 is 0. Fine.  Balance factor of 9 is 1-0, fine. Balance
+factor of 10 is 2-0 which is what? 2.  Out of this range. So what will have to be done? It has to be balanced.  But what type of unbalance is this?
+ This is LL. Means this is left left unbalanced.  So in this case what you will do?
+Again single transformation is required.  Means you have to put one rotation and how to put one rotation?  We did anti-clockwise in this.
+Now what you have to do? Clockwise.  Here you keep a compass and rotate it clockwise.  So when we rotate clockwise, what will it become?  It will become like this. 9, 8, 10.  When you move it clockwise, then it will become like this.  9, 8 here, 10 here. So what will it become? Balanced.  Now see, you check again. So what will
+ become 1-1? Height of left 1, height of right 1,  1-1 0 which is in the range. So what is this? Balanced.  So how many rotations have to be done?
+ One rotation. Which side? Clockwise.  Single rotation, one rotation clockwise.
+ So we say this is R, this was RR,  this is LL transformation. Now the third case is like this.  If your data is coming after 10, let's say 12 and after 12 comes 11.   Means your data is coming 10, 12, 11. So first put 10 then 12.  When you put 12, then there is no problem.
+ Put 11. 11 is bigger than 10,  smaller than 12, so it will come this way.
+Now see, its balance factor is 0, fine.  Its balance factor is 1, fine.
+Balance factor of 10 is 0-2, means no.  So now what will we call this?
+This is the third case. See, RL.  First you went to the right, then you went
+to the left, that is called the RL imbalance.  What is this now? Inbalance.
+Now when this has to be converted,  whenever RL has to be converted,
+then two rotations are required.  In the first one, one rotation, here you will take two rotations. How will two rotations be required?  In the first rotation, what you have to do is convert RL into RR.  Remember, what is the first word? R.
+So you have to convert RL into RR.  Now what you have to do to convert it into RR?
+This lower element, this 12 and 11,  what you do is, rotate them like this, swap them.  Means rotate them completely like this,
+ then what will it become? 10, 11, 12. Simple.  What you have to do is, rotate both
+the lower elements, this 11 will go up,  12 will come down. So see, we converted RL into RR.  Means one rotation was applied and it converted into RR.  And how to fix RR? I have already told you this.  Anti-clockwise single rotation. Keep a
+compass on 11, keep its point above 10  and move it anti-clockwise.
+So 11, 10, 12. So see what is this now?  This is your balanced binary search tree,
+which you can call as AVL tree.  So now see its balance factor, 1-1, 0. So this is 5.
+But how many rotations were applied?  Two rotations are required here. So
+ this point is RL, which is very important.  This is a very important case.
+Next. This is the last case here.  Let's suppose your data is coming like this, 10, 8, 9.  Means if your data is coming 10, 8, 9.
+So what you have to do in that case?  First put 10, 8 in left. Right will go 9.
+Because it is smaller than 10 but bigger than 8.  So when I put 8, there was no problem. As soon
+ as I put 9, what you have to check again?  You have to go from the leaf node to the
+upper side. So I checked this, fine.  But when I checked 10, it is not fine. 2-0 is what?
+ 2. Now what will you call this? LR.  See first it is going to the left, then
+ to the right, LR transformation.  So how will you remove LR transformation or LR problem?  Again two rotations will be applied as
+it was applied in this. In two rotations,  what you have to do in the first rotation?
+ Convert LR into LL. See first letter is L.  Remember this. Convert LR into LL.
+Now how will you do? As we did here,  you rotate these two last two elements.
+If you rotate these two, then what will happen?  10, 9, 8. 9 in left of 10, 8 in its left. So what is this?  LL transformation or LL is imbalanced. So
+LL is imbalanced, one rotation is applied to you.  Now what you have to do? I already told
+you about LL. What you have to do for LL?  Move clockwise. Keep your compass
+here, move the pointer in this way.  So what will it become? 9, 8, 10. So see
+now you check here, 1-1 which is 0.  So what will it become now? Balanced.
+But how much rotation was applied?  1 + 1 that is 2. First one to convert into LL,
+then one more rotation to fix LL.  So two rotations for this, two rotations for this,
+single rotation 1, single rotation for this.  So you should remember these four cases and always remember that when you insert an element,  after inserting, you have to check the root side of the element.  This is a very important point. Otherwise
+it can also be like this, in a tree,  it is being closed twice. Means one is
+ being closed down and one is being closed up.  But you always have to remember,
+ the element you have just inserted,  from there you start going up.
+ Wherever you find the first problem, fix it first.  Then you can go up. So this is actually how we,
+all four imbalances, LL, RR, LR and RL,  how we fix these four. There is no other case
+in this. Now you can easily make an AVL tree  on any tree or any sequence given to you. Thank you.   We will discuss this tree in the next video. Thank you.

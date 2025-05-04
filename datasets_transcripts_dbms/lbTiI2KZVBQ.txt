@@ -1,0 +1,1 @@
+relational model is an abstract model used to organize and manage the data stored in database so relational is sorry foreign

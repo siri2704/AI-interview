@@ -1,0 +1,42 @@
+today we're gonna learn about Big O notation so 
+what is it Big O notation is simplified analysis   of an algorithms efficiency we cover a lot of 
+algorithms on this channel and we need a way to   compare them and some idea of how long we'll take 
+to run Big O gives us an algorithms complexity in   terms of the input size n it gives us a way to 
+abstract the efficiency of our algorithms or   code from the machines they run on we don't 
+care about the stats of the machine rather   we examine the basic computer steps of the code 
+we can use Big O to analyze both time and space there are a couple ways to look at an algorithms 
+efficiency we can examine worst-case best-case   an average case when we're talking Big O notation 
+we typically look at worst case this isn't to say   the others are unimportant however let's talk 
+about a few rules first big o-notation ignores   constants for example if you have a function that 
+is a running time of 5n we say that it runs on   the order of Big O of n this is because as n gets 
+large the 5 no longer matters in the same way as   n grows certain terms that dominate others here's 
+a list but I'll show you a visual on the next page we ignore a drop low order terms when 
+they're dominated by high order ones take a minute and study this chart it 
+can be found on Big O cheat cheat com   along with a handy guide on the Big 
+O of various important algorithms let's run a few examples so you can see what I 
+mean by basic computer steps we'll start with   constant time imagine we had the following line of 
+code this basic computer statement computes x and   notice it does not depend on the input size in any 
+way we say this is Big O of one or constant time what happens when we have a sequence of 
+statements notice that all these are constant time   how do we compute Big O for this block of code 
+we simply add each of their times and we get 3   multiplied by Big O of 1 but remember we 
+drop constants so it's still big o of 1 let's look at linear time suppose 
+we have the following for loop that   prints the numbers 0 to n we know 
+the print statement is Big O of 1   this means the block of code is n times 
+Big O of 1 in other words Big O of N here's another sequence the first line we note 
+again is Big O of one and the for loop is Big O   of n the total time is the summation of these 
+two but remember we drop low order terms when   n gets large the time it takes to compute Y is 
+meaningless as the for loop dominates the run time finally let's look at quadratic time I think you can see that the print statement will   be executed n times n which 
+gives us Big O of N squared let's do two more examples covering everything   we've talked about say we have 
+the following block of code what is his total runtime well 
+we know the runtime for each   of these so the total runtime 
+is simply the max of the three the nested for loop dominates 
+here so we get Big O of N squared how about this if else statement pretend the sequence of statements in each clause 
+have already been deduced to the big oath shown   we talked earlier that when we're discussing 
+Big O we usually look at worst case scenario   so for this situation we choose the largest 
+run time which happens to be Big O of N squared I hope this gives you an understanding of Big 
+O notation let's wrap up by talking about the   real world when you're coding your algorithm 
+please realize that constants absolutely do   matter a lot of situations have small input 
+sizes so a constant of two or three could   have a large impact lastly for the same 
+reason be cognizant of best and average   case depending on your application this 
+may be more applicable for your algorithm as always thank you for watching 
+please subscribe if this helped you

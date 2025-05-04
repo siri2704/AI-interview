@@ -1,0 +1,1 @@
+we have multiple types of dbms which is flat file dbms hierarchal dbms Network dbms relational dbms and non-relational dbms

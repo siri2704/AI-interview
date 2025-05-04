@@ -1,0 +1,228 @@
+What on earth is this?
+And what in heaven’s name is this?
+  The answer is that these are examples of Entity 
+Relationship Diagrams, or ERDs. But what exactly   is an ERD? An ERD is a way of expressing the 
+logical design of a database in a visual way.   In this video, we’re going to explore how an ERD 
+helps to clarify crucial aspects of what’s going   on in a database design. We’re going to look at a 
+couple of types of notation you can use in ERDs:   Chen notation and crow’s foot notation. By the end 
+of the video, you’ll understand how ERDs convey   information, how they help in database design, 
+and how you can make useful ERDs of your own.
+  This is Decomplexify, bringing a welcome 
+dose of simplicity to complex topics.
+  Suppose we want to design a database for people in 
+our local community: a database that keeps track   of which people own which pets. We would like 
+the database to capture the names of the owners,   the names of the pets, photos of the 
+pets, the addresses where the pets live,   and what type of animal each pet is – this 
+would be “dog”, “cat”, “hamster”, or whatever.
+  These are what we might call the information 
+requirements that our database needs to meet.   A useful way to get started on turning 
+requirements into a database design is   to identify all the nouns that appear in the 
+requirement statement. Let’s circle them: 
+  Here are the words we circled.
+It’s helpful if we get all the words   into the singular, rather than in the plural. 
+So we’ll change the word “People” to “Person”.
+  We can shorten the list by getting 
+rid of redundant words. The first   two words on the list are “Person” and 
+“Owner”, but since an owner is a person,   we probably don’t need both words. We’ll retain 
+the word “Person” and discard the word “Owner”. 
+  Similarly, given that our list contains the 
+word “Pet”, we can get rid of the word “Animal”,   because the only animals being 
+talked about here are pets. 
+  Finally, to avoid ambiguity, let’s clarify 
+what we mean by the very open-ended word   “Type”. According to our requirement, 
+“Type” means what type of animal a pet is:   a dog or a cat for example. So, for clarity, 
+let’s replace “Type” with “Pet Type”. 
+  We now have six terms: Person, Pet, 
+Name, Photo, Pet Type, and Address.
+  Each of these six terms designates a particular 
+kind of thing that our database will need to keep   track of. The database needs to keep track of 
+People, it needs to keep track of Pets, and so   on. But that’s not all. The database also needs 
+to keep track of the relationships between things.   For example, according to our requirement, it’s 
+important that a particular Pet has a relationship   to a particular Person. Here are two pets: a cat 
+named Cleo and a dog named Buster. And here is A   Person named Tricia Anderson. Tricia owns Cleo and 
+Buster. The database needs to capture this fact.
+  Let’s try and sketch out the kinds of 
+relationships that exist among People, Pets,   Names, Photos, Pet Types, and Addresses.
+A Person owns a Pet.
+  A Person has a Name.
+A Pet has a Name.
+  A Photo depicts a Pet.
+A Pet has a Pet Type.
+  A Pet resides at an Address.
+This sketch communicates the kinds   of things our database needs to keep track of, 
+and the kinds of relationships those things have   to each other. It’s a good start. But it’s not 
+quite enough. When it comes to relationships,   there are some important questions that the sketch 
+doesn’t answer. For example, the sketch tells us   that pets can be owned by people; this is what the 
+line connecting Person to Pet is expressing. But   what the sketch doesn’t tell us is how many people 
+can own a pet. Can a pet have two owners? Can it   have three, or four, or any number of owners? Can 
+it be an orphaned pet, a pet with zero owners? 
+  Really getting to grips with the requirements 
+means asking and answering questions like these,   questions about what we call the cardinality 
+of relationships. Cardinality means how many of   one thing are associated with how many of another 
+thing. Let’s go through the relationships in the   sketch, and for each one, let’s write down 
+what we’re deciding the cardinality of the   relationship is, along with a justification for 
+making that decision. Decisions about cardinality   aren’t always clear-cut, but whatever decisions 
+you make need to have plausible reasons behind   them. The justifications that appear on the 
+screen alongside each relationship go into a   certain amount of detail, so you may want to pause 
+the video to give yourself time to read them.
+  We’re going to say that each pet 
+is owned by zero or more people,   and each person owns zero or more pets.
+Each person has one name, and each name   belongs to zero or more people.
+Each pet has one name, and each   name belongs to zero or more pets.
+Each photo depicts one pet, and each   pet is depicted in zero or more photos.
+Each pet type applies to zero or more pets,   and each pet has one pet type.
+Each pet resides at zero or one address, and   each address has zero or more pets living in it.
+Deciding on the cardinality of each relationship,   as we’ve done here, is a crucial step in 
+the database design process. Get it wrong,   and you’ll probably end up with a database 
+system that doesn’t do what it’s supposed   to do. For example, if you decide that 
+each name belongs to exactly one pet,   then at some point the users of the system are 
+likely to encounter an error message like this:
+  This is what happens when the database doesn’t 
+support two pets having the same name.
+  Now that we’ve decided the cardinalities 
+of all the relationships, let’s create an   entity relationship diagram that 
+includes them. For this exercise,   we’re going to use a diagramming style known as 
+Chen notation. In Chen notation, each of the nouns   we identified gets its own box. Person, 
+Pet, Photo – we place all of these in boxes,   and we refer to them as entities.
+We represent each relationship by a   diamond shape connected up to the 
+relevant entities using lines.
+  The next thing we need to do is express the 
+cardinalities of the relationships. In Chen   notation, cardinalities are expressed like this:
+Reading from the Daughter end of the relationship   to the Mother end of the relationship, we say: A 
+daughter has a maximum of 1 mother. (Of course,   the kind of mother we have in mind in this 
+illustration is a biological mother.) Reading   from the Mother end of the relationship to 
+the Daughter end of the relationship, we say:   A Mother has a maximum of N daughters 
+– and because N means “any number”,   this is a way of saying there’s no defined 
+limit to how many daughters a Mother can have.
+  Chen notation can also provide some 
+information about minimum numbers:   the minimum number of mothers a daughter can have, 
+and the minimum number of daughters a mother can   have. The minimum number of mothers a daughter can 
+have is one. The fact that the minimum isn’t zero   implies that for daughters, the relationship 
+to a mother is universal: we won’t find any   examples of a daughter with no biological mother. 
+This universal relationship, which every daughter   must participate in, is shown by a double line.
+The minimum number of daughters a mother may have   is zero. This amounts to saying that for mothers, 
+the relationship to a daughter is not universal:   some mothers don’t have any daughters. This 
+sort of non-universal relationship is shown by   a single line rather than a double one. 
+Going back to our pet ownership model,   let’s add in all the cardinalities. 
+Here is what they look like.
+  Notice where the double lines are. A Pet 
+must have a Name. A Person must have a   Name. A Pet must have a Pet Type. All of these 
+relationships are shown with double lines.
+  Notice the relationship between Pet and 
+Person. A Person owns a maximum of N Pets,   and a Pet is owned by a maximum of M People. Like 
+the letter N, the letter M simply means unlimited:   any number. The only reason we don’t use the 
+letter N on both sides of the relationship   is because we don’t want to confuse people into 
+thinking that these two Ns stand for two numbers   that are literally equal to each other.
+The diagram now gives a clear idea of what   all the relationships are. If we want, we can 
+make the diagram even more informative by adding   information about the kinds of attributes each 
+entity has – attributes meaning characteristics   or properties that we want our database 
+to be able to keep track of. For example,   we might want to say that each Photo has an Image 
+Filename and a Date Uploaded. Image Filename and   Date Uploaded are attributes of the Photo entity. 
+Each one becomes an oval connected to the entity   by a line. And we underline Image Filename 
+to highlight that Image Filename is unique:   we’re going to assume here that the system 
+assigns a unique one upon photo upload, and so   Image Filename uniquely identifies a photo.
+Although in this particular case the unique   identifier was just a single attribute 
+– Image Filename – sometimes the unique   identifier will consist of a combination 
+of attributes. When it does, you need to   underline each such attribute to communicate 
+this. For example, if we had a Geographical   Location entity whose unique identifier was 
+the combination of a Latitude and a Longitude,   we would underline both Latitude and Longitude.
+A slightly different convention applies when we   have an entity whose identity is bound up with 
+the identity of a parent entity. For example,   there might be Orders and Order Lines, 
+with each Order encompassing multiple   lines: Line 1, Line 2, and so on. 
+The unique identifier for the Order   entity is Order Number. The unique identifier for 
+the Order Line entity is the combination of Order   Number and Line Sequence Number. However, 
+in Chen notation, we don’t explicitly show   Order Number as an attribute of Order Line, even 
+though in a very real sense it is one. Instead,   we add a double border to the Order Line box, and 
+a double border to the relationship between Order   Line and Order. The double border signifies 
+that Order Line is a so-called “weak entity”,   meaning an entity which derives part of its 
+identity from a related entity, in this case   Order. It is therefore understood that Line 
+Sequence Number, the underlined attribute,   doesn’t identify Order Line all on its own. 
+Instead, Order Line is identified by its parent   entity’s unique identifier, Order Number, 
+in combination with Line Sequence Number. 
+  A set of attributes could be drawn up for 
+every entity in our diagram. We won’t actually   go through that exercise in this video. We will 
+however make a slight amendment to the diagram.   This amendment has to do with how Names are 
+represented. Each Pet has exactly one Name,   and each Person has exactly one Name. So why 
+not make Name an attribute of the Pet entity,   and likewise why not make Name an attribute of 
+the Person entity? This seems more natural than   making Name an entity in its own right.
+Chen notation includes a few other visual   conventions that allow you to convey 
+even more information about entities,   relationships, and attributes. But let’s not get 
+too bogged down in the details of the notation.   Many different notations exist for ERDs, with 
+Chen notation just being one of them. Outside   of educational settings, a much more popular 
+notation for ERDs, which happens to be my own   preferred notation, is crow’s foot notation. 
+In crow’s foot notation, we don’t bother with   diamond shapes to represent relationships. Just 
+drawing a line between two entities is enough to   signify that there is a relationship between them. 
+What we put at each end of a relationship line   expresses the cardinality of the relationship. 
+In this notation, all you have to do to express   cardinalities is to draw at the end of each line 
+two symbols, the first representing a minimum   number and the second representing a maximum 
+number. What are the symbols that are available   for you to choose from? They are the zero symbol, 
+the one symbol, and the multiple or many symbol.
+  A circle shape, which looks like a zero, means 
+zero. A vertical line, which looks like a one,   means one. And a crow’s foot shape, which has 
+diagonal prongs on either side of the relationship   line, means multiple or many. Here, we are being 
+told that each mother has zero or more daughters:   the zero symbol represents the minimum number 
+of daughters, and the many symbol represents   the maximum number of daughters. Looking 
+to the other end of the relationship line,   we see that each daughter has a minimum of 
+one mother and a maximum of one mother – or   to express it more simply, exactly one mother. 
+So, for each relationship line that exists in an   ERD, we draw in four cardinality symbols, two at 
+one end and two at the other end. At a given end,   the first symbol represents a minimum number, and 
+the second symbol represents a maximum number. 
+  When trying to express relationships in an ERD, 
+you should focus most of your thinking on the   maximum numbers. The maximum numbers are crucial 
+to defining the basic nature of a relationship.   If we put aside the minimum numbers for the 
+moment, and focus only on the maximum numbers,   it becomes apparent that there are three 
+basic kinds of relationships. The first kind   has the crow’s foot symbol at both ends. 
+Each pet can be owned by multiple people,   and each person can own multiple pets. We 
+call this a many-to-many relationship.
+  The second kind has the crow’s foot symbol at just 
+one end – as in our mother-daughter example. We   call this a one-to-many relationship, or 
+equivalently, if we’re reading it in the   other direction, a many-to-one relationship.
+The third kind of relationship has a one at   both ends, and no crow’s feet symbols. 
+Each employee has one employee ID card,   and each employee ID card belongs to one 
+employee. We call this a one-to-one relationship.
+  In crow’s foot notation, the entity 
+relationship diagram for our people   and pets database would look like this.
+We can see, as before, that each pet is   owned by zero or more people, and each person owns 
+zero or more pets. So the relationship between Pet   and Person is many-to-many.
+Each photo depicts one pet,   and each pet is depicted in zero 
+or more photos. So the relationship   between Pet and Photo is one-to-many.
+Each pet type applies to zero or more pets,   and each pet has one pet type. So the relationship 
+between Pet Type and Pet is one-to-many.
+  Each pet resides at zero or one address, and 
+each address has zero or more pets living in   it. So the relationship between 
+Address and Pet is one-to-many.
+  And we can make the diagram even more informative 
+by adding attributes. Our goal here isn’t   necessarily to show every attribute that’s going 
+to be in the finished database, but we should at   least show uniquely identifying attributes 
+– that is, attributes that serve to uniquely   identify an entity – along with perhaps a handful 
+of other significant attributes of the entity.
+  Notice that some attributes have an indicator 
+beside them saying “PK”, which means that the   attribute is a primary key attribute. Others 
+have an indicator beside them saying “FK”,   which means that the attribute is a foreign 
+key attribute, in other words an attribute   which can also be found elsewhere as a 
+primary key attribute on another entity.
+  The diagram has now reached a stage 
+where we can translate it into the   skeleton of a relational database design, with 
+tables, columns, constraints, and so on. 
+  For each entity on the diagram, we can create 
+a table. For each attribute of an entity,   we can create a column within the 
+table, along with whatever other columns   we come to think are needed. We can define primary 
+and foreign keys for each table, in line with the   primary and foreign keys shown on each entity 
+in the diagram. Each one-to-many or one-to-one   relationship in the diagram will become a foreign 
+key constraint in the database. The only kind of   relationship we can’t express using a foreign 
+key constraint is a many-to-many relationship,   like the relationship between Person and Pet. 
+But there is a way around this. Whenever we   encounter a many-to-many relationship 
+between two entities, we can think   it as two one-to-many relationships.
+Here, we have introduced a new entity called   PET OWNERSHIP in between our existing entities 
+PERSON and PET. If Jenny and Bill both own Rover,   then Jenny’s ownership of Rover is one 
+instance of Pet Ownership, and Bill’s   ownership of Rover is another instance of Pet 
+Ownership. If Martin owns Skipper and Claude,   then Martin’s ownership of Skipper is one instance 
+of Pet Ownership, and Martin’s ownership of   Claude is another instance of Pet Ownership.  
+The relationship between PERSON and PET OWNERSHIP   is one-to-many. The relationship between PET and 
+PET OWNERSHIP is one-to-many. The new entity PET   OWNERSHIP becomes a table in the database, 
+and both relationships to it can be captured   as ordinary foreign key constraints. 
+This completes our discussion of Entity   Relationship Diagrams. I hope you found it 
+helpful. If you have any comments or questions on   what you’ve just heard, please go ahead and post 
+them in the comments section below. And if you   have any suggestions for other complex topics that 
+you’d like to see explained on Decomplexify, let   me know in the comments. Feel free to like, share, 
+and subscribe. So long, and thanks for watching!

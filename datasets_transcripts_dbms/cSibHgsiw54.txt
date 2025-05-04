@@ -1,0 +1,67 @@
+hi everyone welcome back to my YouTube channel I 
+am RTI and I'm back with another lecture of the   dbms series so in this particular video we would 
+be knowing about some extended ER features so   these extended ER features comes into picture 
+now because what happens ke sometimes when we   are drawing the ER model or when we are drawing 
+the entities there might be a possibility that   the structure becomes so complex there is no code 
+reusability there is some data inconsistency which   is also Ed so to get rid of all these to lesser 
+the complexity to increase the data consistency   and much more things we come with the extended 
+ER features so let's see about this so again   the question is why do we need we design ER model 
+for relationship between entities now in the real   world the data May exhibit some hierarchical 
+relationships and the E eer that is extended   entity relationship model provides the mechanism 
+to represent this Rel relationships accurately   which helps in code reusability ensuring 
+data integrity and consistency and lowering   the complexity so uh in the real world consider 
+that there is a person now person may have some   attribute such as name age now this person may be 
+acting a different roles at different platforms or   different areas so this person may be a student 
+so student may have details such as student ID   student uh Adar card or something like that or 
+student subject now this person may also be when   he or she is like uh doing some online shopping 
+or doing some uh taking some orders or giving   some orders may also be acting as a customer 
+for any of the website so when the person is   customer it may have customer ID C customer order 
+detail and much more thing so what is happening   now there is one entity person which is now being 
+overburdened with all the attributes such as name   age now there is student Adar student subject 
+student ID customer ID customer order ID so what   happens in this case now if we just split it into 
+different subgroups such as customer and student   and now now the attribute which is common among 
+both that is name so name stays with the person   just a second name stays with the person some 
+attributes such as age which is also common   for person customer and student so it Remains the 
+Same but when we are coming to customer there are   some distinctive attributes which only customer 
+have student doesn't have so such as customer ID   so customer ID stays with the customer and for 
+student student subject so in this way what is   happening now we are subgrouping the entities 
+into different entities so uh these kind of   things like hierarchical relationship which 
+is being established so you might have seen   in inheritance that there is a super class 
+and there is some subass so in inheritance   what happens is can super the subass or the child 
+class inh all the properties present in the super   class in the same way the person is having name 
+and age which is now inherited with customer and   student but now student and customer also have 
+their distinctive attributes such as student ID   and customer ID so basically in this extended ER 
+features we would be seeing three features first   one is specialization second one is aggregation 
+and third one is generalization let me just give   you a overview about all these three then we would 
+be separately looking about all these three in   details in next set of videos so in specialization 
+what happens as I told that person maybe person   may have some overburden attributes because 
+person may be acting as a customer person may   be acting as a employee person may be acting as a 
+student so person entity all alone may be having   many attributes so what we do is can we subgroup 
+person enti uh entity into different entity such   as person may be subgrouped into customer uh 
+employee student so that the attributes are not   overburdened to the person and also customer 
+employee student may have their distinctive   attributes so that is called a specialization in 
+this we do a top- down approach and it follows the   concept of inheritance now coming to the second 
+one that is aggregation now aggregation from   the word it means aggregating something so what 
+happens in aggregation is now sometimes there are   some relationship which is tary relationship so 
+more more than three entities are involved or n   relationships in which more than three to four or 
+five many entities are in involved so when there   are involvement of more than two entities or there 
+are involvement of more than degree two then what   happens now the uh structure becomes very complex 
+so when the structure becomes very complex what we   do is can we aggregate the higher level entities 
+and then we establish a relationship between two   entities so in aggregation what we do is can we 
+do abstraction of the higher level entity into   one entity and then we establish the relationship 
+again if you're not understanding no worries we   would be looking in depth about all these in the 
+next set of videos now in the generalization what   happens so in generalization consider that 
+there are two entities first is the saving   account second one is the current account 
+now the saving account and current account   may have some attributes which is common among 
+saving account and current account so why not   to make a generalized attribute that is account 
+which would be having account number and account   name which is present in the saving accounts as 
+well and current account as well so basically   in specialization uh we are just identifying 
+the subgroup entities in generalization using   that subgroup entities we are uh guessing the 
+generalized attribute uh generalized entity so   this is all about specialization aggregation and 
+generalization we would be looking in depth uh   about all these in next set of videos so this was 
+all about this video I hope you like this video   If you like this video please hit the like button 
+if you're someone who is new to my Channel please   go ahead and watch out the tech content first 
+and if you find it useful please go ahead and   subscribe to my channel also if you're someone 
+who is new to dbms or if you know someone who   is like just starting with dbms please suggest 
+them this series because this is a very basic   and beginner friendly series till then take care 
+keep learning keep growing keep smiling bye all

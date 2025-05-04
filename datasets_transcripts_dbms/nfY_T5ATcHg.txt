@@ -1,0 +1,9 @@
+welcome to #60secondswhiteboard and today 
+lets understand what is a data model so,   a data model is a conceptual representation of 
+data, including the relationships and constraints   that govern the data it is used to define the 
+structure and organization of data in a database,   as well as how data is stored, accessed, and 
+updated further, its important to note that   data models can be simple or complex, and can 
+be represented using various techniques such as   entity-relationship diagrams, class diagrams, 
+or data flow diagrams. they are an important   tool for data analysis, database design and 
+system development, as they provide a clear   understanding of the data requirements and 
+help ensure data consistency and integrity

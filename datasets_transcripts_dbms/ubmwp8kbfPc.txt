@@ -1,0 +1,384 @@
+Hey everyone, Kevin here. Today I want to 
+show you how you can use Microsoft Access. So many of you have requested this 
+video in the comments, so here it is. Also, I wanted to do this video as well because   I kind of have a soft spot in 
+my heart for Microsoft Access. When I first met my wife, we were both 
+working at Microsoft at the time, and   she was on the Microsoft Access team, so 
+I really felt like I had to do this video. Now you might be wondering, 
+what is Microsoft Access? It's a relational database program, 
+and as we jump into this video,   we'll find out more about what that even means. But at a very high level, you can use 
+Microsoft Access to track customers,   to track orders, to track assets, 
+and the list goes on and on of the   types of things that you can 
+use or track with a database. Now one of the first questions you might have 
+is why would I use something like Access? I could just enter information 
+into an Excel spreadsheet. Why would I ever need to use a database? I'm in Microsoft Excel here and sure 
+I can track information here as well. Let's say I want to track orders 
+for the Kevin Cookie Company. I have customer information over here 
+on the left and then I have the order   information over on the right-hand 
+side. So this works too, right? Well, actually, it's not really that 
+efficient at tracking this information. Let's say that maybe Bill comes in and he really 
+loves our cookies, so he placed another order. So, I want to enter another 
+row with his new order. So here I'll take all of his customer information,   I'll paste it down here, and then I'll 
+enter in the additional order details. Now this is what's referred to as a flat file.   There are no relationships between 
+this data, and it's really inefficient. So here you'll see now that 
+I've had to copy Bill’s data   from up here and I've had to paste it in again. So right now, I'm carrying his data twice. With a database you don't have to do this. We could set up different tables for the 
+customer information and a different table   for the order information. Also, with 
+an Excel spreadsheet, you're limited to   just over 1,000,000 rows of data, and so 
+if you have more data than that, well,   unfortunately Excel won't be able to handle that. Also, if I go back to all the order information 
+here, if I want to extract interesting insights   from this data, maybe I want to write a query, 
+and I can do a little bit of that with Excel. I could filter the different columns, I could 
+insert a pivot table, I can try to manipulate   the data to get an interesting view, but 
+sometimes you just need to be able to write   a query and then to pull together a report, and 
+unfortunately, that's not that easy with Excel. So that's where databases win out. All in all, Access is a fantastic 
+tool for individuals or for small   businesses that need to track things. However, if you're let's say a mid-sized company, 
+or even a large company, you'll probably start   to realize some of the limitations of Microsoft 
+Access, and to be totally fair, when I worked at   Microsoft, I was on some teams that used Access 
+just as a really quick and simple database. If you're a larger company, you'll probably 
+look at other options like Oracle, MySQL,   Microsoft SQL Server, Mongo DB, and the list goes 
+on and on of solutions that are more scalable. However, what I will say is Microsoft Access is 
+a fantastic tool to learn the fundamentals of   database design. To learn the fundamentals 
+of database design, in this tutorial,   we're going to build our own database 
+today, and you're welcome to follow along. You know, I've been meaning for a long 
+time to create a database for the Kevin   Cookie Company to track our orders and 
+this seems like the perfect opportunity. Yes, I did figure out a way once again to 
+incorporate the Kevin Cookie Company into   a video. We'll start off by creating 
+tables, then we'll go ahead and create   an order entry form. This way other people 
+can come in and add data to our database. Then we'll write a query so we can extract 
+interesting insights from our data,   and then at the very end, we'll create a report so 
+we can share some of those insights with others. With all that said, by the end 
+of this video, you should have   pretty good working knowledge 
+of how Microsoft Access works. All right, well enough talk, why don't we jump 
+on the PC and let's start building our very   first database. To get started with Microsoft 
+Access, go ahead and launch the application,   and that'll drop you on the start page, or right 
+here, what’s also referred to as the home view. Right here at the top you 
+can create a new database. We can start off with a blank database, 
+and in a moment, we'll do that.   Over on the right-hand side, you also 
+see a whole bunch of different templates. If there's a template that 
+matches what you're trying to do,   this could help you save a little bit of 
+time and you can go in and just tweak it. There's also a massive collection of templates 
+that you can look at by clicking right here. Down below you can search for different 
+databases you might have worked on in the past   and here you can see all of your recent databases. One of my favorite features, when you hover 
+over right here, you'll see a pin icon. When you click on this, this 
+will add it to the pinned view. So, this is just a quick way to get back to the 
+files or the databases that you use most often. OK, to get started, let's go back up to 
+blank database and let's click on this. This opens up a dialog where we can type in 
+a filename for this database and I'm going   to call this cookie orders, and if you want to 
+follow along, feel free to give it the same name. I'll leave it in the default location right here 
+in documents, and next, let's click on create. This now drops us into a new Access 
+database, and congratulations,   you've now created your first database. There's not much here yet, but don't worry, 
+we're going to go through step-by-step   how to build this out, and before we 
+jump in, I do want to orient you to   the experience and just talk about some 
+very, very basic database terminology. Over on the left-hand side, we can see that Access 
+created Table1 and we're going to start building   out Table1 first, and like I said, I want to track 
+customers and orders for the Kevin Cookie Company. So, we'll use Table1 to track 
+the customer information. So, we're going to keep that 
+separate from the order information. Also, over here on the right, if you've 
+ever used Microsoft Excel before,   this probably looks familiar. We have all of these different cells. The terminology here is a little bit different. In Excel, we refer to these as 
+columns, and we refer to these as rows. In Access, it's a little bit different. We refer to a column as a field, and 
+then a row is referred to as a record. So, we're going to be adding 
+records to our database. Let's get started now by adding 
+some fields to this table. Now up here, the first field is referred to as ID,   and once again, I want to use this table 
+to track all of our customer information. ID on its own isn't that descriptive. I want to update it to be Customer ID. To update the name, you can simply double click on   the field and then here I 
+can type in my own value. I'll type in customer ID, and that looks good 
+now. Once I'm done typing that in, hit the tab key   and that'll bring you over to the next field, and 
+here, first off, you need to choose the data type. The data type defines what type 
+of data you're going to insert in. For this, I wanted to track customer information. So, this is going to be things like the 
+customer’s name, the first name, the last name,   the e-mail address, the phone number, 
+and all of those pieces of information,   or all of those fields will simply 
+be the short text data type. However, later on when we get to the order sheet, 
+we're going to add numbers, and so we'll select a   different data type. As you're entering data, 
+feel free to look through all the data types   to see if one of these best matches the data 
+that you want to enter. For the first field,   I want this to be the first name, so I’ll 
+select short text. Now it's called short text,   but it allows up to 255 characters, 
+which is actually a pretty good length,   so it'll capture all of the different fields 
+that we want to insert into this table. If you want long text, that allows it to go much,   much longer, but once again, short text 
+should be sufficient. I’ll select this. Once I select that data type, now I 
+can type in the name for the field.   I'm going to call this first name. Once I finish typing that in, I'll hit tab and 
+here I can select the data type for my next column   and for this one, this is going to be 
+the last name, and I'll go through and   add all of the different fields 
+for the customer tracking table. I've now added all of the different fields 
+to this table, and if you're following along,   feel free to pause this video and you can 
+then enter in all of these different fields. The data type for all of these is short text. At the very end, I want to add one additional 
+field, and this one is going to be notes. So, let's say maybe a salesperson for 
+the Kevin Cookie Company comes in,   they add a customer and maybe you want to 
+include things like the customer’s kid’s names. There's nothing like remembering the 
+customer kid’s names to close a deal. Or maybe you want to include other 
+information like the customer’s birthday. All that type of stuff. And this might be a little bit longer than 
+short text, so here I'll click over here,   and instead of going with short text, I'll go with 
+long text, and for this field, I'll call it notes. This should now include all 
+of the different fields that   we want to include as part of this customer table. Now that we've entered in 
+all of the different fields,   I want to show you how you can 
+go back and make edits to these. So, let's say you enter something in,   but maybe you screwed something 
+up or you want to change the text.   Right here, I can click on one of these field 
+headers and you can very quickly update the text. Also, when I click on one of these field headers 
+right up here, that opens up the fields ribbon,   and right here I can always go 
+back and modify the data type. So just because you choose a data type 
+doesn't mean you're locked in on it. Right down below, I can also adjust the width 
+of these different fields, and here if I right   click on one of these field headers, it opens up 
+a context menu where I can do all sorts of things. For example, I can hide fields, 
+I could also unhide fields.   Here you can freeze fields if you've 
+ever done that in Excel before. It's the same exact concept and right 
+down here I could insert a field. Let's say I want to insert something between 
+e-mail address and phone, I can do that. I could also rename here 
+again, and I can delete fields. So, all types of different actions I can take to   make sure that the table has the 
+structure that I want it to have. Now that we've gone through and we've created 
+all of our different fields, I want to show you   a quick way where you can look at your fields 
+and also modify the different data types. Down here, in the bottom right-hand corner, 
+you can enter what's called the design view,   and when I click on that, 
+first I have to name my table. Right now, it's Table1, but I 
+want it to be more descriptive. Once again, this is tracking customer 
+information, so I'll call this table customers. Once you finish typing in the name, click on OK. This now drops me into the design view and here 
+again I can see all the different field names. You can also add field names here. This is a pretty quick way 
+to add additional fields. Also over on the right-hand side, here you can 
+quickly verify what the data type is for each   one of your fields, and here too you can click on 
+it, and you can change the data type very easily. Over on the right-hand side, let's say maybe 
+your field names not really that descriptive,   you can also add a description 
+with some additional details. Let's jump back into the datasheet view. To 
+do that, right down in the bottom right-hand   corner again, we can toggle back and 
+forth between these different views. I'll click into the datasheet view. This drops us back into the datasheet view, 
+and we're ready to start adding some records. Right now, we have all the fields in place,   and I want to add the first customer 
+and the first customer is me. I'm probably one of the best customers. Any time you finish a batch of 
+cookies, I end up eating a lot of them. So right here, I'll go in and fill out my details. Feel free to do the same for yourself. Here 
+I'll type in my first name, I'll go over and   I'll type in my last name. One thing to call 
+out, as I start typing in information here,   you'll see that it automatically assigned an ID. So, every time you go through, 
+and you add a new record,   it'll automatically get an ID assigned to it. As a quick note on this ID, this is also 
+what's referred to as the primary key. And what is a primary key? Well, this is a unique identifier. So basically, every single customer 
+record that we add to this table   will have its own unique identifier. So, no other customer will have the same ID as 
+me, and of course, I'm the number one customer. I probably eat the most cookies, so it's 
+really fitting that I have the number one. We're also going to use this primary 
+key to connect to other tables later on,   and don't worry if that sounds complicated, I'll 
+show you exactly how we go about doing that. In the meantime, let's go through and fill 
+out the details of the first customer. Once you enter in the first customer, 
+hit the enter key and that'll bring you   down to the next record and now you can go 
+through and add some additional customers. Now just for purposes of this demonstration, 
+I want to go through, maybe add about   four or five different customers just 
+so we have some examples in the data. Feel free to do the same and make 
+up some customer information. I've now entered in a whole bunch 
+of sample customer information. If you don't want to type in customer information 
+but you still want to follow along, I've included   the link to this database and the description. 
+This will allow you to access this database. We've now finished all the customer 
+information and I now want to add   one more table with all of the order information. To add another table, let's go back up to 
+the top ribbon and let's click on create. Right over here we can create a new table. I'll click on the one that says table. This drops us into a new table, and just like 
+before, we need to build this out. Right up here,   the first field is called ID and I 
+want this to be more descriptive. I'll double click on this just like we did 
+before and this time I'll call it Order ID. For the next field, I want to tie 
+this back to the customers table. Once again, this is one of 
+the big benefits of databases. You can relate information, so you could 
+connect one table to another table. So here I'll click on tab and for this 
+field I want it to be a number data type. I'll click on number and now 
+I can type in a field name. For this one, I'm going to type in Customer ID. We're going to connect based on that 
+primary key from the previous table. I want to add a few more fields. For this one, I want to include the order 
+date and a date is the date and time. I'll select that as the data type 
+and here I'll type in order date. I'll add another field for cookies ordered 
+and this is going to be a number data type. Here I'll call it cookies ordered. I'll add another field for the 
+revenue. Here I'll click over here,   and this is going to be a currency type. Next, I'll type in revenue. I'll add one more field called order filled. This is basically so our warehouse staff 
+can go in and indicate whether the order   has been fulfilled or if it's unfulfilled and 
+they still have to package it and ship it. Here, I'll click on this field and right 
+down here there's the option for yes, no. So, if they say yes, it's already been shipped. If not, it hasn't, and I'll 
+call this field order filled. Lastly, I want to add one more field, however 
+this one is going to be a little bit different. This is going to contain the revenue per cookie,   and we have all of the information stored 
+within here to be able to calculate that.   Here, I'll have the revenue and I'll 
+also have the number of cookies ordered. So right here let's click on this 
+dropdown where we can select the data type   and this is going to be a calculated field. We'll see in a moment what this does. Right 
+down here, let's go down to calculated field   and revenue per cookie, that's going to be a 
+number, so let's select the number data type. This opens up an expression builder in Access, and 
+you can build all types of different expressions. One way to think of it is it's kind of 
+like entering in a formula. Now once again,   I want to calculate the revenue per cookie. So down here I see some of the expression 
+categories, I'll take the revenue, and when   I double click on that, you see it inserts revenue 
+here and I want to divide by the cookies ordered. So, I'll answer the divide sign, and then 
+right down here, I'll click on cookies ordered. So, I'm going to take the revenue divided 
+by the cookies ordered and that looks good. Next, let's click on OK. This drops me back into   the table view and now I can 
+type in a name for the field. For this one, I'll type in revenue per cookie. I can now fill in some order details. So over here for the first customer, this 
+will be Kevin who orders some cookies. Now if you remember back on the customers 
+table, customer ID one is for Kevin. So right back here in my order table, I'll 
+type in customer ID number one. Right here,   I'll enter in the order date. I entered in an 
+order date and here I can type in cookies ordered. Now if you know Kevin as a customer, he really 
+loves cookies, so we're going to put down an   order for 50 cookies, and these 
+were some pretty premium cookies.   They're about $2.00 per cookies, 
+so I’ll enter revenue of $100. Now that I have that entered in, one thing 
+you'll see is it automatically calculates   the revenue per cookie. Right over here, the 
+order hasn't been filled yet, so I'll leave   that checkbox unchecked. Now that we've finished 
+filling out the basic structure of this table. Once again, if we want to rename it,   we can go down here and click into the design 
+view and then we'll be able to rename this.   Alternatively, I can also close this table 
+and it'll ask me if I want to save it. I'll click on yes, and here 
+I can now give it a name. I'll call this table orders. I've now finished saving my orders table and over   on the left-hand side you'll 
+see that I have two tables now. I can go up here and I can close the customers 
+table and now all of my tables are gone. But don't worry, we can easily get them back. Over 
+on the left-and side, I can click on customers,   and I can click on orders and that 
+brings those tables back into view. I now want to go through and add 
+some additional sample orders. So, I'll go through and maybe type 
+in five or six different orders. I've now gone through, and I filled 
+out a whole bunch of sample data. Now one of the great things 
+about creating a database,   here you'll see with the customer ID I don't 
+have to repeat the customer information. I simply have to reference that ID   and then for this order I can fetch 
+all of the customer information. However, first off, I have to connect this 
+customer ID to the customer table over here. How do we do that? So, up at the top, let's go up 
+to database tools on the ribbon. Once we click on that, there's 
+an option for relationships. Let's click on this. Within relationships, I can define how 
+different tables relate to one another   and over on the right-hand 
+side, I see all of my tables. I have two tables. I'll click on customers, and 
+I'll pull that into this view. Next, let's go over to orders, click 
+on that, and pull that over as well. So here now I see my two tables and you can see 
+all of the fields in those two different tables. Right up here you can see a key icon and that 
+indicates what the primary key is in that table. Now here I have the customer 
+ID in my orders table,   and I also have the customer 
+ID in my customers table. Now I can simply click on the customer 
+ID, and I'll drag that over to   the customer ID over in the orders table. That opens up a prompt where 
+I can edit the relationship. So here I'm saying that this value 
+or this field in the customer table   is the same as this field in the orders table. So right now I'm saying that these 
+two values or fields are the same. Next, I'll click on create and you'll see now 
+that there's a connection between these two. So, this is how Access knows how these 
+two tables relate to one another. Once we're all done with this, let's 
+go to the top and click on close. This opens up a prompt to save the relationships. I'll click on yes. Along with manually entering 
+in data into your database, you can also import   it from other sources. Right up here on the 
+ribbon, there's the option for external data. When we click on this, over on the left-hand side,   you can see all the different places 
+that you can bring data in from. For example, you can bring it in from a file, 
+from a database, from different online services. So, there are lots of different ways that 
+you can get data into Microsoft Access. So far, we've been entering data 
+directly into the table view. But let's say you want to have other people 
+in your organization come in and add data. This might not be the most user-friendly view. Instead, you might want to create 
+a form that makes that easier. Over on the left-hand side, 
+I'll select the customer table. Right up here, let's click 
+on create on the ribbon,   and right here in the middle, 
+there's a section for forms. This will help us create a form 
+for data entry and you could also   use it to review the different 
+records that are in your tables. There's a form wizard that'll 
+help you through the process. You could also start from blank. There's a form designer, or 
+you could simply create a form. This is going to be the easiest way 
+to create a pretty effective form,   so I'll click on form right here. This now drops me into a new form and down below 
+I can see a sample of what the form looks like. So, this will be a lot easier for others 
+to come into and start adding information,   and they can also use it to review information. Now, because we connected the customer table 
+to the orders table, you'll see here all of the   customer information shows up and down below 
+it has all of the related order information. So here, if I jump through the different 
+records, here I can go to the next record. Here I see Sheryl as my second customer, and 
+she has two orders associated with her. Right   up on top, I can design what my form looks 
+like, so I can choose different themes. I can choose different colors. I can add different controls to my form. I can even add a logo if I wanted to personalize 
+it with the Kevin Cookie Company logo.   Down in the bottom right-hand corner, just 
+like we could do in the table view, here I can   launch the design view, and within the design 
+view, I can modify what this form looks like. Right up here there's a form header. There are also details, and here I see a footer. I can take these different elements 
+and I can move them around. I could design the form how I want it to look. Over on the left-hand side right down 
+here, I could also launch the form view. If you're going to have people in your 
+organization going through and filling out forms,   this will be likely the view that they see. 
+Here they'll see all the customer information,   but they won't be able to modify the form. To add a new customer record, you simply go down   to the bottom and you can click on 
+this icon to add a new blank record. When you click on that, you can then go through 
+and you can fill out the form and right down   here someone could go in and add some additional 
+order IDs. So, this makes it really easy to get   new data into your database without having to see 
+the tables and all of the details of the database. Once you're all done customizing your 
+form, we can close out this form.   Right up here, let's click on the X 
+icon and I want to save this form. So, I'll click on yes and 
+then you can give it a name. I'll call this order form. Once you're done typing in the name, click 
+on OK. Over on the left-hand side now,   you'll see that it added a new category. So, we have our tables and now we have a new form. I can double click on order form, and 
+this will open up that form again. In the introduction, I mentioned that much of the 
+power of databases comes from being able to run   queries, and in a moment, I'll show you how 
+you can run and also write your very own query. To create a query, let's go up to 
+the top ribbon and click on create.   Within create, right here near the middle, 
+there are two different options for queries. You can use the query wizard, and there's 
+also something called query design. We're going to use query design. You'd be amazed at how many advanced 
+queries I've written using query design. Let's click into this. This opens up the query 
+designer and I want to write   a pretty basic query that shows me all 
+the orders that haven't been filled yet. I need to provide this to the warehouse 
+crew so they can send out the orders. Now, right here in the designer, 
+right now we just have a blank slate. How do we start building out a query? And once again, this is just a drag and drop 
+way of building queries, so it's extremely easy. In a moment, I'll show you what the SQL looks like 
+to actually run the query, but we're just going   to start out with this GUI or this graphical user 
+interface first. Over on the right-hand side, you   see this pane that's called add tables and we want 
+to query against the data that's in these tables. So, I'll take customers first and I'll drag it 
+out into the view. Here I'll expand the rectangle   just so we can see all of the details. 
+Right next to it, I also have orders. Let's click on that and 
+let's pull that in as well. Here I'll also adjust the size of this rectangle. In an earlier step we went through,   and we defined a relationship between 
+this customer ID and this customer ID. So, these two tables are connected. So, I could do things like for a 
+specific customer show me all of   the orders because these two tables are related. Now, once again, I want to show 
+all orders that haven't yet been   filled, and for this I'm going 
+to send it to the warehouse crew. And so, they're going to need stuff 
+like, well, what is the customer’s name,   and what is their address where 
+they should send the order. So over here I want to pull in 
+some information for this query. I want to show the first name, so 
+I'll double click on first name. Here you see that first name shows up down below. I also want the last name. I want the customers address, the city, the 
+state, and also the zip and the country. They're going to need all of this 
+information to send cookies to this customer.   Now over on the right-hand side, 
+I have some additional information   and the warehouse crew is going to have 
+to know, well what was the order date. They also need to know how 
+many cookies were ordered,   but they don't need to know stuff 
+like the customer ID or the order ID. That's not really essential for what 
+they're doing so I won't select these. Right down here there's also the 
+option that says order filled. Let's click on that one. This is all going to run a query and it'll 
+give me back all of this information. But once again, I only want to show the 
+orders that haven't yet been filled. You'll see down here, it shows the field, it shows 
+the table it's coming from, here I can sort it. I could also decide whether I want to 
+show it or if I don't want to show it   and right down here, I can define criteria. So, this is kind of like or 
+basically it's a filter for   one of these fields. Over on the far 
+right hand side, I see order filled,   and for this one I'm going to enter 
+an equal sign and then type in no. So, this means that the 
+order hasn't been filled yet. So right now, I have my query in place.   Down in the bottom right-hand corner, 
+I can click on the datasheet view. Let's click on this to see what the results are.   When I click into the 
+datasheet view, look at that. That's our first query, so here it returns 
+all of the different fields that I selected,   and it also only returns all of the options 
+where the order hasn't been filled yet. Now one of the really neat things 
+is here now I'm merging together   customer information so data from the customers 
+table together with data from the orders table   so it brings it all together in one view and 
+that's what I can pull off using a query. Now, so far, we just used a graphical user 
+interface to pull off this query and it's pretty   impressive what you can do, but you might want 
+to get your hands dirty and write a sequel query.   Down in the bottom right-hand corner, we 
+can see the SQL query that powered this. When I click on SQL, right here, 
+I can see the actual SQL query. So right up here, we're selecting all of these 
+different fields, we use a select statement,   and then we call out, well, hey, I want 
+the first name, I want the last name,   and we go through, and we identify all 
+of the different fields that we want. Then next we're saying where it’s coming from, so 
+we're pulling it from the customers table and then   we're going to join that with the orders table and 
+we're making that connection on the customer ID. And then down below this is 
+where we have our criteria. So, we're saying where order 
+and orders filled equals no. So, this is the actual SQL query so if you 
+want to get your hands dirty, and especially   as you want to start running some more advanced 
+queries, you can start experimenting with this. Now the really neat thing is you can use 
+this designer to pull together some really   impressive queries and then if you want 
+to see how it works behind the scenes,   you can click into SQL and you 
+can see what the actual query is. Now that we've finished entering in our query, 
+let's go up here and let's close out this view,   and I want to save this query, so I'll click on 
+yes, and we're going to call this unfilled orders. Once you're done typing in the name, 
+click on OK. Over on the left-hand side,   you'll see a new category now for queries 
+and this shows our unfilled orders. So, if you want to quickly 
+see all unfilled orders again,   you can simply double click on that and right 
+now I have a view of all the unfilled orders. Now the really neat thing is as 
+you go in and you add, let's say,   additional customers and additional orders,   if you have any unfilled orders and you run your 
+query, you'll immediately see them on this page. So, let's say I have warehouse 
+staff and they always need to know   what orders have we not finished yet. They can simply run this query 
+and they'll immediately see   all the orders that need their attention. So, it's pretty powerful stuff. Lastly, I want to show you 
+how you can create a report. So, let's say that maybe management or someone 
+else in the organization needs to see a summary   of data, or maybe for the warehouse crew instead 
+of having them come into this Access database,   and run the query, maybe every morning 
+I want to print out a sheet of all the   orders that they have to fulfill 
+and I can use a report to do that. To create a report, just like we created a query, 
+let's go to the top ribbon and click on create. Over on the right-hand side, 
+there's a section for reports   and we can click right here to create a 
+report and there are a few different options. You could use a report wizard. You could use a report designer. You could even start with a blank report. So, depending on how much you want to 
+customize it, you have different options here. Now I want to create a report that 
+shows all the unfilled orders. So, I'll make sure to select this 
+query over on the left-hand side. If, say, you wanted to create a report of 
+all of your customers or all of your orders,   you can select those tables and then click on 
+report and that'll create a report of those items. Here, with unfilled orders 
+selected, I’ll click on report. This now generates a report 
+with all of the unfilled orders. So here I see all of the information 
+that I selected in the query,   and it's all formatted in a very nice 
+way, and here I can go over and I can see   all of the details. Right up here, I 
+can format the report however I want. I could go through. I can choose 
+themes. I can choose colors,   fonts. Even down here, I can preview what 
+it will look like when I print it out. Here I can see a report view and here 
+I can access the report designer. So,   I can go through and design specifically 
+how I want this report to look. So, I have quite a bit of customization. 
+Once you're all done configuring your report,   you can close it out, and 
+then you can save this report. Once you save it, it'll add a new 
+category over on the left-hand side,   and here now I see the report here. So once again, I can very quickly navigate between 
+my tables, my queries, my forms, and my reports,   and just like that, we have now gone through all 
+of the core functionality of Microsoft Access. This gives you all of the basics to 
+start building out your own databases,   to run queries, to create 
+forms, and even to run reports. Of course, there's a lot that you can customize. There's a lot of advanced functionality, 
+but this gives you all of the basics. The last item I want to show you 
+is how you can save your database.   To save, up in the top left-hand corner, click 
+on the file menu and then go down to save as,   and here you can save it as an Access database,   and just like that, we've now created our very 
+first database and we've saved the database. So, congratulations, you are now proficient 
+in the fundamentals of designing databases. All right, well, that's how you can 
+get started using Microsoft Access. If you found this video helpful, 
+please give it thumbs up.   To see more videos like this in the future, 
+make sure to hit that subscribe button. Also, if you want to see me cover any other 
+topics in the future, leave a note down below. That is, after all, where this 
+video idea came from. All right,   well, that's all I have for you today. I hope you enjoyed it, and as always, 
+I hope to see you next time. Bye.

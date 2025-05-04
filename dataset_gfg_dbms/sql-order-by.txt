@@ -1,0 +1,131 @@
+• 
+• 
+• 
+
+TheORDER BYclause in SQL is a powerful feature used tosort query resultsin either ascending or descending order based on one or more columns. Whether you’re presenting data to users or analyzing large datasets, sorting the results in a structured way is essential.
+
+In this article, we’ll explain how the ORDER BY clause works, provide itssyntax, and walk through severalpractical examplesusing a table to illustrate its usage. We’ll focus on key concepts that help optimize SQL queries for better readability and performance.
+
+
+### ORDER BY in SQL
+TheORDER BYstatement inSQLis used tosort the fetched datain either ascending or descending according to one or more columns. It is very useful to present data in a structured manner.
+
+SQL ORDER BY default mode is sorting data into ascending order. To sort data in descending order use theDESC keywordwith ORDER BY clause.
+
+Syntax:
+
+The syntax to use ORDER BY clause in SQL is:
+
+SELECT * FROM table_name ORDER BY column_name ASC | DESC
+
+Key Terms:
+
+• table_name: name of the table.
+• column_name:name of the column according to which the data is needed to be arranged.
+• ASC: to sort the data in ascending order.
+• DESC: to sort the data in descending order.
+
+
+### SQL ORDER BY Clause Examples
+We have created an Student table that stores Student data including their roll_no, name, age, addess, and phone. Let’s look at some examples of the SQL ORDER BY clause to understand it’s working inSQL.
+
+We will use the following table in examples.
+
+Student_Table
+
+Now consider the above database table and find the results of different queries.
+
+
+### Example 1 : Sort According To a Single Column using ORDER BY Clause
+In this example, we will fetch all data from the table Student and sort the result in descending order according to the column ROLL_NO.
+
+Query:
+
+
+```python
+SELECT*FROMstudentsORDER BYROLL_NODESC;
+```
+Output:
+
+
+
+In the above example, if we want to sort in ascending order we have to use ASC in place of DESC.
+
+
+### Example 2 : Sort According To Multiple Columns using ORDER BY Clause
+In this example, we will fetch all data from the table Student and then sort the result in descending order first according to the columnage. and then in ascending order according to the columnname. To sort according to multiple columns, separate the names of columns by the (,) operator.
+
+Query:
+
+
+```python
+SELECT*FROMstudentsORDER BYageDESC, nameASC;
+```
+Output:
+
+Sort_Multiple_Column
+
+In the above output, we can see that first the result is sorted in descending order according to Age. There are multiple rows of having the same Age. Now, sorting further this result-set according to name will sort the rows with the same Age according to name in ascending order.
+
+Note:ASC is the default value for the ORDER BY clause. So, if we don’t specify anything after the column name in the ORDER BY clause, the output will be sorted in ascending order by default.
+
+
+### Sorting By Column Number (instead of name)
+An integer that identifies the number of the column in the SelectItems in the underlying query of theSELECTstatement. Column number must be greater than 0 and not greater than the number of columns in the result table. In other words, if we want to order by a column, that column must be specified in the SELECT list.
+
+The rule checks for ORDER BY clauses that reference select list columns using the column number instead of the column name. The column numbers in the ORDER BY clause impair the readability of the SQL statement. Further, changing the order of columns in the SELECT list has no impact on the ORDER BY when the columns are referred to by names instead of numbers.
+
+Syntax:
+
+The Syntax to use ORDER BY Clause with Column Number
+
+ORDER BYColumn_Number asc/desc
+
+
+### Example of Sorting By Column Number
+Here we take an example to sort a database table according to column 1 i.e Roll Number. For this a query will be:
+
+Query:
+
+
+```python
+CREATE TABLEstudentinfo
+( Roll_no INT,
+NAME VARCHAR(25),
+Address VARCHAR(20),
+CONTACTNO BIGINT NOT NULL,
+Age INT );INSERT INTOstudentinfoVALUES(7,'ROHIT','GHAZIABAD',9193458625,18),
+(4,'DEEP','RAMNAGAR',9193458546,18),
+(1,'HARSH','DELHI',9193342625,18),
+(8,'NIRAJ','ALIPUR',9193678625,19),
+(5,'SAPTARHI','KOLKATA',9193789625,19),
+(2,'PRATIK','BIHAR',9193457825,19),
+(6,'DHANRAJ','BARABAJAR',9193358625,20),
+(3,'RIYANKA','SILIGURI',9193218625,20);SELECTRoll_no,Name, AddressFROMstudentinfoORDER BY1
+```
+Output:
+
+Sorting By Column Number
+
+Explanation:
+
+ORDER BY 1means sorting values according to first column in the SELECT statement.
+
+
+### Important Points About ORDER BY Clause in SQL
+• The ORDER BY clause in SQL is used to sort the result set of a SELECT statement based on specified columns.
+• It is essential for organizing query results and presenting data in a structured manner.
+• It can sort data in either ascending (ASC) or descending (DESC) order.
+• Multiple columns can be specified for sorting, allowing for more complex sorting criteria.
+• We can use ORDER BY withWHERE clause,GROUP BY clause, andHAVING clause.
+
+
+### Conclusion
+The ORDER BY clause is a fundamental SQL tool for sorting query results, allowing you to present data in a structured manner. Whether sorting by a single column, multiple columns, or using column numbers, ORDER BY helps you organize data for better analysis and reporting. By learning the usage of the ORDER BY clause, you can optimize your SQL queries for better readability, structure, and performance.
+
+Ready to go from coding beginner to development pro? OurDSA to Development CodingGuide has everything you need to crush coding interviews and ace real-world projects! Limited spots available!
+
+• Databases
+• SQL
+• SQL-Clauses-Operators
+

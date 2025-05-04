@@ -1,0 +1,83 @@
+We use many smartphone applications. It might 
+be Facebook, Netflix, or Apple's Siri. You   may like to shop at Walmart, Alibaba, or 
+Amazon. How about Starbucks for coffee,   Spotify if you're a music fan, or Uber if you 
+need to get somewhere quickly? There are plenty of   examples. All of these have something in common. 
+They're all using NoSQL databases. Question   then comes to why such well-known companies use 
+NoSQL databases if SQL database is widely used?   We should know what's wrong with relational 
+databases, the limitations of relational   databases, and why those companies choose 
+NoSQL databases. So, if you want to know all   the answers, stay tuned until this video. This 
+video will answer and clarify these questions. Foreign music Hello everyone! Welcome to my channel! If 
+you are new to my channel, my name is Raki,   and I share data science tutorials, tips, 
+and tricks every week on this channel. You   have come to the right place if you are a 
+data nerd and want to learn more about data   science. Before diving deep into it, I want to 
+ask you one question. Will you wait 20 seconds   for a website to respond??? Probably not. NoSQL 
+stores data that fulfills the speed, flexibility,   and scalability requirements of many mainstream 
+web applications. So, What NoSQL actually means?   NoSQL is an acronym for Not Only SQL. So, you will 
+not use typical SQL queries in NoSQL databases. If   we look at the history of databases, we will see 
+Relational databases have existed since at least   the 1970s, and there are several reasons why they 
+are so practical and still popular. Historically,   relational databases have proven an ideal choice 
+for many enterprises. They are highly structured   and provide high reliability and consistency. The 
+data is well structured in relational databases,   and records are organized into tables. Rows in 
+a table are identified by their unique keys or   primary keys. We don't have to combine them into 
+a single massive structure in relational database.   We can organize our data into tables and then 
+join or link them. Industries were satisfied   with relational databases until 2008. The volume 
+of data used by websites and consumer demand for   quick response times expanded dramatically after 
+that. The relational database failed to scale with   the demand. Facebook is an example of this. At 
+the time, they had more than a billion users,   and relational databases could not handle the data 
+required to serve all those users simultaneously.   Because of this, people started seeking 
+ways to speed up the process. And that time,   NoSQL database gained popularity as an alternative 
+solution. Basically, NoSQL databases came onto the   scene around 2009 or 2010 though NoSQL emerged 
+in the late 2000s. Let's look into why NoSQL is   becoming so popular. Relational database follows 
+Leader-follower architectures. To scale your data,   you must add vertically to the table and 
+maintain strict schema rules. Organizing   data following such strict schema rules is quite 
+impossible in this big-data world. This problem   can be solved using NoSQL databases. NoSQL 
+expands databases horizontally, and single   databases can hold thousands of nodes which 
+is the fastest solution to organize big data.   Each NoSQL database has its unique features. Many 
+NoSQL databases generally have flexible schemas,   Horizontal scaling, and availability. Relational 
+databases are based on a static schema that   changes over time. The whole relational database 
+must be tested under stress if the schema needs   to be changed. In the NoSQL system, the schema 
+develops separately and works node by node. When   you need, you just activate the node to use it. 
+NoSQL has a flexible way of storing a collection   of data that do not have to have all of the same 
+fields and different records within a group and   may have different data types for a given field. 
+Horizontal scaling, called "scale-out," means   adding more nodes to help spread the load. But 
+applying horizontal scaling is hard to do with   relational databases because it is hard to spread 
+relational data across different nodes. However,   this is easier to do with non-relational databases 
+because collections are self-contained which   makes it easier for them to be spread across 
+nodes because queries don't have to "join"   them across nodes. But NoSQL databases could be 
+spread across thousands of servers horizontally,   but they don't keep data as consistent as 
+relational databases. Relational databases and   NoSQL databases use two different models for their 
+databases. Relational databases use ACID models,   which make sure the system is always same, 
+while NoSQL uses BASE database models,   which make sure the system is always available. If 
+you see the classification of the NoSQL databases,   there have basically 4 categories like key 
+value, document-oriented, column, and graph NoSQL   databases. Each of these NoSQL databases possesses 
+a distinct set of characteristics that makes them   suitable for a particular application scenario. 
+For example, you can use a key-value database   to build an e-commerce website. The key-value pair 
+method is used to store information in a key value   database. Each data set in the tables has the same 
+keys and pointers, which makes it easier to get   the data quickly. A great example of a key-value 
+NoSQL database is Amazon DynamoDB. If you want to   make a database like google scholars, probably 
+you need to use document oriented database.   Document oriented database is like the key-value 
+NoSQL database which stores values as documents   and gives each document a unique key. Shutterfly 
+is the most well-known website for sharing   photos and sending them to people and they 
+basically used MongoDB NoSQL document database.   If you need to store and manage large amounts of 
+data across many servers, NoSQL column database   could be a good solution for your business. It’s 
+ideal for businesses who Can’t afford for data   to be lost and who Can’t have their database 
+down due to the outage of a single server.   In this NoSQL column database, the data are shown 
+in the form of a table with rows and a set number   of column families. The names and values of 
+the column families are related logically. A   great example of a NoSQL column database is 
+Apache Cassandra. A user may be interested   in the correlation of data in numerous social 
+platforms like Facebook or Instagram and want   to find similarity interested people. Then graph 
+database is the solutions. Graph databases provide   data as a graph consisting of nodes and edges that 
+describe the relationships between nodes. Each   node may also contain characteristics that define 
+the information within each object. However,   edges may also have their properties. A great 
+example of a graph NoSQL database is Neo4j. Okay,   you made it! you got to the end of this video. 
+Awesome. Now comes the fun part. With all that   we've covered, you're ready to decide what kind of 
+database to use. So, what will it be? Will it be a   relational database using SQL, or will it be one 
+or more of the several NoSQL databases available?   Perhaps it will be a hybrid of the two. 
+Unfortunately, there is no single simple solution.   NoSQL databases lack a consistent, robust data 
+modeling approach and heterogeneity challenges.   However, the main advantage of NoSQL is, easy 
+management of big data with changeable property   and dynamic development. Relational and NoSQL 
+databases have unique features that makes them   better or worse for different situations. After 
+considering the NoSQL and relational database's   advantages and limitations, it is impossible to 
+say when relational databases will disappear,   and NoSQL will take over relational databases. I 
+hope you enjoy this video. If you really did it,   please do like, share and subscribe. Keep 
+learning! And see you in the next video.

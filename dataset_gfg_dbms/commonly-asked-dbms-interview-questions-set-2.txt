@@ -1,0 +1,138 @@
+• 
+• 
+• 
+
+This article is an extension ofCommonly asked DBMS interview questions | Set 1.
+
+
+### Q1. There is a table where only one row is fully repeated. Write a Query to find the Repeated row
+In the above table, we can find duplicate rows using the below query.
+
+
+```python
+SELECT name, section FROM tblGROUP BY name, sectionHAVING COUNT(*) > 1
+```
+
+### Q2. Query to find 2nd highest salary of an employee?
+
+```python
+SELECT max(salary) FROM EMPLOYEES WHERE salary IN(SELECT salary FROM EMPLOYEEs MINUS SELECT max(salary)FROM EMPLOYEES);
+```
+OR
+
+
+```python
+SELECT max(salary) FROM EMPLOYEES WHEREsalary <> (SELECT max(salary) FROM EMPLOYEES);
+```
+
+### Q3. Consider the following Employee table. How many rows are there in the result of the following query?
+How many rows are there in the result of the following query?
+
+
+```python
+SELECT E.IDFROM  Employee EWHERE  EXISTS  (SELECT E2.salaryFROM Employee E2WHERE E2.DeptName = 'CS'AND   E.salary > E2.salary)
+```
+Following 5 rows will be the result of the query as 3000 is the minimum salary of CS Employees and all these rows are greater than 30000. 2 4 5 6 7
+
+
+### Q4. Write a trigger to update Emp table such that, If an updation is done in Dep table then salary of all employees of that department should be incremented by some amount (updation)
+Assuming Table name are Dept and Emp, trigger can be written as follows:
+
+
+```python
+CREATE OR REPLACE TRIGGER update_trigAFTER UPDATE ON DeptFOR EACH ROWDECLARECURSOR emp_cur IS SELECT * FROM Emp;BEGINFOR i IN emp_cur LOOPIF i.dept_no = :NEW.dept_no THENDBMS_OUTPUT.PUT_LINE(i.emp_no);  --  for printing thoseUPDATE Emp                      -- emp number which areSET sal = i.sal + 100           -- updatedWHERE emp_no = i.emp_no;END IF;END LOOP;END;
+```
+
+### Q5. There is a table which contains two columns Student and Marks, you need to find all the students, whose marks are greater than average marks i.e. list of above-average students.
+
+```python
+SELECT student, marksFROM tableWHERE marks > SELECT AVG(marks) from table;
+```
+
+### Q6. Name the Employee who has the third-highest salary using sub queries.
+
+```python
+SELECT Emp1.NameFROM Employee Emp1WHERE 2 = (SELECT COUNT(DISTINCT(Emp2.Salary))FROM Employee Emp2WHERE Emp2.Salary > Emp1.Salary)
+```
+Logic:Number of people with a salary higher than this person will be 2.
+
+
+### Q7. Why we cannot use WHERE clause with aggregate functions like HAVING ?
+The difference between the having and where clause in SQL is that the where clause canNOT be used with aggregates, but the having clause can.
+
+Note:It is not a predefined rule but by and large you’ll see that in a good number of the SQL queries, we use WHERE prior to GROUP BY and HAVING after GROUP BY. The Where clause acts as a pre filter where as Having as a post filter. The where clause works on row’s data, not on aggregated data.
+
+Let us consider below table ‘Marks’.
+
+
+```python
+SELECT Student, sum(Score) AS totalFROM Marks
+```
+This would select data row by row basis. The having clause works on aggregated data. For example, the output of the below query
+
+
+```python
+SELECT Student, sum(score) AS total FROM Marks
+```
+When we apply to have in above query, we get
+
+
+```python
+SELECT Student, sum(score) AS totalFROM Marks having total > 70
+```
+
+### Q8. Difference between primary key and unique key and why one should use a unique key if it allows only one null ?
+Primary key:
+
+• Only one in a row(tuple).
+• Never allows null value(only key field).
+• Unique key identifier can not be null and must be unique.
+
+Unique Key:
+
+• Can be more than one unique key in one row.
+• Unique key can have null values(only single null is allowed).
+• It can be a candidate key.
+• Unique key can be null and may not be unique.
+
+
+### Q9. What’s the difference between materialized and dynamic view?
+Materialized views:
+
+• Disk-based and are updated periodically based upon the query definition.
+• A materialized table is created or updated infrequently and it must be synchronized with its associated base tables.
+
+Dynamic views:
+
+• Virtual only and run the query definition each time they are accessed.
+• A dynamic view may be created every time that a specific view is requested by the user.
+
+
+### Q10. What is embedded and dynamic SQL?
+Static or Embedded SQL:
+
+• SQL statements in an application that do not change at runtime and, therefore, can be hard-coded into the application.
+
+Dynamic SQL:
+
+• SQL statements that are constructed at runtime; for example, the application may allow users to enter their own queries.
+• Dynamic SQL is a programming technique that enables you to buildSQL statements dynamically at runtime. You can create more general purpose, flexible applications by using dynamic SQL because the full text of a SQL statement may be unknown at compilation.
+
+
+### Q11. What is the difference between CHAR and VARCHAR?
+• CHAR and VARCHAR differ in storage and retrieval.
+• CHAR column length is fixed while VARCHAR length is variable.
+• The maximum no. of characters CHAR data type can hold is 255 characters while VARCHAR can hold up to 4000 characters.
+• CHAR is 50% faster than VARCHAR.
+• CHAR uses static memory allocation while VARCHAR uses dynamic memory allocation.
+
+You may also like:
+
+• PracticeQuizzeson DBMS
+• Last Minute Notes– DBMS
+• DBMSArticles
+
+• DBMS
+• Interview Questions
+• Interview-Questions
+

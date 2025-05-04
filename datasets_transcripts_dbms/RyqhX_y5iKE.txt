@@ -1,0 +1,72 @@
+Hi guys. My name is Vivek and in this video we are
+going to talk about First Normal form. If you have not watched my first video of
+Normalization series, I will highly recommend that you watch that
+video as well. It will clarify all your doubts related to
+normalization and why it's done. Here is a quick recap of Normalization definition. Normalization is the process of splitting
+or organizing of data to reduce redundancy and to avoid data
+anomalies. Again, if you want to learn more about normalization,
+you should visit my first video. So what's the standard definition of first
+normal form? Wikipedia says that a relation is in first
+normal form if and only if. The domain of each attributes contains only
+atomic values and the value of each attribute contains only
+a single value from that domain. Well, that definition sounds far too complex
+then first normal form itself. For now, just remember that First normal form
+deals with atomicity and the most important keyword is
+multi value attribute. If someone asks you about first normal form,
+no multi value attribute should come in the first sentence
+of your explanation. Let's understand this with an example. We have a customer table where a customer
+is allowed to maintain multiple phone numbers. We have an employee table where an employer
+can have multiple technologies as a skill set, and we have a
+student table which contain the details of the courses the
+students are pursuing. Now, imagine if I have to write a query to
+list the number of students who are enrolled for
+a particular course or how many employees passes the skill
+set. Sql well, it can be fairly challenging with
+this table structure. The maximum number of phone numbers are two. So 1 can argue that we can create our table
+structure like this. But what if a customer gets three numbers? How are we going to accommodate that? What about skill set? If an employer knows 15 technologies, are
+we going to create 15 columns? And how are we going to search for a particular
+technology? Are we going to look into all the 15 columns? That doesn't look like a great design. Right there comes First Normal form. We split the telephone number skill set and
+courses into atomic values like below, and ensure that
+no row contains more than one phone number or skill or courses. Now, the primary key has changed because our
+ID column has been duplicated. Now it's the combination of ID and skill in
+our employee table and so on. If we have to write the same queries again,
+it's very easy to do that. What we just did is we removed multivalued
+attributes from the column, phone number, skill set, and courses
+by changing the table structure. Another way to represent our data is to split
+our tables like below. This also takes care of the multivalued attribute
+observation and also reduces the data redundancy. We will talk further about splitting the tables
+in second and third normal form. Let's focus on some of the rules you will
+hear or read about first normal form. There should not be any duplicate rows. This actually happens often if we do not have
+an explicit primary key constraint on one of the column
+which prevents it from happening. Another rule is two columns should not have
+the same name. I mean, you are covered here. I have worked on a lot of databases and I
+don't know if any database will allow the same column name twice
+in a table. No multi value attribute. Going back to the concept of atomicity, you
+need to make sure that no column contain more than one
+possible value of the same domain in any row the way we had
+earlier for phone number, skill set and courses. Now this happens very rarely. Usually the data modeling team ensures that
+all the tables are first normal form compliant. No left to right ordering of columns or top
+to bottom ordering of rows. For example, we were ordering phone number
+and skill set. That should not happen in a real project. You will not have this observation. Usually the table are in one of the below
+formats, both of which do not have this issue. Each row and column intersection contains
+exactly one value from the applicable domain. This means we must have a value for each cell. Does that mean that even nulls are not allowed? So a table that has a nullable attribute is
+not in first normal form. Now, this is somewhat of a Gray area. Let's understand this a little more. The design where we have kept two columns
+for phone number and the second one has a null value because
+the customer only has one phone. This is not in first normal form because of
+the type of table structure we have created. While in this table, Mr Sam is old school
+and does not have a phone, which is why the value is null. Is that incorrect? Not really. Nulls are not a bad thing in database. They signify that a column value is unknown. To understand this a little more, if you can
+divide the table into smaller tables and the null can be removed,
+like in this particular case, then the table is not
+in first normal form but in the other table structure. Even if you further divide the table structure,
+you cannot eliminate the null for Mr Sam simply because
+his phone number is unknown. In my opinion, that table is first normal
+form compliant. Again, some people may disagree to this. So bottom line, if you can divide the data
+set and remove nulls, the table is not in first normal form. Let's do a quick recap before we close today's
+video for a table to be in first normal form, there
+should not be any duplicate records. No column should contain multi value attributes,
+and this is the most important thing. No column should contain multi value attributes
+and all columns should contain single value in cell of their
+respective domain. I hope after watching this, you will be able
+to answer any question related to first normal form. If you have not watched my first video on
+normalization, I'll be dropping a link to that video. Please do watch it. And if you understand what is first normal
+form and normalization, it's time we move on second normal form. I'll drop a link to that as well. Thanks a lot, guys, for watching this video. And I'll see you in the next one.

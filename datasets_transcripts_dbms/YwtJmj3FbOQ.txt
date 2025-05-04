@@ -1,0 +1,1 @@
+super key is a set of attributes that collectively identifies an entity in an entity set candidate key is a minimal Super Key now primary key is a candidate key that uniquely identify the entity set [Music]

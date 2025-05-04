@@ -1,0 +1,85 @@
+• 
+• 
+• 
+
+The original relation and relation reconstructed from joining decomposed relations must contain the same number of tuples if the number is increased or decreased then it is Lossy Join decomposition.
+
+Lossless join decomposition ensures that never get the situation where spurious tuples are generated in relation, for every value on the join attributes there will be a unique tuple in one of the relations.
+
+
+### What is Lossless Decomposition?
+Lossless join decomposition is a decomposition of a relation R into relations R1, and R2 such that if we perform a natural join of relation R1 and R2, it will return the original relation R. This is effective in removing redundancy from databases while preserving the original data.
+
+In other words by lossless decomposition, it becomes feasible to reconstruct the relation R from decomposed tables R1 and R2  by using Joins.
+
+Only1NF,2NF,3NF,andBCNFare valid for lossless join decomposition.
+
+In Lossless Decomposition, we select the common attribute and the criteria for selecting a common attribute is that the common attribute must be a candidate key or super key in either relation R1, R2, or both.
+
+Decomposition of a relation R into R1 and R2 is a lossless-join decomposition if at least one of the following functional dependencies is in F+ (Closure of functional dependencies)
+
+
+### Example of Lossless Decomposition
+— Employee (Employee_Id, Ename, Salary, Department_Id, Dname)
+
+Can be decomposed using lossless decomposition as,
+
+— Employee_desc (Employee_Id, Ename, Salary, Department_Id)— Department_desc (Department_Id, Dname)Alternatively the lossy decomposition would be as joining these tables is not possible so not possible to get back original data.
+
+– Employee_desc (Employee_Id, Ename, Salary)– Department_desc (Department_Id, Dname)
+
+
+```python
+R1 ∩ R2 → R1ORR1 ∩ R2 → R2
+```
+In adatabase management system (DBMS), a lossless decomposition is a process of decomposing a relation schema into multiple relations in such a way that it preserves the information contained in the original relation. Specifically, a lossless decomposition is one in which the original relation can be reconstructed by joining the decomposed relations.
+
+To achieve lossless decomposition, a set of conditions known as Armstrong’s axioms can be used. These conditions ensure that the decomposed relations will retain all the information present in the original relation. Specifically, the two most important axioms for lossless decomposition are the reflexivity and the decomposition axiom.
+
+The reflexivity axiom states that if a set of attributes is a subset of another set of attributes, then the larger set of attributes can be inferred from the smaller set. The decomposition axiom states that if a relation R can be decomposed into two relations R1 and R2, then the original relation R can be reconstructed by taking the natural join of R1 and R2.
+
+There are several algorithms available for performing lossless decomposition in DBMS, such as theBCNF (Boyce-Codd Normal Form)decomposition and the3NF (Third Normal Form)decomposition. These algorithms use a set of rules to decompose a relation into multiple relations while ensuring that the original relation can be reconstructed without any loss of information.
+
+
+### Advantages of Lossless Decomposition
+• Reduced Data Redundancy:Lossless decomposition helps in reducing the data redundancy that exists in the original relation. This helps in improving the efficiency of the database system by reducing storage requirements and improving query performance.
+• Maintenance and Updates:Lossless decomposition makes it easier to maintain and update the database since it allows for more granular control over the data.
+• Improved Data Integrity:Decomposing a relation into smaller relations can help to improve data integrity by ensuring that each relation contains only data that is relevant to that relation. This can help to reduce data inconsistencies and errors.
+• Improved Flexibility:Lossless decomposition can improve the flexibility of the database system by allowing for easier modification of the schema.
+
+
+### Disadvantages of Lossless Decomposition
+• Increased Complexity:Lossless decomposition can increase the complexity of the database system, making it harder to understand and manage.
+• Increased Processing Overhead:The process of decomposing a relation into smaller relations can result in increased processing overhead. This can lead to slower query performance and reduced efficiency.
+• Join Operations:Lossless decomposition may require additional join operations to retrieve data from the decomposed relations. This can also result in slower query performance.
+• Costly:Decomposing relations can be costly, especially if the database is large and complex. This can require additional resources, such as hardware and personnel.
+
+
+### Conclusion
+In Conclusion, a lossless decomposition is an important concept in DBMS that ensures that the original relation can be reconstructed from the decomposed relations without any loss of information. The use of Armstrong’s axioms and decomposition algorithms such as BCNF and 3NF can help achieve lossless decomposition in practice.
+
+
+### Question Asked in GATE
+
+### Q.1:Let R (A, B, C, D) be a relational schema with the following functional dependencies:
+
+```python
+A → B, B → C,C → D and D → B.The decomposition of R into(A, B), (B, C), (B, D)
+```
+(A)gives a lossless join, and is dependency preserving(B)gives a lossless join, but is not dependency preserving(C)does not give a lossless join, but is dependency preserving(D)does not give a lossless join and is not dependency preserving
+
+Refer tothisfor a solution.
+
+
+### Q.2:R(A,B,C,D) is a relation. Which of the following does not have a lossless join, dependency preserving BCNF decomposition?
+(A) A->B, B->CD(B) A->B, B->C, C->D(C) AB->C, C->AD(D) A ->BCD
+
+Refer tothisfor a solution.
+
+Below is the Quiz of previous year GATE Questionshttps://www.geeksforgeeks.org/dbms-gq/database-design-normal-forms-gq/
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• DBMS-Normalization
+

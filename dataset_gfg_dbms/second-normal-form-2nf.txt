@@ -1,0 +1,73 @@
+• 
+• 
+• 
+
+Normalization is a structural method whereby tables are broken down in a controlled manner with an aim of reducing data redundancy. It refers to the process of arranging the attributes and relations of a database in order to minimize data anomalies such as update, insert and delete anomalies. Normalization is usually a sequence of steps which are also called normal forms (NF).
+
+The First Normal Form (1NF) and Second Normal Form (2NF) are very important towards the achievement of a normalized database. Where 1NF is centered on the removal of multiple values in an attribute, 2NF is associated with the issue ofpartial dependencies.
+
+
+### Second Normal Form
+Second Normal Form (2NF) is based on the concept of fully functional dependency. It is a way to organize a database table so that it reduces redundancy and ensures data consistency. For a table to be in 2NF, it must first meet the requirements of First Normal Form (1NF), meaning all columns should contain single, indivisible values without any repeating groups. Additionally, the table should not have partial dependencies. In other words,
+
+A relation that is in First Normal Form and every non-prime attribute is fully functionally dependent on the candidate key, then the relation is in Second Normal Form (2NF).
+
+Note –If the proper subset of the candidate key determines a non-prime attribute, it is called  partial dependency. Thenormalizationof 1NF relations to 2NF involves theremoval of partial dependencies. If a partial dependency exists, we remove the partially dependent attribute(s) from the relation by placing them in a new relation along with a copy of their determinant. Consider the examples given below.
+
+Example-1:Consider the table below.
+
+
+
+• There are many courses having the same course fee. Here, COURSE_FEE cannot alone decide the value of COURSE_NO or STUD_NO.
+• COURSE_FEE together with STUD_NO cannot decide the value of COURSE_NO.
+• COURSE_FEE together with COURSE_NO cannot decide the value of STUD_NO.
+• Thecandidate keyfor this table is{STUD_NO, COURSE_NO}because the combination of these two columns uniquely identifies each row in the table.
+• COURSE_FEE is a non-prime attribute because it is not part of the candidate key{STUD_NO, COURSE_NO}.
+• But, COURSE_NO -> COURSE_FEE, i.e., COURSE_FEE is dependent on COURSE_NO, which is a proper subset of the candidate key.
+• Therefore, Non-prime attribute COURSE_FEE is dependent on a proper subset of the candidate key, which is a partial dependency and so this relation is not in 2NF.
+
+To convert the above relation to 2NF, we need to split the table into two tables such as : Table 1: STUD_NO, COURSE_NO Table 2: COURSE_NO, COURSE_FEE.
+
+
+
+
+
+
+
+
+
+Now, each table is in 2NF:
+
+• The Course Table ensures thatCOURSE_FEEdepends only onCOURSE_NO.
+• The Student-Course Table ensures there are no partial dependencies because it only relates students to courses.
+
+NOTE:2NF tries to reduce the redundant data getting stored in memory. For instance, if there are 100 students taking C1 course, we don’t need to store its Fee as 1000 for all the 100 records, instead, once we can store it in the second table as the course fee for C1 is 1000.
+
+
+### Example-2:Consider following functional dependencies in relation  R (A,  B , C,  D )
+
+```python
+AB -> C  [A and B together determine C]BC -> D  [B and C together determine D]
+```
+In the above relation, AB is the only candidate key and there is no partial dependency, i.e., any proper subset of AB doesn’t determine any non-prime attribute.
+
+
+### What is Partial Dependency?
+A functional dependency denoted as X→Y where X and Y are an attribute set of a relation, is a partial dependency , if some attribute A∈X can be removed and the dependency still holds.
+
+For example, if you have a functional dependency X→Y, where X is a composite candidate key (made of multiple columns), and you can remove one column from X, but the dependency still works, then it’s a partial dependency.
+
+Let’s say X={A,B} and A→Y still holds true even without B. This means Y doesn’t really depend on the full key {A,B}, but only on part of it (A). This is called a partial dependency. It often leads to redundancy and is something we fix when we normalize a table to Second Normal Form (2NF).
+
+Read more aboutPartial Dependency.
+
+
+### Conclusion
+In conclusion,Second Normal Form (2NF)helps make databases more organized by removing partial dependencies. It reduces duplicate data, prevents errors, and ensures data is stored accurately. Following 2NF makes it easier to manage, update, and retrieve information from your database.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• GATE CS
+• DBMS-Normalization
+

@@ -1,0 +1,50 @@
+In this lesson and in this series of lessons, we will introduce you to the concept of data
+structures. Data structure is the most fundamental and building block concept in computer
+science and good knowledge of data structures is
+a must to design and develop efficient software systems. Ok, so let's get started we deal with data all the time and how we store, organize and group our data together matters. Let's pick up some examples from our day to day life where organizing data in a particular structure helps us. We are able to search a word quickly and efficiently  in a language dictionary because the words in the dictionary are sorted. What if the words in the dictionary
+were not sorted? It would be impractical and impossible to search for a word among millions of
+words. So, dictionary is organized as a sorted list of words. Let's pick up another example. If we have something like a city map, the data, like position of the landmark
+and road network connections, all this data is organized in the form of geometries. We show the map data in the form of
+these geometries on a two-dimensional plane. So, map data needs to be structured like this so that we have scales and
+directions and we are effectively able to search for a landmark and and get route from one place to
+another and i will pick one more example for something like uh... daily cash in and cash out
+statement of a business what we also call a cash book in accounts, it makes
+most sense to organize and store the data in the form of a tabular schema it is very easy to aggregate data and extract information, if the data is organized in these columns, in these tables so different kind of structures are
+needed to organize different kind of data now computers work with all kind of data computers work with texts, images, videos relational data geospatial data and
+pretty much any kind of data that we have on this planet how we store organize and group data in computers matters
+because computers deal with really really large data
+even with the computational power of machines if we do not use the right kind of structures the right kind of logical structures then our software systems will not be
+efficient Formal definition of data structure would be that - a data structures is a way to store and organize data in a computer so that the data can be used efficiently when we study data structures as ways
+to store and organize data we study them in two ways so i'll say that we talk about data
+structures as one we talk about them as mathematical
+and logical models. when we talk about them as mathematical and logical models we
+just look at an abstract view of them we just look at from a high level
+what all features and what all operations define that particular data
+structure example of uh... abstract view from
+real-world can be something like the abstract view of a device named
+television can be that it is an electrical device that can be
+turned on and off it can receive signals for satellite programs and the audio video of the program and as long as i have a device like this i do not bother
+how circuits are embedded to create this device or which company makes this
+device so this is an abstract view so when we study data structures
+as mathematical or logical models we just define their abstract view or
+in other words we have a term for this we define them as abstract data types an example of abstract data type can be i want to define something called a
+list that should be able to store a group of elements of a
+particular datatype and we should be able to read the elements by their position in the list and we should be also able to modify element at a particular
+position in the list i would say store a given number of
+elements of any datatype so we are just defining a model now can
+implement this uh... in a programming language in a
+number of ways so this is uh... definition of an abstract data type we will also call abstract data type as adt if you see all the high level languages
+already have a concrete implementation of such an adt in the form of arrays so arrays give us all these functionalities so arrays are data types which are concrete implementation so the second way of talking about data
+structures is talking about that implementation so implementations would be some
+concrete types and not an abstract data type we can implement the same adt in multiple ways in the same language for example in c or c++ we can
+implement this list adt as a data structure named linked list and if you have not heard about it we
+will be talking about them a lot we will be talking about linked list a lot
+in the coming lessons okay, so lets define an abstract data type formally because this is one term that we will encounter quite often abstract data types are entities that
+are definitions of data and operation but do not have implementations so they do not have any
+implementation details we will be talking about a lot of data
+structures in this course we will be talking about them as abstract data types and we will
+also be looking at how to implement them some of the data structures that we will talk about are arrays linked list stack, queue, tree, graph and the list goes on there are many more to study so when we will study these data structures
+we will study their logical view we will study what operations are available
+to us with these data structures we will study the cost of these operations mostly in terms of time and then definitely we will study the implementation in a programming language so we will be studying all these data
+structures in the coming lessons and this is all for this introductory
+lesson thanks for watching

@@ -1,0 +1,65 @@
+• 
+• 
+• 
+
+In SQL, theCROSS JOINis a unique join operation that returns theCartesian productof two or more tables. This means it matches each row from the left table with every row from the right table, resulting in a combination of all possible pairs of records.
+
+In this article, we will learn the CROSS JOIN operation, itssyntax, andpractical examplesto clarify how and when to use it effectively.
+
+
+### What is SQL CROSS JOIN?
+Cross Join in SQLproduces a result set that contains the cartesian product of two or more tables. Cross join is also called aCartesian Join. When CROSS JOIN is used with aWHERE clause, it behaves likeINNER JOIN, filtering the results based on specific conditions. CROSS JOIN is the best choice when we need to match each row of one table to every other row of another table. It is helpful in many applications where we need to obtain paired combinations of records.
+
+Cross Join B/W Two Sets
+
+Syntax:
+
+SELECT*FROMtable1
+
+CROSS JOINtable2;
+
+
+### Examples of SQL CROSS JOIN
+Let’s look at some examples of CROSS JOIN statement inSQLto understand it’s working.
+
+In this CROSS JOIN tutorial, we will use the following two tables in examples:
+
+Table 1- Customer
+
+Table 2- Orders
+
+To create both these tables on your system, you can write the following code:
+
+
+### Example 1: CROSS JOIN
+In this example, we will use the CROSS JOIN command to match the data of the Customer and Orders table.
+
+Query:
+
+
+```python
+SELECT*FROMCUSTOMERCROSS JOINORDERS;
+```
+Output:
+
+Cross Join
+
+As we can see, whether the other table matches or not, the CROSS JOIN keyword returns all similar records from both tables. Therefore, if there are rows in “Customers” or “Orders” that do not match any entries in either table, those rows will also be listed.
+
+
+### Important Points About CROSS JOIN
+• CROSS JOIN performs the cross-product of records from two or more joined tables.
+• It is used when we want every possible combination of rows to be present in a database’s tables.
+• SQL CROSS JOIN with condition of WHERE Clause operates as an INNER JOIN; when used without one, it produces the cartesian product of all the rows from all the tables provided in the SQL query.
+• CROSS JOIN is different from other join types like INNER JOIN,LEFT JOIN, andRIGHT JOIN, as it does not require a matching condition between the tables.
+
+
+### Conclusion
+The SQL CROSS JOIN is a powerful tool for generating all possible combinations of rows from two or more tables. It is particularly useful in scenarios where every record needs to be paired with every other record, such as in creating combinations or generating test data. However, it should be used with caution, especially with large datasets, as it can quickly result in huge result sets that could impact performance. By understanding when and how to use CROSS JOIN, you can harness its power to handle complex queries and generate diverse datasets for a wide range of applications.
+
+Ready to go from coding beginner to development pro? OurDSA to Development CodingGuide has everything you need to crush coding interviews and ace real-world projects! Limited spots available!
+
+• Databases
+• SQL
+• DBMS-Join
+

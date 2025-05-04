@@ -1,0 +1,435 @@
+Michael: Hello and welcome to Postgres.FM, a weekly show about all things PostgreSQL. I am Michael, founder of pgMustard, and as usual, I'm joined by Nikolay, founder of Postgres.AI. Hey, Nikolay. Nikolay: Hi, Michael. Michael: And we have a special guest today, Franck Pachot, who is a developer advocate now at MongoDB, formerly at YugabyteDB, which is a distributed PostgreSQL database, also an AWS Data Hero, and Oracle Certified Master. So, welcome, Franck. Franck: Hi. Thanks. Thanks for having me there. Nikolay: And former Postgres blogger. Franck: Yeah. Nikolay: No? Or yes? Franck: Oh, yeah, yeah. I will continue to blog about all databases, it's just that it depends on the time I have. Nikolay: Sounds good. So I saw you are going to give a talk at some Postgres conference in India, right? PGConf India, I don't remember the name. So still planning to do it, right? Franck: Yeah. And also Germany. I just got the acceptance. Nikolay: I'm very curious. During daytime, you work using JSONs and these weird queries, right, chains of something. And then at weekend or something you present SQL talks. How is it going to be played in your mind? I'm very curious. Franck: It's all about databases. I mean, it's all the same. Nikolay: All the same. Franck: Yeah, you can do data modeling, document data modeling on Postgres. You can do it on Oracle. You can do it on MongoDB. You can normalize your data on SQL databases, on NoSQL databases. The concepts are all the same. Of course, there are little differences, like how NULLs are undulied, for example, or how you join or you don't join, but yeah. Nikolay: NULLs, let's postpone. It's a special topic. It's not for the start. Okay. I remember a series of blog posts from Michael Stonebraker about criticizing document databases for lack of normalization and so on. So you are saying now that it's totally possible to apply normalization in document database. Is this what you're trying to say? Or maybe I'm getting wrong. Franck: I've also changed my mind probably because for 2 reasons. First, the applications have changed. I think the normalized model was really good for those monolithic databases where all use cases with the enterprise information system in 1 database running all use cases. And then you need a normalized way to structure the data that is shared by the whole company and all kinds of users. Today, it's a bit different. You have multiple services, multiple microservices. They might have different databases. And then the concern of normalization may be different. For example, if you consume data only to read it and not update it, you can denormalize a bit more. So that's 1 reason and I think the main reason is also the applications have changed. Today in application programming languages you use documents in nested structure, objects, object graphs, looks like more like documents so it's easier to move it to applications. Nikolay: I don't get it because we had documents for forever. For example, Codd designed relational model originally dealing with banking systems, right? In 60s, 70s, and it was not convenient to have nesting at that point. Before rational model, we know there were what's the name like net and I forgot names, but basically closer to... Franck: Hierarchical models and network models. Nikolay: Yeah, yeah, yeah, exactly. And the idea was it's really inconvenient when we keep a document as a whole and we need to split it into pieces and basically divide and conquer, right? We split into pieces and that's how we get flexibility and start working. And we had documents at that time as well, like invoices or transactions like between financial institutions and so on. So I don't see the big change, just amount of data and so on, right? And I don't fully understand why the idea of microservices or something you, as I understand, you are bringing, like when we have many, many databases, many services. Why is it changing this? Because in my head, it's vice versa. If we have many services, we do need to structure and split into more atomic pieces of our data, right? And the article I mentioned, it's called "Schema Later Considered Harmful." After my post, actually, this is why I named my sub-transactions blog post also considered harmful. And some folks mentioned on Hacker News mentioned that there is an article considered harmful, considered harmful, harmful, considered harmful titles considered harmful. So it's basically like not a good way to name articles, but the blog post is quite good. Like if schema design, normalization still makes sense. If you don't do it, you deal with bad consequences later. So please let Franck: me understand. Yeah, but it depends on your use case. And also something I've been working on relational databases where you normalized, but basically, when I learned databases at university, it was all about normalization. And then when you start to work, you hear people talking about denormalizing everything. And of course, you just need to think about the access patterns. Nikolay: Yeah, Let me just add this. Sorry for interrupting, but let me just add, I totally agree. If we over-normalize, then we deal with very simple fact that you cannot create 1 index on 2 tables. You won't, Because, for example, filtering on 1 table, filtering on another table, you want a single index scan. Definitely, this is what we do also. My team and I, we do, during consulting practice, we say, okay, here we do need to normalize. But my point is, if you take Mongo and other document databases, they just provoke you to avoid normalization at all. In relational data systems, we can... Is it OK? Am I wrong? Franck: Yeah, for me, you are wrong. And I think that's also 1 reason MongoDB was interested to have a developer advocate coming from SQL databases, is that users tend to think that they have to denormalize everything and to put everything in 1 document, which is wrong. The idea in MongoDB is to put together what you insert together or what you query together, but in different documents if you query differently. Just to take an example, another entry system, you don't want to put together the customers and the orders because you don't want 1 document per customer where you just add orders that can be a lot every year. But the orders themselves, the orders and the other items which we usually put in 2 tables in SQL databases just because they have different cardinalities. That's something you can put in a single document, because you insert an order with all the items. You have nobody who will just update
+1 item of the order and you query them together. Of course, it depends on the system. If you're in a system that analyzes
+the order lines for marketing purpose, buy the product and you
+don't care about the customer or the other, then maybe the modeling
+is different. And this is where different use
+cases are. But it's not about putting everything
+in 1 document. And that's also why it's good to
+do some design reviews? Because it's easy for a developer
+to start and put everything in 1 document, just moving what
+they have in Java to the database, but still needs design and still
+need to think about what you embed, like denormalize, or what
+you reference, like you would reference with foreign keys in
+a secure database? Nikolay: OK, I hear you. I think I understand you. But still, You say users have this
+tendency to think. For example, user Michael Stonebraker
+says that he noticed that maybe it's possible to normalize,
+of course, but in relational databases there is a big tendency
+to normalize first and then denormalize when needed. In document store databases, there
+is the opposite tendency. Avoid normalization first and then
+normalize when we have pain. The whole article called "Schema
+Later Considered Harmful." I think, as I understand this article,
+it's about that the relational approach, direction of movement
+is more beneficial in general case than opposite. What do you think? Franck: Yeah, but remember that
+relational databases were made at a time where we were designing
+the data before looking at the use cases. The normalization and the data
+model doesn't care about the use cases. You just model the data. You have orders, multiple order
+items, an order belongs to a customer. You do a static model of your data,
+and then you bring the application use cases, and you can optimize
+them with indexes, but you don't change the data model for the use
+cases. But this is not really how applications
+are developed today. Today, applications come with a
+main use case and rent fast access for this use case. For another use case, they just
+check if they can do it on the same database, or maybe do some
+event streaming, put that in another database and doing elsewhere. That really has changed. Today, even applications that run
+on SQL databases, I see people starting a data model, knowing
+the access patterns. And then maybe you can denormalize. For example, it's okay to denormalize
+something that is not updated. The big danger to denormalize something
+that may be updated is that you have to update in multiple
+places, which is a risk of inconsistency if you forget 1,
+and which is also a performance issue, especially when you distribute,
+then you have distributed transactions at multiple places. But data that you do not update,
+and there is a lot of data that we don't update, we just add a
+new version of it. For example, a customer is creating
+a new order, you will not update the order. If we add a new item, that will
+be a new order, but the existing order has been validated. You don't update this data later. Usually you have a timestamp, And
+even if you change something, then you just add the new version. So the applications have changed. And I'm not saying that 1 is better
+than the other. But when we listen to the developers,
+we see that they don't want to build this ERD diagram. That was never true. So that's also something. Nikolay: Nobody does that anymore,
+building ERD diagrams. Or only our AI system does, but
+it's just a side function for it. But I don't understand why we cannot
+do it on relational databases and still have all the good stuff. Because we have JSON, let's just
+put it there and so on. Franck: And It's very good to mix
+both. I've seen a lot of applications
+on Oracle, on Postgres, on Yugabyte, where it's a mix where you have
+tables with Columns because they are updated because you went indexes
+on it, and you have a bunch of metadata information that you
+put in a JSON. And that's also perfectly valid. Nikolay: And so what does Mongo
+bring here, if we have it already? Franck: I think the API is very
+different. Nikolay: Of course. Franck: Yeah. With MongoDB, you can really... You have your object graph in the
+application. In JavaScript, it's even easier,
+but in Java, in whatever, in Python, and you just communicate
+with the Database those documents and they are stored as documents. The big problem with SQL databases
+or so something that has changed when Application have changed at
+the time where everything was done in the Database, stored
+procedures or pre-compiled procedures or whatever, then that was okay. But with object-oriented programming,
+you had this mismatch and you need an object-relational mapping
+to map from 1 to the other if you don't want to do a bunch
+of queries in text strings and through JDBC. So, what MongoDB brings at that
+point is an API that really fits with the programming language and
+then it stores it as documents rather than mapping that to relational
+tables. Nikolay: Yes, this is what HDB
+and HQL are trying to solve. They try to reinvent SQL to have
+this, what you describe. Yeah, but you mentioned OOP and
+ER. I think this is in the past already,
+both. No, I'm joking, I'm joking. So for me Franck: it's like... Then what do you use today if you... I mean, applications are built
+with objects? Nikolay: Well, I personally am
+a big fan of things what guys like Hasura, Supabase, others
+do with thin layer providing APIs right away without the need to
+write this middleware. It's great, this serves better
+than object-relational mapping. But people do object-relational
+mapping, but at the same time, I doubt a lot of guys who create
+projects, they do actual OOP with patterns and so on. It's kind of like somehow not cool
+anymore. It's my perception. I'm far from actual application
+programming lately. Franck: But it's also this old
+debate where do you put your business logic? Ideally in a SQL database, you
+put it in the database because data is processed there, but then
+you are constrained to specific languages. Nikolay: Well, right. But if you put it to application,
+you also have dependency on this language you chose. It's the same. To me, the question about where
+to put logic became much easier to understand since like 10 years
+ago when Angular and React, they obtained, gained popularity
+and a lot of logic and actually Web 2.0, how many years ago already? Like 20 years ago, right? All these shifted a lot of client-oriented
+logic to clients, to front-end, right? And this gave space to have logic
+closer to data, like constraints and what we usually do with triggers,
+some dependencies, propagation of changes or something. It gives opportunity to keep it
+in database where it should be because otherwise, if you don't
+do it closer to database, at some point when company grows,
+project grows, you add some other tools or application layers or
+something called, and you need to re-implement the same logic
+in different places. And there is no strong guarantee
+that it will be well maintained. Yeah, but the Franck: problem is just, I totally
+agree, and there are very successful database-centric applications. But what developers want, they
+want to use Java, not PL/pgSQL and not PL/SQL. And just because try to hire a
+SQL developer or a PL/pgSQL developer, that will be more difficult than
+hiring a team of Java developers. Nikolay: Right. Right. Michael wanted to ask something. Michael: I don't know if this is
+a change of topic, but I think it's on the same path, which is
+around developer experience. And I know it's a subjective term,
+but I do think when, at least when Mongo went into the market,
+but I think NoSQL databases in general, they promised a few
+things. 1 was a really good getting started
+experience, a very quick, easy, you don't have to think much
+type, no schema to worry about, and just get started. And that's good for some things
+and not so good in other ways. But it also promised a couple of
+other things. And I think we can learn a lot
+from these things in terms of why was it popular? Like, why did Mongo take off? Why was NoSQL so popular for so
+long? It also promised kind of infinite,
+or at least horizontal scalability. And that's something we've historically
+struggled with. I know you worked on distributed
+SQL, but it's something we've historically struggled with in
+the SQL world. And then, yeah, I think that combination
+of things seemed really interesting to me. And I wondered if you had opinions
+on what is it about that developer experience that really resonated
+with people? Franck: For me, that's really developer
+experience where MongoDB is really, was really successful. The scalability, I don't really
+know because I didn't use MongoDB at that time, and then I've seen
+scalability in SQL databases. The scalability comes from the
+data model where you can have an easy sharding key. Yeah. As soon as you have an easy sharding
+key, you can distribute that on mostly all databases today. On Postgres, you have multiple
+options like Citus, like Aurora, Limitless, where If you have a
+sharding key, you can distribute. I don't think it's really the point
+today. The point is really develop your
+experience. As you say, it's easy to start
+and it's easy to integrate to your programming language also. Not having something else to learn,
+a different language, but also a different behavior, thinking
+about what you need to look, thinking about foreign keys, thinking
+about performance when you read from multiple tables. But it's also, the easy to start
+is also a problem. And basically I'm working in the
+DevRel team where most of the job is helping users, developers
+to do some proper data modeling design. Because it's easy to start, which
+is good when you start a proof of concept, but at some point like
+in any database, you need to do some design. And the more easy it is to start,
+the more difficult it is to realize that, okay, we are not
+in a proof of concept anymore, we'll put that in production. It's an application that will evolve
+in the coming years. And then we need to look at the
+design. And this is one of the major activity
+in the DevRel team. It's not like being developer advocate
+for Yugabyte was really about awareness because it's a
+new database, so you just need to let people know it. MongoDB, people know it. You just need to make them successful
+with maybe a bit more complex use cases and do some data modeling. Nikolay: So I have a question about
+how your personal experience and this decision you made, obviously,
+recently. It feels like you switched teams,
+like in soccer or football. Right? So my question was, any, like,
+transfer cost? Franck: Ah, that's a very good
+question. So let me explain how it was. I was really happy at Yugabyte, about
+the team, about the colleagues, about the product. I was really not looking for another
+job. And when other companies contacted
+me, I was like, oh, sorry, I'm happy where I am. And when MongoDB contacted me,
+it was more by curiosity, like why an SQL databases is interested
+by my experience. And this is why I started discussions
+by curiosity. And then this is where I realized
+that it was really an interesting approach that's helping users on
+document databases with the knowledge of SQL databases, being
+able to discuss with those who use Postgres, who use MongoDB,
+who have a new use case, they want to know if they can do it
+on both or one is better than the other. That was interesting. And I was like, OK, I should think
+about that. And then, of course, there is an
+offer that was interesting enough to say, OK, why waiting, just going
+there? But I could have the same offer
+from Yugabyte. So it's not really what makes the
+decision. Maybe it just push you to say,
+why not now rather than waiting 6 months or 1 year? But no, the point was really learning
+something new. I really like learning something
+new. And all the content I create is
+me about learning. Nikolay: Yeah, well, yeah. My first reaction was, of course,
+I became very upset. And I started to think, is it like
+sudden change of your views or maybe you slowly became more
+unsatisfied with state of relational and SQL world and so on. So I asked our AI assistant, and
+as you know, we have all your blog posts. So I asked to research among blog
+posts where you talked about NoSQL and SQL, and to my surprise,
+it said you had such posts in the past and it's not a sudden
+change of views. So the result from AI was it's
+not a sudden change of views. But when I start, I asked to dig
+deeper, It was obvious that maybe the key reason was nulls
+in your past blog posts. The key criticism point was how
+null behavior. And I was going to raise this. I did it during the weekend and
+I was going to discuss this but as I already tweeted or x'd I don't
+know how to say it. Yesterday, what happened yesterday
+in the morning, my team made mistake and I actually I looked
+at that merge request myself so it was not null safe operation
+leading to nasty bug, which led to multiple companies receiving
+emails from us, actually a few emails from us, with wrong
+data. And it was because of just comparison,
+not involving three-value logic. And I was beaten by this so many
+times. I had a startup where I was stuck,
+my own startup, I was stuck 7 months without growth. Although I knew there should be
+growth, but there is no growth and then I almost gave up and then
+I digged deeper into the code and found this bug again not null
+safe comparison we fixed it and in a few weeks we had 80,000
+registrations per day. I almost gave up on that startup. This was like all nothing kind
+of, you know, it's just, it's distinct from or distinct like
+or coalesce, you can fix it in multiple ways. But if you overlook it's just a
+single line of problem that which can cost you a lot of money and
+time. And like maybe whole startup can
+depend on it as in my story. So I'm definitely with you in the
+criticism of null and not in with null values, right? Franck: I'm not really criticizing
+it because I love the free value logic. I love nulls because I think I
+understand it. Nikolay: I also think I understand. I also love exactly. Yeah, yeah, yeah. Franck: But it took me 20 years
+to understand it. And then I can understand that
+a developer who already has a lot of things to learn, do not
+want to spend time on something that looks like mathematics. Nikolay: It's good. It's kind of like I kind of came
+from academia, right? And I learned quickly during my
+university time because I had a very good professor, a big specialist
+in databases, and I quickly learned it. But it took me 20 years to stop
+liking it because I see reality says nobody, nobody, like everyone
+steps on this rake all the time, including myself. Franck: Yeah, you need to be pragmatic. But also, you can also solve all
+problems in SQL databases. Just don't use NULL. Just set all columns, not null. And that works. And you were talking about normalization. Just normalize a bit more. If you are tempted to put a NULL
+in a column, then it's probably because this column belongs to another
+table. And then it will not be a NULL,
+it will be the absence of a row in another table. Just go forward, full normalization,
+and do not allow any NULL, and that will work. I mean, Nikolay: It will work, but Franck: you will not have those
+errors. Maybe you will have some performance
+issues. Nikolay: Exactly. Performance issues will be inevitable. Franck: I see NULL like denormalization. It's a shortcut that is easy. It's so easy just to say, okay,
+let's put a NULL because it doesn't have a value. If it doesn't have a value, it
+should not have a row in the table. Nikolay: Yeah. I also remember, like, imagine
+you have CTO or some leader who understands NULLs. Imagine all those poor application
+developers who write Java, JavaScript, doesn't matter, PHP
+code, Ruby code, and this CTO with this understanding of NULLs
+in SQL constantly putting pressure like you again you used it wrong
+in your code and I was this person and right now I'm like I
+think just NULLs is Franck: a good Nikolay: concept but the world
+says please no it just doesn't work well So that's why I say I
+don't like them. Franck: I will take another analogy. I think the best editor is VI. Because I also Nikolay: agree to Franck: learn it. Yeah, we had to learn it Nikolay: inside TMAX. Franck: It was hard to learn it,
+we had to learn it. But when you know it, you are very
+efficient with it. But I can understand that a junior
+today do not want to learn all those VI commands. Same for null. I mean, if you learn it and if
+you spend all your life doing SQL, then, yeah, it's good. But that's not the reality. Nikolay: Yeah, so back to Monga,
+and let's talk a little bit about the alternative and if we
+go out of SQL world, but stay inside databases, what's happening
+to nulls and empty values, unknown values and so on. Zeros, empty strings. Should it be considered all the
+same or no? Franck: In SQL, for me in SQL it's
+easy. A null is a value that exists,
+but you just don't know the value. Your top manager has a salary,
+but you don't know it. So if you have to put all salaries
+in a database, then you will have a null. And maybe you will put it 1 day,
+just because you don't know it yet at the time where you insert. The problem is that null is used
+for other things, for something that doesn't exist. You know, when in Excel we say
+NA, doesn't apply. And if you use this as doesn't
+apply in JVa script, you're just trying to store it and have the
+same logic when you query the database. So MongoDB does that. It's very similar to not exist. You have those documents where
+you can declare an attribute or not. And in most cases, if it's not
+there, it's similar to null. And if you want to say explicitly
+it exists but I don't know the value, then add something else,
+like a boolean that says, okay, we don't know it. Nikolay: Yeah. By the way, You mentioned you like
+it, it's a good concept, but I'm thinking, so many caveats,
+for example, if you take null value and do plus 1, it will be
+also null, like unknown, remains unknown, because we don't know
+what we're using. If you Franck: don't know a value, then
+you can add 1 and you still don't know the value. Nikolay: If you say at the same
+time if you use aggregate sum it's not like that it uses 0 instead
+of now right? Franck: Yeah because you sum the
+use it's defined as summing the known values. Nikolay: You cannot explain this,
+it's not logical. It's just as is, because sum is
+just plus 1 argument, plus different, just a sequence of plus operations,
+right? Franck: But... Depends on how you define the aggregation. If it's even the sum of the known
+value... Nikolay: If we have 3 rows, salary,
+like $1, $2, and NULL dollars, NULL, right? Yeah. If we just perform explicit summarization,
+the result will be NULL. But if we use sum, we should be
+the same result. It will be not the same. It will be 3. Franck: Depends on how you define
+it, but SQL defines that as the sum of the values that you
+know. Nikolay: I apologize. It gives Franck: you an idea, and it makes
+sense. I mean, if you have 1000000 rows
+and you ask for a sum, you probably don't run an unknown just because
+1 is not known. At least you know the sum of the
+existing ones. Nikolay: Let me apologize and explain
+what's happening here. I just flipped the board and made
+you defend the SQL world, which is interesting because it shows
+that you have courage to become specialist in both worlds. This is interesting. Franck: For me, I changed the company
+and I help different users, but I did not change what I think
+about databases. I mean, I've been working a lot
+with Oracle, I still think it's a very good database, but I can
+understand that people want to move out of it, and it's probably
+not because of the features. I like Postgres, but I also think
+that there is something else to do in the storage and to distribute
+it. I like YugabyteDB, but I also understand
+that some people may want to use something else. Same for MongoDB. I just want to help users when
+I can help them. And also something, especially
+on Twitter, but we see a lot of people comparing databases like
+MySQL is better than Postgres or Postgres is better than MySQL
+or whatever. And what I always say is that the
+best database is the 1 that you know. If you know how to administrate
+better SQL server on Windows, then that's probably the best database
+for you. It's not for me. And if you are more successful
+with the NULL behavior in document databases, then probably you should
+use document databases. So my goal is just to have people
+be successful and use the right database depending on what they
+know. The worst that you can do is work
+with MongoDB and do the same design as you did on the SQL database
+or the opposite. Putting everything in document
+in Postgres just because you have learned MongoDB first, that will
+probably not be good. You need to understand how it works,
+read an execution plan in both case, understand how the indexes
+are used. Michael: I kind of agree for products
+where you're the only user like if I'm choosing between iOS
+and Android or we were talking before the call about macOS or
+Windows if I'm the only person affected I understand choosing
+what I know best, but I feel like with databases we're often choosing
+for a team for an organization for a company And it's not just
+what I know best, even if I'm the tech lead or, you know, even
+if I am the decision maker, I need to factor in what do my
+team know best? What can we hire most easily? What's easiest to operate? Or how long will this project last? Is it a proof of concept project
+or is it our main system you know it's a bunch of other factors
+I think are really important and do you think you brought up
+use cases at the beginning I think that's like super important
+because we often do know the use cases we often do know the
+access patterns so picking the 1 that is best for that makes more
+sense to me than like which 1 I know best personally but I
+do take your point that if you if you take that as like an organization
+which 1 do you operationally know best as an organization like
+that it does still fit but I do think there's some subtle
+difference there what do you think Franck: I think that there are
+a lot of use cases that can be successful on many databases. Of course, there are some special
+cases that are really put at the maximum throughput needed,
+where you have really to define the right technology for it. But let's say you have time series. Time series coming from IoT and
+you have queries on them. Of course, you can use a time series
+database, but you can also do it on Postgres with a time series
+extension or not. And you can also do it on a document
+database. If you do it correctly, I think
+you have a lot of choices for many use cases. And finally, the enterprises that
+need a specific database because of the very high scale of it, they
+finally build their own database or they trick the 1 database to
+use it freely like their own database. But I think you really have the
+choice. Many use cases, you can do that
+on Postgres, you can do that on Yuga, but you can do that on
+Oracle, you can do that on MongoDB, you can do that on DynamoDB. But if you do it in a database
+where you don't know exactly how NULL works or how the isolation,
+the ACID properties, the locks are working, then you can also
+be successful on any database for many use cases, but you can
+also be very bad in any database if you don't care. So it's more about the people,
+I totally agree, not your personal choice, about the people. And I remember discussions when
+I was doing consulting, I remember discussing with a customer for
+something where it would have made sense to use stored procedure
+and they were growing all microservices, Java, all that. And they just told me, yeah, but
+if we do it in SQL, PL/SQL was on Oracle at that time, we are
+4 in the team who can do that and maintain that. And then if any problem is there,
+we are 4 to be on call. If we do it in Java, we have 200
+developers in India, we have 200 developers in US. If there is a problem during the
+night, they will manage it. So the good choice, Even if it's
+not the best for performance, for design, for whatever, the good
+choice is is also something where you can sleep and have a
+team that can manage it. Nikolay: Well, right now, AI can
+help you fix bugs, tests, and so on. Oh, yeah. It's easier, right? I have a couple of questions from
+friends, and I think you know them, but I'm not going to reveal
+names. First question, is MongoDB adding
+SQL to the product? I don't Franck: think this is in the roadmap
+at all. And I don't think people are asking
+for that. Let's look at another SQL database,
+DynamoDB. When DynamoDB added the SQL syntax
+on top of it using PartiQL, it was never used. And the main reason was that users
+were afraid of it because with the API that, with the document
+API, they know what happens. The big difference, I mentioned
+the API, but there is a big difference between NoSQL and SQL. In SQL, you have a declarative
+language where you don't know how the data is accessed until
+you read the execution plan. Which is good because you have
+an application that is independent of the physical data model, but
+it's also more difficult because the developer has no idea how it
+works in production before looking at the execution plan. And when looking at the execution
+plan, the developer may have to work a long time to understand
+why the bad execution plan is chosen. Is it because of statistics, not
+good index, whatever, it's kind of complex. With the NoSQL APIs, you code the
+data access. So it depends on the database. For example, in DynamoDB, if you
+want to use an index, you have to query the index. In MongoDB, you have this data
+independence where you query on the collection, and if the index
+can be used, it can be used. But you control the data that is
+accessed. For example, when you design your
+documents, You design something that is joined when you insert
+it, not at run time, where a query planner will decide if it starts
+with 1 table or another table. And it has some good and bad. I remember in consulting, spending
+a long time with developers, looking at the execution plan and
+they know their data and they know their access pattern and they
+immediately tell me, of course, that's not the right execution
+plan. We must start with this table and
+then look up into this 1. Okay, perfect. I can use an int pg_hint_plan, for
+example, in Postgres to validate that it's a better execution plan. And then the developer is happy. Yeah, perfect. I want that. And then they're like, okay, but
+it's not finished. Now, we need to figure out how
+to get the right execution plan without the hint. And with consulting, people were
+paying the day just to get the right execution plan that they
+know initially was the best 1. With an OSQL API, you are closer
+to what happens physically and then you have more control on that
+and some developers prefer that. Nikolay: Next question was, what
+do you think Postgres can or should learn from MongoDB? Maybe this, right? Is it possible to... Michael: I have 1 more. I think they do major upgrades
+really well. Franck: Oh, yes. Well... Michael: But we can learn that
+from a lot of databases. Nikolay: Yeah, previous question
+was because I had like maybe outdated knowledge that many NoSQL
+systems implemented some dialect of SQL, for example, Cassandra
+with CQL, right? Franck: Yeah, but they... Nikolay: Not used. Franck: It's only syntax, it's
+not SQL, it's not a declarative language, it's just syntax. I don't see the point. Nikolay: If you Franck: have an API that is integrated
+with your programming language, why do you want to write
+a string in Java that you send to the database if you don't
+have to? In SQL, You have to do that because
+you have this data independence and very different language. But I don't really see the point. But I forgot what you mentioned. Nikolay: Yeah, I said vice versa
+what Postgres could learn from. Michael answered upgrades. I concur with you, definitely. Franck: But that is related. In SQL databases, in relational
+databases, to have this data independence, logical and physical
+data independence, where you query, in SQL databases, you query
+a logical model. We were talking about normalization. This is the logical model. Maybe physically everything is
+stored in 1 table. You don't really care from the
+relational SQL point of view. But then to map the logical model
+to the physical model, you need a catalog, a dictionary. And this is what is difficult during
+upgrades, because you need to change the catalog and the catalog
+is shared. You can short the data, you can
+distribute the data, but the catalog must be shared because
+they must use the same dictionary. And that's easier with a NoSQL
+database because you have much less to share about the metadata,
+because the catalog is in the application. The schema, we were talking about
+schemaless or schema on read or on write. The big difference is that Most
+of the schema is in the application. And then if you upgrade the application,
+you have a new version of the application, it knows the
+new schema. And the 2 versions can work together
+if you take care that when you read a document, you know how
+to read it. Michael: Great answer. Nikolay: Yeah, last question. What do you think about systems
+which are built on top of Postgres, like FerretDB and DocumentDB recently
+released by Microsoft? Franck: That's a good point. So, beyond the funny thing that
+DocumentDB is an AWS database, but the name belongs to Microsoft
+because before putting a MongoDB like API on Cosmos DB, it was called
+DocumentDB. So, Microsoft did that multiple
+times, put it in Cosmos DB to see if it will be more popular. So first, it's a mess. Different API, similar, you don't
+know the name where it comes from, but I really like what the
+FerretDB people are doing. And for me, as a developer advocate,
+I really like that there is a MongoDB API on multiple databases. In Oracle, you can also have a
+MongoDB API. The more you make it popular, the
+more you help users to use another API without changing the
+database, that's perfect. From a marketing point of view,
+I don't think it's a big problem either, because it's not only about
+the API. What I think that the big customers
+of MongoDB like with MongoDB is that they have in front a company
+that is doing only 1 thing. The company is doing only MongoDB. It's not like Oracle that has a
+database, but also another database and cloud and manage service and
+software. MongoDB is doing only MongoDB. So if they use MongoDB on MongoDB, they have hundreds of people doing support on it. Nikolay: I cannot agree here because I remember MongoDB company, it's called Mongo or MongoDB, sorry... So I remember they also did some Postgres when they first released BI connector. Remember this story? They used Postgres. Franck: I have no idea. Nikolay: To be able to use Tableau and other systems for data analysis, BI and so on. They needed to make some bridge to SQL world and they used Postgres for that. It was very interesting. Franck: I have no idea. My point was more like, you can do some MongoDB on Percona, you can do some MongoDB on Oracle, you can do some MongoDB for FerretDB on Azure. And that can work. But if you are a big customer and want support, you probably want support from the original 1. Nikolay: I hear you speaking as a member of this team, new member of this team, but I also have like my must have a note that MongoDB is not pure open source. Franck: It is not pure open source, yeah. Nikolay: Well, FerretDB is Apache 2.0, which is pure open source. So this is 1 of... Franck: Yeah, yeah, yeah. Of course, I'm a big fan of open source. I would prefer that it is open source, but I can also understand. You know why they had to change the license? Because AWS was taking everything. And finally, today AWS is a major partner. So it was probably a good move. Probably today it could be open source. But yeah, I can understand given the history that they want to protect the managed service. Nikolay: Open source is eating commercial software, clouds are eating open source software. Yeah, you remember this sequence of fish picture, right? Yeah, okay, I think no more questions from me. It was very super interesting and yeah, enjoy. Thank you for coming. Franck: Thank you very much. I really like also what you do, how you can come with so many different topics on every week. I think you never missed a week for us. So yeah, that's really nice. Nikolay: Great. Michael: Really kind of you, Franck. Thank you for joining. Franck: Thank you. Nikolay: Have a great week.

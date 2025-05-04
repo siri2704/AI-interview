@@ -1,0 +1,253 @@
+• 
+• 
+• 
+
+SQLjoinsare the foundation ofdatabase management systems, enabling the combination of data from multiple tables based on relationships between columns. Joins allowefficient data retrieval, which is essential for generating meaningful observations and solvingcomplex business queries.
+
+Understanding SQL join types, such asINNER JOIN,LEFT JOIN,RIGHT JOIN,FULL JOIN, andNATURAL JOIN, is critical for working with relational databases.
+
+In this article, we will cover thedifferent types of SQL joins,includingINNER JOIN,LEFT OUTER JOIN,RIGHT JOIN,FULL JOIN, andNATURAL JOIN. Each join type will be explained with examples,syntax, and practical use cases to help us understand when and how to use these joins effectively.
+
+
+### What is SQL Join?
+SQL JOINclause is used toqueryandaccess datafrom multiple tables by establishinglogical relationshipsbetween them. It can access data from multiple tables simultaneously using common key values shared across different tables. We can useSQL JOINwithmultiple tables. It can also be paired with other clauses, the most popular use will be using JOIN withWHERE clauseto filter data retrieval.
+
+
+### Example of SQL JOINS
+Consider the two tables,StudentandStudentCourse, which share a common columnROLL_NO. Using SQL JOINS, we can combine data from these tables based on theirrelationship, allowing us to retrieve meaningful information like student details along with theirenrolled courses.
+
+
+### Student Table
+
+### StudentCourseTable
+
+
+Both these tables are connected by one common key (column) i.eROLL_NO. We can perform a JOIN operation using the given SQL query:
+
+Query:
+
+
+```python
+SELECT s.roll_no, s.name, s.address, s.phone, s.age, sc.course_idFROM Student sJOIN StudentCourse sc ON s.roll_no = sc.roll_no;
+```
+Output
+
+
+### Types of JOIN in SQL
+There are many types of Joins inSQL. Depending on the use case, we can use different type ofSQL JOINclause. Below, we explain the most commonly used join types with syntax and examples:
+
+• INNER JOIN
+• LEFT JOIN
+• RIGHT JOIN
+• FULL JOIN
+• Natural Join
+
+
+### 1. SQL INNER JOIN
+TheINNER JOINkeyword selects all rows from both the tables as long as the condition is satisfied. This keyword will create theresult-setby combining all rows from both the tables where thecondition satisfiesi.e value of the common field will be the same.
+
+Syntax
+
+
+```python
+SELECT table1.column1,table1.column2,table2.column1,....FROM table1INNER JOIN table2ON  table1.matching_column = table2.matching_column;
+```
+Key Terms
+
+• table1: First table.
+• table2: Second table
+• matching_column: Column common to both the tables.
+
+Note: We can also write JOIN instead of INNER JOIN.  JOIN is same as INNER JOIN.
+
+
+
+
+### INNER JOIN Example
+Let’s look at the example ofINNER JOINclause, and understand it’s working. This query will show the names and age of students enrolled in different courses.
+
+Query:
+
+
+```python
+SELECT StudentCourse.COURSE_ID, Student.NAME, Student.AGE FROM StudentINNER JOIN StudentCourseON Student.ROLL_NO = StudentCourse.ROLL_NO;
+```
+Output
+
+
+
+
+### 2. SQL LEFT JOIN
+LEFT JOINreturns all the rows of the table on the left side of the join and matches rows for the table on the right side of the join. For the rows for which there isno matching rowon the right side, the result-set will containnull. LEFT JOIN is also known asLEFT OUTER JOIN.
+
+Syntax
+
+
+```python
+SELECT table1.column1,table1.column2,table2.column1,....FROM table1LEFT JOIN table2ON table1.matching_column = table2.matching_column;
+```
+Key Terms
+
+• table1:First table.
+• table2: Second table
+• matching_column: Column common to both the tables.
+
+Note: We can also use LEFT OUTER JOIN instead of LEFT JOIN, both are the same.
+
+
+### LEFT JOIN Example
+In this example, theLEFT JOINretrieves all rows from theStudenttable and the matching rows from theStudentCoursetable based on theROLL_NOcolumn.
+
+Query:
+
+
+```python
+SELECT Student.NAME,StudentCourse.COURSE_IDFROM StudentLEFT JOIN StudentCourseON StudentCourse.ROLL_NO = Student.ROLL_NO;
+```
+Output
+
+
+
+
+### 3. SQL RIGHT JOIN
+RIGHT JOINreturns all the rows of the table on theright side of the joinand matching rows for the table on the left side of the join. It is very similar toLEFT JOIN for the rows for which there is no matching row on the left side, the result-set will containnull.RIGHT JOINis also known asRIGHT OUTER JOIN.
+
+Syntax
+
+
+```python
+SELECT table1.column1,table1.column2,table2.column1,....FROM table1RIGHT JOIN table2ON table1.matching_column = table2.matching_column;
+```
+Key Terms
+
+• table1: First table.
+• table2: Second table
+• matching_column: Column common to both the tables.
+
+Note: We can also useRIGHT OUTER JOINinstead of RIGHT JOIN, both are the same.
+
+
+
+
+### RIGHT JOIN Example
+In this example, theRIGHT JOINretrieves all rows from theStudentCoursetable and the matching rows from theStudenttable based on theROLL_NOcolumn.
+
+Query:
+
+
+```python
+SELECT Student.NAME,StudentCourse.COURSE_IDFROM StudentRIGHT JOIN StudentCourseON StudentCourse.ROLL_NO = Student.ROLL_NO;
+```
+Output
+
+
+
+
+### 4. SQL FULL JOIN
+FULL JOINcreates the result-set by combining results of bothLEFT JOINandRIGHT JOIN. The result-set will contain all the rows from both tables. For the rows for which there is no matching, the result-set will containNULLvalues.
+
+Syntax
+
+
+```python
+SELECT table1.column1,table1.column2,table2.column1,....FROM table1FULL JOIN table2ON table1.matching_column = table2.matching_column;
+```
+Key Terms
+
+• table1: First table.
+• table2: Second table
+• matching_column: Column common to both the tables.
+
+
+### FULL JOIN Example
+This example demonstrates the use of aFULL JOIN, which combines the results of bothLEFT JOINandRIGHT JOIN. The query retrieves all rows from theStudentandStudentCoursetables. If a record in one table does not have a matching record in the other table, the result set will include that record withNULLvaluesfor the missing fields
+
+Query:
+
+
+```python
+SELECT Student.NAME,StudentCourse.COURSE_IDFROM StudentFULL JOIN StudentCourseON StudentCourse.ROLL_NO = Student.ROLL_NO;
+```
+Output
+
+NAME
+
+COURSE_ID
+
+HARSH
+
+1
+
+PRATIK
+
+2
+
+RIYANKA
+
+2
+
+DEEP
+
+3
+
+SAPTARHI
+
+1
+
+DHANRAJ
+
+NULL
+
+ROHIT
+
+NULL
+
+NIRAJ
+
+NULL
+
+NULL
+
+4
+
+NULL
+
+5
+
+NULL
+
+4
+
+
+### 5. SQL Natural Join (?)
+Natural joincan join tables based on thecommon columnsin the tables being joined. A natural join returns all rows by matching values in common columns having same name anddata typeof columns and that column should be present in both tables.
+
+• Both table must have at least one common column with same column name and same data type.
+• The two table are joined usingCross join.
+• DBMS will look for a common column with same name and data type. Tuples having exactly same values in common columns are kept in result.
+
+
+### Natural join Example
+Look at the two tables below-EmployeeandDepartment
+
+Employee
+
+Department
+
+Problem: Find all Employees and their respective departments.
+
+Solution Query: (Employee) ? (Department)
+
+
+### Conclusion
+SQL joinsare essential tools for anyone working withrelational databases. Understanding the different types of joins inSQL, likeINNER JOIN,LEFT OUTER JOIN,RIGHT JOIN, andFULL JOIN, allows us to combine and query data effectively. With theexamplesandsyntaxcovered here, we should feel confident applying theseSQL join typesto our data to retrievemeaningful observationsand managecomplex querieswith ease. Use these SQL join techniques to streamline ourdata handlingand enhance ourSQL skills.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• Articles
+• Databases
+• DBMS
+• SQL
+• DBMS-Join
+• SQL-Clauses-Operators
+

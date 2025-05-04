@@ -1,0 +1,146 @@
+- In this video you are
+gonna learn the basics of SQL querying in just 15 minutes and by the time we are finished you'll be wondering what
+all the fuss was about. Are you ready? Then let's get started. (upbeat music) Hello and welcome to Vitamin BI, bringing new business intelligence
+for beginners and beyond. On this channel, I help
+you do more with data. So if you are new here,
+consider subscribing. Right, so as I said in my intro, I'm going to teach you the basics of SQL querying the essentials
+that you'll need to know if you are considering becoming a business intelligence analyst. Obviously we can only
+go so far in 15 minutes but I promise you that by
+the time we are finished you'll be able to understand quite a lot of what you might be called upon to do. We'll be focusing
+specifically on querying data, not creating or deleting
+databases, tables or data. Just selecting data from tables that we want to
+return for our specific needs. Before we get started, let
+me give you a little context. You might be wondering
+why you need to learn SQL. With BI Tools becoming
+more and more sophisticated can't they write the SQL queries for me? The answer to that is yes and no. Yes, when it comes to requesting data for
+different charts, graphs and tables that you might
+want to present in dashboards. In these cases the BI
+tool will have some kind of graphical interface to be able to drag and drop fields to return data. But no, in that in a lot of cases you'll need
+to write SQL queries to pre aggregate filter and
+select only the data necessary for the project that you are working on. These are often called views and you create views mainly
+because it's more efficient than connecting to all data
+when you only need some of it. So you could have a table
+that contains millions of rows of data, but by
+creating a view of it your BI tool will only need to work with a few thousand, making analysis and presenting
+results much faster. So you see, knowing how to query with SQL is a useful skill to have. Let's jump onto my
+computer and get started. So today we are working with a SQL light database
+that I found online containing data compiled from the FIFA video game by EA Sports. So soccer stats, I'll leave
+a link to the database in the description if you want
+to play around with it too. In terms of the tool I'm using to query the database,
+it's called Navicat. It's the premium version
+that allows you to connect to and query pretty much
+any relational database but they also have a version for specific RDBMS, like
+MySQL, SQL Server, et cetera. Link also in the description. Here we are in the Navicat interface. On the left we can see that I'm connected to the Soccer DB connection
+that I've created and in that connection is
+a database called main. And in that database
+we have various tables country, league, match player, et cetera. We're going to be working
+mainly with the player table. If I double click it we'll see the data
+contained within that table. We've got three different IDs, player name, birthday, height, and wait. What I want to do is write SQL queries and ask the database to return
+specific data from this table. So I'll open a new query window. Now when we are asking for data we are using what's
+called a select statement. So that's what we need to write first and if we want to return the whole table and the result we do so with a star. Then we specify the table that we want to select everything from. In this case the table called player. Select star from player. Then we run the query and the database returns
+all data from that table. You may notice that
+I've written everything in lowercase because the
+SQL isn't case sensitive. However, I have the option to what's called beautify
+the SQL, and when I do you'll notice that select and
+from have been capitalized. Although it's not obligatory this does actually make
+your queries easier to read. It's not so important with such
+a small query like this one but when you've got one
+with tens, if not hundreds of lines of code, it really
+does make life easier. So we've selected all fields or columns and all rows from the table but what if we only want
+to select specific fields? Simple. Instead of the star, we just write out the field names we
+want separated by commas, like this. Player underscore name comma birthday. I run this and those
+are the fields returned. When we select specific fields we can also rename them
+by creating aliases. To do this, we use the as
+function, so player name as name and we can see that update. We could specify an
+alias containing a space but to do this we would need to put the name in quotes like this, full name. Let's go back to all data and look now at how we
+can ask the database to only return specific rows in the result. To do this, we use a wear
+clause with different operators. For example, we could select only players with a weight of 190 pounds,
+so we use the equals operator. We could also select any
+player with a weight greater than 190 pounds or greater
+than or equal to 190. You see, it's not that
+complicated and we've gone from over 11,000 records to just
+under a thousand being returned. We can also specify
+more than one condition by using either and or or. So weight greater than 190
+and height greater than 190. So both conditions must be met. If I change it to or it means that either
+condition must be met in order for the row to be returned. So that's selecting rows based on the value in integer fields. What about when it comes to text values? Well, we can also use the equals operator to find any row where
+the text matches exactly with what we specify. Play a name equals in
+single quotes Aaron Galindo but we could also use the like operator which achieves the same goal. But what if we want to select just rows from all players called Aaron? So basically the player name
+field starts with Aaron. Here, we can use a percent
+character after the text to look for like so and we get
+all Aarons returned. If we wanted to find any player
+name that ends with Aaron we put the percent character before. Nothing that ends with Aaron. We could put a percent before and after which would basically mean any player name that contains Aaron and
+we've got Rolando Aarons. Finally, here's an example
+which puts the percent in the middle of text. So here we'll return all rows
+where the player name starts with A and ends with N. You can go even further
+with the like operator by using underscore to
+represent single characters. An example would be like
+T underscore M percent. So the underscore is asking for any rose where the
+player name starts with T, Tten any character between the T and the M followed by anything, and run. We've got Tamas, Tamir,
+Tim, Timmy, et cetera. There are also things called
+wild cards that allow you to go even further when specifying
+the rows you want to return but we won't go into those for this video. We will however, finish
+looking at the where clause by talking about a couple more
+operators that you can use. For text fields we have in which allows us to specify multiple or
+statements more simply. However, it can only be
+used for exact matches so we can't use percents
+or underscores with it. So let's look for Ronaldo and Messi. Open brackets, Christiano
+Ronaldo comma Lionel Messi. For integers we can use
+the between operator. So I could say where
+wait between 180 and 190. Finally we have the is null and is not null, null being empty. In this table we don't
+have any null values, but if I open up the match table we can see that there are lots in there. So select star from match where home player one is or is not null. There we go. Let's go back to our player table and see how we can sort results. We can do this using the order by clause. The rose are currently sorted by the ID field in ascending order, but if we wanted to sort
+by weight we can say order by weight. This sorts by weight in ascending order because that's the default sorting method when not explicitly specified, but we can change this to descending order by adding DESC. Now we can see who the heaviest player is. When it comes to sorting
+data using order by, this isn't something
+that's overly important for our use case because when we are selecting
+data to create views we are usually then going to
+connect that view to a BI tool and use that for building
+individual chart queries and these tools will let
+you apply sorts to the data. Now we are going to look at how to join data from different tables. To demonstrate this I'm going to use the
+player attributes table. We can see that in this
+table we have the player ID but not the player name. To be able to create a view
+containing the player name plus the overall rating we would need to join the data from the player attributes
+and player tables. I'm going to start by specifying player APIID
+comma date comma overall rating. Now I want to get the player
+name from the player table. How do I do that? Well, because we are going to need fields from two different tables, we need to specify which
+field comes from which table. We do this by writing the
+table name, dot field name. So player attributes, dot player APIID. Same for date and overall rating. Now we can specify perhaps after the player ID
+player dot player name. If I run this, I'll get
+an error saying that there's no such column
+as player dot player name because we are saying that we are looking for it in the player attributes table. This is when we need
+to specify the joining of the tables using one
+of the four join types. I'm not going to go
+into them in this video but I'll probably do a separate
+video that explains them in more detail, so don't
+forget to subscribe. So in this case we'll use an inner join and we'll say inner join
+player, the player table on and now we specify
+what fields we want to use to create the join. In this case, we are going
+to use the player APIID field which is contained in both tables. And again we have to
+add the table name first dot field name equals player
+dot player APIID and run. Now we have the player name appended to the player attributes table data. Pretty clever, right? But let me show you
+something even more clever. I showed you earlier how to use the as function to create aliases for fields. Well, we can actually do
+this for tables as well which makes the query much cleaner. First, I'm going to give the player attributes table an alias of A and the player table, an alias of B. I just need to write these two letters after where I've specified each table. So A after player attributes
+here and B after player here. Once I do this I can now replace the table
+name for each field like this. You see much cleaner. So you may notice that
+there are multiple rows for each player on different dates. So how would we add up all of these different
+values for each player? Well, to do this, we are going to want to aggregate the data using the sum aggregator. I'll add this to the overall rating field and run the query. Ah, that's not what we were expecting but that's because we haven't specified in the query how we want
+to group the data together. This is when we need to
+use the group by clause. When we use the group by clause, we need to add into it all of the fields that we need to group. So in this case,
+essentially all fields apart from the overall rating. A dot player PIID comma B
+player name comma A dot date and run. This is correct, but not
+exactly what we want. We want to combine all of the ratings for the different dates. So we actually want to
+remove the date field from the specified fields
+as well as the group by and run. That's better, but let's
+clean it up by aliasing the sum overall rating as rating. Let's sort this descending. Order by rating descending. Strange that Ronaldo and Messi
+aren't in there at the top. Let's try and see why this is. Perhaps there are just more entries for some players when we sum them up. To find this out, we could add a count of B dot player name, and yes in this case, how
+about using an average? I'll replace some with
+average, AVG and run. And there we go. That makes more sense. We're going to go one step
+further and filter this result. To do that, we can use the having clause. The having clause is only applied to the result of the group by function so isn't the same as the wear
+keyword that's applied before and it's only applied to numeric values. So in this case, I'm going to
+ask for only ratings above 85. I need to write it directly after the group by and
+before the order by. So having rating greater than 85 and run. Only 26 records. And there we have our final query. I'll beautify it and this
+is what it should look like. You can see that all of the
+SQL keywords are capitalized and you can see that we've
+come a fairly long way in a very short space of time. We've only covered a very
+small part of SQL as a whole so there's masses more to learn but what I've shown you today
+is a really good foundation for giving you the
+confidence to dive deeper. Did I not say that once we'd finished you'd wonder what all the fuss was about? If you got value outta this video, please do like, share and subscribe for more videos like this one. Why not start with this playlist here? As always, thanks for watching. I've been Adam Finer
+and until the next time, stay BI curious. (upbeat music)

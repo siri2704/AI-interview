@@ -1,0 +1,31 @@
+today we're going to learn quicksort like merge 
+sort quicksort is a recursive algorithm however   when you think of quicksort I want you to think 
+of the word pivot a pivot is simply one of the   items in the array that means the following three 
+conditions after we sorted it first the pivot is   in its correct position in the final sorted array 
+this means that all items to the left are smaller   and all items to the right are larger let's look 
+at an example we're asked to sort the following   array let's choose a pivot I'll explain the 
+best way to do this later but for now let's   just choose three first we move the pivot to 
+the end of the array to get it out of our way next we're going to look for two items 
+item from left which is the first item   starting from the left that is larger 
+than our pivot second item from right   which is the first item starting from 
+the right that is smaller than our pivot starting at two we can see 
+that six is item from left now starting at the right we 
+see that one is item from right let's swap item from left with item from right we repeat the process this time five is 
+item from left and zero is item from right again we swap the two one more time this time we see that item from   left has a greater index than item 
+from right so we know we're done we swap item from left with our pivot three our pivot is now in its correct 
+spot to prove it let's review our three   conditions as you can see all items to the 
+left are smaller and all items to the right   are larger we said quicksort is recursive 
+let's go through the process one more time   with the larger partition we just made we'll 
+choose 7 as our pivot and move it to the end I'll let you watch without voiceover you now we have three and seven 
+in their correct positions I   think you understand the concept so 
+we'll let recursion handle the rest one important question is how do we choose 
+the pivot this makes a large difference in   the performance of the algorithm as we want 
+to choose a pivot that divides the array in   half or as close as possible to even out the 
+work one popular method is called meeting of   three in this method we look at the first 
+middle and last elements of the array   we sort them properly and choose the 
+middle item as our pivot we're making   the guess that the middle of these three 
+items could be close to the median of the   entire array and as you can see it's not too 
+far off here's the pseudocode for quicksort quicksort has the worst case time 
+complexity a Big O of N squared   but if a pivot is chosen properly it can 
+be shown to have an average case of Big   O and log N thank you for watching please 
+like and subscribe if you enjoyed the video

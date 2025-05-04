@@ -1,0 +1,166 @@
+• 
+• 
+• 
+
+In SQL, theRIGHT JOIN(also called RIGHT OUTER JOIN) is an essential command used to combine data from two tables based on a related column. It returns all records from the right table, along with thematching recordsfrom the left table. If there is no matching record in the left table, SQL will returnNULL valuesfor the left table’s columns.
+
+In this article, we will dive deep into theRIGHT JOINoperation, explore its syntax, and walk through detailed examples to help you fully understand how to use it effectively.
+
+
+### SQL RIGHT JOIN Keyword
+TheRIGHT JOIN in SQLreturns a table that contains all the records from the right table and only matching records from the left table.
+
+In simpler terms, if a row is present in the right table but not in the left table, the result will include this row with NULL values for columns from the left table. Conversely, if a record from the left table is not in the right table, it will not be included in the result.
+
+TheVisual Representation of RIGHT JOINis shown below in theVenn Diagram.
+
+RIGHT JOIN
+
+Syntax:
+
+
+```python
+SELECTcolumn_name(s)FROMtableARIGHT JOINtableBONtableA.column_name = tableB.column_name;
+```
+
+### Examples of SQL RIGHT JOIN
+In this example, we will consider two tablesemployeetable containing details of the employees working in the particular department the anddepartmenttable containing the details of the department
+
+Employee Table:
+
+E1
+
+Varun Singhal
+
+D1
+
+E2
+
+Amrita Aggarwal
+
+D2
+
+E3
+
+Ravi Anand
+
+D3
+
+Department Table:
+
+D1
+
+IT
+
+Delhi
+
+D2
+
+HR
+
+Hyderabad
+
+D3
+
+Finance
+
+Pune
+
+D4
+
+Testing
+
+Noida
+
+D5
+
+Marketing
+
+Mathura
+
+
+### Example: Perform a RIGHT JOIN on Employee and Department Tables
+Now, we will perform SQL RIGHT JOIN on these two tables.
+
+Query:
+
+
+```python
+SELECTemp_no , emp_name ,d_name, locationFROMemployeeRIGHT  JOINdeptONemployee.dept_no = department.dept_no;
+```
+Output:
+
+emp_no
+
+emp_name
+
+d_name
+
+location
+
+E1
+
+Varun Singhal
+
+IT
+
+Delhi
+
+E2
+
+Amrita Aggarwal
+
+HR
+
+Hyderabad
+
+E3
+
+Ravi Anand
+
+Finance
+
+Pune
+
+[NULL]
+
+[NULL]
+
+Testing
+
+Noida
+
+[NULL]
+
+[NULL]
+
+Marketing
+
+Mathura
+
+Explanation:As right join gives the matching rows and the rows that are present in the right table but not in the left table. Here in this example, we see that the department that contains no employee contains[NULL] values of emp_noandemp_nameafter performing the right join.
+
+
+### Applications of SQL RIGHT JOIN
+• Merging Data: Allows to merge data from different tables in database.
+• Ensuring Completeness: ARIGHT JOINensures that all records from theright tableare included in the result, even if there are no corresponding matches in theleft table
+• Handling Missing Values: Allows to look for missing values in one of the table. For example, combining customer and orders table allows to look at customers and their orders.
+• Analyzing Relationships: Useful in finding patterns and relations between data.
+
+
+### Important Points About SQL RIGHT JOIN
+• Right JOIN allows to join two table, keeping all the data or right table and only matching data of left table.
+• Right JOIN is a type of outer join in SQL.
+• It allows us to deal with missing values in database and also helps in analyzing relationships between data.
+• Simplifies queries by eliminating the need for complex conditional logic using CASE statements.
+
+
+### Conclusion
+The SQL RIGHT JOIN is an important operation for combining data from two tables where you need to prioritize the right table’s records. It ensures that even if some records in the right table have no corresponding data in the left table, they will still appear in the result set with NULL values for the missing fields from the left table. By understanding the syntax, applications, and examples of RIGHT JOIN, you can write more efficient SQL queries and handle data more effectively, ensuring that you do not miss out on any relevant information, even if the data is incomplete.
+
+Ready to go from coding beginner to development pro? OurDSA to Development CodingGuide has everything you need to crush coding interviews and ace real-world projects! Limited spots available!
+
+• Databases
+• SQL
+• DBMS-SQL
+

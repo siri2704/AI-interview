@@ -1,0 +1,1242 @@
+[
+    {
+        "question": "What are data and databases?",
+        "answer": "Data refers to any piece of information, such as numbers, words, images, or sounds that a computer can store and process. A database is a structured collection of data that allows for efficient storage, retrieval, and manipulation of information.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What is a Database Management System (DBMS)?",
+        "answer": "A Database Management System (DBMS) is a software system that enables users to define, create, maintain, and manipulate databases. It acts as an interface between users/applications and the database.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What are the primary functions of a DBMS?",
+        "answer": "The main functions of a DBMS include data definition, data manipulation, data security, data integrity, concurrency control, and backup and recovery.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What are the types of databases?",
+        "answer": "Types of databases include: Relational, NoSQL, Cloud, In-Memory, Time-Series, NewSQL, Object-Oriented, Hierarchical, Network, Centralized, and Operational databases.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What are relational databases and which systems use SQL?",
+        "answer": "Relational databases organize data into tables with rows and columns and use SQL for querying. Examples include MySQL, PostgreSQL, Oracle, SQL Server, SQLite, MariaDB, and IBM Db2.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What are NoSQL databases and what are their types?",
+        "answer": "NoSQL databases handle unstructured or semi-structured data and offer flexible schema design and scalability. Types include document (MongoDB), key-value (Redis), column-family (Cassandra), and graph (Neo4j) databases.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What are cloud databases and what are some examples?",
+        "answer": "Cloud databases store and manage data in a cloud environment, offering scalability and availability. Examples include Amazon RDS, Google Cloud SQL, Azure SQL Database, and Cloud Firestore.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What is database connectivity and how is it achieved in applications?",
+        "answer": "Database connectivity allows applications to interact with databases using mechanisms like ORM, ODM, and ODBC. It’s essential for web, mobile, and backend applications to retrieve and send data.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What are some common databases used in web, mobile, and AI development?",
+        "answer": "Web: MySQL, PostgreSQL; Mobile: SQLite, Realm; AI: MongoDB, Redis, Google BigQuery. The database choice depends on performance, scalability, and the data structure required.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What are some common types of NoSQL databases?",
+        "answer": "NoSQL databases include several types based on their data model: Document databases like MongoDB and Couchbase; Key-value stores like Redis and Amazon DynamoDB; Column-family stores like Apache Cassandra and HBase; and Graph databases like Neo4j and Amazon Neptune.",
+        "source": "_utm_source_geeksforgeeks_utm_medium_gfgcontent_shm_utm_campaign_shm.txt"
+    },
+    {
+        "question": "What are anomalies in the relational model?",
+        "answer": "Anomalies in the relational model refer to inconsistencies or errors that occur during data insertion, deletion, or update in relational databases. These include insertion, deletion, and update anomalies.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "What causes anomalies in DBMS?",
+        "answer": "Anomalies in DBMS are caused by lack of normalization, data redundancy, poor schema design, and incorrect use of primary or foreign keys, leading to data integrity issues.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "What is an insertion anomaly?",
+        "answer": "An insertion anomaly occurs when new data cannot be added to a database due to missing related data. For example, inserting a student-course record when the student doesn’t exist in the student table.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "What is a deletion anomaly?",
+        "answer": "A deletion anomaly occurs when deleting data from one table unintentionally removes related useful data. For example, deleting a customer might also delete their order history.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "What is an update anomaly?",
+        "answer": "An update anomaly happens when inconsistent data results from updating one record but not all related records. For example, updating a student's name in one place but not another.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "How can insertion and deletion anomalies be prevented in foreign key relationships?",
+        "answer": "By using constraints such as ON DELETE/UPDATE SET NULL and ON DELETE/UPDATE CASCADE, databases can prevent integrity violations during insert, update, or delete operations.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "How are anomalies removed from databases?",
+        "answer": "Anomalies can be removed through normalization, which organizes data into properly related tables and enforces data consistency by eliminating redundancy.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "What is the First Normal Form (1NF)?",
+        "answer": "First Normal Form (1NF) ensures that each column contains atomic (indivisible) values and eliminates repeating groups, forming the foundation of database normalization.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "What is the Second Normal Form (2NF)?",
+        "answer": "Second Normal Form (2NF) eliminates partial dependencies by ensuring that all non-key attributes are fully functionally dependent on the entire primary key.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "What is the Third Normal Form (3NF)?",
+        "answer": "Third Normal Form (3NF) removes transitive dependencies, ensuring non-key attributes depend only on the primary key, not on other non-key attributes.",
+        "source": "anomalies-in-relational-model.txt"
+    },
+    {
+        "question": "What are Armstrong's Axioms in DBMS?",
+        "answer": "Armstrong's Axioms are a set of inference rules used to infer all the functional dependencies on a database schema. They include Reflexivity, Augmentation, and Transitivity.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What is the Axiom of Reflexivity?",
+        "answer": "Reflexivity states that if B is a subset of A, then A → B. This means an attribute set functionally determines its subset.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What is the Axiom of Augmentation?",
+        "answer": "Augmentation states that if A → B holds, then adding attributes to both sides maintains the dependency, i.e., AC → BC.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What is the Axiom of Transitivity?",
+        "answer": "Transitivity means if A → B and B → C hold, then A → C also holds.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What are the secondary rules derived from Armstrong's Axioms?",
+        "answer": "Secondary rules include Union, Composition, Decomposition, Pseudo Transitivity, Self Determination, and Extensivity.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What is the Union rule in functional dependencies?",
+        "answer": "Union rule states that if X → Y and X → Z, then X → YZ.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What is the Pseudo Transitivity rule?",
+        "answer": "Pseudo Transitivity allows deriving that if A → B and BC → D, then AC → D.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What is an Armstrong Relation?",
+        "answer": "An Armstrong Relation satisfies all functional dependencies in the closure F+ and represents the complete implication of functional dependencies.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "Why are Armstrong's Axioms considered sound and complete?",
+        "answer": "They are sound because all inferred dependencies are valid, and complete because all valid dependencies can be inferred using them.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What are the advantages of using Armstrong’s Axioms?",
+        "answer": "They help infer new dependencies, optimize design, identify redundancy, and verify minimal cover of functional dependencies.",
+        "source": "armstrongs-axioms-in-functional-dependency-in-dbms.txt"
+    },
+    {
+        "question": "What is the Selection operator (σ) in relational algebra?",
+        "answer": "The Selection operator is used to select tuples from a relation that satisfy a specific condition. Syntax: σ(condition)(Relation).",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What is the Projection operator (∏) in relational algebra?",
+        "answer": "The Projection operator is used to project specified columns from a relation. It removes duplicate rows in the result. Syntax: ∏(Column1, Column2)(Relation).",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What is the Cross Product (×) in relational algebra?",
+        "answer": "The Cross Product joins two relations by combining every row of the first relation with every row of the second. Resultant tuples = m × n.",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What is the Union (∪) operator in relational algebra?",
+        "answer": "Union merges tuples from two union-compatible relations. The result includes tuples that are in either or both relations, appearing only once.",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What is the Minus (-) or Set Difference in relational algebra?",
+        "answer": "The Minus operator returns tuples that are in the first relation but not in the second. Both relations must be union compatible.",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What is the Rename operator (ρ) in relational algebra?",
+        "answer": "The Rename operator gives a new name to a relation or expression result. Syntax: ρ(NewName, Expression).",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What are the extended relational algebra operators?",
+        "answer": "Extended operators include Intersection (∩), Division (÷), and Join types such as Natural Join, Theta Join, and Equi Join.",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "Why is the Projection operator needed after Selection in some cases?",
+        "answer": "Because selection only filters rows, to display specific columns, a projection must be used. Example: ∏(σ(condition)(Relation)).",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What is the condition for Union and Minus operations in relational algebra?",
+        "answer": "Both relations must be union compatible, meaning they must have the same number of attributes and corresponding attribute domains.",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What is the purpose of relational algebra in databases?",
+        "answer": "Relational algebra provides a procedural query language and a theoretical foundation for querying relational databases using set operations.",
+        "source": "basic-operators-in-relational-algebra-2.txt"
+    },
+    {
+        "question": "What is Boyce-Codd Normal Form (BCNF)?",
+        "answer": "Boyce-Codd Normal Form (BCNF) is a stricter version of Third Normal Form (3NF) that ensures every non-trivial functional dependency has a superkey as its determinant, reducing redundancy more effectively.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "Why do we need BCNF if we already have 3NF?",
+        "answer": "Although 3NF reduces redundancy, it may still allow anomalies if a non-superkey determines other attributes. BCNF solves this by ensuring all determinants are superkeys.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "What are the rules for a relation to be in BCNF?",
+        "answer": "1) The relation must be in 3NF. 2) For every non-trivial functional dependency X → Y, X must be a superkey.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "How do we check if a relation is in BCNF?",
+        "answer": "To check BCNF, identify all functional dependencies and ensure the determinant of each dependency is a superkey.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "What is an example of a relation not in BCNF?",
+        "answer": "In a relation with (student, teacher, subject), if teacher → subject but teacher is not a superkey, then it's not in BCNF despite being in 3NF.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "How do we convert a relation to BCNF?",
+        "answer": "To convert a relation to BCNF, decompose it into multiple relations where all functional dependencies have superkeys on the left-hand side.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "Can BCNF decomposition lead to loss of dependencies?",
+        "answer": "Yes, BCNF decomposition does not always preserve all functional dependencies, though it always ensures a lossless join.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "What is the difference between 3NF and BCNF?",
+        "answer": "3NF allows a functional dependency if the right-hand side is a prime attribute, even if the left-hand side is not a superkey. BCNF strictly requires the left-hand side to be a superkey.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "What is the highest normal form of a relation with functional dependencies BC → D, AC → BE, B → E?",
+        "answer": "The highest normal form of this relation is 2NF. It does not satisfy 3NF because not all dependencies meet the conditions of 3NF or BCNF.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "What are the limitations of BCNF?",
+        "answer": "BCNF may not always preserve all functional dependencies after decomposition, and redundancy might still exist in rare cases.",
+        "source": "boyce-codd-normal-form-bcnf.txt"
+      },
+      {
+        "question": "What is a canonical cover in DBMS?",
+        "answer": "A canonical cover is a simplified version of a set of functional dependencies that has the same closure as the original set, with no redundant or extraneous attributes.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "Why is canonical cover important in databases?",
+        "answer": "It reduces redundancy, simplifies dependency sets, improves query performance, and eases database maintenance while preserving the meaning of the original dependencies.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "What are the steps to find a canonical cover?",
+        "answer": "The steps are: 1) Combine dependencies with the same LHS, 2) Eliminate extraneous attributes, 3) Decompose RHS, 4) Remove redundant dependencies, 5) Verify closure equivalence.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "What is an extraneous attribute in a functional dependency?",
+        "answer": "An attribute is extraneous if removing it does not affect the closure of the dependency set. It can be on either the left-hand side or right-hand side.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "How do you eliminate extraneous attributes on the LHS?",
+        "answer": "Temporarily remove the attribute, compute the closure with the reduced set, and if the closure is unchanged, the attribute is extraneous and can be removed.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "How do you eliminate extraneous attributes on the RHS?",
+        "answer": "Remove one attribute at a time from the RHS and check if it can be derived from the remaining dependencies. If it can, the attribute is extraneous.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "What is the result of decomposing a functional dependency?",
+        "answer": "When the RHS contains multiple attributes (e.g., X → AB), it can be split into multiple dependencies: X → A and X → B.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "How do you check if one set of functional dependencies covers another?",
+        "answer": "Compare the closures of both sets. If each dependency in G can be derived from F and vice versa, F canonically covers G.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "Give an example of a canonical cover simplification.",
+        "answer": "From F = {A→BC, B→C, A→B, AB→C}, we can simplify to {A→B, B→C} after eliminating redundant and extraneous dependencies.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "What are key features of a canonical cover?",
+        "answer": "It is minimal, lossless, deterministic, reduces redundancy, improves performance, and makes maintenance easier.",
+        "source": "canonical-cover-of-functional-dependencies-in-dbms.txt"
+      },
+      {
+        "question": "How can you find repeated rows in a table using SQL?",
+        "answer": "You can use GROUP BY and HAVING to find repeated rows: SELECT name, section FROM tbl GROUP BY name, section HAVING COUNT(*) > 1.",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "How do you find the second highest salary in SQL?",
+        "answer": "Use a subquery to exclude the maximum salary: SELECT MAX(salary) FROM EMPLOYEES WHERE salary < (SELECT MAX(salary) FROM EMPLOYEES).",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "Write a trigger to update employee salaries when a department is updated.",
+        "answer": "Use an AFTER UPDATE trigger on the Dept table to loop through matching employees and increment their salary.",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "How do you find students with marks above average?",
+        "answer": "Use a subquery to compare each student's marks to the average: SELECT student, marks FROM table WHERE marks > (SELECT AVG(marks) FROM table).",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "How can you find the employee with the third-highest salary?",
+        "answer": "Use a correlated subquery to count how many distinct salaries are higher: SELECT Name FROM Employee WHERE 2 = (SELECT COUNT(DISTINCT Salary) FROM Employee WHERE Salary > Emp1.Salary).",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "Why can't we use WHERE with aggregate functions in SQL?",
+        "answer": "WHERE filters rows before aggregation, while HAVING filters after. Aggregate functions can't be used in WHERE but can in HAVING.",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "What is the difference between primary key and unique key?",
+        "answer": "Primary key is unique and non-null; only one per table. Unique keys allow one null and multiple unique keys can exist.",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "What is the difference between materialized view and dynamic view?",
+        "answer": "Materialized views are stored and periodically updated; dynamic views are virtual and query data in real-time each time accessed.",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "What is the difference between embedded and dynamic SQL?",
+        "answer": "Embedded SQL is hardcoded and static. Dynamic SQL is built and executed at runtime, allowing user-defined queries.",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "What is the difference between CHAR and VARCHAR?",
+        "answer": "CHAR has fixed length and uses static memory, whereas VARCHAR has variable length and uses dynamic memory. VARCHAR is more space-efficient.",
+        "source": "commonly-asked-dbms-interview-questions-set-2.txt"
+      },
+      {
+        "question": "What is dependency-preserving decomposition in DBMS?",
+        "answer": "Dependency-preserving decomposition is the process of splitting a relation into smaller relations such that all functional dependencies from the original relation are still enforceable without performing joins.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "Why is dependency-preserving decomposition important?",
+        "answer": "It ensures functional dependencies are preserved, reduces redundancy, prevents anomalies, and improves database efficiency while allowing the original data to be reconstructed losslessly.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What does it mean if F1 ∪ F2 = F in decomposition?",
+        "answer": "It means all functional dependencies from the original relation are preserved in the decomposed relations, making it a dependency-preserving decomposition.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What happens if F1 ∪ F2 ⊂ F during decomposition?",
+        "answer": "Some original dependencies are lost in the decomposed relations, meaning the decomposition is not dependency-preserving.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What is the difference between dependency-preserving and lossless decomposition?",
+        "answer": "Dependency-preserving ensures functional dependencies remain valid, while lossless decomposition ensures no information is lost when relations are joined back.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What are the key concepts of dependency-preserving decomposition?",
+        "answer": "Key concepts include functional dependency preservation, lossless join property, normalization, and minimal redundancy.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "How does dependency-preserving decomposition improve efficiency?",
+        "answer": "It reduces redundancy, improves query performance, simplifies updates, and maintains data integrity without needing complex joins.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What is the step-by-step process for dependency-preserving decomposition?",
+        "answer": "Steps include identifying FDs, checking closure, applying decomposition algorithms like 3NF or BCNF, and verifying whether the FDs can be derived from the decomposed relations.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "Can BCNF decomposition be dependency-preserving?",
+        "answer": "Not always. While BCNF ensures lossless join and eliminates anomalies, it may not preserve all functional dependencies.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What does the example with relation R(A, B, C, D) and F = {AB → C, C → D, D → A} demonstrate?",
+        "answer": "It demonstrates that the decomposition into R1(A, B, C) and R2(C, D) is not dependency-preserving because the dependency D → A is not retained.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What is dependency-preserving decomposition in DBMS?",
+        "answer": "Dependency-preserving decomposition is the process of splitting a relation into smaller relations such that all functional dependencies from the original relation are still enforceable without performing joins.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "Why is dependency-preserving decomposition important?",
+        "answer": "It ensures functional dependencies are preserved, reduces redundancy, prevents anomalies, and improves database efficiency while allowing the original data to be reconstructed losslessly.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What does it mean if F1 ∪ F2 = F in decomposition?",
+        "answer": "It means all functional dependencies from the original relation are preserved in the decomposed relations, making it a dependency-preserving decomposition.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What happens if F1 ∪ F2 ⊂ F during decomposition?",
+        "answer": "Some original dependencies are lost in the decomposed relations, meaning the decomposition is not dependency-preserving.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What is the difference between dependency-preserving and lossless decomposition?",
+        "answer": "Dependency-preserving ensures functional dependencies remain valid, while lossless decomposition ensures no information is lost when relations are joined back.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What are the key concepts of dependency-preserving decomposition?",
+        "answer": "Key concepts include functional dependency preservation, lossless join property, normalization, and minimal redundancy.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "How does dependency-preserving decomposition improve efficiency?",
+        "answer": "It reduces redundancy, improves query performance, simplifies updates, and maintains data integrity without needing complex joins.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What is the step-by-step process for dependency-preserving decomposition?",
+        "answer": "Steps include identifying FDs, checking closure, applying decomposition algorithms like 3NF or BCNF, and verifying whether the FDs can be derived from the decomposed relations.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "Can BCNF decomposition be dependency-preserving?",
+        "answer": "Not always. While BCNF ensures lossless join and eliminates anomalies, it may not preserve all functional dependencies.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What does the example with relation R(A, B, C, D) and F = {AB → C, C → D, D → A} demonstrate?",
+        "answer": "It demonstrates that the decomposition into R1(A, B, C) and R2(C, D) is not dependency-preserving because the dependency D → A is not retained.",
+        "source": "data-base-dependency-preserving-decomposition.txt"
+      },
+      {
+        "question": "What are the advantages of DBMS over traditional file-based systems?",
+        "answer": "DBMS addresses the shortcomings of traditional file systems by reducing data redundancy, easing data access, integrating data formats, ensuring data integrity, supporting atomic updates, allowing concurrent access by multiple users, and enhancing security.",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What are super, primary, candidate, and foreign keys?",
+        "answer": "A super key is a set of attributes that can uniquely identify a tuple. A candidate key is a minimal super key. A primary key is one chosen candidate key. A foreign key is an attribute in one table that refers to the primary key in another table.",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What is database normalization?",
+        "answer": "Normalization is the process of organizing data to reduce redundancy and improve data integrity. It involves decomposing tables based on functional dependencies and keys to minimize insertion, update, and deletion anomalies.",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What are the differences between DDL, DML, and DCL in SQL?",
+        "answer": "DDL (Data Definition Language) includes commands like CREATE, ALTER, DROP. DML (Data Manipulation Language) includes SELECT, INSERT, UPDATE, DELETE. DCL (Data Control Language) includes GRANT, REVOKE.",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What is a transaction? What are ACID properties?",
+        "answer": "A transaction is a group of operations treated as a single unit. ACID stands for Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent transaction independence), and Durability (permanent changes).",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What is a join in SQL?",
+        "answer": "A join combines rows from two or more tables based on a related column. Types include INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL JOIN.",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What is a view in SQL and how is it created?",
+        "answer": "A view is a virtual table based on a query. It is created using: CREATE VIEW view_name AS SELECT column_name(s) FROM table_name WHERE condition;",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What is the difference between primary key and unique constraints?",
+        "answer": "A primary key cannot be NULL and there is only one per table, whereas unique constraints can include NULLs and multiple unique keys are allowed in a table.",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What is a functional dependency in DBMS?",
+        "answer": "It is a constraint between two sets of attributes from a relation. For example, Y -> Z indicates that Z is functionally dependent on Y.",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What are indexes and their types?",
+        "answer": "Indexes are data structures that improve query performance. Clustered indexes store data physically in order, while non-clustered indexes maintain a logical order using structures like B-Trees.",
+        "source": "commonly-asked-dbms-interview-questions.txt"
+      },
+      {
+        "question": "What is denormalization in databases?",
+        "answer": "Denormalization is a database optimization technique where redundant data is added to tables to reduce the need for complex joins and improve query performance.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "How does denormalization differ from normalization?",
+        "answer": "Normalization removes redundancy to ensure data integrity and storage efficiency, while denormalization adds redundancy to reduce joins and improve query performance.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "Why is denormalization used in database design?",
+        "answer": "Denormalization is used to improve query performance, reduce the number of joins, simplify schema management, and enhance scalability in read-heavy systems.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "What are the advantages of denormalization?",
+        "answer": "Advantages include improved query performance, reduced schema complexity, easier updates, better scalability, and enhanced read efficiency.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "What are the disadvantages of denormalization?",
+        "answer": "Disadvantages include reduced data integrity, increased storage needs, maintenance complexity, higher update cost, and lower flexibility.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "How does denormalization affect query performance?",
+        "answer": "Denormalization reduces the need for joins, which speeds up data retrieval and improves performance for read-heavy queries.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "When should denormalization be applied?",
+        "answer": "It should be applied after normalization when performance optimization is required, especially in systems with frequent and complex read operations.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "How does denormalization impact data redundancy?",
+        "answer": "Denormalization increases data redundancy by storing duplicate data in multiple places to enhance performance, which may lead to inconsistencies.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "What are some real-world examples of denormalization?",
+        "answer": "A Courses table storing teacher names instead of just IDs is an example. This avoids joining with the Teachers table when listing courses with names.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "Does denormalization improve scalability?",
+        "answer": "Yes, by simplifying queries and reducing the number of joins, denormalization can improve scalability, especially for large-scale or high-read systems.",
+        "source": "denormalization-in-databases.txt"
+      },
+      {
+        "question": "What is an Entity in DBMS?",
+        "answer": "An entity is anything that has a distinct and independent existence. It can be tangible (e.g., person, car) or intangible (e.g., bank account) and is identified by attributes such as roll number or registration number.",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "What are the two types of Entities?",
+        "answer": "Entities can be Tangible (physically existing like a person or car) or Intangible (logically existing like a bank account).",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "What is an Entity Type in DBMS?",
+        "answer": "An entity type is a classification or schema that defines a group of similar entities with shared attributes, like a Student entity type with attributes studentID, name, and age.",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "What is an Entity Set in DBMS?",
+        "answer": "An entity set is a collection of all entities of a particular entity type at a specific moment, such as all students in the 'Student' table.",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "How are Entity, Entity Type, and Entity Set related?",
+        "answer": "An entity is a specific instance (e.g., student with ID 1), entity type defines its structure (e.g., the 'Student' table schema), and an entity set is the group of all such entities (e.g., all student records).",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "Can entity sets be overlapping in DBMS?",
+        "answer": "Yes, entity sets need not be disjoint. For example, a person can be part of both 'Article Writers' and 'Article Readers'.",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "What is the role of attributes in identifying an Entity?",
+        "answer": "Attributes define the characteristics of an entity and are used to uniquely identify it, such as using a roll number for a student.",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "How does the ER Model help in database design?",
+        "answer": "The ER Model visually represents data and relationships, helping to define structure, access, and management strategies, making database design more intuitive.",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "What is the importance of understanding Entity Type during database design?",
+        "answer": "Understanding entity types allows grouping similar entities together and defining the schema for their attributes, which is crucial for relational table creation.",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "How does an Entity Set change over time?",
+        "answer": "Entity sets are dynamic and can grow or shrink as entities are added or removed from the database.",
+        "source": "difference-between-entity-entity-set-and-entity-type.txt"
+      },
+      {
+        "question": "What does it mean for two sets of functional dependencies FD1 and FD2 to be equivalent?",
+        "answer": "FD1 and FD2 are equivalent if every functional dependency in FD1 can be derived from FD2 and vice versa. That is, FD1 ⊇ FD2 and FD2 ⊇ FD1, meaning FD1 = FD2.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "Why is comparing two functional dependency sets important in database design?",
+        "answer": "It helps to validate different design versions (e.g., from different engineers), ensures semantic consistency, avoids redundancy, and leads to optimal and consistent database design.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "What are the advantages of checking for equivalence between functional dependency sets?",
+        "answer": "Advantages include elimination of redundant dependencies, optimization of schema design, and assurance of data consistency by identifying all valid attribute combinations.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "What are the disadvantages of checking equivalence between FD sets?",
+        "answer": "It can be computationally expensive, may require evaluating multiple candidate sets, and might not fully capture the semantic meaning or real-world relationships of the data.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "How do you test whether FD1 is a subset of FD2?",
+        "answer": "Compute the closure of FD2 and check if all FDs in FD1 can be derived from it. If they can, then FD2 ⊇ FD1.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "How do you determine that two FD sets are not equivalent?",
+        "answer": "If even one dependency in one set cannot be derived from the other set’s closure, then the sets are not semantically equivalent.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "In the example with FD1 = {A->B, B->C, AB->D} and FD2 = {A->B, B->C, A->C, A->D}, are the FD sets equivalent?",
+        "answer": "Yes, both FD1 ⊇ FD2 and FD2 ⊇ FD1 are true, so FD1 and FD2 are semantically equivalent.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "In the example with FD1 = {A->B, B->C, A->C} and FD2 = {A->B, B->C, A->D}, are the FD sets equivalent?",
+        "answer": "No, A->D cannot be derived from FD1, so FD1 and FD2 are not semantically equivalent.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "What is attribute closure in the context of FD equivalence?",
+        "answer": "Attribute closure of a set of attributes is the set of attributes that can be functionally determined using a given set of FDs. It is used to check if one FD set can derive another.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "How can we formally define functional dependency equivalence?",
+        "answer": "Two sets of functional dependencies F and G are equivalent if the closure of F is equal to the closure of G, i.e., F⁺ = G⁺.",
+        "source": "equivalence-of-functional-dependency-sets.txt"
+      },
+      {
+        "question": "What is a strong entity?",
+        "answer": "A strong entity is not dependent on any other entity in the schema. It has a primary key and is represented by a single rectangle in an ER diagram.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "What is a weak entity?",
+        "answer": "A weak entity is dependent on a strong entity for its existence. It does not have a primary key but instead has a partial discriminator key. It is represented by a double rectangle in an ER diagram.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "What symbol represents a strong entity in an ER diagram?",
+        "answer": "A strong entity is represented by a single rectangle in an ER diagram.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "How is the relationship between two strong entities represented in an ER diagram?",
+        "answer": "The relationship between two strong entities is represented by a single diamond in an ER diagram.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "What symbol represents a weak entity in an ER diagram?",
+        "answer": "A weak entity is represented by a double rectangle in an ER diagram.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "What symbol represents the relationship between a strong and a weak entity in an ER diagram?",
+        "answer": "The relationship between a strong and a weak entity is represented by a double diamond in an ER diagram.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "What is an identifying relationship in the context of ER diagrams?",
+        "answer": "An identifying relationship is the relationship between a strong entity and a weak entity, where the weak entity's identification depends on the strong entity.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "Can a weak entity exist independently in a database schema?",
+        "answer": "No, a weak entity cannot exist independently; it depends on a strong entity for its existence.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "What key does a weak entity use for identification?",
+        "answer": "A weak entity uses a partial discriminator key instead of a primary key for identification.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "Why is it important to understand the difference between strong and weak entities while designing a database?",
+        "answer": "Understanding the difference helps in placing entities in the correct category and defining them properly to create an efficient database structure that fits real-world scenarios.",
+        "source": "difference-between-strong-and-weak-entity.txt"
+      },
+      {
+        "question": "What are extended operators in relational algebra?",
+        "answer": "Extended operators are derived relational algebra operations that go beyond the basic set, including Join, Intersection (∩), and Division (÷). They are constructed using fundamental operations to perform more complex queries.",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "What is an Inner Join in relational algebra?",
+        "answer": "Inner Join returns only the rows with matching values in both tables. It includes Conditional Join (Theta Join), Equi Join (based on equality), and Natural Join (automatically joins on matching columns, removing duplicates).",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "What is a Conditional Join (Theta Join)?",
+        "answer": "A Conditional Join joins two relations based on a specified condition using comparison operators like =, <, >, etc. Example: R ⋈R.B=S.B ∧ R.A>1 S.",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "What is a Natural Join?",
+        "answer": "A Natural Join automatically joins tables on all columns with the same name and type, eliminating duplicate columns. It behaves like an inner join.",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "What are Outer Joins and their types?",
+        "answer": "Outer Joins return all rows from one or both tables, filling in NULLs where there are no matches. Types include Left Outer Join (⟕), Right Outer Join (⟖), and Full Outer Join (⟗).",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "What is the Left Outer Join?",
+        "answer": "Left Outer Join returns all rows from the left table and matched rows from the right table. If no match is found, NULLs are used for right table columns.",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "What is the Intersection operator in relational algebra?",
+        "answer": "The Intersection (∩) operator returns the common rows from two union-compatible relations, i.e., tables with the same schema (same number and type of columns).",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "What is the Division operator in relational algebra?",
+        "answer": "Division (÷) finds values in one relation that are associated with all values in another. It returns tuples from one table that are linked to every tuple in another table.",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "When can the Division operator be applied?",
+        "answer": "Division is applicable when the attributes of one relation (divisor) are a proper subset of another, and we need to retrieve records associated with all values in the divisor.",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "Why are extended operators important in relational algebra?",
+        "answer": "They allow more expressive and powerful queries by simplifying complex operations like matching across multiple conditions, finding common records, or filtering based on all matches in another set.",
+        "source": "extended-operators-in-relational-algebra.txt"
+      },
+      {
+        "question": "What is normalization in DBMS?",
+        "answer": "Normalization is the process of organizing data in a database to minimize redundancy and dependency, by dividing large tables into smaller, related ones and defining relationships between them.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "What is First Normal Form (1NF)?",
+        "answer": "A relation is in First Normal Form (1NF) if all its attributes have atomic (single) values, and there are no repeating groups or multi-valued attributes.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "What are the rules for a table to be in 1NF?",
+        "answer": "1) Only single-valued attributes. 2) Values in each column should be of the same type. 3) Each column must have a unique name. 4) The order of data does not matter.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "Why is 1NF important in relational databases?",
+        "answer": "1NF helps ensure that data is atomic, reduces redundancy, supports data integrity, and provides a foundation for higher normal forms.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "Give an example of a table not in 1NF.",
+        "answer": "A table with columns like [Writer 1], [Writer 2], and [Writer 3] for the same book ID is not in 1NF because it contains multi-valued attributes.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "How do you convert a table to 1NF?",
+        "answer": "To convert a table to 1NF, eliminate multi-valued attributes by creating separate rows for each value while keeping the remaining data constant.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "Can the order of rows or columns affect 1NF?",
+        "answer": "No, in 1NF the order of rows or columns in a table does not affect its compliance with the normal form.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "What happens if a column has different data types in different rows?",
+        "answer": "The table violates 1NF, as one of its rules is that all values in a column must be of the same type.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "Can a table be in 1NF if it has composite attributes?",
+        "answer": "No, a table with composite or multi-valued attributes is not in 1NF. All attributes must be atomic.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "What is the significance of 1NF in the context of higher normal forms?",
+        "answer": "1NF is the foundational step in normalization. A relation must first satisfy 1NF before it can be evaluated for 2NF, 3NF, BCNF, and so on.",
+        "source": "normalization-first-normal-form.txt"
+      },
+      {
+        "question": "What is a functional dependency in DBMS?",
+        "answer": "A functional dependency A -> B holds in a relation if two tuples with the same value of attribute A also have the same value of attribute B.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "How do you identify functional dependencies in a relation?",
+        "answer": "By analyzing unique identifiers like primary keys and determining how one attribute value consistently maps to another, such as STUD_NO -> STUD_NAME.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "What is an attribute closure?",
+        "answer": "Attribute closure of a set of attributes is the set of all attributes that can be functionally determined from it using a given set of functional dependencies.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "How can attribute closure help find candidate keys?",
+        "answer": "If the closure of an attribute set includes all attributes in the relation, it is a super key. If no subset of it is a super key, then it is a candidate key.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "What are prime and non-prime attributes?",
+        "answer": "Attributes that are part of any candidate key are called prime attributes; all others are non-prime attributes.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "How do you verify if a functional dependency A -> B holds using a given FD set?",
+        "answer": "Compute the closure of A using the FD set. If B is included in the closure, then A -> B holds.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "What is a functional dependency set (FD set)?",
+        "answer": "It is the complete set of all functional dependencies that exist in a relation, e.g., {STUD_NO -> STUD_NAME, STUD_STATE -> STUD_COUNTRY}.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "What is the significance of functional dependencies in database design?",
+        "answer": "They ensure data consistency, help identify candidate keys, and support normalization by revealing attribute relationships.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "What is the computational challenge with attribute closure in large databases?",
+        "answer": "Computing closures becomes expensive and complex as the number of attributes and functional dependencies increases.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "How do functional dependencies relate to query performance?",
+        "answer": "By understanding attribute relationships through dependencies and closures, databases can be designed and queried more efficiently.",
+        "source": "functional-dependency-and-attribute-closure.txt"
+      },
+      {
+        "question": "What is generalization in the ER model?",
+        "answer": "Generalization is a bottom-up approach where common properties from two or more entities are combined into a higher-level generalized entity. For example, STUDENT and FACULTY can be generalized to PERSON.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "What is specialization in the ER model?",
+        "answer": "Specialization is a top-down approach where a higher-level entity is divided into two or more sub-entities based on distinguishing characteristics. For example, EMPLOYEE can be specialized into DEVELOPER and TESTER.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "What is aggregation in ER modeling?",
+        "answer": "Aggregation is an abstraction that allows relationships to be treated as higher-level entities, especially when a relationship needs to be involved in another relationship. For example, WORKS_FOR can be aggregated and related to MACHINERY through REQUIRE.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "What is attribute inheritance in ER modeling?",
+        "answer": "Attribute inheritance allows lower-level entities (subclasses) to inherit attributes from higher-level entities (superclasses). For example, a Car entity can inherit the 'Model' attribute from a Vehicle entity.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "What is participation inheritance in ER modeling?",
+        "answer": "Participation inheritance refers to the inheritance of participation constraints from a higher-level entity to a lower-level one, ensuring that subclasses follow the same participation rules in relationships.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "How does generalization differ from specialization in ER modeling?",
+        "answer": "Generalization merges similar entities into one generalized entity (bottom-up), whereas specialization breaks a general entity into more specific entities (top-down).",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "Why is aggregation used in ER diagrams?",
+        "answer": "Aggregation is used to represent a relationship between an entity and another relationship, which cannot be directly represented in standard ER diagrams.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "How do you represent aggregation via schema?",
+        "answer": "To represent aggregation in schema: include the primary key of the aggregated relationship, the primary key of the associated entity, and any descriptive attributes.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "What are common use cases for generalization in databases?",
+        "answer": "Generalization is used when multiple entity types share common attributes and behaviors, allowing for a more abstract and unified representation in the database.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "What is the purpose of using generalization, specialization, and aggregation in the ER model?",
+        "answer": "These concepts help reduce complexity, support abstraction, and improve clarity in designing large and intricate database models.",
+        "source": "generalization-specialization-aggregation.txt"
+      },
+      {
+        "question": "What is the purpose of the GROUP BY clause in SQL?",
+        "answer": "The GROUP BY clause in SQL is used to arrange identical data into groups based on one or more columns, allowing for aggregation of data within those groups.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "What are aggregate functions in SQL?",
+        "answer": "Aggregate functions in SQL perform calculations on multiple rows of data and return a single result. Common aggregate functions include COUNT(), SUM(), AVG(), MIN(), and MAX().",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "What does the COUNT() function do in SQL?",
+        "answer": "The COUNT() function in SQL is used to count the number of rows in a group or a specific column that meets a condition.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "How do you calculate total revenue from sales in different places using SQL?",
+        "answer": "To calculate total revenue from sales in different places, you use the SUM() function along with the GROUP BY clause, grouping by the location and summing the price.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "What is the syntax for using the GROUP BY clause in SQL?",
+        "answer": "The syntax for using the GROUP BY clause is: SELECT column1, column2, ..., AGGREGATE_FUNCTION(column3) FROM table_name WHERE condition GROUP BY column1, column2, ... HAVING condition ORDER BY column1.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "How can multiple aggregate functions be used in a single SQL query?",
+        "answer": "Multiple aggregate functions can be used in a single SQL query by applying different functions, such as AVG(), MAX(), and MIN(), on different columns or the same column within a GROUP BY clause.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "What does the SUM() function do in SQL?",
+        "answer": "The SUM() function in SQL is used to calculate the total sum of a numeric column for all rows in a group.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "What does the AVG() function do in SQL?",
+        "answer": "The AVG() function in SQL is used to calculate the average value of a numeric column for all rows in a group.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "What is the purpose of the HAVING clause in SQL?",
+        "answer": "The HAVING clause in SQL is used to filter groups after the GROUP BY operation, similar to how the WHERE clause filters rows before the GROUP BY operation.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "Can the GROUP BY clause be used without aggregate functions in SQL?",
+        "answer": "Yes, the GROUP BY clause can be used without aggregate functions to group data based on specified columns, but it is typically used alongside aggregate functions for summarization.",
+        "source": "how-to-group-and-aggregate-data-using-sql.txt"
+      },
+      {
+        "question": "What is the main difference between Fourth Normal Form (4NF) and Fifth Normal Form (5NF)?",
+        "answer": "4NF deals with multivalued dependencies, while 5NF addresses join dependencies.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "When does a multivalued dependency occur in a database table?",
+        "answer": "A multivalued dependency occurs when two or more independent attributes in a table depend on a third attribute, requiring at least three attributes in total.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "What are the requirements for a relation to be in Fourth Normal Form (4NF)?",
+        "answer": "A relation must be in BCNF and must not contain any multivalued dependencies to be in 4NF.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "Why do multivalued dependencies violate 4NF?",
+        "answer": "Because they create unnecessary redundancy and can lead to inconsistent data, violating the normalization standard of 4NF.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "What is a join dependency in the context of database normalization?",
+        "answer": "A join dependency exists when a relation can be decomposed into two or more relations and the natural join of those relations returns the original relation without loss.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "What are the conditions for a relation to be in Fifth Normal Form (5NF)?",
+        "answer": "A relation must be in 4NF and must not have any non-trivial join dependencies that are not implied by the candidate keys.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "How is a functional dependency related to a multivalued dependency?",
+        "answer": "A functional dependency is a special case of a multivalued dependency where each value of the determinant determines exactly one value of the dependent attribute.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "What is an example of a multivalued dependency?",
+        "answer": "Person ->-> mobile and Person ->-> food_likes indicates a person has multiple mobiles and multiple food preferences independently.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "Why might normalization to 4NF and 5NF not be suitable for every application?",
+        "answer": "Because it may result in more complex database structures and slower queries, even though it improves data accuracy and reduces redundancy.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "What is the Sixth Normal Form (6NF)?",
+        "answer": "6NF is used when temporal data varies significantly to avoid unwanted duplication, often applied in temporal databases.",
+        "source": "introduction-of-4th-and-5th-normal-form-in-dbms.txt"
+      },
+      {
+        "question": "What is database normalization and why is it important?",
+        "answer": "Database normalization is the process of organizing a database to reduce data redundancy and improve data integrity, efficiency, and maintainability.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What are the common anomalies that normalization helps to eliminate?",
+        "answer": "Normalization helps eliminate insertion anomalies, deletion anomalies, and update anomalies.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is a functional dependency in the context of database normalization?",
+        "answer": "A functional dependency means that the value of one attribute determines the value of another attribute in the same table.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is the purpose of keys in a database table?",
+        "answer": "Keys uniquely identify each record in a table and prevent data duplication.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What are the conditions for a relation to be in First Normal Form (1NF)?",
+        "answer": "A relation is in 1NF if every attribute contains only atomic (single) values.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is the requirement for a relation to be in Second Normal Form (2NF)?",
+        "answer": "A relation is in 2NF if it is in 1NF and every non-primary-key attribute is fully functionally dependent on the primary key.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "How does Third Normal Form (3NF) improve upon Second Normal Form?",
+        "answer": "3NF eliminates transitive dependencies by ensuring that non-prime attributes are only dependent on super keys.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is the key difference between BCNF and 3NF?",
+        "answer": "BCNF is a stricter version of 3NF where every determinant must be a super key.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What are the main advantages of database normalization?",
+        "answer": "Normalization reduces redundancy, improves data integrity, simplifies updates, and supports flexible queries.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What are the potential disadvantages of normalization?",
+        "answer": "Normalization may introduce performance overhead, increase query complexity due to joins, and require expert design knowledge.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is the primary purpose of a DBMS?",
+        "answer": "The primary purpose of a DBMS is to efficiently manage large volumes of data by providing tools for data storage, retrieval, security, integrity, and concurrent access.",
+        "source": "introduction-of-dbms-database-management-system-set-1.txt"
+      },
+      {
+        "question": "Give examples of RDBMS software.",
+        "answer": "Examples of RDBMS software include MySQL, Oracle, Microsoft SQL Server, and PostgreSQL.",
+        "source": "introduction-of-dbms-database-management-system-set-1.txt"
+      },
+      {
+        "question": "What is NoSQL and when is it used?",
+        "answer": "NoSQL refers to non-relational database systems designed for large-scale data storage, unstructured or semi-structured data, and scenarios requiring high performance and flexibility.",
+        "source": "introduction-of-dbms-database-management-system-set-1.txt"
+      },
+      {
+        "question": "What is an Object-Oriented DBMS?",
+        "answer": "An Object-Oriented DBMS (OODBMS) stores data in the form of objects, integrating with object-oriented programming concepts and supporting complex data types and relationships.",
+        "source": "introduction-of-dbms-database-management-system-set-1.txt"
+      },
+      {
+        "question": "What is DCL and its purpose in DBMS?",
+        "answer": "DCL (Data Control Language) is used to manage permissions and access to data in a database. Common DCL commands include GRANT and REVOKE.",
+        "source": "introduction-of-dbms-database-management-system-set-1.txt"
+      },
+      {
+        "question": "Explain the role of TCL in DBMS.",
+        "answer": "TCL (Transaction Control Language) ensures consistency and reliability of data by managing transactions. Key commands include COMMIT, ROLLBACK, and SAVEPOINT.",
+        "source": "introduction-of-dbms-database-management-system-set-1.txt"
+      },
+      {
+        "question": "What is the First Normal Form (1NF)?",
+        "answer": "1NF eliminates repeating groups and ensures that each column contains atomic (indivisible) values.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is the Second Normal Form (2NF)?",
+        "answer": "2NF builds on 1NF by eliminating partial dependencies; non-key attributes must be fully dependent on the entire primary key.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is the Third Normal Form (3NF)?",
+        "answer": "3NF removes transitive dependencies, ensuring that non-key attributes are only dependent on the primary key.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is Boyce-Codd Normal Form (BCNF)?",
+        "answer": "BCNF is a stricter version of 3NF where every determinant must be a candidate key.",
+        "source": "introduction-of-database-normalization.txt"
+      },
+      {
+        "question": "What is the purpose of using ER Diagrams in DBMS?",
+        "answer": "ER diagrams represent the E-R model in a database, making them easy to convert into relations (tables), serve the purpose of real-world modeling of objects, and provide a standard solution for visualizing data logically.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What does a rectangle represent in an ER diagram?",
+        "answer": "In an ER diagram, a rectangle represents an entity.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What is a weak entity?",
+        "answer": "A weak entity is an entity that cannot be uniquely identified by its own attributes alone and depends on another strong entity. It is represented by a double rectangle.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What is the role of key attributes in an ER model?",
+        "answer": "Key attributes uniquely identify each entity in the entity set. For example, Roll_No is a key attribute for the Student entity.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What does the diamond shape represent in an ER diagram?",
+        "answer": "In an ER diagram, the diamond shape represents a relationship between entities.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What is the cardinality in the context of an ER diagram?",
+        "answer": "Cardinality refers to the maximum number of times an entity in one entity set can participate in a relationship set. It includes one-to-one, one-to-many, many-to-one, and many-to-many relationships.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What is the difference between total and partial participation in ER diagrams?",
+        "answer": "Total participation means every entity in an entity set must participate in a relationship, represented by a double line. Partial participation means some entities may or may not participate, represented by a single line.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What is the purpose of a derived attribute in an ER model?",
+        "answer": "A derived attribute is an attribute that can be derived from other attributes of the entity type. For example, Age can be derived from Date of Birth (DOB). It is represented by a dashed oval in ER diagrams.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What is the difference between a strong entity and a weak entity?",
+        "answer": "A strong entity has a key attribute that uniquely identifies it, while a weak entity does not have a key attribute and depends on a strong entity for identification. A weak entity is represented by a double rectangle.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "How do you represent a composite attribute in an ER diagram?",
+        "answer": "A composite attribute is represented by an oval that contains multiple ovals, each representing a component of the composite attribute.",
+        "source": "introduction-of-er-model.txt"
+      },
+      {
+        "question": "What is the Relational Model in Database Management Systems?",
+        "answer": "The Relational Model organizes data into tables (relations) consisting of rows and columns. It simplifies data storage, retrieval, and management using SQL to interact with the database.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What are the key features of the Relational Model?",
+        "answer": "Key features of the Relational Model include simplicity in implementation, normalization, data processing with Relational Algebra and Calculus, and linking through primary and secondary keys.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What are Codd's Rules in the context of the Relational Database?",
+        "answer": "Codd's Rules are a set of 12 principles that define the characteristics of a true relational DBMS. These rules ensure data consistency, integrity, and efficient database management.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What is a primary key in a relational database?",
+        "answer": "A primary key is an attribute or set of attributes that uniquely identifies a tuple (row) in a relational table.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "Explain the concept of 'Normalization' in the Relational Model.",
+        "answer": "Normalization is the process of organizing data in a relational database to eliminate redundancy and ensure data integrity. It involves decomposing tables into smaller, well-structured tables.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What is a Foreign Key in relational databases?",
+        "answer": "A Foreign Key is an attribute that creates a link between two tables by referencing the primary key of another table, enforcing referential integrity.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What is the difference between 'Projection' and 'Selection' in Relational Algebra?",
+        "answer": "Projection (π) selects specific columns from a relation, while Selection (σ) selects rows that meet a given condition.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What is the UNION operator in Relational Algebra?",
+        "answer": "The UNION operator combines the tuples from two relations, removing duplicates, and returns a new relation with all unique tuples from both relations.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What is the difference between the 'INTERSECTION' and 'MINUS' operators in Relational Algebra?",
+        "answer": "The INTERSECTION operator returns common elements between two relations, while the MINUS operator returns elements that are in one relation but not in another.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What are the advantages of using Relational Algebra in database management?",
+        "answer": "The advantages of Relational Algebra include simplicity, formality, abstraction, portability, efficiency, and extensibility, making it a robust tool for managing relational databases.",
+        "source": "introduction-of-relational-model-and-codd-rules-in-dbms.txt"
+      },
+      {
+        "question": "What is lossless join decomposition?",
+        "answer": "Lossless join decomposition ensures that the original relation can be reconstructed by joining decomposed relations without losing any information.",
+        "source": "loseless-decomposition-in-dbms.txt"
+      },
+      {
+        "question": "Which of the following normal forms are valid for lossless join decomposition?",
+        "answer": "1NF, 2NF, 3NF, and BCNF",
+        "source": "loseless-decomposition-in-dbms.txt"
+      },
+      {
+        "question": "What is the role of Armstrong's axioms in lossless decomposition?",
+        "answer": "Armstrong's axioms help to ensure that the decomposed relations retain all the information present in the original relation.",
+        "source": "loseless-decomposition-in-dbms.txt"
+      },
+      {
+        "question": "What is a common attribute in lossless decomposition?",
+        "answer": "The common attribute must be a candidate key or super key in at least one of the decomposed relations.",
+        "source": "loseless-decomposition-in-dbms.txt"
+      },
+      {
+        "question": "What is an example of a lossless decomposition in the given scenario?",
+        "answer": "Employee_desc (Employee_Id, Ename, Salary, Department_Id) and Department_desc (Department_Id, Dname).",
+        "source": "loseless-decomposition-in-dbms.txt"
+      },
+      {
+        "question": "Which of the following is a disadvantage of lossless decomposition?",
+        "answer": "Increased complexity and processing overhead.",
+        "source": "loseless-decomposition-in-dbms.txt"
+      },
+      {
+        "question": "How does lossless decomposition affect data integrity?",
+        "answer": "It improves data integrity by ensuring that each relation contains only relevant data, reducing inconsistencies and errors.",
+        "source": "loseless-decomposition-in-dbms.txt"
+      },
+      {
+        "question": "Which algorithm can be used for lossless decomposition in DBMS?",
+        "answer": "BCNF (Boyce-Codd Normal Form) and 3NF (Third Normal Form) decomposition algorithms.",
+        "source": "loseless-decomposition-in-dbms.txt"
+      }
+]

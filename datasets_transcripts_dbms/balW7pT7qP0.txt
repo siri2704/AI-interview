@@ -1,0 +1,340 @@
+So basically in this lecture I want focus
+on how the information that we have represented in the E/R model you know. Information about
+an enterprise h database that we are trying to design h we will capture that in in E/R
+model which is a conceptual level model h into the relational h model. We have just
+studied this relational h data model and we know that you know it gives certain concepts
+like relations, keys, foreign keys and things like that. So now we focus on how to translate
+or map the information that we represented in the E/R model to the relational h model. So they give h they in some sense are different
+representations of the real world enterprise and now we were trying to h get the relational
+scheme. Now, so the eng the general approach that we will do we will h use is that for
+both entities entity types right entity types as well as the relation types win, we will
+basically map them into relations ok. So notice that we have in the E/R model context we have
+these 2 concepts, the concept of an entity type, the concept of a relationship type. And of course there are variations of this
+entity type like strong, weak and all that ok, but where when it comes to relational
+data model we have only one the the concept of a relation. So so basically for each entity
+set as well as the relationship set, relationship set or type right entity type or relationship
+type we interchangeably use this words h. So for each entity set and relationship set
+in the E/R h model we will have a corresponding relational h table. So let me use this word table in this set
+of slides to kind of make it h very clear that we are talking about relations. Now the
+relation table with the same name as that relationship h as the entity type or the relationship
+h set. So that is the basic h approach and then each of these tables will have multiple
+columns, so kind of we are calling attributes as columns here, whose names are obtained
+from the attributes of the entity types or the relationship types. So we will see the
+details as to how exactly we should obtain these h names ok. So let us first focus on h strong entity sets
+ok, so so let us say there is a strong entity set E i. So what we will do is to create a
+table T i h for that particular h entity tab h set the name of the table will be the same
+as in the name of the entity. But we, in this case we just representing it as you know symbols
+like E i, T i. Now the entity set will have attributes right now it will have different
+kinds of attributes. So we will take the simple attributes and
+then if there are composite attributes what we do basically here is to take the simple
+components of those composite attributes ok, each of these composite attribute has components
+right. So and that component itself can be again composite right and so we kind of go
+to the leaf level in some sense and pick up all the simple attributes simple components
+of all these composite attributes and those names alone will be the attribute names for
+the h at table T i ok. One thing that we have to do is to h handle
+this multi-valued attributes of these entities separately and I will talk about how to handle
+multi-valued right now we will ignore the multi-valued attributes of the entity set
+E i ok. We will take this simple attributes and composite attributes ok, for composite
+attributes what we will do is to pick up their simple components, components and then check
+whether they are simple or not and then pick up that ok. So basically you might also realize here that
+we are in some sense losing some information like for example, h while modeling a person
+we might say that the name has 2 components, the last name and the first name ok and there
+is these 2 things together are called name that is the that is how the model h hand is
+the as composite attribute. So we will now basically ignore that name thing and then
+only take the L name F name if that is the name the those are the attributes the names
+that are being used. Then we will simply pick up L name and N name
+as the attributes of the the table we are creating and h a little later we will see
+how exactly to handle multi-valued attributes of h of these entities. Now h we also now
+decide the h primary key for this table T i, so the primary key will be basically decided
+by picking up the primary key of the entity T i. So whatever was the primary key h attribute
+of the entity the h and that h would be in at attribute of the table we have created
+and so we will make that as the the key here. Now as we will see later basically the primary
+key can would be actually referred to by other tables via the foreign keys you know in order
+to capture relationships ok. We will see that say he here h relationship sets also are going
+to be translated into h tables. And so we will see how exactly h we will use foreign
+case in order to capture that associations ok. So move on, let us look at weak entity sets,
+entity sets and weak entity sets, recall that weak entity sets are basically h entities
+that do not have an independent existence and h they kind of depend on some other entity
+for their h relevance to the h information system. So we have weak entities, so let us
+say some E prime is a weak entity owned by some strong entity E it could even be owned
+by a another weak entity but we will h take up that case a little later. So let us say it is h owned by a strong entity,
+so h this E prime is going to be converted into a table say R prime, where you know we
+will h pick up we will have to make up their attributes for this E prime the the table.
+So these attributes of R prime the table will be basically the attributes of the weak entity
+set E prime and in addition the primary key attributes of the identifying strong entity
+are the owner entity there is a owner right, for because E prime is a weak entity it has
+a owner. So pick up the primary key attributes of the
+owner and include that as attributes of R prime ok. Now you can see that h the attributes
+of attribute of E prime you know h will have only what is called a partial key ok. And
+so in order to distinguish between the the various h entities in the weak entity set,
+we need the information about the owner entity. So the owner entity's information will come
+h because of because we are including this primary key attributes of that ok ok. Now let us look at this case h we suppose
+the owner is itself is a weak entity in which case the partial key of that entity plus the
+primary key of the owner of that would be the h attributes that we will include. Of
+course this chain will go on because it has to end with some strong entity ok. So basically
+you can see that in case a weak entity is owned by another weak entity. Then the approach
+we can follow is basically first map the owner range, owner weak entity into a table ok. And then bother about h mapping the weak entity
+ok, so that is how we will h need to handle the weak entity type. Now these attributes
+the these means the these are the the primary key attributes of the identifying relationship
+ok and the h so will in in fact also be a foreign key in R prime referring to the table
+corresponding to the owner entity. The owner entity we has been mapped to a h a table. And so now these these primary key attributes
+of that particular h that we have included into the table of R prime will be the foreign
+key in R prime referring to the h table corresponding to E. We will see some examples and then we
+it will become clear and what we what should be the key of R prime, key of R prime is the
+partial key of E prime plus the key of the owner entity. The key of E key of owner entity
+has anyway being included into this table. And so that that set of attributes plus the
+partial key together would be the key for R prime the table R prime and then multi-valued
+attributes have to be dealt separately as we will see a little later ok. And now let us look at an example to clarify
+this situation, we had this kind of a example in our h earlier discussion. So h section
+is a weak entity h owned by course ok and the identifying relationship is this has section
+and partial key is section number ok. So so let us assume that the course has been already
+mapped to a table like this course Id, name, credits ok. So it is a strong entity and so
+we will h map it directly into h a table with these attributes and then the whatever is
+the key for the entity will become the key attribute for the tables also. Now this is a weak entity and it is owned
+by a stro strong entity and so all these attributes will come but then the primary key of the
+owner entity also is added as an attribute and in case that owner entity is a itself
+is a weak entity as I was pointing it out in the previous slide. Then then we will first
+map that into a table in which case you know it will get the partial h key of that plus
+the you know primary key of it is own identity as the h key. So those 2 things together will now come to
+the table here, so like that we will be able to capture the information. So section number
+course Id now together h will be the the key, h so course Id because it is the primary key
+of the owner, section number it is because it is the partial key of the weak entity.
+So these 2 things together will be the key, so we underlined them and now the course Id
+that we have introduced here ok, borrowed from the strong h the owner entity will or
+obviously should be a a fo foreign key referring to the courses. In general h the primary key attributes that
+we introduced from the owner will be the foreign key attributes that refer to the h owner relation,
+whatever is the owner relation ok. So I hope this h so let us go back to this slide, so
+attributes of R primary or attributes of the weak entity plus the primary key attributes
+of the identifying strong entity. And in case that is a weak entity the partial key of E
+plus the primary key of the owner of E will be the h attributes. And these attributes
+will be a foreign key also in h in R prime referring to the table bar and and so on.
+So this should be clear now, any questions in that. Now let us talk about multi-valued attributes.
+Multi-valued attributes actually give rise to a special kind of a situation recall that
+in the relational data model. In the relational data model I have been emphasizing that a
+cell a cell of a table in a particular row contains only atomic values. It cannot contain
+set of values or lists of values or anything else it contains only one value, so these
+multiple multiple multi-valued attributes is you know by by it is definition is a bunch
+of values right. So we cannot directly store it as a value
+in a cell of our any relational table because of the constraints that the relational model
+has ok and so what happens here is that we need to kind of introduce a separate table
+for each of the multi -valued attributes that the h that the entity has. So let us take
+this just one example here, h so Email Id,so so we will do this after the entities have
+been mapped into tables. So right now student has already been mapped
+and it does not have the mult multi-valued attribute, so it is we thought. So we we will
+h that is why we did not mention about the multi-valued attribute when we are mapping,
+we said they will be dealt with separately. So now take up this multi valued-attribute
+create a separate relation for that whatever be the h so you will not invent the name for
+the relation. And then introduce this attribute name and
+then the the primary key of the the entity for which this is a multi-valued attribute
+and then make them together as the key. So you can see that why is this needed you can
+see that since roll number which kind of identifies the student you know has association with
+multiple Email Ids we will have to repeat the roll number with all of those Email Ids
+that is the only way to capture a set of entity, a a set of values who associated with a particular
+h entity. Because this relational model has a constraint
+that this particular column can only have exactly one value it cannot have list or set
+of values right. So so roll number Email Id will obviously be the key together now together
+unless both of them are are kind of given you can cannot identify the row in a you a
+tuple in this relation ok. So it is also obvious that this roll number h is h referring to
+the h student entity and so it will be a a a really foreign key referring to the h corresponding
+entity I mean the table h corresponding to that entity ok. So 1 column for each of this h 1 column for
+this attribute what is that attribute, that attribute is this multi valued attribute.
+So 1 column for that and then the columns for the primary key attributes, so in general
+this primary key h there could be multiple attributes in the primary key. So 1 column
+for each of those multi print corresponding to the h either the entity type or the relationship
+type for which we are h we have this as the multi-valued attribute. Recall that even relationships can have attributes
+and they can also be multi-valued in the case of E/R model and so when we deal with multi-valued
+attributes we would already map that relation relationship type into a table ok and so we
+take the h the key attributes of that table and then include them here ok. So that is
+how we have to deal with multi-valued attributes ok, so moving on let us see how we can h so
+far we have focused on entities, let us let us see how to handle relationships in the
+E/R model. Let us first take up this h binary 1 to 1
+kind of relationship, so 1 to 1 relationship as you can recall is involves h it is binary.
+So there are 2 entities, so S and T let let them be the entities h that are in h relationship
+R and let us say we have already mapped S into S prime, T into T Prime right. So we
+did the h mapping of the entities and so we have got 2 tables and now now we have to ha
+ha handle this relationship. One approach to handle this relationship is
+the h you know h a kind of a simple h you know interesting h approach, where we kind
+of introduce what is called a what is called a h what can be probably called as a lookup
+table ok. So which will basically just have 2 attributes h when whatever is the number
+of attributes basically contain the key of key of S key of S prime and key of T prime
+together that is all that is one approach, we will see that h actually I will come back
+to that little later later. But let us see how h we can handle the specific
+case of 1 to 1 relationships, let us say choose an entity which has a total participation
+in R. One of them is likely to have h you know a total participation, let us say if
+there is 1, let us say S has a h total participation. Then in this case what we can actually do
+is to include the primary key of T prime, the other relation as a foreign key in S prime
+referring to the relation h or the table h T prime. And in case these h in case this h h relationship
+type itself has some attributes then map all those simple attributes or simple components
+of this composite attributes as attributes of S prime ok, this is so this is 1 approach,
+we I will show you an example and then it will become clear as to what we are exactly
+doing. So we give reference to the one that has total participation and we basically change
+the relation scheme of that particular h a thing by including the primary key of the
+other h as a foreign key here ok. In this case we can we can in some some sense do the
+other way around also but I will i will show you with an example ok. So let us look at this h student entity h,
+hostel room entity ok and student is identified by roll numbers and hostel room for a moment
+let us assume that hostel rooms are identified by room number, room number is the key for
+hostels let us say ok will make a specific assumption here. We want basically 2 entities
+with their keys, so we have taken student and h hostel room and let us say it is a 1
+to 1 relationship that means every student is given a hostel room ok and h yeah this
+is a hostel room can only have h 1 person if at all. So this is a partial real this is a total
+participation that means every student is given a room and this is partial that means
+some hostel rooms h could be unallocated uunallocated it is a luxury of course and to have a hostel
+rooms not allocated ok. So let us say the S S is the h so S is the student R is that
+relationship h T is this this one. So what basically we have done here is that the student
+would have let us say student is actually mapped to student table in which case we have
+roll number, name and home address as the 3 attributes only up to that will be the the
+student h entity. And the hostel room will be room number, hostel
+name, address because there is a these are the 3 attributes room number is the key, so
+we will write it here. Now in order to take care of this, what we basically have done
+is to augment this this side which has a total participation by basically adding 1 foreign
+key to take care of this relationship one fall one key sorry one attribute one attribute
+that acts that is actually a foreign key referring to the other relation referring to the other
+relation. So basically we want to capture as to what
+is the stud h room to which this particular student is associated with. So we augment
+the student and then introduced a new attribute room Id and then since it is value ok h this
+values are going to be used to refer to the hostel rooms we make it as a foreign key not
+refers to the hostel table ok. Now you might say that why do not we do the other way round,
+why do not we include the roll number in the hostel h table and saying that this particular
+hostel room is assigned to so and so student. In this case we could even do that because
+it is a 1 to 1 relationship, so there is exactly 1 h student to which it is been assigned and
+so you could actually augment the h hostel table right hostel I mean the room h this
+table with a roll number as with roll number or student Id or whatever you can call that
+attribute. And then make that as a foreign key that refers to the student just like we
+did here we can do it in the other way not also. But only issue would be that since we have
+assumed that this is not h say partial participation. So there is lots of there might be several
+rooms which are not allocated in which case they will h the value for of roll number or
+row a student Id here would be null in case it is not allocated it would be null. If it
+is allocated it will be the student Id of the corresponding thing, so there will be
+lot of null values if we h choose the other relation which has partial h participation,
+you would also go to another extreme and then ok. So this foreign key name what in general the
+foreign key name of course need not be the same as a primary key name. But it could be
+some other name right, for example I said here room Id which is h basically refers to
+room number. Now we could go also to a little bit of a h extreme h approach in which we
+can we can merge these 2 relations together and then put them you know as one big relation
+we could do that in this case. Because it is h it is a one to one you know
+there are exactly as many if you know it is one to one and then let us say both of them.
+So both entities participate fully say yeah this is an important thing if both entities
+participate fully that means every hostel room is also h you know participates here
+saying that it is assigned to some student no no room is ok. If that is the case, so
+if both entities participate fully then we can basically merge these 2 relations. And then get one abroad relation a merge relation
+which is a little h I do not advice that mainly because these entities have you know their
+own identity in some sense. So we would like to capture them as separate relations and
+then the association or the relationship is best captured using foreign keys rather you
+know in some sense merging them because they would not then logically make sense. So as far as possible h keep a relation to
+h ensure that a relation h is you know obtained from one entity. An entity is represented
+as one relation ok, so that is the approach that we can do h, the other approach that
+I was referring to like lookup table kind of approach is that let this particular student
+relation be separate roll number, name, home address, let this be separate room number,
+hostel name address. We will create a third table in which we just
+you know capture the association only what is the roll number, what is the h room Id
+associated room Id that we can capture separately as I look up table in some sense right. And
+then of course in that relation you will have to make the h room Id as a foreign key that
+refers to roll number and the room Id h I mean sorry h student Id is a foreign key that
+refers to roll number and room Id as a foreign key that refers to the first one. You can have a third relation leaving these
+2 things as they are but I do not normally we do not normally appro advice that in the
+case of h these 1 to 1 relationships because you can manage the situation by augmenting
+one of these relation tables ok. So now let us h move on to how to handle a
+one to many h relationship right h, in this case what we do let us say S is a participating
+entity on the N side one to-many right. So there is a one side and N N side h N side
+and T is the other entity let us say and let us say we have already mapped S to S prime
+h T to T prime in corresponding these are the corresponding tables now what the approach
+here is in order to handle this h 1 to many relationship is to kind of modify the N side
+table. The the table corresponding to the N side
+entity and include the primary key of the other as the foreign key here and then include
+any simple attributes or simple components of the composite attributes of that relationship
+itself as attributes of S prime. So basically we augment the scheme for h S S prime h which
+is the table corresponding to the N side entity. So again this will become clear if we show
+an example h. Let us say professor, guides, many students
+say each professor guides, many students, but each student is guided by exactly 1 professor.
+Each student is guided by exactly 1 professor but a professor guides many students, let
+us say that is the one to many relationship and so what we are now saying is that take
+the N side entity take the N side entity that entity had no sorry the N entity has come
+this side, the N entities here h ok. The N side entity is student, so it has roll
+number and name I just simplified the things you mean it can it could have several other
+attributes but for the illustration purpose let us just have roll number and name. Now
+this is the N side entity which is so augment this, augment this by introducing a new attribute
+and make that as a foreign key that refers to the other relation, what is the other relation,
+the other relation is the 1 side entity which is professor. So it has name, phone, professor Id, so name,
+phone, prof Id, now basically what we have done is to for each student h in each student
+row we now introducing a new attribute called the guide of the student which will be an
+employee Id that refers to the professor who is the guide of the student. So notice that
+we cannot do the other way around here because a professor guides many students. And so if you want to now augment this professor
+side h table with a new attribute saying that h you know whatever students guided then that
+will be multiple values and you cannot put multiple values into a shape a cell and that
+causes trouble. So so we actually solve the problem by augmenting the N of the N side
+of the N side entity, I mean the the table corresponding to the N side entity by appropriately
+introducing additional attributes ok. So so let let us just reread this again if
+you want, so let S be the participating entity on the N side and T the other side so include
+the primary key of T prime as a foreign key in S prime that is what we are saying. And
+in case h there are attributes for the relationship include them also as additional attributes
+in S prime. So in case there is an attribute called h begin date or something like that,
+you basically make that as an attribute on the student side itself ok. So that is about
+h the h 2 specialized relationships 1 to 1 and one to many. Let us now look at the h many to many relationship,
+here there is actually no option to either augment the h the 1 side or the other side.
+So now we basically have to go for a third relation ok, so make a separate table T for
+this relationship R ok between entities even E 1 and E2 ok let us say h even in it it were
+already mapped to R 1 and R 2, E 1 is mapped to R 1, E 2 is mapped to R 2, so in order
+to handle this many to many relationship. Now introduce a third table introduce the
+third table where you basically include the primary key attributes of R 1 and the primary
+key attributes of R 2 as foreign keys ok. Because this is what basically captures the
+association ok, here is 1 entity, here is another entity. These 2 entities are associated
+with each other. So let us take that combination and then give a provision for expressing those
+combinations in some sense ok. Now and and of course h once we do that h
+these fo FK 1 h will be the obviously the h the foreign key that refers to the primary
+key of R1 and FK 2 will be the foreign key that refers to the primary key of h K2 and
+these 2 things together will be the key for the new table they in in some sense they lookup
+table ok. Again an example will clarify the situation
+h, student enrolls for courses, so course is an entity h identified by the course Id
+h. Student is an another entity roll number is the h key and now this is a many to many
+relationship, student enrolls for many courses and each course is unrolled by many student
+right, that is why it is many to many relationship and so you cannot h ok basically let us say
+student is mapped to roll number, name, course is mapped to h a course Id name ok. Now in order to handle this we have to necessarily
+go for a third relation which basically captures what roll numbers are associated, what course
+Ids and these things together for every course I say for a, if you from a student side if
+you see if he is doing 5 courses then that roll number will get associated with those
+those 5 courses and will get listed in the as tuples here and if course Id h one particular
+course is being done by 40 people. Then all those 40 people along with that course
+Id will be there as tuples here ok. So you basically have to realize that we cannot augment
+the student table with a course Id because there are multiple courses that student is
+doing and we cannot augment the course with a student Id because there are multiple students
+doing the same course. So we nec have we introduced a new relation which is in some sense called
+the. You know in some sense a a a cross reference
+kind of h relation or it can also be called as a lookup table kind of relation which basically
+allows us to look h capture the association and then in order to get more information
+about this we need to refer to the h table. So we make this as a foreign key, in order
+to get more details about the course we have to refer to the course table and so we make
+this as a foreign key ok. So this is how we capture multi many to many
+relationship, so you might, so since the other relationships like 1 to 1 and 1 to many or
+you know in some sense a special cases of many to many. We could take this approach
+in order to handle the other cases also but then know for those cases as we have argued
+earlier there are better solutions, where now we can avoid having a third relation instead
+we can simply go h go for a h a better solution where we either augment the one side or the
+another side ok. Now as far as h finally we have to handle
+these so called recursive relationships, where if a course h I mean a a particular h entity
+is participating more than once in a in a relationship in appropriate kind of rolls.
+So but then this is if you think about it h it is not a major issue because h we basically
+h can treat it as h 2 different entities and then basically create h foreign keys to refer
+to the same table more than once ok. So let us look at this, h so is prerequisite
+of is a h recursive relationship involving course in 2 roles one once as a course, once
+h as a precursor. So so course itself has course Id credits and some I do not know timing
+should not be here actually h the department offering department take it as offering department
+course Id, credits, offering department let us say h. So now in order to handle this a
+respect to whether it is mnay to many to many or otherwise we basically create a new table. And then create attributes corresponding to
+the role names, prerequisite and course and then both make both of them as foreign keys
+that refer to the entity ok. So this is how the all the major constructs in the relational
+h model can be mapped and the information can be mapped into the relation all the major
+elements of the E/R model can be handled and then we can capture the information into the
+relational model. So h please practice this on those exercise
+problems that I have given h after drawing the E/R model try and translate that into
+a relational model using this systematic h some 6, 7 steps are there here. So using this
+approach you map it and then see how exactly h it is coming out, so that you can also try
+and repair your model relational model. Now finally one h point is h this approach of
+you know keeping a crosstab h when h cross reference kind of a table can kind of generalize
+this to generalizes to h n-ary relationships. So in case there is a n-ary h relationship
+then basically we can have a a a this third table which captures this relationship. We
+will have one more one more attribute which again will be a foreign key that refers to
+the primary key of the other. So so in general we can use this approach to capture the n-ary
+relationships in the E/R ok. So like that we can h capture all the details that are
+mentioned in the E/R ok any questions. So for those exercise problems please h try
+out and map them into relational models and then try and then see how exactly they are
+coming off ok, so let us stop.

@@ -1,0 +1,114 @@
+• 
+• 
+• 
+
+In SQL,LEFT JOINretrieves all records from the left table and only the matching records from the right table. When there is no matching record  found,NULLvalues are returned for columns from the right table. This makes LEFT JOIN extremely useful for queries where you need to retain all records from one table, even if there is no corresponding match in the other table.
+
+In this article, we will explore theLEFT JOINcommand in SQL, explain its syntax, provide detailed examples, and discuss common use cases to help you master its application.
+
+
+### LEFT JOIN in SQL
+LEFT JOIN in SQLis used to combine rows fromtwoormore tables, based on a related column between them. It returns all rows from the left table andmatching recordsfrom the right table. If a certain row is present in the left table but not in the right table, the result will include this row withNULL valuesin each column from the right table. If a record from the right table is not on the left, it will not be included in the result.
+
+
+### SQL LEFT JOIN Venn Diagram
+This VENN diagram shows how a LEFT JOIN works in SQL.
+
+LEFT JOIN
+
+Syntax:
+
+SELECT column_name(s)FROM tableALEFT JOIN tableB ON tableA.column_name = tableB.column_name;
+
+
+### Examples of SQL LEFT JOIN
+Let’s look at an example ofLEFT JOIN in SQLto understand it better. Consider two tables:Emp(employees) anddepartment(departments). TheEmptable contains employee details, while thedepartmenttable holds department details.
+
+Employee Table
+
+
+```python
+CREATE TABLEEmp (EmpID INT PRIMARY KEY,Name VARCHAR(50),Country VARCHAR(50),Age INT,Salary INT,department_id INT);INSERT INTOEmp (EmpID, Name, Country, Age, Salary, department_id)VALUES(1, 'Shubham', 'India', 23, 30000, 101),(2, 'Aman', 'Australia', 21, 45000, 102),(3, 'Naveen', 'Sri Lanka', 24, 40000, 103),(4, 'Aditya', 'Austria', 21, 35000, 104),(5, 'Nishant', 'Spain', 22, 25000, 101);
+```
+Output:
+
+Employee Table
+
+Department Table
+
+
+```python
+CREATE TABLEdepartment (department_id INT PRIMARY KEY,department_name VARCHAR(50),department_head VARCHAR(50),location VARCHAR(50));INSERT INTOdepartment (department_id, department_name, department_head, location)VALUES(101, 'Sales', 'Sarah', 'New York'),(102, 'Marketing', 'Jay', 'London'),(103, 'Finance', 'Lavish', 'San Francisco'),(104, 'Engineering', 'Kabir', 'Bangalore');SELECT*FROMdepartment;
+```
+Output:
+
+Department Table
+
+
+### Example 1: Performing a LEFT JOIN
+To perform left-join onEmployee and Department Tableswe will use the following SQL query:
+
+Query:
+
+
+```python
+SELECTEmp.EmpID, Emp.Name, department.department_name, department.department_head,department.locationFROMEmpLEFT JOINdepartmentONEmp.department_id = department.department_id;
+```
+Output:
+
+LEFT JOIN in SQL Example Output
+
+Explanation:
+
+As left join gives the matching rows and the rows that are present in the left table but not in the right table. Here in this example, we see that the employees that do not work in a particular department, i.e., having dept no values as [NULL], contain [NULL] values of dept name and location after the left join.
+
+
+### Example 2: SQL LEFT JOIN with WHERE Clause
+In this example, we will add aWHERE clausethat specifies to only return results where the “location” column in the department table equals ‘Bangalore‘. This will filter the results to only show employees who belong to a department located in Bangalore, and departments that have no employees will not be returned in the results.
+
+Query:
+
+
+```python
+SELECTe.EmpID, e.Name, d.department_name,d.department_head, d.locationFROMEmp eLEFT JOINdepartment dONe.department_id= d.department_idWHEREd.location = 'Bangalore';
+```
+Output:
+
+SQL LEFT JOIN with WHERE Clause Example
+
+
+### Example 3: SQL LEFT JOIN as Aliases
+In this query, we’ll use aliases “e” for the Emp table and “d” for the department table. TheSELECTstatement references these aliases for each column, making the query easier to read and type. Aliases simplify code and improve readability, especially with long or complex table names.
+
+Query:
+
+
+```python
+SELECTe.EmpID, e.Name, d.department_name,d.department_head, d.locationFROMEmp eLEFT JOINdepartment dONe.department_id = d.department_id;
+```
+Output:
+
+SQL LEFT JOIN as Aliases Example Output
+
+• eis used as an alias forEmp, anddis used fordepartment.
+• This improves query readability and makes referencing columns simpler.
+
+
+### Important Points About SQL LEFT JOIN
+• LEFT JOIN inSQLreturns all records from the left table and matching records from the right table.
+• NULL values are included for unmatched records on the right side.
+• LEFT JOIN is used to combine data based on related columns.
+• Aliases can simplify queries with long table names.
+• LEFT JOIN with WHERE clause is used for filtering records.
+
+
+### Conclusion
+TheSQL LEFT JOINis an essential tool for combining data frommultiple tableswhile ensuring that all records from the left table are included in the result set, even if no match exists in the right table. Understanding itssyntax,behavior, and usage will help you write more efficient and effective SQL queries, especially when working with complexdata relationships. By using examples like employee and department data, we can clearly see how LEFT JOIN ensures that no valuable information is left out, even when there are unmatched records.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• Databases
+• DBMS
+• SQL
+• DBMS-SQL
+

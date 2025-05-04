@@ -1,0 +1,1 @@
+most important topics for data structure and algorithm in same exams unit 1 and unit 2 unit 1 topic one hash function properties of hash function topic two Collision resolution techniques topic three skip list you need two most important topics topic one binary tree traversal topic two binary service three plus operations and topic three so data binary tree

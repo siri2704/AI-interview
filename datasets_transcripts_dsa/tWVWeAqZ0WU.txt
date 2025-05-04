@@ -1,0 +1,1565 @@
+This course will help you learn what you need
+to implement graph algorithms and use them to solve coding challenges. Alvin's dynamic
+programming course is one of the most popular courses on our channel. And now he's back
+to teach you graph algorithms. Hey, programmers, I'm Alvin from Structy. Welcome to our course
+on graphs. And in particular, this is going to be about graphs for your technical interviews.
+Of course, graphs are a very common topic when it comes to those technical interviews.
+And in particular, what I want to emphasize throughout this course, is the handful of
+patterns that come up time and time again, on those technical interviews. in just about
+two and a half hours, I'm going to give you all the tools you need to basically cover
+I'd say about 80% of all graph problems. And so what I have in store for this course, well,
+I think the key to victory for your data structures and algorithms, and especially your graphs
+is to visualize things, right. So we're going to do is trace through a lot of different
+algorithms, and be sure to understand them at a high level. And that means going through
+different animations here, I think graphs have a pretty bad rap for being a difficult
+topic. Because to a beginner, you can have very, very different narratives around a problem,
+and not really understand. They're all really based on a graph premise. So we're going to
+realize that a bunch of different things can be understood as graphs. So when it comes
+to the prerequisites of this course, I'm going to assume that you know nothing about graphs.
+But you do know how to code, right, so I'm going to have the expectation that you understand
+some recursion. So as you work through the course, and learn about different graph patterns,
+we're going to use those patterns to solve some very classic interview problems about
+graphs, right. And I'm going to give you plenty of opportunity to practice these patterns
+in different problems that we will be ready whenever you have them on a technical interview.
+What I love about the topic of graphs is just using a handful of different algorithms, you
+can cover the majority of graph problems, right. For every graph problem that we cover,
+we're going to split it up into two sections, section one is going to be about the approach
+for the video. So we're going to go over the strategy and overall theory, and be sure to
+sketch out a nice meaningful picture. We're also going to talk about the complexity of
+the algorithm in the approach video. Following every approach, we're also going to implement
+the code of course, I'm going to be writing all of my code in JavaScript, you'll be able
+to follow along in any language that you like. So that means occasionally I'll be switching
+to my code editor where you of course can follow along. We're also going to be sure
+provide links in description as well as links on screen. That way you can formerly you read
+the prompts for every problem, as well as look at the different test cases. Alright,
+I think that's enough introduction. For now, let's hop right into the course. Alright,
+programmers. So let's jump right into the course, I want to start by giving you some
+background about your graphs, we're going to go over the graph basics that you need
+to start attacking problems in a technical interview. So first off, what is a graph?
+A graph is really just a collection of nodes and edges. So with respect to nodes, you can
+visualize them as typically just some circles with some data inside of them. So I'll put
+some letter values in my nodes over here. And when we refer to edges, that would be
+just any connections between nodes. So for example, if there was a connection between
+A and C, it would look something like this, right? What I can formally say is there's
+an edge between A and C, I can create many edges between any nodes I want within this
+graph. Another word you might hear out in the wild when it comes to describing nodes,
+as you might hear the word vertex being used, right, they're really the same thing. In this
+course, I'll stick to the word node. And an edge is just a connection between a pair of
+nodes. And that's really all a graph is at a high level, where things get interesting
+is how we can use this graph framework to actually solve a problem, right. So if you
+think of these nodes as just things and the edges as relationships, a graph is grid describing
+the relationship between things. For example, we can say that the nodes here are cities
+and edges would be roads connecting cities are in a similar way, maybe our nodes here
+are courses, and then the edges represent prerequisites. And so in the future, we're
+going to use graphs as a way to illustrate and frame some narrative problem. Let's talk
+about this graph. In particular, here, I really have drawn a directed graph. And that's because
+I have some arrowheads along the edges. That would be a comparison to an undirected graph.
+So here, I have really the same structure, except I don't have any arrowheads on the
+edges here. And that means that there is no directionality to it right. If I look at the
+directed graph, let's say I was at the node A, well, then I can travel to B or C, let's
+say I move to C. However, once I'm at C, I cannot travel to a, I can only travel to E,
+right? That's because I have to obey the direction of the arrow heads here. By take a look at
+my undirected graph, let's say I was currently situated at the scene over here, that I do
+have the option of traveling to either a or E, right? So if I traveled to a, that's all
+good, I can even travel back to C. So think of as an undirected graph as a two way street.
+For now we'll just continue on with our directed version. Let me also introduce some useful
+terminology we can use when talking about the nodes in our graph. If I was currently
+situated at this a node, I can refer to B and C as neighbor nodes. Alright, so a neighbor
+node is really any know that's accessible through an edge, of course, obeying the direction
+of the edge. In other words, if I was currently situated at the sea node, that I only have
+one neighbor of E, right, if I'm at the sea, you know, then I won't consider a neighbor.
+Awesome. When you visualize graph algorithms, you should really sketch a picture that looks
+just like this, right literally drop nodes as circles and arrows as your edges here.
+However, when it comes to how we implement this algorithm in some code, we're gonna have
+to represent it in a more programmatic way. Right? So in my brain, I think of this image
+of like nodes and arrows between them. However, in my program, I'm going to use typically
+an adjacency list, it's probably our preferred way to represent and graph information, right.
+So depending on the programming language of choice we're going to use typically, we would
+use some hash map data structure to represent an adjacency list. Really, we're looking forward
+to using some constant time, I'll look up data structure that has a key value pair mapping,
+right. So if you're in JavaScript, they'll be an object, if you're in Python, they'll
+be a dictionary. If you're in a language like Java, or C, you'll be using an unordered map.
+Looking at this hash map, I have drawn or this adjacency list, the keys of this adjacency
+list are going to be every node in my graph, right, so I just have all of the node values
+A through F laid out as the keys. However, if you look at the corresponding values, the
+values are actually going to be an array, right? So if I look at this very first entry,
+it says that I have a node of a and then in the array of populated all of the neighbors
+have a that is a has two neighbors have BNC. That's why I have this correspondence within
+my adjacency list. That holds true for every entry within my adjacency lists. So for example,
+let's say look at the entry for e. So I go to the spot and make j c list where the key
+is E, it only has a one outgoing edge to be. That's why the array for he only has be inside
+of it. One thing to also note is even if a node has no neighbors, it should still appear
+as a key within my adjacency list. For example, if you look at the D, node D has no outgoing
+edges. That's why its neighbor array is empty. However, it should still at least appear as
+a key within my adjacency lists, right, that way, you can still know that the D node exists.
+So at the start of the course, will usually be taking in adjacency list as the information
+to represent a graph, right. But as we sketch through things on the whiteboard, we should
+be visualizing them using a nice picture like this. Awesome. So let's actually jump into
+our first pair of algorithms. To me, the must know algorithm for a graph is really going
+to be to do some sort of traversal on it. Why don't we start by talking about a depth
+first traversal, something you may have heard of before, right, now we're going to talk
+about the depth first traversal algorithm that operates on a graph. So let's start by
+understanding at a high level what order a depth first traversal would give you. So let's
+say I had some starting node, and I'm gonna choose a as my starting node, right, so I'm
+gonna color it here in yellow. If I was following a depth first traversal. Now that I've, you
+know, chosen as my starting point, I can either hit B or C. Next, I'm just gonna commit to
+using B. So let's say I had the sequence so far have a comma b. And at this point, if
+I was truly following a depth first traversal, I must go deeper to the D node. In other words,
+I don't go to the C node yet. Cool, that would be a true depth first traversal, right. At
+this point, now that I've bottomed out at D, D is a dead end, right? I can't travel
+to F from D, because that would be disobeying the arrowhead. And so now I can move to that
+other neighbor of C. And from here, the algorithm would continue, right, I go from C to E, and
+then e to B. And technically, I would have to double traverse some nodes like B and D
+over here. So overall, in this yellow coloring, I have colored the full region that a depth
+first traversal would explore starting at a notice that if you started at a it would
+be impossible to reach F. And that's kind of normal, right? That's kind of why we use
+these traversal algorithms that can tell you whether or not you can travel between some
+nodes. And we'll see that literal problem later on. Right? So you're probably wondering,
+you know, exactly how do we implement this, but for now, I just want to stay focused on
+the order that we got, right. So just regarding our depth first traversal, we remember the
+first three iterations of the algorithm, we hit the sequence of a B, D, right, that's
+indicative of a depth first traversal. Now let's compare that to the breadth first Marion.
+So I'm going to lay down the same exact graph, we're also going to start a traversal at the
+a node, but this time follow a breadth first order. So I have a first and let's say, you
+know, I chose B as my next node when it comes to breadth first traversal. It doesn't matter
+like which, you know, initial neighbor you choose, so I'm just gonna choose B. But now
+that I've chosen B, if I was following a true breadth first traversal, I must hit c next,
+right. And that's the main difference between our depth first and breadth first reversals
+for the same graph, my depth first would start a B, D, whereas my breadth first would start
+a, b, c. And so you're probably wondering, is there any importance between this nuance
+right? When would I prefer depth first over breadth first, or vice versa? Either a depth
+first or breadth first traversal would explore the same exact nodes within a graph. However,
+it would explore them in a different order, right? And this is more obvious to see when
+we have a larger graph with way more edges. And so let's look at how he depth first traversal
+explores again, but this time on a much larger graph, let's take a look at this one. So I'm
+going to choose some random node as a starting point, let's say I chose this node in yellow,
+that was doing a depth first traversal, what I'm going to do is, you know, pick a direction
+and travel in that same direction as far as possible before switching directions. So let's
+say I move to the right, at this point, I would have to continue moving toward the right,
+until I can't move to the right any longer, at which point, I have to choose some new
+directions, let's say it was downward. I'll keep doing that until I can't move downward
+anymore. And so I'd have to move to the left now, now I'd keep chasing this single path
+in a very deep direction. So that's behavior indicative of a depth first traversal, right,
+you're exploring one direction as far as possible before switching directions. Let's compare
+that to a breadth first traversal. So let's say start at the same node in pink, if I was
+following a breadth first traversal, it would look something like this. From the starting
+point, I would explore all of the immediate neighbors of this node, kind of in a circle
+like this. Now I just keep applying that behavior. So as you notice about the breadth first traversal,
+is it'll tend to explore you know, all directions evenly, right, instead of just favoring One
+Direction all the way through. That's really the only difference between a depth first
+and breadth first traversal. Later on the course, I'll bring up explicit problems where
+you might prefer one over the other. All right, but for now, what I want to do is give you
+all the background you need. So you can actually build this algorithm will kind of talk about
+things at a high level, consider this the pseudocode, then, of course, we'll express
+it in some JavaScript code later on. So when it comes to actually implementing in code,
+these two algorithms, the key is to understand that a depth first traversal uses a stack,
+and a breadth first traversal uses a queue, recall that a stack is something where you
+add to the top and remove from the top as well, or is it Q is something where you add
+to the back and remove from the front, and it gives you two very different orderings.
+That's really the only difference between these two algorithms. So let's start by tracing
+through our depth first traversal, of course, using a stack, so I'm going to use a slightly
+different graph. And to visualize my stack, I'm going to use this bar to represent the
+bottom of my stack, obviously, for me, at least I think of a stack as some vertical
+data structure. Cool. So let's say I just arbitrarily chose a as my starting node to
+perform my depth first traversal, right, in the long run, just want to print out all different
+node values within this graph. So what I'm gonna do is I'm gonna take my starting node
+of a, and I'm just gonna immediately initialize it onto my stack. So right now as the only
+thing on my stack, it's also at the top of my stack. And now I can enter the flow of
+the main algorithm here, because I have a stack, what I can only do is remove the top
+of my stack. So that means I pop off a from the stack, and consider the a node, my current
+node being looked at, right? At this point, let's say I print out a to my console. And
+from here, what I want to do is consider A's neighbors, right. So if I look at the C node,
+what I should do is just push c to the stack, then also push B to the stack, right. And
+it doesn't matter like in which order you push these neighbors. If I want it to hit
+B first, then I'm going to push them second, right? Awesome. That would end like my first
+iteration of this depth first traversal. Cool. So at this point, I can look at my stack,
+and my stack still has some data on it. So I should do is again, pop the top of my stack.
+So I'm going to pop and be off my stack. And that becomes my current, I'm also going to
+print it out. At this point, I look at B's neighbors, B has one neighbor of D and so
+I push d to the top of the stack. Notice that because I have a stack D ends up on top of
+the C, right. And so now when I get to another iteration, when I pop the top of my stack,
+I look at the D node as my current, right, and I can print out D. And this feels good
+because so far, my print order would be a BD, notice that I kind of pursued that single
+path deeply following a BD. But I have to look at DS neighbors, I can take f and just
+push f to the top of my stack. next iteration, my stack is still on empty. So I should do
+is pop the top F is now my current, I can print out F, but f has no neighbors. So F
+isn't going to push anything else to the top of the stack. Right? At this point, I get
+to this next pass, and I pop the top of my stack. And that means C is now my current,
+I can print out CS value. And then I can look at Sue's neighbors. And I just push e to the
+top of my stack. On this last iteration, I popped up on my stack, he is now my current
+I print out he since he has no neighbors, I don't push anything else to the top of my
+stack. And at this point, I've reached the state where my stack is empty. And that means
+my algorithm is done right that means you explored as far as possible within your graph.
+Notice that it might not necessarily be the case that you're able to hit every node of
+the graph. And this particular example it was possible though, awesome. So let's redo
+that trace using Our breadth first algorithm, which means we just adjust things slightly.
+And we use a queue order. Remember that a queue is a first in first out data structure,
+meaning things enter to the back, and then they leave from the front. And so let's say
+I use this arrow to represent the directionality of my queue, right. And I start the algorithm
+in the same way for my breadth first traversal. Let's say I want it to begin at node A. So
+I just initialize my queue with a cool, so I start by removing the front of my queue.
+So a becomes my current node, I can print out a as well. And now I consider A's neighbors,
+right. So I consider B and C. If I wanted to travel to B before C, then I should push
+B to my queue first, right, so I add B to the back of my queue, right. And I should
+also add c to the back of my queue, right. And that would actually end my first iteration.
+So now I look at my queue still has some stuff on it. So I removed the front of my queue,
+that means B becomes my current. Of course, I print out B. Now I consider B's neighbors.
+So I just look at the D node, and I push d to the back of the queue, since D enters through
+the back and ends up behind the C, and that's really important behavior. next iteration,
+I removed the front of my queue. So my current is now see, right, I can print out see, and
+then look at sees neighbors of just E and I add e to the back of the queue, which means
+that in the order of my queue, he ends up behind the my next iteration, I removed D
+from the queue, and I print out the edits neighbor of F to the back of my queue. next
+iteration, I removed e from the front of my queue, print it out. Since he has no neighbors,
+he is not going to add anything else to the back of the queue. And of course, finally,
+f leaves the front of my queue, I print out F, F has no neighbors, at which point now
+my queue is totally empty. And since our queue is empty, that would be the end of our algorithm.
+Alright, and that's all there is to our depth first and breadth first algorithms, they're
+going to be the nice baseline code that we use to solve many different graph problems.
+I think that's enough theory. For now, what I want to do is now switch to my code editor,
+where you can actually implement these in JavaScript, hey, programmers, here I am in
+my editor, what I want to do is now show you how to implement those depth first and breadth
+first algorithms. So we'll start with the depth first. And my goal is really just to
+build a function that will print out all of my values in the graph, according to a depth
+first traversal, right, we're going to define this function depth first print, making an
+arrow function in JavaScript, it's going to take in the graph, which is going to be given
+as a nice adjacency list. And this is actually the same graph. Now last example we traced
+out, I'm also going to need to specify some starting node here, I'll call it a source
+node, we're going to begin the traversal. Starting at that node. Cool. And so we know
+inherent to a depth first traversal is going to be a stack. So I'll show you how to implement
+this iteratively, which means you need an explicit stack. For me in JavaScript, that's
+as simple as just using a JavaScript array, right? I'll make it empty at the start. And
+I can use this array as a stack, if I just commit to using operations that manipulate
+the same end of the array. In other words, if I just use push and pop, that will always
+manipulate the end of the array, right? removing and adding to the end of that array. What
+I want to actually be sure to do is I want to initialize the stack with my starting node,
+that is with my source node. Remember that like a node here is really just designated
+by some character. Cool. And when it comes to designing like the main loop for the algorithm
+here, do you want to keep running the algorithm while the stack is not empty? In other words,
+wall stack dot length is bigger than zero, that I have to keep running. That's very reminiscent
+to what we expressed on the whiteboard. So when it comes to performing like a single
+iteration of this depth first, what I want to do is remove the top of my stack. So if
+I do stack dot pop, that will remove the last item of an array, in this case like the top
+of my stack, and also return it to me. So I'm going to save that to a variable, I'll
+call it my current. And so this point would actually be a great opportunity to just print
+out that current. So I'll console dot log current, right? So looking at, you know, this
+example over here, since I initialize a stack to contain just the source note of a, on the
+very first iteration, this while loop, I would of course, pop out a, then I would print it
+out, right. And from that point, what I want to do is consider A's neighbors of B and C.
+So if I want to look at like the array associated with a, I can just key into my graph, right,
+cuz my graph is an object right now. So if I say graph, square bracket, current, right,
+if current is a, that means graph, square bracket current would give me back this array.
+I want to iterate through every node or every neighbor in that array. So I'm going to nest
+a loop here. And I say for let neighbor of that array. So if you're familiar in JavaScript,
+if you just use a for of loop, they'll iterate an order through an array. So now I'm hitting
+a neighbor as B and neighbors see. What I want to do with those neighbors is simply
+Push them to the top of my stack. So that will just be stacked up, push and push this
+neighbor. Awesome, I'm going to be sure to push every single neighbor that has. So sometimes
+I'll have two neighbors. Other times I'll have one neighbor, or even no neighbors. That's
+really all there is to implementing a nice baseline depth first print. Something that
+I do want to point out, my favorite way to implement this algorithm is to consider like
+processing your node, when it leaves the stack, not when it enters the stack. In other words,
+I usually write like my print statement, right after something is popped. And the thing that
+I pop is exactly what I print. Right. So let's go ahead and give this a run, see what we
+get. It looks like in my terminal, I got the order of AC e b df, which you'll notice is
+slightly different from what I expected from over here. However, this would be also a valid
+depth first traversal, we have to bear in mind is you know, depending on like the arbitrary
+order of values within the same neighbor's array, you could tend a different direction
+at first, right? Most important thing I look for when it comes to verifying a depth first
+is to make sure that I you know, chase the same direction before switching directions,
+right. So since I started out with a C, so I go a and then to a C over here, the next
+move would be going to E and that's exactly what happened in my code, right. And then
+once I hit E is actually a dead end. So then I can go on to my other lateral neighbor like
+B, right. And so I can contrive the same order expected here, if I just flipped this right.
+And so I put c followed by B. I'll give that around. They're both valid. depth first traversals.
+See what we got now. Cool, now I get the exact order of A, B, D, F, C. And really think about
+why that is, right. So let's say that I just popped out a from my stack. So I printed out
+a that's nothing fancy, right. And then from there, I start iterating through the array
+that's associated with a right, so on the first iteration, I iterate through C, right?
+If I push C on the stack, let's say this is the bottom my stack, by pushing on the stack,
+it's right here. Then followed by that I pushed B on the stack. Now B is on top. Since B is
+on top, I know like the next top level iteration, this while loop, I would remove B and that's
+going to be the next note I visit. And so they're really both depth for sure Russell's.
+Nice. So two things to note, you're definitely going to use a stack to implement depth reversal.
+And you can use the stack in a few different ways. Right? So here I'm using like an explicit
+like array as a stack. And I'm implementing this using some iterative code, right. So
+using a few loops, right, what you can also do is implement depth first recursively, because
+I know any recursion uses the underlying call stack. So let me show you how to implement
+that as well. And when it comes to, you know, having all these different tools in your arsenal,
+I would definitely practice both the iterative and recursive flavors. We'll see that later
+on in this course. So let's say I wanted to solve the same problem. But now recursively,
+it's actually going to be less code. So I'm going to have the same sort of arguments,
+I'm going to have the graph which is the adjacency list as well as a source node, consider like
+the source node as like your current location. So if I'm at some node, maybe the first thing
+I should do is just print out myself, right, print out this node, so I'll do is console
+dot log, this source node. And that feels good just from the get because when we actually
+do a top level call to this recursive function, they're passing in a as the source node. So
+I do want to begin a as a first note in my print, and then from there, I need to look
+at AES neighbors. Well, if you want to look at as neighbors like before, just key into
+the graph, adjacency list using that node, right, and this would give me an array of
+CNB. Now I just iterate through that array. So I'll say for let neighbor of that array.
+And at this point, what I want to do is now do the recursion, right, so I make a recursive
+call on each of these neighbors. So for me, that means just called depth first print,
+you give the same graph, right, the graph object doesn't change, but you should change
+like the source node. Now you want to pass in that neighbor as the source node. And you're
+going to make a recursive call for every neighbor in that array. And this would actually be
+all we need. Let's go ahead and just run this version. divider run over here. Looks like
+now we get the order AC E, B, D, F. And that's really again, another type of depth first
+print, right, not exactly this order, because this time we chased c first, right, we went
+a C, I want to get exactly this ordering and my recursion, then I would have to put in
+B first, really same sort of pattern. Now let's get that into the run. Good AB de FC.
+One thing I want to bring up about this recursive first is it has no explicit base case, meaning
+there's no obvious like, if statement that just like returns like you'd typically see
+in most recursion. That's because in this problem I have an implicit base case when
+a node like he is a dead end. All right, let's say my current source coming in is he, well,
+then when I iterate in this for loop, I'm iterating through this empty array, I mean
+to have zero iterations. If you have zero iterations, then you never make a recursive
+call. Right? That's the same thing as having a base case, right? A base case is really
+just a scenario where we don't have a recursive call. So that's how this code still works.
+Alright, so now you know how to implement depth first in two ways, right, iterated and
+recursively. And they both use definitely a stack. Let me now show you how to implement
+your breadth first, right as well comment out some of this code. Now we'll do a nice
+breath first, give myself some room over here. So for a breadth first, we want to solve the
+swan iteratively. And it's really only possible iteratively, right. So I know a breadth first
+traversal demands a queue, if you try to like implement a breadth first traversal using
+some recursion, and under the hood, there's some stack data structure, that's going to
+fight against the queue order that you want, right? So for breadth first traversal, you're
+always typically going to be writing some iterative code. So some loops, right? Let
+me define this, I'll say breadth first print, take in the full graph, adjacency list, as
+well as the source node, I want to initialize my queue. With that source note, again, the
+queue here is just going to be an array in JavaScript. So I'll say const q equals an
+array that begins with just the source node. Awesome. And I'm going to use this queue by
+just committing to two specific methods on my arrays in JavaScript. So if I use array
+dot shift that removes the first element of an array. If I do array dot push that adds
+to the last position of an Array. And using those two methods in combination would give
+me a nice cue, right, add to one end and remove from the other end. So like before, we're
+gonna have a while loop, we're gonna iterate while our queue is not empty. And so while
+queue dot length is bigger than zero, nice. And same thing as our iterative, you know,
+at first, you want to start by just removing the front of your queue. So I'll say q dot
+shift, that will remove the first element as well as return it to me. So I can save
+in a variable, I like to call it current, just like the whiteboard, right? And from
+there, maybe I'll print it out. So console dot log, this current node. And from here,
+just consider your neighbors, right. So if I key into my graph, using this current node,
+that gives me an array of its neighbors, I want to loop through each of those neighbors.
+So I can say four will say let neighbor of that array. And for that neighbor, I want
+to add them to the back of my queue. So for me, that would mean simply q dot push, I'm
+going to go ahead and push that neighbor. Awesome. So I remove from the front, and I
+add to the back. So that looks pretty good. Let's go ahead and give it a run. And actually,
+before I do that, I'm going to change the order of this, put the CNB. Again, doesn't
+really matter the relative order for neighbors, I just want this exact output, and we'll talk
+about why that is right. Give that a run. So I get ACB EDF just like I expected ACB
+EDF, right. So let's say you're on the first iteration of this breadth first print, I know
+that I would have just removed a because I initialized a on the queue, right? So my current
+is a and I print out a and then from there, I start iterating through this array, right.
+So on the first iteration, I have C, that means I put c into my queue, right? And then
+afterwards, I put B, if you put C and then B, that means C is at the front of the queue,
+which is why on the second iteration, I have C first, right? So that's how you can manipulate
+potentially the lateral order of a breadth first print. Awesome. That's all there is
+to this traversal algorithm, what I really want emphasizes, especially if you look at
+the apples to apples iterative code, you compare depth first or breadth first, it's almost
+identical code. You're really just changing how you access items in your array, right?
+You either pop or push or you shift and push harder than that the whole like structure
+of this code is identical, right? All right. So that's our introduction on depth first
+and breadth first for our graphs. In the next section, we're going to start to solve a problem,
+right, which will be really fun. I'm just utilizing this code as our baseline tool.
+And then that section also promised that start doing the analysis for bego of these algorithms.
+So let's jump back to that whiteboard. Hey, programmers, welcome back, right, and let's
+go over the approach for this has path problem. So in this problem, we're gonna take in an
+adjacency list representing a graph for this problem, and really all graph problems, you
+definitely want to visualize this one with a picture. And so what we'll do is we'll interpret
+each key of this adjacency list as representing a distinct node. And if I look at any particular
+list, I can see that this f node should point to G and I. And they do tell us in this problem
+that I have a directed graph. So I'm going to draw arrowheads on these edges here. So
+F points to G, as well as f points tie. And I'll create similar edges based on the information
+in the given graph. So we end up with an image like this, until they tell us that this is
+a directed graph that explains the arrowheads, but they also tell us that this graph is a
+cyclic. So if you're unfamiliar, a cyclic just means No cycles, that kind of begs the
+question, what is a cycle in a graph. So a cycle would be a some path through nodes,
+where I can end up where I want started. In other words, if I started at the a node over
+here that I can go to B, then from there, I can go to C, then back to a, and so on and
+so forth. So if I did a traversal, on the Sigma graph, I would get an infinite loop.
+And what they're saying is, our graph input is guaranteed to be directed. So it has arrowheads,
+but also a cyclic, so we don't have to consider any infinite cycles here. That being said,
+In this problem, we also want to take in not only the graph information, but also a source
+and destination node, we want to do is return true or false indicating whether or not we
+can travel from the source node to the destination node. In other words, is there a path that
+exists between those two nodes? For this problem, you can use either a depth first or breadth
+first search to actually solve the problem here, I'll trace through in this approach
+video, just the depth first search. But in the walkthrough, I'll be sure to code it up
+both ways. So let's say started at my source node, I know that if I was doing a depth first
+traversal, I can either choose the IRG, let's say happen to choose to G next. Now I have
+no choice, right? If I'm doing truly a depth first, I should go deeper to the H. So then
+I hit this H. And as I traverse through these different nodes, I need to ask myself if my
+current node is equal to my destination. So far, that hasn't been true. At this point,
+I bottomed out with my h node, I can't travel any deeper. So now I can move laterally to
+a node like I, at this point from I can either move to a K or a G, let's say by luck, I just
+happen to go to the G, this would actually bring me down a path I've explored previously,
+which we can optimize later on, but wouldn't be too much of a big deal. Eventually, if
+I continued this depth first search through the graph, I would end up at a node that matches
+my destination, at which point I can return true signifying that there must be some path
+from F to k, just doing a depth first search. And as we do this depth first search, it's
+really important that you obey the directions of your arrows. So I should never try to travel
+upstream. So that was a scenario where we were able to find a path from source of destination.
+That's why we return true. Let's reset and say that now, I should return false. Alright,
+so let's say my source was J. So I start at J. And I'm trying to get to my destination
+of F. If I start a depth first traversal, here, sorry, my j node traveled to the AI
+node. At this point, I can hit either the G, okay, let's say I happen to hit the k,
+this point of bottom now. So now I can move to the G. And then from there to the H. And
+at this point, there's actually nowhere else I can go, right. So if I finish my traversal
+through the graph, using either a depth first or breadth first and I never hit my destination,
+then I can just return false, right? It must be the case that there is no such path from
+my source to my destination. When it comes to implementing the depth first and breadth
+first reversals on this graph, it's going to be exactly what we're used to, you can
+either use a stack and solve it recursively. Or you can do it iteratively. And use a queue
+in which case you'd be doing the breadth first traversal. We talked about the complexity
+of this, let's say that n is the number of nodes of our graph, a common thing that you
+can also do with these graph problems is define e as the number of edges here and edges refers
+to a connection between two nodes, basically just the arrows. So if we use these two terms
+of number nodes and number edges, we would have a time complexity of our V o of the number
+of edges as because we would have to travel through every single edge of our graph. Here,
+the space complexity would be based on the number of nodes, right? If I solved it, recursively,
+or even iteratively, with some sort of a depth first stack, then the worst case, I would
+have to have every single node on the stack, right? Likewise, if I saw the eternity with
+a breadth first I would have every single node on the queue. So that's just one way
+we can define the terms for analyzing the time and space of this graph. Typically, for
+graph problems, another acceptable way to analyze the time and space of your algorithm
+is to just use a single variable and just define n as the number of nodes. That's because
+if you say n is the number of nodes, then we can also say that n squared would be the
+number of edges, or that big O. It's about the worst case. So let's imagine the worst
+case graph. Let's say I just had these nodes of ABC. Well, if I wanted to create as many
+edges as possible, how would I just create a single edge? Well, an edge is just a connection
+between two nodes. So you could just really draw an edge for every pair of nodes in your
+graph, something like this. And that's why we can say that n squared is the number of
+edges of any particular graph. And so if you just wanted to use n to define the complexity
+here, then you could say that your time is going to be O of n squared, and your space
+complexity would still be O of n. Do know that these are both two valid ways for defining
+the complexity for a very typical graph problems. That being said, I think this is pretty straightforward.
+Let's hop into the walkthrough video while we're actually implement both a depth first
+and breadth first solution for these. I'll see you there. Hey, programmers, Alvin here,
+right now. Let's go over Ah, JavaScript solution for this has path problem. And so we'll jump
+right in, we're gonna start by solving this one using a depth first traversal, which I
+know requires some underlying stack data structure, I'll just implement that using recursion.
+So I can leverage the call stack to get my ordering. And so I'm gonna solve this recursively,
+I'm gonna consider my source argument as like my current position during the traversal.
+And so I can have a base case in check. All right, if my source is equal to my destination,
+that I must have found the thing I'm looking for. So just return true. This base case signifies
+that I found my destination. So there must exist a path. And so I return true, always
+paying attention to the type that they want us to return for this function. Let's say
+it's not true, well, they need to keep looking. So what I should do is consider my current
+node, which is source, consider its neighbors. If I key into my adjacency list, I know that
+this is going to be an object. So I key into it using my source, that would give me an
+array of all of its neighbors. So for example, let's say it was staring at this one, if my
+current source was F, and I say graph square bracket, F, I would get back an array of gi.
+So now I want to look through the neighbors, right? So I can see over here is turned us
+into a loop and say for that neighbor of those neighbors, I want to traverse to them, which
+means I call recursively. Right call has path, keep your graph the same, but update your
+current position. Now I'm going to be situated at the neighbor. And the destination stays
+the same, right, always have the same goal to get to solving this one recursively. So
+think about what type of this is going to return, I know it's going to give back Boolean,
+right, it's going to tell me whether or not there is some path between my neighbor and
+the destination, right. So if there's some connecting point, or some connecting path
+between my neighbor and the destination, then I know that there must be some path from my
+source to the destination, because your source is definitely next to your neighbor, right.
+So there would be a path between all of us. And so what I'll do is, check if this recursive
+call returns true, I'll make it explicit here, maybe it's clear. And so if there is some
+path through my neighbor to the destination, then I can return true, just pass that true
+upward. Because once I find a path, you can just exit out and return that shoe all the
+way back to the top level of color. But let's say that this call returned false, that means
+that there is no path through my neighbor to the destination. But it couldn't be the
+case that some other neighbor is actually going to work out. And so what I don't want
+to do is just say like else return false, you should be able to immediately catch that
+code like this as suspect because there's no point of having a for loop then right?
+If in either case, you're always going to return, then you're never going to have a
+second iteration of this for loop, right? So if I don't find a path through my neighbor,
+so if this call returns false, then that's okay. Just continue on to the next iteration,
+and search through your other neighbor. that begs the question, Where should we return
+false, needs to be after the for loop? So only after I searched through all of my neighbors,
+and I never find a winning path? Should I return false, and that'd be our nice depth
+first traversal. Let's give that a test run. Awesome. There we have it. One thing to bear
+in mind here, we are leveraging the assumptions in the problem, right, they tell us straight
+up that the graph is going to be given is a sick like, so there are no cycles. So that's
+why in our code, we didn't really worry about getting trapped in an infinite loop. In our
+upcoming problems, we'll have harder grass to actually deal with that sick case. But
+for now, this is a good baseline solution. While we're here, let's also do a reference
+solution, which you know, by now should be iterated, right, there's no way to do like
+a breadth first recursively. And so I need to create my own queue. So I can create a
+queue, kind of in a pinch, I always just use an array in JavaScript, I'm gonna initialize
+that queue with my source on it. So I'm gonna refer to like source and destination, they're
+really nodes. But in the context of like our problem, they're really just given us strings,
+but they represent nodes, right? So think about the information they represent. I'm
+going to iterate while my queue is not empty. So while q dot length is bigger than zero,
+should be familiar code, very similar to our tree algorithms. And I start a single iteration
+of reference by removing the front of my queue. So I can say q dot shift some of the front,
+I can call that my current node that I'm traversing through. And now that something has left the
+queue, typically here is where I check, I can check. All right, if a thing I just visited,
+if that is my destination, then I can just return true, right, I found the thing I'm
+looking for. So there must be a path that connects my original source and my destination.
+Nice. But let's say this was not true. Well, then I need to consider its neighbors. So
+like before, look at the neighbors just key into your graph using the source like it's
+a graph, square bracket source. That gives me an array of all of the neighbors, all the
+neighbor nodes. That's what I want to do here is iterate through every neighbor Over there.
+And then I can just add them into my queue. So q dot push that single neighbor, and do
+be sure to implement your true breadth first. So you need to make things leave from one
+end of your queue, and you add to the other end. So this codes looking good. So you should
+realize how similar This is to our old like binary tree breadth first, except now we have
+to account for the fact that we could have like a dynamic amount of neighbors here, not
+just dot left and dot, right. So I'm just iterating through all those neighbors adding
+them, I need to wait to return false. And you guessed it, the move is after you finish
+this entire while loop, if your cube becomes empty, then you must have explored as far
+as you could. And if you never return true, and now you can return false, because it must
+be the case that there is no path between the original source and your target. So let's
+give this a test run will have a very similar time and space complexity. But this would
+be the code for all of my iterative fans. So here I'm getting a little error. Let's
+see what we did wrong here. So it looks like I timed out here. Let's see bug this one together,
+I had to guess that means I did something wrong getting trapped in an infinite loop.
+This condition looks okay, right q dot length greater than zero. And so here it is, must
+be the case that I'm not correctly iterating through the neighbors here, I just wrote source.
+Instead, I need to say current, because now I'm doing this iteratively, right. So whatever
+node has just left my queue, I consider that nodes neighbors and add them to be visited
+next through my queue. So let's give that a test run. honest mistake there. Cool. And
+there's our breadth first solution for this has path problem. So what I want you to do
+is practice both the depth first and the breadth first, like you expect, we're going to do
+a lot of graph problems coming up. And depending on you know what the problem is asking sometimes
+will prefer one type of algorithm over the other. So it's really important that you practice
+both of these algorithms. Now, all the problems are relatively easy. So practice this, give
+it a shot on your own. And I'll catch you in the next problem. See you there. Hey, programmers,
+Alvin here, right. Now let's go over the approach for this undirected path problem. So we'll
+jump right in. In this problem, we're going to be given an edge list for a undirected
+graph. So if I are familiar with the terminology here, really what we're saying is every pair
+and this edge list represents a connection between two nodes. For example, if I look
+at the first edge, and the list, I see i comma j, that means that there's a edge or connection
+between i and j. And since this is an undirected graph, not only can I directly travel from
+i to j, but I can of course, move from j to i. So it really represents a connection in
+both directions. And so as we start to attack, this problem we'll want to do is actually
+convert this edulis into a more favorable format, like an adjacency list. That's because
+typically, when we perform our traversal algorithms, they work best on an adjacency list form.
+So let's start by doing that conversion here. And I'll actually be pretty easy to code up.
+So I want to basically generate a graph where I have nodes as keys, I want them to point
+to a an array of their neighbors. For example, if I wanted to convert the first edge into
+an adjacency list form, what I can do is create keys for i and j. Now that I is a neighbor
+of J, and also j is a neighbor of I, so I'm going to populate those neighbors respectively.
+Now just follow this process for another edge. So if I look at the edge, k comma i, I need
+to create a new key for K. And I'm going to populate that with I and then for the existing
+key of I, I just add k into that collection. So do bear in mind, the most important thing
+about this conversion is because we know that the graph is going to be undirected, whenever
+you put a connection within your graph, make sure that you have the inverse connection.
+So if I have an edge from k to AI, they also need to have information for it. Okay. And
+this process would just continue for the entire list of edges. And by the end of this conversion,
+we'll end up with an adjacency list just like this. And now we're ready to perform our main
+algorithm. When we go through the code walkthrough for this, I'll show you in depth how you can
+actually create this adjacency list. And so when we want to actually come up with a traversal
+algorithm to solve a graph problem, it really helps if you actually visualize the shape
+of your graph. So actually want to visualize this in terms of nodes and edges. That means
+a bunch of circles and lines between them. If you drew out a nice picture for this graph
+information, you would end up with a diagram like so. And so we'll go through the rest
+of this approach video just referencing this diagram. Something important I want to bring
+up at this point is for this graph, a very common case we'll have to handle is what if
+your graph has a cycle. And that's especially true for your undirected graphs. And so just
+for the purposes of this approach video, I'm going to add an additional edge just so we
+can talk about an explicit cycle. So I'm going to add one new edge from k to J. Cool. The
+reason is now there's a nice big cycle of length three highlighting in red right now.
+And this cycle is important to watch out for because if we don't do any special handling
+Then we may get trapped in an infinite traversal. So imagine I started at this keynote, and
+next I moved to J, then I would move to i, and then back to k, and then back to J, and
+then I, and so on. So now it gives me a cycle, we'll have to guard against that. And so I
+can have a cycle of three nodes here, right, and you can really have a cycle of basically
+almost any size, as long as it's more than one. So for example, if I took a look down
+here, notice that my graph actually contains technically like two separate islands, but
+we would consider them as just one giant graph, right? So I've got the small island of O and
+N, they actually form a trivial cycle, right? If I started traversal, at o. From there,
+I can move to n. And because I know that the edge between o and n is bi directional writes
+an undirected graph, that means I can travel back to O, and then back to n. And this would
+give me cyclic behavior. So have to watch out for all types of cycles in this problem.
+So in the context of this problem, not only are we given a graph, we're also going to
+take in a two nodes. So let's step through an example where I want to return true or
+false, is there a path between I and L. So I'm going to mark those in my graph Israel.
+So I'm going to start at the notify. And to solve this one, you can use any type of traversal.
+So either depth first or breadth first, I'll step through explicitly the depth first traversal.
+Right. Now, in order to avoid any infinite traversals, I want to mark my nodes as visited
+as I travel through them. So not only do I situate myself at this source note of I, but
+I'm gonna mark it as visited. And you can implement this like marking a visited pattern.
+And a few different ways. When we code this up later on, we're probably going to use a
+set to represent what we have visited. But for now, I'll just check them off in my diagram.
+And so in my diagram, if you see a checkmark next to a node, that means that I already
+have visited it. So since I'm at this node of I want to move to its neighbors, so I'm
+gonna move to the neighbor of J. And I'll also be sure to check it off as visited. At
+this point, I can move to one of Jays neighbors, let's say I move to k. And I'm also going
+to mark it as visited. Now then Matt K, I can move to a few different neighbors, I could
+either move to I LRM. Let's say by chance I chose I, I once I get to this, I know, I'm
+immediately going to be able to see that, oh, I visited this node previously. So what
+I should do is not travel through it again. Instead, I should go back to the K, right,
+because this eye node is already visited. And that's where I actually avoid the infinite
+loop. So instead, I moved to some of Kay's other neighbors, let's say I chose the L.
+At this point, I would mark it as visited. If I do a quick check, I can see that this
+note I'm at L is also my destination node. So I must have just found a path between my
+source and the destination. So at this point, if I find my destination, I can just return
+true, which was a pattern we spoke about in a previous problem, the only additional criteria
+we need is to mark nodes as visited. That way, we don't get trapped in an infinite loop.
+And that's only going to be needed if we have cycles in our graph, which if they don't give
+us any assumptions we should always guard against. So let's take a look at another example.
+Let's say I had a source of K. And my destination was Oh, just looking visually in the graph,
+you can already see that there's no way to get from k to O, because they're disconnected,
+right, they're on separate islands both step through the algorithm regardless, so I'm going
+to start at K gonna mark it as visited, I'm going to visit some of Ks neighbors. So I
+can move to i, then I can move to J. And then at this point, I would move back to K and
+really make sure they don't explore any of Ks visited neighbors, so I don't move back
+to I right, instead, I should move to an unvisited neighbor, like l market is visited, then I
+only have one other node to visit, which would be this m node. And at this point, I've actually
+exhausted this full graph region, right, there's nowhere else I can go. And once I finished
+my traversal, if I never find my destination node, then I can just return false, right?
+It must be the case that there is no path that exists from my source node to the destination
+node. That's really all there is to this algorithm. Let's talk about the complexity. If we say
+that n is a number of nodes, let's also define that he is a number of edges. Like we said
+previously, this is something typically acceptable to do for our graph problems. I know that
+the time complexity is going to be roughly of the number of edges. And my space complexity
+is going to be O of n that is the number of nodes. I think it's worth stepping through,
+you know what this complexity actually means, you know, big O refers to the worst case.
+So let's think about a worst case graph that we can have. And there are a few different
+graphs that you can kind of design and think of, I'll just show you one example. So let's
+say I was given a graph like this, right? Notice that although z is kind of on its own
+island, all of these nodes that is a three as well as a C note. They're all members of
+the same graph. So let's say I wanted to figure out is there a path between A and z. So if
+I did my traversal algorithm from here, I'll start at a then I move to B, and then to C,
+and then to D, and then to E. At this point, I've covered all of the edges in the graph.
+Remember that the edges are the arrowheads here, because I have to travel through every
+edge of this graph. That's why we said the time complexity in the worst case is going
+to be o of E, right o of the number of edges. and here we can say the space complexity is
+O of n. Because if you're doing this with either a depth first stack, or a breadth first
+queue, in the worst case, you would have to add everything you visited, or that is all
+of the nodes onto your stack or queue. That's why we say for regular graph traversal algorithms,
+we have a time complexity of o v, and a space complexity of O of n. All right, I think we
+have the approach for this algorithm down pat. At this point, I want to join me in the
+walkthrough videos, where we can actually see how to implement these visited patterns
+in some code. I'll see you there. Hey, programmers, Alan here, right. Now let's go over a JavaScript
+solution for this undirected path problem. So we'll jump right in, just like we said,
+in the approach video, there's going to be a two parter. First, we're going to convert
+our edge list into an adjacency list. That way, it's easier to do a classic traversal
+through it. So I'm going to pretend I had a helper function here. That gives me back
+an adjacency list. I'll call it graph. And I'm going to call this helper function, we'll
+say build graph. And if I pass it, just all of my edges, I want it to do that conversion
+for me. So let's work on that helper function right now. And then we'll jump back to undirected
+path. So I'll create my build graph function, just going to take in the edges, right. And
+I know I want my adjacency list to be in the form of a plain old JavaScript object. So
+create that graph object here. And I'm going to return it by the end just like this. And
+what I want to do is fill up this graph with information from the edges. So I'm going to
+iterate through every edge. So for let edge of edges, so iterating, through every single
+edge, I know a single edge would be a pair. So I'm just gonna de structure out of that,
+maybe just my two node identifiers, we'll call them a and b, from the edge. Nice. What
+I want to do is now initialize these nodes as keys of this graph object. So a would be
+something like this, I note or this k node, right. So what I'll do is check if A is in
+my graph, I think really clean up this code, we better if I check if it's not in the graph.
+So if the a node is not in the graph, then what I can do is initialize it in the graph.
+So use it as a key and assign it to be an empty array. And I'll do the same for B over
+here. Right, so I'm initializing A and B in the graph if they don't exist, and once I
+do that, then I can safely just add neighbors into their their edges, right? So I can say,
+the graph square bracket a dot push B. So now I'm saying that right, B should be a neighbor
+of a, but I know that this is an undirected graph, right? So that should be symmetric.
+In other words, then make sure you push a into the neighbors of B. So it's really important
+that you notice that this is an undirected graph. So your adjacency list needs to be
+symmetric in that way. So if a is in B's neighbors, B should also be an A's neighbors. So that's
+looking pretty good. Let's go ahead and see how that graph looks just with a little little
+side test here. So I must steal maybe this snippet, get that full snippet here, I could
+just run it manually love to make sure I can test these little helper functions before
+I use them. So we'll give this a run, we should just see the adjacency list form of these
+edges here. See how it looks. So that looks pretty good. So I'm seeing that all right,
+I is connected to J and K. Right? And that looks correct based on these edges. Awesome.
+And I'm also want to make sure that it's symmetric, right. So if i and j are over here that I
+should have JNI over here as well, right, it should be a two way street. Alright, now
+let's work in our real algorithm here, which would be some sort of traversal. Now that
+you have a nice adjacency list, you can do either a breadth first or a depth first traversal.
+I'm going to implement I think, a depth first. Typically for me, it's just easier to raise
+push if I do it recursively. And so I'm going to pretend I had a function called has path,
+it's going to take in my graph now. And also a start node and an end node. So I want to
+find a path from node A to node B, of course, I'm going to assume that this function returns
+a Boolean. But of course, I have to write that function for myself. So stay organized
+in our code, we'll say has path. I'm going to take in the graph as well as node A and
+node B. And I think a better name for these arguments as I'm doing this recursively. Let's
+call this one source and this one destination. So over time, we're going to call recursively
+and update this source node. And that should be a familiar pattern to some other problems
+resolved. Recently. So think about my base case. All right, I know that I've has successfully
+found a path when my source is equal to my destination node, if that's the case in return
+true, because I just found a path. Otherwise, I have to keep looking. So I should be able
+to look through the neighbors of my source node. So I could say graph square brackets
+source, right? Remember that any point through this recursion source represents my current
+position. If I say graph, square bracket source, let's say source was I, I'd be accessing all
+of ies neighbors, right? So I want to do is really iterates for let neighbor and, or rather
+have graph of source. So if sources I on the first iteration neighbor would be j, second
+iteration neighbor might be K. And for each of my neighbors, I want to travel to them.
+So call has path, you can keep your graph argument the same needs to change your source
+though now you're situated at your neighbor, and your destination is fixed, or you're always
+trying to get to the same exact node. I'm gonna think about what type this returns I
+know this is going to tell me Boolean, right? True or false? Is there some path from my
+neighbor to the destination, I'm going to check. All right, if that call, returns true,
+I'll be explicit here, then I've just found a path. So just return that true, right, pass
+it all the way back up. And kind of the logic that we form here is, I know that by definition,
+source and neighbor are definitely connected. So there's definitely a path between them.
+They're connected by a direct edge. So if my neighbor has a path to the destination,
+then I know, then the source also has a path to the destination. Awesome. And so after
+this for loop is done running, let's say we never find that any of our neighbors make
+a winning path, then means I finished this for loop without ever returning true, which
+means that I can return false right must be the case that this source node does not have
+some path to destination. So I think we can go ahead and give this code a test run. If
+you watch the approach video, you'll notice that there's something important missing from
+this code. But we'll just run it and show you how to fish here. So here I'm getting
+an error edges is not defined what I do horribly wrong, line 34 months ago, line 34 over here.
+So got to take out this call, don't need that anymore. That's on me. Let's get that test
+run. So that was not the error I was expecting. I am expecting some sort of an infinite loop,
+though. Perfect, I'm getting maximum call stack size exceeded. So I got like an infinite
+recursion really. And that's going to occur because we didn't account for the case where
+we have cycles in our graph, right, we need to avoid that. Because if I have a cycle in
+my graph, I'm never going to hit any of these base cases, I'm just gonna keep traveling
+around in a circle. And if that's unclear, make sure you watch the approach video, right.
+And so like we said, the move here is to add some sort of data that shows where you've
+been previously. Typically, the way we do this for our graph problems is to track some
+visited set. So when I make my top level call to this house path, I know that that is the
+actual function that does that traversal, I'm going to pass along a new argument here.
+And I'll make it a new JavaScript set. So if you're unfamiliar with sets, and JavaScript,
+they're really just a collection of items. And what's really great about a set is in
+o of one time, I can add something into the set. And I can also check for something within
+the set is going to be very, very quick for our traversal. I don't want to use something
+slow like an array, because to do a lookup or a check within an array, that would actually
+be O of n time, or it's for a set, it's o of one. So I'm going to make a new argument
+here to receive a column visited. What I want to do is all right check if my source node
+is already in the visited set to do that in JavaScript I can check visited out has. So
+if the source node is inside of the visited set, then I could return false here, right,
+there's no reason to travel through this node anymore. Because if it's an visited then I
+must have traveled at previously. And this is how I can avoid an infinite recursion can
+also move this line downward if I wanted to. And let's say that I make it through this
+if statement. So that means that all right, this node source has not been visited. But
+I'm visiting it right now. So I need to do visit a dot add source. So this expression
+checks if source is in visited, and this expression adds source to the visited set. I want to
+change a few other details here. Make sure that you pass along the same visited set through
+all of your recursive calls over here. Because you want this visited set to be like global
+for the entire traversal right I need to know exactly where I've been in the past. And once
+we have that in place, that should be everything we need to prevent any any cycles from giving
+us infinite recursion here. Let's give it a test run. Awesome. There's a solution for
+our undirected path problem. So important things to take away here do consider this
+problem, a two parter right? phase one is really straightforward, just converting an
+edge list into an adjacency list, which is actually an important skill to practice. Because
+when it comes to, you know, some problems you'll face in the wild, they are all going
+to be basically graph problems. But sometimes they'll give you the graph and like a different
+format, and you can always convert into a format that you're comfortable with. And from
+there, we have a really core pattern of just doing a traversal through a graph, but also
+guarding against infinite loops, right. And to do that, we just use some sort of a visited
+set. Hey, programmers, welcome back right now want to go over the approach for this
+connected components count problem. So in this problem we want to do is take an adjacency
+list representing an undirected graph. As always, with any graph problem, you want to
+start by visualizing the actual graph. And so if you took a picture of this information,
+it would end up looking like a graph with this structure. The first thing we should
+notice about this visual graph is that a has multiple connected components. So for example,
+I can look at this component in pink spanning just the one and two nodes, I can look at
+another component spanning the four or 5678 nodes. And finally, a third component just
+covering the three node. And that's why we say that your result for your function here
+should be three, right? Because there are three different connected components. So let's
+come up with an algorithm we can use to count the components, we know that a general counting
+algorithm is going to use some variable, and we'll initialize that count variable to zero.
+And the trick here is to use a combination of both some standard graph traversal code,
+maybe a depth first as well as some iterative code. So I'll do along the left hand side
+is just list out all of my different nodes. And what I'll do is start by iterating, through
+every node of this list. And what I'm going to do is when I'm currently at some note of
+this iterative list, I'm going to start a traversal at that node. So right now starting
+at the node of one, I begin, let's say a depth first traversal, you can really implement
+this pattern using either a depth first or breadth first. So let's say I start at the
+one node over here. What I should do now is continue this traversal as far as possible,
+that's the key to victory here. So from this one node, I can move to a neighbor of two.
+And of course, as I travel through these nodes, I want to make sure that I mark things as
+visited, so I can avoid loops. And marking things as visited will also ensure that we
+don't double count any components here. Once I hit that to note, I've actually completed
+this full component, there's nowhere else I can explore. So at this point, I should
+increment my count by one. So whenever I complete a new traversal on some region of the graph,
+I need to increment my count. At this point, I now fall back to my iterative code on the
+left hand side, and I iterate through the next node. So I now look at node number two.
+If I take a look at node number two, I see that I already have it marked as visited.
+So that means I don't need to start a traversal at that node. So effectively skip the two
+and keep the count the same. next iteration I have a three, three is unvisited right now.
+So I should begin a new traversal starting at this three node, which means I just mark
+it as visited. And since this three is a singleton node, right, it's not connected to anyone,
+I would actually complete their traversal, just on the three node. At this point, I've
+completed a traversal. So I increment my count by one. So now I have a total count of two,
+I fall back to my iterative code. So I moved from the three node to the four node. And
+I see that this four node is unvisited, which again means I must begin a traversal from
+this four node. And I'm going to expand this traversal. Starting at four as far as I can,
+before I go back to my iterative code, right, so I'm going to explore the six, explore this
+five, explore the seven, and finally explore this eight. At this point, I've completed
+a traversal. So I can increment my count up to three. And then I have to continue and
+fall back to my iterative code. So look at the five node, I see that the five note is
+already marked as visited, so I don't start traversal. And I see that the six node, same
+thing don't need to start traversal seven note already visited, eight nodes already
+visited. At this point, I would be done with the entire algorithm. And there's my final
+count of three. So a few interesting mechanics here, right, you're going to need to definitely
+implement some code or some function that does a traversal through some component as
+far as possible, then you also need some iterative code just to potentially begin a traversal
+at every single starting point. And what you want to do is be sure to mark nodes as visited
+as you traverse them, because only when you marked a new node as visited and complete
+that traversal should you increment your count. You're probably wondering the exact details
+of how we implement this in some code, but don't worry, you'll realize that it's really
+just a spin off of our previous graph algorithms in the walkthrough video, but for now, we
+see that n is a number of nodes And he has a number of edges like usual, we know that
+this is really just traversing through the entire graph. So we can say the time complexity
+is just o v, and the space complexity is O of n, right, depending on whether you do a
+breadth first or depth first, you're going to use that space, then in terms of your stack
+or cube. And we can also consider using the space within our set if you use a set to mark
+your nodes as visited, but overall, it still will lead to a linear time and linear space
+solution. Alright, I think I'm ready to code this one up. I'll see you in the walkthrough
+video. Hey, programmers, Alvin here, right, now let's go over a JavaScript solution for
+this connected components count problem. And so we'll implement exactly the strategy we
+spoke about in the approach video. So make sure you watch that first, we know that this
+is going to require really two different mechanisms are going to need our interactive code just
+to hop to different connected components. And we also need some traversal code to just
+explore some single component as far as possible. And so what I'll do here is let me start with
+the iterative code. So I need to begin a traversal at every potential node. So I can say for
+let node of my graph really say in my graph here, because for this problem we're given
+looks like JavaScript objects. So if I say for let node in graph that would give me each
+of these keys like 015, and so on. And so for every node of the graph, what I want to
+do is begin a traversal. So we're going to assume I have a function here, I'll call it
+explore. I'm gonna pass in, of course, the graph, as well as that node. And what I want
+that function to do is do like a, we'll say, a depth first traversal, from that node as
+far as possible, right, so probably going to need to add more logic into this main function.
+But for now, I think it's about time to actually flesh out explore. So I'll choose to do this
+explore method recursively. So we'll define explore, it's going to take in a graph, as
+well as my current node, I'll just call it current, right. And then from there, I want
+to solve this one, using a depth first. So recursion is fine. And not much to do here,
+but really go through my neighbors want to iterate through every neighbor of this node.
+So I can say like neighbor of graph of current, I recall that graph would be an adjacency
+list. So if current is spread this out. So if current was a node like eight, then on
+the first iteration neighbor would be zero, next iteration neighbor would be five. So
+here, I'm just going through all the neighbors of my current node, I just need to not traverse
+to them. So I can call explore, pass along the same graph, that doesn't change. But now
+my new current node would be that neighbor, just like that, and this will perform the
+baseline of just the kind of depth first traversal. But we need to also mark things as visited,
+like we said, in the approach video, that's a really important a part of the solution.
+And I want this like visited set to be global for my entire traversal. So I'm gonna have
+to create it, maybe my main function over here. So I can create my constant visited,
+make it a JavaScript set, because JavaScript sets off for me O of one lookup, and o of
+one addition, I can pass this visited set my reference until all of these calls over
+here. So I know I'm gonna receive visited over here now. Now I want to actually start
+using visited. So a few things to note, right, I definitely want to use visited to prevent
+cycles, right? That's one of the main reasons we always had visited to our graph traversals.
+So some familiar code here. If I've already visited this node, so if visited, has this
+current node, then nothing much to do here, maybe just return false. Later on, we'll see.
+The really cool trick we use here by returning false, right, actually serves two purposes.
+return false because this might be a cycle. And then I need to make sure that I pass as
+visited set along over here as well. Nice. And let's say that we have a current node
+that is not visited. So this statement is false. Well, then, it seems to be that we're
+visiting this node right now. So now we should add it into the visited set. Nice. And then
+beyond that, we need to make sure that our explorer function is consistent in its type,
+right? So I'm going to have my explorer function do is it's going to return true whenever it
+explores like a new node return true. So if you take a look at this code, for my function
+to hit this line 17 return true, then it must be the case that it has already finished exploring
+all of its neighbors, right, because I know that this for loop does the job of exploring
+all of the neighbors, right? So only after all of those neighbor calls returned. Will
+I return true? And that must mean that I've explored this component as far as possible.
+Right? And that seems good to go. And what I can do is now in my main function, when
+I call explore it, now it's going to give me boolean data, right? If it's exploring
+a new island, or a new component, it's going to return true. So I can check. All right,
+if explorer returns true, then that's a new component. So I can probably increment some
+count here, I should have created. So I'll say 11, counts equals zero, I'm going to increment
+that count, when I find a new component and plus equals one by the end, I should of course,
+return that counts. And what you'll notice is, for scenarios where we, let's say iterate
+into a node that we already explored, when I make this call, I know that that call is
+going to return false, because if something's already explored, it would have been added
+to visited. So that's why I'm using some Boolean return values for this recursive function.
+So that code is looking pretty good. I think at this point, we might be ready to test this
+one, let's give it a shot here. So some pretty tricky codes, not very long. And this is a
+really core pattern here. Looks like I'm getting an error, we have something wrong here. So
+looks like the answer should have been two, but I gave back seven. So I'm counting way
+too high. So what I'll do to debug This one is really just maybe print out my visited.
+So this is a very common mistake in JavaScript want to bring in, I think this example, I
+could test it manually. What I want to be sure to do is maybe at every iteration of,
+let's say this this for loop, I console dot log with visited associate visited changes
+every time. And I'll run this manually by just hitting run. And let's see what we get
+here. So a few things to note, it looks like some of our keys, or some of our items of
+the set are strings or the zeros a string. And other times they're actually numbers,
+notice that they're missing quotes, that has to do with, you know, kind of just JavaScript
+objects, technically, keys of a JavaScript object are going to be always converted as
+strings, although the data within these arrays over here is going to be number. And sets
+can actually store both types. And so if you have like two different types, it's not gonna
+be able to figure out like that those really represent the same node. For example, looking
+at this visited set over here, I have like the number one, as well as the string of one,
+which is no good. So let's just convert them all to maybe strings. So I'll check visited
+if it has the string version of my current node. So I'll just do the conversion for me.
+And likewise, I want to add the string version of the current node over here. That way, I
+have very consistent types. So let's run that manually, again, should just see all of our
+strings now. Awesome. And I think we can run all the test cases. So that's a really important
+thing to watch out for in JavaScript. And JavaScript is pretty unique in that regard.
+It just automatically converts all of your keys into strings. Awesome. All right, programmers,
+it's all I got for this connected components count problem, what you want to do is really
+practice this problem. It's actually a very, very common interview question. And there
+are many variations of this problem that we're going to do in the future. Hey, programmers,
+Alvin here, right? Now I want to go over an approach we can use for this largest component
+problem. So in this problem, we're going to take in a graph, just like we've been doing
+as of late. And the first thing you should probably do is think of this graph as a picture.
+So hopefully, you drew it out. So you can really understand what this is asking. Our
+graph information is already given as an adjacency list. So it's pretty easy to draw out. So
+since I have a graph like this, the first thing I should notice is it could contain
+multiple components, right. So here, I kind of see two separate islands, two separate
+components. And I want to consider the sizes of each respective component. So if I look
+at my first component, spanning the nodes, 015, and eight, I know that they have a size
+of four, they're the four represents the number of nodes within that component. So I'm really
+interested in a number of nodes have a component, not necessarily the number of edges. If I
+look at the other component that spans the nodes, two, three, and four, that definitely
+has a node group of three. And this problem really cares about the largest component,
+so I should just return four, because it's the largest component size. So when it comes
+to what this question is asking, you do have some familiar patterns if you've been following
+these problems in order and of course, I always recommend that you do these problems in order.
+So how can we go about solving this one? Well, I know I'm gonna need some sort of iterative
+code that way I can travel and hop to different components or different islands, I can probably
+do some depth first traversal variation that also finds the size of a connected component.
+So let's step through how this algorithm might run. On the side. I'm going to list out my
+nodes to represent how I'm going to do the iterations to be In a traversal at every node
+as my starting point, so I'm going to start at node zero. And since node zero is unvisited
+right, now, I'm going to begin a brand new traversal, starting at node zero. And I'm
+going to mark my nodes as visited as I go, because like usual for our undirected graphs,
+you want to watch out and prevent any cycles that you may get trapped in. And I know that
+this depth first traversal, is going to explore this full region as far as possible. And by
+the power of recursion, it'll be pretty easy to implement some pattern that can count every
+node as we traverse through it. So I'm going to treat each of these nodes as just being
+a single note, of course. And eventually, those ones are going to return to my top level
+call, in which case, I can add them all up, getting me a grand total of four. If this
+feels very hand wavy, and you're wondering, like how the heck are we going to code up
+that pattern, don't worry, it's actually a pattern we've seen before. And so I'll cover
+that in detail in the code. Just know for now, it's actually not a big deal to get the
+count of nodes, right. So now that I know that the size of this component is four, what
+I should do is I guess store it as my current largest island or component I've seen so far,
+because it's the first component that I've considered. At this point, I should fall back
+to my intuitive code. So I look at the node of one, what I should notice is this node
+one is already checked off, it's already visited. So there's no reason to start another traversal
+from this node, because if it's visited, that means I have already explored the component
+that node one is a member of, so I can basically skip it, go on to node two in my iteration,
+since node two is unvisited, I should begin a new traversal. Over here, I know that this
+depth first traversal is going to explore that component as far as possible, it's going
+to go ahead and count all of those nodes as one. And eventually some of those counts together,
+giving me a count of three. And so this next component has a size of three, I need to compare
+that three against my current largest four, obviously, the four is bigger, so the four
+gets to stay as the largest. When I fall back to my iterative code, I get to my note of
+three threes already visited, so no reason to start anew. traversal, four is already
+visited, so nothing to do, five is visited. And of course, eight is visited as well. At
+this point, we're done looking at every single node within our graph, and we must have explored
+every single component, so we can just return the final value that we have stored in that
+largest variable. Awesome. When it comes to the complexity of this algorithm, it's pretty
+straightforward. It's basically exactly all of the algorithms we've seen so far, we see
+that n is the number of nodes and e is a number of edges, we know that the time complexity
+is going to be roughly o of the number of edges really just exploring through the entire
+graph, we can also see that the space complexity is also going to be linear, really just O
+of n. Because through all of this, we're probably going to be storing all of our nodes in a
+set right to track visited. And depending on how you implement your traversal algorithm,
+whether you use depth first or breadth first, you're also going to use a linear amount of
+space through your stack or your queue. So overall, we're looking at a very efficient,
+linear solution. And so with that, I think I'm ready to code this one up. What I want
+you to do though, first is possibly give this one a shot on your own first cluster, really
+just utilizing some code that we've seen in the past. So give it a go on your own. If
+you get stuck, you can find me in the walkthrough video. I'll see you there. Hey, programmers,
+Alvin here, right now let's go over a JavaScript solution for this largest component problem.
+So this problem is going to be really just a spin off of our last problem. So we'll hop
+right into it. And as always, make sure you watch the approach video first. And we'll
+start by building our code that will help us start a traversal on disconnected islands
+here, right? This is connected components, we should say. And so I'll start my iterating
+through every node of the graph, that means I just iterate through the keys of my input
+object here. Because remember, we're given this graph as already an adjacency list. So
+I can say for let node in the graph. So I'll give me the nodes like 015, and so on. And
+what I'll do is I'm going to start a traversal here, right? So we're going to pretend I had
+a function, I'll call it explore size. And if I give it the graph information, as well
+as the node that I want to traverse through, hopefully, it actually does a traversal through
+that entire connected component, right. And what I'm going to assume is, let me assume
+that this function actually returns the size of that entire component. So that would be
+a number right, representing the number of nodes in that component. And so if I have
+that should receive it here, call it size. And I know I need some like max value logic
+for this entire for loop. So I'm going to create longest, initialize it to zero. And
+then from there, I can check. All right, if the size of the component I just found, if
+it's bigger than the longest, then I can replace the longest simply longest equals size, that
+after the for loop, I would just read Turn the longest course I need to write this explore
+size function. So I'll implement this as a type of depth first. So I'm going to make
+it recursive, as for size, taking the graph, as well as our current node. And a few things
+I should watch out for here, they tell us that we have an undirected graph. And so we
+need to make sure that we avoid any cycles. So we're also set up here is some classic
+structure, I'm going to use a visited set, we're going to use a set because it gives
+me O of one lookup and o of one insertion. So now that I have my visited set, I can pass
+it along, as I start the traversals. And now let's work on a base case, as well do to get
+going is check if I visited this node already. So if the visited set already has this current
+node that I need to return, basically avoid a recursive call. But I also want a consistent
+type here, right, so I'm assuming that this function gives back a number representing
+the size at some point in my traversal. If I get to a node that has already been visited,
+that means I counted it already. And so I'll treat it as zero right now, because I don't
+want to double count my nodes, right otherwise would be inaccurate here. And now beyond that,
+what I can do is maybe create a variable here, I'll call it size, I'm going to set that equal
+to one to represent the current node I'm on right now, right? If this condition is not
+true, then it's the first time I'm seeing this node, so I need to count it. And we'll
+also be sure to do is add it to visited that way I don't get into a cycle into the node
+later on. Nice. And at this point, I need to make my recursive call on the neighbors
+of this node. So like we usually do could say for let neighbor of graph of node. So
+remember your shape of data here. So if node was a key, like five, when I say, Neighbor
+of graph node, that would iterate through the neighbors a five, zero, and then eight,
+and so on. And so here, I make my recursive calls, I'm gonna call the same function explore
+sighs, pass along the same graph. But now you're situated at your neighbor, and you
+can provide the same visited set. And here's where I do my recursive leap of faith, right,
+I'm going to assume that this explore size function is working. So if it was working,
+what would it give back, it would give me back a number representing the size of that
+graph, right beginning at my neighbor. So whatever number I get back here, I just want
+to increment my size by that, right. And that would accumulate a basically a count of all
+of the nodes in this fully connected component. And after I'm done exploring my neighbors,
+I would have explored the entire component fully. So I can just return my final answer,
+which would just be the size over here, really important thing you need to do is make sure
+if you follow this kind of strategy, you start your size equal to one, and you add to it
+over time, because this one represents the current node that I'm at, I know that every
+call is going to count its own node. So over time, this will actually accumulate everything
+I need. So feels pretty good, have our nice visited logic. And we already wrote our main
+function here. Notice how we're splitting up this code in a nice little helper function
+here, I think it's the best way to express this, it's very similar to some previous problems
+that we've done. Right, I think at this point, let's go ahead and give this a shot. See,
+what we get, should be able to put it through a few different test cases. Nice. And there,
+we have the largest component to problem. So a few things, I want to draw your eye to
+remember that for your graph problems, or you have disconnected components, you're going
+to need not only your traversal code, but some just iterative mechanism, usually just
+a loop to make sure you can hop to different components, right? Because if you only had
+your regular like traversal function, by definition, there is no edge between separate components.
+So you would never be able to explore the full graph. Otherwise, alright, programmers
+practices, and I'll catch you in the next one. Hey, programmers, Alvin here, right.
+Now let's go over an approach we can use for the shortest path problem. So here we have
+another graph problem, and your graph is going to be given as an edge list. So the first
+thing we should probably do is, of course, visualize this graph. And in the context of
+your code, it probably would be best if you convert it into an adjacency list. Since we've
+seen that pattern a few times in some recent problems. I'll leave that part to you. But
+we're going to end up with a graph that looks like this. And in this problem, we're also
+going to be given a two nodes here, let's say W and z, what I want to do is return the
+smallest path between these two nodes. And here I have two obvious paths, right? One
+way I can get from W to z would be to go through x and y. And there I can see that that path
+length would be three. Do note here that we're going to consider the path link as the number
+of edges within the path. So not the number of nodes, right? So that means how do I calculate
+three here? What's really just three lines, right, three edges. That's one way to get
+from WC another obvious way to get from W to z would be to go through VI, which case,
+I would only need to use two edges. So that path line is of course two. And this problem,
+what I want to do is return the smallest possible path length. So I should return the final
+answer of two here. So we know that this problem is going to require us to do a graph pathfinding
+algorithm. The question is, which one should we take, we either can choose, of course,
+a depth first traversal, or a breadth first traversal, I'll cut to the chase here. And
+both of them would actually give you a strategy that works, meaning you can solve this with
+either a depth first or a breadth first strategy. But maybe one of these algorithms would be
+better than the other. So let's consider the possibilities. So let's say I had some large
+graph, well think abstractly right now. So kind of just looking at an abstract example.
+And let's say I was stepping through some depth first traversal. Let me say I have my
+starting node in yellow, and I'll have my target node in blue. So what I want to do
+is, again, figure out what's the minimum path distance between these two nodes, obviously,
+you know, just in the long run, you should get an answer like two here, right, because
+two is definitely the shortest path between these two nodes. If we did a depth first traversal,
+I know that depth first would force me to look in one direction as far as possible,
+until I have to switch directions, right. So for my starting on yellow, let's say we
+move to the right, that'd be one edge and move to the right again, two edges move to
+the right, again, three edges. At this point, I can't move right anymore. So let's say you
+move downward, so at 456 have to switch directions, again, seven, eight. And at this point, we
+kind of already see that this is going to end up possibly getting to the blue target
+node. But that wouldn't be the shortest path. Something unfortunate here is although my
+star and nodes are really close together, a depth first traversal could be unlucky in
+that it may search in a totally wrong direction, and snake all the way through the graph until
+it eventually finds my target node, at which point I definitely don't have the shortest
+path. So I think a breadth first traversal is going to be more useful here. So let's
+say start at my green node, still my same starting point. And if I did a breadth first
+traversal, I know that breadth first means I'm going to explore all the directions very
+evenly. So it would look like this. So I would explore all nodes one edge away from my starting
+point. And then from there, I would begin to explore all nodes two edges away from my
+starting point. And at some point, I'm going to hit my target node. And if it's the first
+time I'm seeing my target node, then by definition, I must have just found the shortest path,
+right, the shortest path would just be two. So that's my high level argument for why a
+breadth first search is going to be more useful, in my opinion, for this problem, let's step
+through this process a little more algorithmically. So let's say I had my original graph. And
+if I'm gonna do a breadth first traversal, I know that I have to use a queue right no
+matter what a queue is what gives you that breadth first order. And what I'll do is eyes
+the items of my queue, I'm going to store not only the nodes, but also the distance
+from my starting point, that means I'm going to initialize my starting note on the queue
+along with the distance of zero. And that represents the fact that all right, that note
+of W is zero edges away from the starting point, because it itself is the starting point.
+So at any point in time, the items of my queue are always going to be pairs, right of node
+comma distance. So now we're going to begin our general algorithm, I'm going to keep iterating.
+While my queue is not empty, a single iteration of breathless would remove the front end of
+my queue, and I'll label it as my current node. At this point, I should check Alright,
+is my current node of W, the thing I'm looking for? It's not, so I need to explore W's neighbors.
+So I can look at the x node. And I know I need to add it into my queue. But when I add
+it into my queue, I want to make sure I tag it with a distance. So if my current node
+has this zero, I know that a neighbor of this node would have distance one, so I just increment
+the current distance by one. So onto my queue, I put an item that says x comma one. And I
+have a similar scenario for this V node. It's also a neighbor of W. And so I put v comma
+one on my queue as well. At this point, I can go to my next iteration, or move the front
+of my queue. So I look at the x. And then I look at X's neighbors do bear in mind that
+because I have an undirected graph here, x really has two neighbors, right, it has w
+as a neighbor, as well as y. So something you should already know is I need to track
+visited. In other words, when x is going to consider its neighbors, it should really only
+care about the Y, right, I don't want X to put w back on the queue, because then I would
+get an infinite cycle. So I'm just gonna look at the Y over here. I'm going to add it to
+my queue. Because I know my current note of X has a distance of one y must have a distance
+of two always just incrementing the distance by one. Cool. And then I carry on with this
+algorithm. I removed the front of my queue now, which would be the V note. And at this
+point, I can consider V's neighbors, and I do See that one of its neighbors is actually
+the Xena, that's the only unvisited neighbor, I'm going to be sure to add z into my queue
+and tag it with a distance of two, right, because if my v has distance one, its neighbor
+would have a distance of one grader. At this point, you can already see how this algorithm
+is going to work out. Eventually, this z nodes going to leave the queue, and that would actually
+be my target node. So since I've added a node into the queue that matches my target, I know
+I have my final answer. The two here does represent the number of edges we took in that
+logical path. And I would, of course, just return that too. So for the most part, this
+algorithm just sounds like a classic breadth first traversal. Using a queue on a graph,
+the only interesting bit is now we're also going to track the current distance. You know,
+when it comes to counting the length of a path, you need some counting mechanism. And
+so if you begin your queue with your starting node with a distance of zero, every time something
+leaves a cube, and adds its neighbors, it should increment that distance by one. And
+like you already guessed, this algorithm is pretty efficient, because we don't have to
+traverse through the graph more than one. So we'll see that this has a linear complexity.
+Alright, I think I have everything I need to code up this one, I'm sure you're wondering
+about these implementation details. So what you want to do is possibly give this implementation
+a shot on your own. And if you need some help, you can find me in those walkthrough videos.
+See you there. Hey, programmers, Alan here, right. Now let's go over a JavaScript solution
+for the shortest path problem. So we'll jump right in, hopefully, you watch the approach
+video. And so we'll start by converting our edge list input into something more useful
+for our traversal like an adjacency list, we're going to write a very classic function.
+When I call it build graph, like you expect it takes in the edges. And I want it to return
+an adjacency list. For me, that means a JavaScript object, I'll call it graph, by the end of
+this function, this will help I'm going to return the graph and some common code, I'm
+going to iterate through every pair, right, basically every edge, I'll say, for left edge
+of edges. As I'm iterating, through every edge, when I want to do is unpack that edge
+into its component nodes, I'll call it a and b. And now I can start formatting my adjacency
+list. So I know I want the keys of this graph to be obviously the nodes, I want the values
+to be an array of the neighbors of that node. So what I'll do is, it's the first time encountering
+a node, I'll check. Alright, if this a node if it's not in the graph yet as a key, then
+I should create it for the first time. So use it as a key and initialize its value to
+an empty array, basically, at the start is going to have no neighbors. Likewise for B.
+And then, at this point, I know that A and B now definitely exist as keys within the
+graph. And so I just want to add those neighbors. So if I have an edge, like w comma x, I know
+x is a neighbor of w, and w is a neighbor of x. So simply put in say, graph a dot push
+B, and then just the inverse of that should be good to go. Cool. So that should give us
+our graph. Let's go ahead and use that in our main function now. So we'll just say graph
+equals build graph on the edges. And what we want to do now is actually work in our
+breadth first logic, like we said from the approach video. So a few things I'm going
+to do, I'm going to definitely set up my queue, we said that the key to victory here was to
+not only store the node in your queue, but for every like frame inside of your queue
+also store its distance from node A. So I'll just use like a pair of things. So the elements
+of my queue are going to be always a pair. And I'll throw on the initial node A, and
+also the number zero, because at the start, right, this node A is zero edges away from
+itself. So that's good to go. And over time, I'm going to be incrementing. This number,
+it seems nice. And so let's keep on keepin on here. All right, a while loop, classic
+condition would be all right, while your queue is not empty, then I shall remove something
+from the queue. So always remove from the front if you want to follow a true breadth
+first order. So I can do do dot shift. And that will give me back an array or give me
+back one of these sub arrays here. I know it's always going to be a pair so I can just
+unpack. And I'll just say alright, grab the current node as well as the distance. Nice.
+I'm going to check the node here that I just removed from the queue. If that node is node
+B, that I must have just found a path and I know the distance in that path, I can just
+return it. But if this condition is not true, then I need to keep searching through my graph.
+Since that means I need to add this nodes neighbors to the back of the queue. So I'm
+going to iterate remember that we have adjacency lists the entire time. So I'm going to say,
+for, let's say, Neighbor of graph of node. So get all the neighbors of this node. And
+what I'll do is just add those neighbors into my queue. So q dot push, neighbor, try to
+remember what the form of our graph is over here. Maybe as a quick little spot check,
+make sure on the same page, let me just console dot log, the adjacency lists, let's say we
+took this example manually, just paste it down below. And I'll just give it nice little
+manual runs, I'm not running the test cases quite yet. So we converted this edge list
+into this adjacency list, right. And when we say no to something like W, when we say
+graph, square bracket, no, that would give us this array, co authored sorters, iterating,
+through all the neighbors of this node and adding them to the queue, one thing we should
+watch out for is when we push things back onto the queue, we want to maintain the same
+format. So I actually still want to maintain pairs. So I'll make the first element of the
+pair, the neighboring node on the second element needs to be the distance. And since it's a
+neighbor, its distance would be plus one over here. So that's how I'm growing and counting
+the distance. So let's give this a test run. There are a few things we need to work on
+still, though. But we'll pass a few of these examples, at least until we timeout on a particular
+example. One thing this code is missing is any cycle prevention, right? I know that it's
+going to be a very common scenario, because I have an undirected graph, right. And so
+what I'll be sure to do is maintain a visited set, sort of pattern that you're used to,
+we're just gonna implemented for our iterative, breathless right now. So start out with a
+set. And when you do this iteratively, the move would be to make sure that if something
+is added to the queue, it should also be marked as visited. So if I initialize my queue with
+node A, then I also want to initialize my visited set with node A, just like so. So
+if you're unfamiliar with the set constructor in JavaScript, if you want to initialize it
+with some values, you actually have to pass in an array containing those values. So the
+values of my visited set are just going to be the nodes write the node IDs. Cool. And
+then I want to work that logic into my while loop. And so whenever I'm about to add something
+into the queue, that is, I'm going to add a neighbor into the queue, first check if
+that neighbor is not visited yet, so only if not visited has neighbor. Right, so only
+if this neighbor has not yet been visited, then I should add it to my queue. And if I'm
+about to add it to the queue, like we just said anything that interest, the queue should
+immediately be marked as visited. So here I'll say visited, add, the neighbor net should
+avoid adding any particular node more than once into the queue, avoiding any cycles.
+Awesome. So that feels pretty good. Let's give that a test run. Now. We hope to not
+timeout at least, all that same example, we're actually returning undefined where we expect
+negative one. So if you look at the actual prompt, they tell us that, alright, if you
+can't find a path between A and B, then you should return negative one. Let's look at
+an example or test 04. And you kind of drew it out, you would see that there would be
+no such path that connects B to G. The reason we're returning undefined right now is we're
+gonna finish our traversal mean, meaning our queue is going to empty out. And then we're
+just going to hit the end of this function. And if I don't hit a return line by default
+in JavaScript, I'm going to get undefined. So we know if we finish the while loop, and
+we never found node B, then we can just return negative one, that must mean that there is
+no such path that connects a to b. So let's give this a test run. Now. This should be
+our final version of our shortest path algorithm. Awesome. So be sure to practice this algorithm
+before you move on. And do make sure that you understand the choice of breadth first
+here over depth first, for most of your basic just graph problems that require you to calculate
+a shortest path path meaning just the number of edges. Typically, you'll find breadth first
+easiest way to calculate that hey programmers, Alvin here, right now let's go over to the
+approach for this island count problem. So in this problem, we're going to be given a
+2d array representing a grid of land and waters here we have l characters representing land,
+and W characters representing water. Let's try to visualize this. In this problem we
+want to do is return a number representing the number of islands on the grid. We're going
+to consider an island as a vertical or horizontal connected region of land. So in this particular
+example, we should return four. Because there are four different islands, we can label them
+as such, this is going to be any type of problems for us. And we should really think about it
+as if we have a graph, I'm going to refer to these style problems as a grid graph. And
+so although we're not given any explicit like nodes and edges, I can still think about positions
+of this graph as nodes. So for example, let's consider the indices here. So I have my row
+indices along the left hand side, and my column indices along the top. And I can designate
+any position of this grid using a pair of row and column. So for example, if I looked
+at position three comma four, that would be this position over here. And what I should
+do is mentally think about a position as if it's a node. And if I met some node, I do
+have some potential neighbors. given any position of the spread, I have at most four neighbors
+in the up down left and right directions. given any position of the grid, it's really
+easy to determine what our potential neighbors are, it's really just a matter of adding or
+subtracting one from either the row or the column. Let's generalize this formula. So
+let's say I was at some position, we'll call it our see, if I want it to go upward, that
+would mean you decrement, the row by one, keep the column the same. If you went down,
+that would mean increasing the row by one, if you went to the right, that would be increasing
+the column by one. And if you want to go left, then you should just decrease the column by
+one, do bear in mind that the top left position of our grid is going to be 00. And that's
+why we have this type of arithmetic rule. So now that we're starting to frame this grid
+problem, as if it's a graph, we can use some common patterns, I know that this problem
+is really asked me to count the number of connected components or the number of islands
+on this grid. So I'm going to need some iterative code, probably some nested loops to just iterate
+through every potential Island and start some traversal at that island. So when it comes
+to our iterative code, we just want nested loops to iterate through every row column.
+That means the iterations should look something like this, just moving left to right. until
+we finish around which case we can go to the next row. Let's actually iron out the main
+logic that we need in our algorithm. So let's say we start or nested loops from the very
+beginning, what I do is check my current position, what I want to do is check if my current position
+is land right now it's water, so I can just continue. On the next iteration, I do have
+some land position. And since I'm on a piece of land, right now, what I want to do is explore
+this land region as far as possible, probably using some depth first traversal. And do bear
+in mind, like most of our undirected graph problems, we're going to need to be sure to
+mark things as visited, so we don't get trapped in any infinite cycles. So for example, if
+I started a traversal, at this position, I can go downward. But I can also go upward
+from here. And I can bounce back between the two going up and down, giving me an infinite
+cycle. So we know how to fix this using all of our graph mechanics, right, just use a
+visited set. So if I do a depth first traversal, starting at this position, I know I'm going
+to mark off all of these land pieces as visited. And what I also want to do is make sure that
+I increments accounts, representing the fact that I've just explored some new island fully.
+So right now, my count zero, since I just finished exploring something now my count
+is one. And at this point, I can fall back to my iterative code to scan for another island.
+So I move to the right, it's water. So continue, water continue. Now I have another island.
+And again, I just do some depth first traversal through it. And of course I increment my count.
+This pattern will follow right? Eventually, when I hit the new row, I could be at a land
+position. But I should also make sure that this land position is unexplored, right. So
+since I'm at position one, comma zero, and this land has already been explored, I don't
+need to begin a depth first traversal. And I also don't need to begin a traversal here.
+And this continues, avoiding starting a traversal. Wherever I have a visited piece of land, we
+know eventually, we're going to hit a new island like this one, where I have a piece
+of land that is unvisited. So at that point, that's my criteria for starting a new depth
+first traversal, I explore this region, increment my count, and continue business as usual until
+I hit this final island that is unvisited. And so I visit it and increment my count.
+And by the end of my iterations, I should have my final count of four. So that logic
+is actually pretty straightforward, just a variation of our classic connected component,
+counting logic, except now we're adjusting the criteria we use for looking at neighbors,
+right, our neighbors are actually going to just be either above downward to the left
+or to the right of our current position. We talked about the complexity of this algorithm,
+we should consider the size of the input and the fact that it has two dimensions, right?
+So if I say that R is a number of rows, and C is a number of columns, well and the iterative
+codes pretty straightforward, I know that's going to give me r times C iterations. And
+if I also consider any potential in depth first traversal I do starting at some land.
+In the worst case, I could have one Giant Island, which is also going to be our time
+to see. So the overall complexity, it's just going to be our time See, the space complexity
+for very similar reason is our time see, because imagine that we mark all of these positions
+as visited, that probably means we'd have to add them to some set. Right, so we have
+our time see different positions. And by the end, I could add each and every one of them
+into my set, the space complexity of our time. See also includes any traversal related data
+structures like stacks, or queues, depending on how you implement this one. So overall,
+this is going to be a very efficient solution to solve this one, what you should do is probably
+give it a shot on your own first, if you get stuck, you can find me in the walkthrough
+videos. I'll see you there. Hey, programmers, Alvin here, right now, let's go over a JavaScript
+walkthrough for this island count problem. So as always, make sure you watch the approach
+video first. And we'll jump right in. So we know that this is really just a spin off of
+our kind of graph connected components problems, except now we have a grid graph, right? I
+can still think about like this grid as if it's a graph, because if I think about any
+particular position of this grid, I know I have some neighboring positions that I can
+travel through mainly, my four neighbors Up, down, left and right for me, let me start
+my laying down some iterative code that can begin a traversal at every node or every position
+of this grid. That way, I can start considering different islands, right. So I'm going to
+use just a for loop for this, I'm going to iterate through every possible row column
+combinations every position. So I'll say R equals zero, iterate up to the length of the
+grid, so grid dot length to our plus equals one, and do something very similar for my
+columns nested inside, right? Watch out for some details here though, looking at the examples,
+we can't actually assume that we're always get a square shaped grid square meaning like
+as if the number of rows was the same as the number of columns, because sometimes I'll
+have like an asymmetric grid occasionally, right? If I look at this very first one, it
+looks like the width is going to be five here, but the height is six. So separately for the
+columns, I want to reference the column lines over here. So we're gonna say grid, zero length.
+Nice. And so at this point, I have some row composition, I want to begin a traversal,
+let's say a depth first traversal at that position. So here's where I invoke some like
+helper function, that will make it a little bit, I'll call it explore. And what's going
+to do is, of course, taking the grid information, as well as the row column I want to traverse
+through nice. And at this point, I think we'll actually hop to building this this helper
+function, then we probably need to fill out some more logic within our main driver function
+here. So let's bake this explore helper function. So taking the grid and your row column, and
+something I should also consider is because I know that this is really a type of graph
+problem, right? I want to prevent infinite cycles, right? So consider this, let's say
+I was somewhere in the middle of my traversal, let's say I was at this piece of land, I know
+that this piece of land is going to travel through its right neighbor. And it could be
+the case that this piece of land now travels its left neighbor, so I go left and then right
+and then left and right. Now it gives me an infinite loop, right. So whenever you have
+this notion of like undirected graph or undirected connections, then always guard with a visited
+set. We've seen this pattern before. So maybe up top globally, for the entire traversal,
+I'll create a visited set. So in JavaScript, just a new set, you're probably wondering,
+you know, what am I going to make the members of this set? Well, I need to designate positions,
+right? Think about it as if positions are like the nodes in this grid in this graph,
+right. And so what I'll do is pass along this visit set, so I can accept it as an org over
+here. And when it comes to using your visited set, what you want to do is make sure you
+combine your row and column because together they designate your actual position. I think
+this is actually worth going through specifically more of like a language thing in JavaScript,
+compared to other programming languages. So quick aside over here, let me get myself some
+more room might be a while. Because if you're unfamiliar with sets, and you don't kind of
+know, their nuances, might actually hit you in the butt later on. So let's say I had a
+set so I'll create an offset. So can you set and let's say I added I don't know, like an
+array containing a row column position. So I'm gonna say is, alright, maybe I had position,
+I don't know, one comma three. And I added that into my set. So I do s dot add that position.
+This is actually a common gotcha in JavaScript. If you put any like reference types, like
+an array or like an object into your set, it's actually going to check for reference
+equality when you check for existence later on. In other words, now I can't really do
+console dot log s dot has one three, because this array literal is technically a different
+array in memory. So I wish I could get like true back in this scenario, but I'm not going
+to get a true. So we'll just run that manually see what we get. So like, we say, we're gonna
+get a false here, which is not so good. So instead, your Fix would be to actually convert
+this into some string data. So instead, maybe write as if you had one comma three, because
+strings are primitive types, and I would actually be able to store that string. So whenever
+I say the string literal, this would actually give me a match now, so I should get a nice
+true here. Awesome. So we'll want to use that pattern to our advantage. And so maybe I'll
+start by creating some position variable, that's going to be like the string of FIDE
+a version of our position. So just take my row, maybe add a comma, and also put the column
+here. Nice. And the reason I want to comma separate is, I need to have different bounds
+for my row and column. In other words, imagine I had a row of let's say, 12. And I had a
+column of four. If I turn that into a key, or a position, that would give me position
+as looks like 12, comma for another scenario, let's say I had row one, and then column 24,
+that would give me a position of this right? one comma 24. Right, it's really important
+that you put a comma to separate your row and column positions, because imagine, I didn't
+put the comma, then it would have a collision here, I have two totally distinct positions,
+right? 12, four, and 124. And if I don't put a comma, they look like they have the same
+position key. So that's why I need to comma separate them. Common gotcha there. But now
+that I have this position, I can use it to my advantage in this visited set. So if I've
+already visited this position, so if my visited has this position, then I should exit, right,
+I need to return something. And I want this explorer function do something similar, like
+we've done in our old component problems, I want it to return a Boolean indicating whether
+or not this is a new island that I'm exploring. So if it's visited already, that's definitely
+not new, right. So just return false, meaning it's not a new island. If I make it past this
+if statement, in other words, if position is not in visited, that I need to mark it
+as visited right now, second, do visited, add this position. So now I have my core like
+cycle prevention logic. Beyond that, I have a few other scenarios, we know that in our
+traversal, we're going to look at our different like neighbors. And so what I want to do is
+make sure that I'm in bounds here. So I'm going to check, like to split this up into
+variables, I'll say, one, a boolean variable called row in bounds. And I'll do is just
+check if zero is less than or equal to the row. And that row is strictly less than will
+say, the length of my grid. So I'm just checking to see if my opposition is in bounds here,
+I do a quick check, I need to be inclusive with zero because zero is a totally valid
+index, right? I need to be exclusive with the length because imagine I had a grid with
+length five, it's last valid index is four. So I need to be strictly less than here. And
+I'll write a similar variable for my column in bounds, just like this. And at this point,
+I can write a nice semantic if statement check, all right, if your row is not in bounds, or
+your column is not in bounds, then exit, right? So return like before I can return false,
+right? Because I should not consider like an invalid position and a balanced position
+as an island, right? So that's looking good. Final base case I need though is, what if
+my current position is water, right? I only want to do my traversal through land. And
+so I'll add another statement for that. So up here, I can check. All right, if my grid
+at row column, if it's equal to water, then also return false. No reason to count it,
+it's really important that you put this in bounds check before you index into your grid,
+right? Because imagine that your row and column were out of bounds. If you write line 15 like
+this, immediately, you're going to get an out of bounds error. So start with your guard
+to check if you're in bounds if you want it to because most of these conditionals they
+all return false have the same consequence. You can probably or them together. Typically
+I like to keep them separate. That way I always remember to write them typically for like
+your grid graph problems. This is very canonical code. Alright, so if I make it past all of
+these base cases, and I have the recursive case, so I must be at an unvisited piece of
+land. And when I want to do is do my depth first traversal, right. So here's where I
+explore my neighbors and I have four neighbors. If I wanted to go above that I decrement,
+my row by one, keep the column the same, pass along the same visited, because remember,
+we have like the array indices here. So this is row zero, this is row one. So we'll lower
+row numbers mean upward, in the same way, lower column numbers mean to the left. So
+this is up, this is down by do just minus one over here, that would be to the left,
+then plus one on the column would be to the right. Cool, and I can keep this code very
+flat as it is something that I'm a huge proponent of when you write recursion, for the most
+part, I always try to make sure that I don't look before I leap. In other words, just from
+this logic alone, it couldn't be the case that row minus one is out of bounds. But that's
+okay. Because if it's out of bounds, when I evaluate this call, it's going to immediately
+be caught by this base case, right. And if I express my logic like this, if I don't look,
+before I leave, if I just leap and then catch myself with the base case, you don't have
+to write repetitive code. In other words, some people write code like this, where it's
+like, Alright, if row minus one inbounds kind of using pseudocode. Here, they would have
+to write row plus one inbounds. And you would have to write a guarding if statement around
+every recursive call, instead, just write one base case. And you can catch all of these
+different out of bounds, right. So that's why I prefer it this way. And so I know that
+by the time I return out of these recursive calls, I'm back at this segment of my code.
+And what I can do is return true because I must be finished with that traversal. And
+the reason I'm returning true is true symbolizes that I've just finished exploring a brand
+new island, so I need to count it. Nice. It's also consistent with the data type, I have
+Boolean for this explore function. So for the most part, this looks like really just
+a spin off of our previous like graph, depth first code. And now I want to use that boolean
+data in my main function here. So here's where I can actually count my islands. So guess
+I really need some logic here that says initialize some counts equal to zero. And whenever you
+find a new island, increment that count. So if I just have found a new island, we're going
+to get back true from this this call, right? Because remember that I'm beginning a traversal,
+starting at this row column position. So if it gives me back true, then I can totally
+increment my count by one. Notice that whenever I begin a traversal on a position I've seen
+before, it would have been added to visited before. So I would return via this if statement
+on line 21, I return false. If I return false, then I don't double count that island. So
+I do need a combination of both iterative code to potentially leap to different islands.
+But I can use a visited set to prevent myself from double counting any particular Island.
+So this is looking pretty good. Let's not forget to of course, return our counts at
+the end. Let's give this a run. This will probably be the first in a series of these
+like grid graph problems. Really try to understand how we can think about still a grid as if
+it's a graph, right? We just have different rules for how we look at our neighbors. Right?
+Now, a node is really a position and its neighbors are its four neighbors Up, down, left and
+right. Alright programmers, I want you to practice this pattern because we're going
+to see it in the next few problems. I'll leave it to you see in the next one. Hey, programmers
+outlane here, right now let's go over an approach for this minimum Island problem. So we're
+going to be given here a grid containing a water inland really just some characters inside
+of our grid. So of course, as always, let's visualize this. And what I want to do in this
+problem is return a number representing the minimum Island size, we're going to consider
+an island, a connected region of vertical or horizontally connected pieces of land.
+So for this particular input, our answer should be to looking at our grid, I have three separate
+islands. And they all have different sizes, right? sizes, a four, two and five, I just
+choose the smallest of the islands. So that would be the two over here. So how can I actually
+come up with a strategy for this one, you should already know that this is just a spin
+off of our previous a grid graph problem, where instead of doing just a count of the
+number of islands, now I want to find the sizes of islands. I know to actually look
+at different islands, I'm gonna need some nested code, but I'm also gonna need some
+depth first traversal code to explore a single Island. So overall, this should be a pretty
+classic strategy for us. So let's say we start attacking this we know we're going to begin
+our nested loops in the top left corner And if our current position is water, then we
+actually don't need to do anything. next iteration, I have some land. At this point, I could begin
+on my depth first traversal. And I know that I should be marking things as visited to avoid
+any infinite loops, right. So by the time this traversal completes, I'm going to mark
+all of these guys as visited. But I also wanted to determine the size of this entire island
+region. So every time I get a position that is land, I should treat it as one. And then
+when it comes to how I implement on my traversal, I can just gather up these ones, right, just
+add them all up. So that would look something like this. And for my top level call for that
+traversal, I should get an island size of four. And so if that kind of traversal algorithm,
+especially how we compute the size of the island, is pretty hand wavy, don't worry that
+when we actually go through the code walkthrough, it's just a matter of some recursion, and
+some recursion we've actually seen before in past problems of the course. But any case,
+now that I have this island size of four, it's actually the first island that I've seen.
+And so I'm going to consider it the mid size so far. But I need to keep looking in case
+something is smaller. So move to the right. So if it's water, I do nothing, water again,
+do nothing. Now I have another islands, I begin my traversal market these as visited.
+And when I find the size of this island, of course, it's going to give me two, I compare
+that to to my current mid size two is smaller, so I store two as the mid size so far. And
+we just continue business as usual. Note that when we get to a piece of land, we really
+want to make sure that it's land, but also a piece of unvisited land. So right now on
+that piece of land, but it's visited, so I should not wear I don't need to start traversal
+here. Likewise, for this position. Eventually, I'm going to hit some new unvisited land,
+in which case I should begin my traversal at Explorer, this region, and I want to count
+up all of these pieces of land. And I should realize that the final size of this island
+would be five, I can compare that five against my current min, five is bigger, so the size
+of two gets to stay. And I can just end up returning the minimum size by the end of this
+algorithm, basically representing this island of size two, the complexity of this algorithm
+is straightforward, we should say that the size of our input is r times C, because we
+have our rows and C columns, in which case a time complexity is simply our time C, right,
+we have to iterate through every row column within the grid. And even when we begin a
+traversal, in the worst case, we could have an island that spans the entire grid, in which
+case it would also be our C. Right. So overall, our full complexities are time c space complexities
+are time C as well. And do know that this is technically a linear solution in the size
+of the grid, right because the grid itself is exactly r times C positions. So with that,
+I think we're ready to code this one up and try it on your own first. And if you get stuck,
+I'll catch you in the walkthrough videos. See you there. Hey, programmers, Alvin here,
+right now let's go over a JavaScript walkthrough for this minimum Island problem. So we'll
+jump right in, make sure you watch the approach video. As always, this is just a nice spin
+off of our classic island hopping logic. But for a grid graph, right. And so let's start
+with the iterative code that can help us begin a traversal. Starting at every different position
+of our grids, that just means some nested loops. So start by iterating through all of
+the rows and columns. So r equals zero, go up to while r is less than length of the grid,
+also do our plus equals one and very similar loop for my column. But do make sure that
+you reference your inner column line because you could have like a rectangular shaped grid
+over here. And what I want to do now is begin a traversal starting at every row column.
+So I'm going to assume I have a helper function here that does that traversal, I'm going to
+call it explore size. That's because in the long run, I'm interested in the size of that
+island, right, so like a number representing how big or how many positions that island
+spans. So I'm going to pass along the grid information as well as the position. And I
+know when it comes to all of these like undirected graph, traversals should probably guard against
+your loops. And I have some foresight here. So I'm going to pass along a nice visited
+set, which I can maintain globally for the entire traversal because there's only a good
+reason to explore a position once right. So I'll create const visited gonna make it my
+neighs JavaScript set. And a few reasons for that. Well, for one JavaScript set, gives
+me O of one lookup, but also o of one insertion. So it's going to be a really quick data structure
+to use. And from there, we probably have to add some more logic over here to actually
+do something with the size but for now, I think I'm going to switch gears and actually
+take a look at building this helper function, right. So I think the best way to build this
+traversal is to use is a deaf purse, typically just my go to for problem like this, it's
+going to take in I know the grid, the row in the column and also visited, I need some
+a base case is very classic base cases, I'm going to start by checking if this row column
+position is inbounds. So my favorite pattern for that is to split up in some variables
+just makes it easier to read and debug. So I'm going to say is my row inbounds and just
+make that like a boolean variable. So I'll check if, let's say, zero is less than or
+equal to the row, I need to say and right, and that row should be strictly less than
+the grid length. So this Boolean would only be true if it's in bounds, right? And something
+very similar for my column bounds should be between zero and grid zero length. Nice just
+like this, I believe. And then I can write a nice if statement using both clauses. So
+I can say, all right, if let's say your row is not in balance, or your column is not in
+balance, then you're definitely at a bound. So you should probably use some base case
+here, right? So we're all choose to return here is zero, because I want to keep a consistent
+number, right consistent return type. That is, I know that this function has a kind of
+goal of returning the size of the explored islands sizes a number. So even in my base
+case, I need to make sure I return some type of number, returning zero to represent that,
+hey, if this is out of bounds, it's not going to contribute anything into the count of the
+size, right, which is good to go. I need some other base case here. What if my position
+is inbounds. But what if it's actually water, I don't want to count that as well. I only
+want to count islands. So land right. So quick fix, what I'll do is add a new base case,
+I can check if my grid at row column, if it's equal to the water character. So a capital
+W can also return zero. If you want it to, you can also maybe merge these into like a
+single if statement, just write a bunch of ORS, I kind of like them separate because
+it's just easy for me to remember what each of them does write a final conditional have
+here is alright, if I make it past both of these base cases, it might be the case that
+this position is land, but it's land I've already visited. So here's why I work in my
+visited logic, I'm going to represent a position, like we said in the last episode as really
+just a string. So I can put it as the members of my visited set. So I'm going to say position
+to have to be the row plus a comma plus the column. So just representing the position,
+that's because I can't add like an array into a visited set, and then look it up later.
+And so if visited has the position, then it's a duplicate position that I've explored. So
+return zero. Otherwise, it's not been visited yet. So I must be visiting it right now. So
+I can add it. Nice. So I have my base cases laid down. Now I'll need my actual recursive
+code. So I'll explore my four neighbors. By now you should be familiar with this pattern.
+So go upwards, a row minus one column pass on the same visited. So I'm going to explore
+my up down left right neighbors respectively. And I do my recursively buffet theory, right.
+So what type do I expect back from these calls, they're going to give me back a number representing
+the size of the island that my neighbor is a part of. But if my neighbor is part of some
+larger Island, then I am too because we're connected right to our neighbors. And so I
+want to create the grand total of all of these return values. So I'm going to create some
+size variable, let's say let size, I'm going to initialize it to one over here, it's going
+to be one and not zero, because the one represents my current position, my row column. And whatever
+these calls return, whatever number I'm just going to increment my size by that number,
+like so. Then finally, I can return our total size over here. So that will do my depth first
+traversal, because it's recursive, but we'll also tally up the size of this island region.
+Cool. So now that I have a working explore size helper, let's use it in our main function
+here. So I'm going to get back a number from this call. I'll call it my respective size.
+And what's great about this logic is if I have a Island or position I've already seen
+before, and I encounter it again in this this for loop, then I would just return early because
+I would hit this base case, right? If something has already been visited, just automatically
+return zero, because I've already considered it, no reason to consider it again. But now
+I need my minimization logic, right, I want the size of the smallest Island. And they
+tell us in the problem that we can totally assume that your grid contains at least one
+island. So I think a great default value here is to use positive infinity so I can set some
+will say min size variable To be positive infinity, JavaScript, if I make it positive
+infinity, I know when I encounter any like valid Island size, it's going to be less than
+infinity. And it should replace it. So now I can do some min logic here and check. All
+right, if the size of this island is less than the minimum size I have seen so far,
+then just replace that min size with that island. Then after I'm done with all of these
+traversals potential reversals, I'll return my mid size. So some classic patterns here.
+There's one nuance that we're not considering how to run the code, and we can debug it together.
+So it looks like we failed example. 00. So the very first example we expected to answer
+to, we accidentally gave back zero. If you look at that first example, it's pretty obvious
+that Yeah, the minimum size is two representing this island over here. The reason we're giving
+back zero is according to our code. Let's see we're on like the very first iteration,
+I'm going to respond it, I know that row is going to be zero column is going to be zero,
+that means my position would be this w over here. When I make the recursive call, and
+I pass along position 00, I know that it's going to immediately return zero because that
+position is water. And I'm going to check Alright, is that zero, less than infinity
+it is, so I'm going to replace min size with zero. But if I think about it, zero doesn't
+even represent a real Island. If an island has a size of zero, then it's not an island
+at all, it was a piece of water, right? And so I want to add some additional logic here
+to only actually look at nonzero quantities. So only do the comparison if that size is
+also valid. So size should be greater than zero, of course. And we'll want to add these
+together. So let's try that again. Just a little, little detail over there that we need.
+Awesome. And there we have a solution for this minimum Island problem. So we've seen
+this pattern a few times now, right or classic island hopping logic. So when you think about
+islands are like connected components of a graph, this should be your first kind of go
+to algorithm. Alright programmers. So that wraps up our course on graphs. I hope you
+learned a ton during the course. I definitely had a blast making it Be sure to head to Shruti
+dotnet, where you can continue to practice more graph problems, as well as explore any
+other data structure algorithm topics. I'll see you there.

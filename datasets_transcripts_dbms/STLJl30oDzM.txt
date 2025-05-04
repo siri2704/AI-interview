@@ -1,0 +1,366 @@
+so it's all about data and you have any 
+examples of data like whatever we use to store   is called your data it can be a customer 
+information customer information in the   sense customer name customer phone number 
+all those things are considered as your data   so this course is intend to have a database 
+so database purpose is to store your data   okay so just going to a history why you 
+need a database before inventing a database   what was there and what are the difficulties 
+or disadvantages on storing the data before   the database what kind of system they used okay in 
+that system what are the disadvantages they face   for this only they came up with the concept called 
+database okay we will see that history first   so as i said you can see my screen you can see my screen guys 
+yes yes we can see your screen see like um see you have a data right as i said 
+the customer data so earlier before   the database invention and all how they are 
+stored they started storing using a file system   say for example i can store 
+this file as a customer info   okay so customer info so say for example i 
+have a customer name and i have a phone number   something like that so name can be naga and my 
+phone number can be 198674 something like this   and even i i no need to store in the same way like 
+this i can store in the same way like this like   naga and 98765 my address can be 
+in say for example i'm in koit   maybe someone else say for example varun his 
+number is phone number is like this so i can uh   keep storing the data in this file system 
+as well so this is how the conventional   storage of data has begun okay so when 
+you keep storing the data like this data so when you have your data stored in a file system   and what complexities arises like windows 
+have a restriction like you cannot have a   storage of a file more than 10 gb 5gb i'm 
+not saying about today's high technology   i'm speaking 20 years back so they have a 
+storage restriction of five individual file so they have a restriction we have a restriction 
+of storage of a file okay so that is why you have the file system has other disadvantages 
+over database okay now just a minute sorry guys i'm getting repeated calls okay let's 
+continue so uh earlier they used to store the data   in the file system okay so you have a notepad 
+or you can create a excel spreadsheet over here   you can keep storing the data in excel spreadsheet 
+as also so this is the file system you have and   it's used to show the data it it also saves the 
+same purpose as i said database used to store   your data and you you can even store the data 
+in the file system so what disadvantages that it   had in a typical file system that makes you to 
+create your database environment i mean that makes   you to create meaning like um made you to evolve 
+the database architecture okay so challenges what   we face is like size of your data as i said if it 
+is for a small environment if you are managing for   your own purpose then it's fine if you assume as 
+an organization you will keep on adding the files   you will keep on adding multiple files and you 
+will as you see like you can't able to take the   backups you store it here and you put it 
+in e drive you have someone asked you to   verify where it is you find very difficult 
+so first is size hello someone is speaking   okay so ease of updating so ease of updating means 
+you can't able to easily update say for example in   the same file you have hundreds of customer the 
+customer information has changed he has changed   the phone number you need to go and search assume 
+you have multiple files like that you have 80 to   90 files you don't know in which file the customer 
+data is stored so updating becomes very difficult   storing is easy initially you start okay accuracy 
+as a these are more or less related accuracy   and updating everything is same and security so 
+when you have a data stored in the file system   securing those files say for example as a 
+manager i need to access only the payroll   i can access the payroll but the other employees 
+should not access the payroll information   if i have all the information stored in my 
+desktop like this this is your data and you have a   payroll information over here okay so you have 
+payroll information so if this folder is success   to everyone say for example from the manager 
+from the deal or your employees everybody can go   and see their payroll information how much they 
+are paid uh what is the salary of my colleague   what is my manager's salary then that becomes 
+unnecessary conclusion so that should be some   restriction to people who has to see what okay 
+so security implementation is very complex here you can't switch between the screens hold on you can able to see guys i will teach you in 
+this manner because switching between the screens   become very difficult so security restriction 
+is there and that makes us life very difficult   and redundancy redundancy as you see like you have 
+the same data you what you feel like you feel very   comfortable in taking backups you have one 
+copy in d drive and use copy and paste in need   after some time you will not update in e drive 
+or d drive you can you keep on adding multiple   backup sessions and whichever question you 
+need to use you don't know after some time   so this redundancy of data and you will not 
+have accuracy this is closely related and   incomplete data so incomplete incompletion 
+in the sense uh you if that is like uh   some constraints are not defined in your 
+file system say for example your employee   or your customer should always have some phone 
+number so that you can able to create if the   in a file system you do not impose an restriction 
+to it without having a phone number you can start   creating it so those kind of incompleteness you 
+will keep on adding that becomes very complex   when you have your data stored in your file 
+data storage so this is the main disadvantages   that earlier systems faced or earlier 
+organizations faced so that it made us to   evolve and move towards the storing your data 
+in your databases i think till this it's clear guys yes cool fine so coming to   the uh models now with this note let us 
+see what are the things we have in this session so basic uh database concepts so basic database concepts and we 
+have a introduction to sql server   so these are the things i'm going 
+to cover why let's keep changing so introduction to sql ddl dml commands working 
+with queries all these things will make you to   have a full sql developer that is sql server 
+developer once you learn all these courses okay   so i think rabbani rahil wants more on the 
+module six to seven eight nine ten those   things so they are familiar with the module 
+till first five modules i think let's see   will this course will also cover the 
+sql fundamental about data querying yes   yes that is what uh working with queries 
+you have a module 6 over here hold on select   select insert update and delete those and joins 
+yeah yeah so you see here working with queries   aggregate functions joins you can see 
+my mouse pointer there drawings yes yes   so implementation of data integrity so basically 
+it involves know about the database and using   sql okay i mean using sql and we use sql server 
+as the dbms i'm going to quickly start uh that   session now that dbms all those things so this 
+is your course content just go through it okay   because my job primarily to retrieve the data 
+on if anything need to be updated or something   exactly so you learn all those things because sql 
+means that is mandatory you need to create table   and updation querying coding is main 
+path that comes with the dql okay okay   we will see so i have a tool modules here i'm 
+going to take each module one hour and i will have   another half an hour to uh for i mean it will 
+not completing one hour some classes will take uh   more than one and half hours so that's what i 
+told a 14 hours session okay let's see how it goes okay give me a minute database management system so now i i 
+told you about uh database i mean uh data   we discuss about data anything any 
+information is your data okay so it   can be a customer information it can 
+be your transaction uh it can be your   what to call payroll information employees 
+and just use a mobile information emi number   i mean imei number your mobile model everything 
+is a data okay anything any information   definition of data is nothing but any useful 
+information is called your data and database   that is used to store your data that's all simple 
+things okay and where this database management   system comes into place so if you read through the 
+definition i think i'm not sharing the screen hold on so database management system if you go through 
+the definition it says like it's a system   software for creating and managing your databases 
+so first i started with data then i told what is a   database that is used to store your database 
+then i'm telling another term called dbms   so this dbms is nothing but that stays in between 
+your database and your user so it's a software   that is used to collect the data and 
+store it in a database it acts as   interface so basic logic behind database is 
+nothing but database management system okay so   dbms makes it possible for end users to create 
+read update and delete database in the database   so it's nothing but a software written it's a 
+program that makes you to create the database   and modify the database so in general term 
+you will say databases only but indirectly   the all the works done by database management 
+system it's nothing but your software   so now i said like i am teaching this database 
+course using a microsoft sql server so it is   one of the vendor that is microsoft is a vendor 
+providing this software so sql server is your   database management system you got the point and 
+oracle is your another database management system   and ibm db2 is your database management system 
+underneath what will have you will have databases   so databases is common okay that doesn't matter 
+so ms sql server oracle all these things are   database management system i hope uh i'm clear 
+in this point so how this database is architected   in the sense people will have data okay so 
+people has to insert a data in different ways   like this the user can use the client tools 
+or uh hold on so user will either use the   client tools or they they will use the apis like 
+application programming if you assume you are   going for any online shopping they will use to 
+collect your information it can be a card details   or any online application so this api is nothing 
+but this top screen is nothing but your screen   front-end screens okay using that they will 
+gather the data then using the dbms software   they'll store their information in the tbm i 
+mean database okay it can be a mobile application   and it can be a video or any other things so your 
+data can be anything basically it is not only a   text it can be a image it can be a video those 
+things also can be stored in the database okay okay so nagi uh one question here yes so this 
+uh you said like ms sql server and oracle   uh so like in in the real-time scenario like 
+who decides like what should be like mongodb   we have different uh dbms so yes yes so who 
+decides which uh rdbms to go correct yes yes yes   so it's a business card basically if you have all 
+your products built in microsoft they always go   for microsoft sql server in some applications they 
+used to go for oracle so purely based on the uh   business analyst or i will say architects so 
+architects will decide based on the volume each   rdbms has its own advantages and disadvantages 
+they need a parallel processing they need   multi-level tasking those kind of strings can 
+be applicable only in ms sql server oracle will   not support that then they will obviously go for 
+this so based on the business scenarios situations   they will go for each and every i would say 
+rdbms i mean microsoft sql server because i   know that one i don't know about oracle this 
+is a human mentality if you know what i mean   whatever you know you'll project it that's how 
+it works most of the companies as simple as that   okay hope in my organization also 
+uh they're using toad oracle yeah   toad and mysql is open source so it's uh i 
+mean it's a free open source software so mysql   you they will not charge anything so that is 
+rdbms that is i mean that is nothing but your dbms   database management system so this thing you need 
+to be clear in mind okay so so the base concept   will be any different syntax or stay on the 
+sql when you retry the queries or something   when we work on with sql microsoft risk well and 
+when you were going with oracle will there be any   difference no so uh the concept behind this is 
+database is common for everything and they if   they use sql structured query language okay that 
+is common for everywhere maybe the syntax may be   different if you know the programming languages 
+like c or c plus any programming language it has   its own syntax declaring a variable like 
+uh you mentioned the data type integer   a or a comma integer it differs between the 
+programming language similar syntaxes will differ   but they follow the sql then the syntax would be 
+same slide differences will be there in some cases   i would say in our calendar sql server we have 
+80 percentage same syntax for most of the cases   there are some cases for providing access those 
+things the syntax will differ even uh if you learn   this sql it will be applicable for oracle and 
+mysql everywhere you can use the same code okay   okay so with that note let's move forward 
+so now you understand what it is microsoft   sql server is nothing but your dbms and what it 
+will do it will enable you to create databases   the databases will store 
+data now the question arise   like when you have files okay you are storing any 
+type whatever i typed earlier okay yeah i typed   in the notepad i i can store it in excel like 
+this or i can store it in a notepad like this move this window away so i can store uh 
+anything like this i can store like this   i can store like this oh come 
+on i need to fix this one what i'm saying is you see here i can store here   in this format any other format so in case 
+of database how the data should be stored   so you you got my point you can see my 
+screen on it's pausing this one okay hello is can you able to see yes yes yes yes yeah one minute i need 
+to fix this guy i mean uh it's sharing   shot everything something like that screen 
+hold on now i hope uh it's fine i don't want to   each time i am switching it's asking me okay fine   yeah yes share screen is fine now okay now you see 
+like uh here you have a customer name phone number   i can store it like this i can store like this so 
+that is uh any way i can store if it is a file i   can store like this also one one customer store 
+i will say hurry and i will say like phone number   here i'm storing phone number here uh after his 
+name in this next line here i can store like this   it's my wish there is no restriction in the 
+file system but the database perspective how   you need to store the data so there is a 
+thumb rule like in dbms you need to store   the data in tables it's pretty much clear okay 
+so the tables are nothing but your spreadsheets   if you see here yeah so this is your spreadsheets 
+are nothing but your tables if every i hope   everyone worked on excels so table is nothing 
+but you have a rows you have columns okay this is   how the data should be so in order to store your 
+customer detail you need to define customer name   you need to define i mean you need to define 
+this column column customer name phone number   and address okay this is the thumb rule where your 
+data should be stored i mean how the data should   be showed so your data stored in a table that is 
+called your relational database management system   so i'm i told about database management system so 
+there are different types of dbms object oriented   hierarchical no need to put much into it now the 
+fold farmers everything is like rdbms relational   database management system where your data's 
+are stored in a table pretty much clear okay now what is data field record database 
+this is the hierarchy we need to follow   data as i said any information is your 
+data field is nothing but your column   each column is your field technically speaking 
+when a business perspective any application user   will say it has a field okay in database 
+world it should be considered as column   okay so it's a column then record so record 
+is nothing but you have defined the headers   so i am having one record here nagi 99765 an 
+address i'm just typing just a country name   here in address so each row one row is called your 
+rector or i mean it's it's called a row in a table   or it's a record okay that is what you say it has 
+a record then database okay so i i created this i   i will name it as customer so whether this 
+is considered as a database no this entire   thing is considered as a table so this thing is 
+considered as a table okay now i create another table like payroll here i can maintain 
+another information so this is how   the group of tables so a database can contain 
+multiple tables this maybe i can say like entire   excel sheet this single excel sheet considers 
+a database so this actual sheet is a database   and can contain multiple tables okay got 
+it it is simple as that now with this all   these informations okay let us quickly know 
+what is sql server all other stuffs like this come on so you you got now every idea about data database 
+tables tbms okay as i said microsoft sql server   is your dbms rdbms relation 
+database management system   so i have provided the link to you guys in the 
+email i have sent you need to install the software   so that it will install microsoft sql server 
+engine so the architecture comes like this okay i need to go back here say for example 
+now i am saying about this two part   uh let me hand it this two part okay database and 
+dbms so whatever link i provided in the email uh   that will install your sql server only 
+okay this alone the center part alone   it will install the second software maybe i will 
+quickly show it to you guys i need to go to maine okay so this.net framework is uh forget about this 
+there is no concept related to sql server all this   sql server built-in dotnet code so that is why 
+microsoft asking you to install forget about this   this is not related to our topic then sql server 
+see this link is nothing but your sql server as   a dbms it is nothing but your server the dbms 
+software okay this is what you need to install download now as i said you if you have a 64 
+bit you choose this one if you have 32-bit   system you choose this one so this will these 
+two will install your dbms then what about this   management studio it is nothing but your client 
+tool to connect see server is the software as i   said it's a software just a software that will 
+sit in your one desktop or server system i mean   any server dedicated server then you need a 
+management studio to connect to that server   and you want to manipulate it create a 
+database or you need to query it as you asked   you want to select or create tables whatever 
+operations you do you need to have a client this   is management studio is nothing but your client 
+okay so in this picture you don't have that kept   you assume this particular picture uh maybe 
+i'll say this one as your management studio so   first link will enable you to create the dbms 
+next link management studio you need to create   and uh database or all of the steps okay so i will 
+help you if you find a difficulty in creating uh   i mean installing now i already installed dbms 
+database management studium that is nothing but   uh sql server i am trying to connect with your 
+management studio at a client once you install it so we need to choose 64 or 86 according to system 
+requirement right yes yes based on your system you   need to choose either of those you have selected 
+four options you choose any two that's enough what are the two options right um see i told 
+you like here i mean x64 x86 you no need to   install both i mean download both check your 
+system configuration in my computer like here   yeah i got it okay whether it's a 32-bit 64-bit 
+you choose in my case it's 64 i'll choose this one   and uh this one that's enough then click 
+next and go for it 1gb only and praveen told   he is having 32-bit so he installs 86 this one 
+as well as this one you need to choose these two   then go for it okay just download and install 
+it uh by default options next next next   then you will get all the environments like 
+this okay now this is the client as i told   see this is my dbms i already installed 
+it will go and sit you cannot see this one   unless you have the client tool just you 
+have to connect the now this part uh like   this database won't exist only this one 
+is existing okay dbms software now you are   connecting to the client then you are creating 
+a database then you create table inside it okay   all these things you need to do manually 
+once you install the dbms it will not have   database in place you are doing 
+only the dbms at first place okay now already installed so this is my server name 
+as i said this is the server you go to other   engines you forget about all those things server 
+name i will give my server name then click on it so it is connected so this sql server 
+management studio is your client   it's connected to your dbms that is sql 
+server laptop this is the server name   and this will have all this architecture okay 
+i mean we will go through it later now in order   to create database i already have some databases 
+so in order to create databases one of the main   advantage of microsoft product is that you know 
+minimal coding you don't need to write coding much   instead you can write i mean you can create using 
+a gui so just right click on it new database i will say like sql training let's filling this wrong sql training corona fine so it's as simple as that just for the name   these file groups i will 
+explain later just click on ok then you can see like sql training corona here 
+okay these are database i already created so   once see this will contain the folder i mean 
+uh databases inside this what we'll have   inside this one database under the database only 
+you will have tables views all those things the   disadvantages whatever we face in the file system 
+like security and you have a consistency i mean   the user should not have restricted access 
+those things can be implemented using these uh   options okay we will while going through the 
+sessions we will you'll learn that one now so this   is the database uh you can create it like this or 
+you can choose this one you can create a new query new query uh i'll say create database uh i'll say   test two something like that okay this is also 
+a way of creating it it's as simple as that so you have to here okay i don't want it just i want 
+to show you guys how it has been created or how   it should be now we will stick to this so how to 
+navigate see once you have your database in place   okay here you choose that database then press new 
+query okay so now you see this is highlighted here   i mean let us have a spotlight you see 
+highlighted here i mean sql training the database   then you can start writing it code now as i said 
+you need to have the table to store the data so as   i said like here you have customer data so these 
+are my customer data so you cannot copy and paste   and store it you need to create a table first that 
+table only stores the information okay so instead   of wasting writing the codes i already prepared 
+some kind of scripts over here i mean module three okay so first as i said it's a customer 
+information so this is the syntax for creating   your table so it starts with create statement 
+and what you are you are going to create create   table customer customer id customer name and 
+address so these are the things i want to store   so just imagine with the excel example these 
+are nothing but your columns or fields so you   are just creating a metadata that is headers 
+okay uh so that these columns is going to hold   those information okay this is the 
+column name and what about this   these are very important part nothing but your 
+data types so any programming language or anything   which have data type meaning what is the type of 
+your data say for example this customer id is set   as integer int integer is nothing but numerical 
+values it will hold the values from 1 2 3 4 till   some limits 3 million or some million it will 
+hold and customer name should be back here that   is character it should not if you put integer 
+over here it will throw error in this case if   i want to insert nagi it will not allow so it 
+is saying that restriction to your data what   data it's going to hold that is your data type 
+type of your data you need to declare it there are   number of data types mostly we will use integer 
+and worker we will go through it i will share you   the link that you can study what are the different 
+types of data types and when to use this when to   avoid this what is the difference between 
+varchar invest and we will go through it just   uh for now you focus on table this is the column 
+names and these are the data types okay now   you see here i don't have any tables now it 
+would by default it will have system tables   once i select this statement and do execute it has 
+said completed successfully then do a refresh here   you find a table here okay this is 
+the customer table now as i said   how i can see a data inside the table 
+i cannot see like this i can see the   columns what are the columns all 
+those things okay but i cannot have any data i mean i don't have any 
+data it just creates the structure   now you see uh this is the data customer 
+id customer name customer address okay   so there is no data and how you want to store it wow i'll know the answers okay fine so basically 
+you create a schema or a structure and you want   to insert the data this is the only way you can 
+insert into a table i mean you need to explicitly   switch by insert into what is that object name 
+that is object name is nothing but table then you   need to mention the columns so this is john and 
+he's from london now when i select this statement okay now i go and see the data here so 
+one customer information is stored so   this is how your data's are getting stored 
+in the database it's flat i mean it's flat   in the sense it will be row row so this 
+is called a row this is called a field   this is called a field and this is each cell 
+is a data okay this is how it is related   now let me insert some more values so 
+that i can find uh something useful so now i have inserted two more records so 
+this will have uh kumar abdullah bangalore   all those things so now you got a clear 
+understanding about how you can store the   semicolon should we add 
+semicolon at the end of the query should we add semicolon at the end of the query 
+yeah as i said so it depends upon each dbms rdbms   in oracle you need to do in mysql you need to 
+do what i studied when i studied actually i   was supposed to add a similar one at the end of 
+this video yes that that's what i said so syntax go ahead go ahead come in but i i you did not 
+add a semicolon at the end of the query yeah   yeah that's what so as i said uh this sql is a 
+standard i mean whatever i written here is sql   each and every rdbms has its own syntax so in 
+sql server there is no semicolon in mysql even   in oracle i'm not sure there might be a semicolon 
+okay so there is no thumb rule so you need to   focus on one particular technology or querying or 
+rdbms if you you once you're familiar then you can   compare while learning i recommend you focus on 
+this for now then you go for a comparison okay   because you already did a study on that that's 
+fine i'm saying here in sql server no need okay okay guys so this is your uh about the 
+table okay now let's focus on your syllabus   so you see like the limitations of file management 
+systems have covered basic concepts and advantages   uh basic concepts is like a server client 
+architecture what is data field record   database exploring relational database management 
+system understanding client server so mostly   this thing uh this is history basic futures 
+components and tools yeah so you need to   uh starting and stopping these are very uh small 
+things introduction to management studio whatever   i use this is the one types of system database 
+in this field okay fine uh someone have any   question someone or something okay just say once 
+again the relational database management yeah   so you you now you somewhat you are familiar 
+about dbms's it's a software now so relational   database management system is nothing but 
+uh every table is a relation i mean the   uh to refresh my sentence it's a software 
+okay then what comes a relational database   management system you need to store a data in a 
+relation manner so how it is relational manner   if you need to store it as a table so 
+every table is a relation that is what   it's a relational database management system 
+okay so how it is related let me explain with the   so basically dbms i explained now you see the 
+customer id this london is related to this id   this london is not related to him so every 
+table is a relation every column is specific   to this particular person it is not specific 
+to this guy or this guy so this entire row is   called a relation they're building a relation so 
+this entire table is called your relation okay not satisfied i think okay no no no i'm saying there are other ways of 
+managing uh dbms object oriented hierarchical   relational so they consider everything 
+as object oracle all those things   now relational management system is nothing but 
+purely you need to store the data in a table that   becomes your relational database management 
+system that's what the definition of it and   every table is a relation that's the com rule 
+okay now uh let me explain some more thing about   services so back to this guy so this guy just 
+sits as a service you see services dot msc you see here this is the guy sql server is 
+nothing but your dbms database management system   that will run as a service this is running okay   now he is the one i mean uh we are 
+running now when i stop it just see you run this query it will 
+throw error it should throw let's keep on running because it doesn't find uh 
+the instance earlier see a connection is broken   and recovery is not possible okay 
+so basically this is the server   and the service okay which is enabling you 
+to run the management studio i mean dbms   so this is the service you if there is 
+some issues like this just go and check   the services connection is broken recovery 
+is not possible something like that okay   let us start that so it is already running 
+now when i go and run something i instead   of that i'll select this statement that will 
+run immediately now it's working okay and your   management studio also will run as a service 
+i think wait a minute microsoft sql not sure okay that is not as a service so this is 
+your service and management studio as i said   you can go and check it here sql server   this management studio this is your client tool 
+that is what you want to understand using this   only you told about toad toad is a client tool to 
+connect to your oracle so it's not a database told   uh i think if i'm not wrong veron can you tell 
+me oracle you use toad or some other client otherwise it's like uh ide integrated 
+development environment kind of thing   so you can connect to server clients all of this 
+thing so it's a client tools okay it's a client   basically so management studio is your client 
+and your sql is down on underneath okay   so this is the things you need to know about then what system databases okay now see when i say like i connected this 
+rdbms database management system when i right   click on it okay create new database it 
+has created me a sql training database   with all the schema tables views 
+synonyms all these things how it creates   basically this system database if you expand 
+it this internally create a model database   master database msdb tempdb all those system 
+databases to process basically this model   will have the all the content to be created when i 
+just create a name so this will create a one copy   this is taken as a copy then this database is 
+created so already they have defined how it should   create all the metadata over here okay so just a 
+copy and paste and renaming it to whatever name   we provide that is what your model database and 
+this master information by default all the data   should be stored metadata if you see like what 
+is my system configuration all other stuffs okay   this should be stored in some key database 
+that is called your master database   and i'm not pretty much sure about it but tempdb 
+whatever processing you are doing say for example   it requires say select 70 plus 80 okay i typed 
+something wrong 70 plus 80 is 150 very easy answer   so i'm running this so 150 is your answer so 
+this requires some computation some memory power   to calculate so those calculations will reside in 
+your tempdb so basically as a software it doesn't   do anything on its own all the things is doing 
+using some kind of system databases okay so these   are the main purposes we will don't look much into 
+it okay if you look into much into it you will get   confused we are never going to use that one just 
+to for your understanding how they will create   all those things questions will arise for that i'm 
+telling you forget about all these things you just   focus on your data and the history there is a 
+disadvantages for using a file system that is why   we came to database and in database it is not just 
+a database we have a database management system   underneath that will use it to create databases 
+and all your and it is called relational database   management system and your data is stored in a 
+table so this is the flow you should remember okay i think today i can stop so these are the things   i covered today tomorrow i touch these things 
+data types all those things we will look deep   into what is your data types ddl dml commands 
+when to use this one create all other stuffs okay

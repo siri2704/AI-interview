@@ -1,0 +1,107 @@
+SQL stands for Structured Query Language and is 
+used to communicate with databases, allowing us   to retrieve, insert, update, and delete data from 
+a database. It uses simple English-like commands,   making it easy to learn and use. It's also 
+widely used in many applications, from websites   to mobile apps. In this video, I’ll give you a 
+beginner-level understanding of SQL which will   help you handle and manage data efficiently. So, 
+let's get started! Firstly, we need to understand   what is a Database Management System (or DBMS): 
+Well, fundamentally, it is a software that enables   users to interact with databases. It provides an 
+interface to define, create, and manage databases.   Popular DBMSs include MySQL, PostgreSQL, Oracle, 
+SQL Server, and SQLite, etc. a specific type of   database managed by DBMS is a Relational Database, 
+which organizes data into tables with rows and   columns. Here, each table represents an entity, 
+and each row represents a record or an instance   of that entity. Similarly, columns contain 
+attributes or properties of that entity.   There’s something called as CRUD 
+Operations which stand for Create, Read,   Update, and Delete, and are the fundamental 
+operations for managing data in a database.   Create is used to insert new records into a 
+table, Read is used to retrieve data from a table,   Update is used to modify existing records, and 
+Delete is used to remove records from a table.   Further, to interact with any database, 
+we use something called as SQL Queries…   we can define SQL queries as commands or 
+instructions you give to a database to ask for,   add, modify, or delete information. In essence, 
+the basic SQL commands are SELECT, INSERT, UPDATE,   DELETE, and JOIN. These queries allow us to 
+retrieve, add, modify, or delete data from the   database. Let's understand these basic commands 
+one by one, starting with SELECT Statement:   It is used to retrieve data from the database. 
+It allows you to specify the columns you want   to retrieve and the conditions for filtering 
+the data using the WHERE clause. The syntax   for the same is, Here, this “condition” 
+in WHERE clause is used as a filter that   specifies which rows from a table should be 
+included in the query's result. This way,   it allows you to narrow down the data and retrieve 
+only the records that meet certain criteria.   And do note that in most SQL database management 
+systems, each SQL statement or command ends with   a semicolon (;) Next is INSERT Statement: 
+It is used to add new records to a table,   wherein, we specify the values for each column 
+in the new row. The syntax for the same is   Next, UPDATE Statement: which is used to modify 
+existing records in a table. It allows us to   change the values of specific columns based on 
+certain conditions. The syntax for the same is,   Next, DELETE Statement which is used to 
+remove records from a table based on specified   conditions. The syntax for the same is, And 
+lastly, the JOIN statement is used to combine rows   from two or more tables based on a related column 
+between them. There are different types of JOINs,   including INNER JOIN, LEFT JOIN, RIGHT JOIN, 
+and FULL JOIN, but the basic syntax for the most   common JOINs is as follows: In the JOIN syntax, 
+table1 and table2 are the names of the tables   you want to join, and column_name is the common 
+column between these tables on which the join is   based. By using JOINs, you can efficiently combine 
+data from different tables to extract meaningful   information from a relational database. Next, 
+lets continue on SQL concepts, starting with,   Data Types: Well, in SQL, each column in a 
+table has a data type that defines the type   of data it can store. Common data types include 
+INTEGER, VARCHAR, DATE, and BOOLEAN, among others.   Similar to them, we have Constraints, which 
+are rules defined on tables to maintain data   integrity. Common constraints are PRIMARY KEY 
+(ensures the uniqueness of a column's values),   FOREIGN KEY (maintains referential 
+integrity between two tables),   NOT NULL (ensures a column must have a value), 
+and UNIQUE (ensures unique values in a column).   If you want to understand all types of keys 
+in a DBMS, you can refer to this video.   Next, we have Indexes, that are database objects 
+used to speed up data retrieval. They allow the   database system to find and access data more 
+quickly, especially for large tables. And as   you must already know, speed in everything when 
+it comes to database management… as any database   needs to perform a certain set of functions, most 
+common ones are aggregate functions like SUM, AVG,   COUNT, MIN, and MAX to perform calculations 
+on sets of data, returning a single result.   Here, a GROUP BY clause is usually used in 
+conjunction with aggregate functions to group   data based on specific columns. It is typically 
+used in combination with functions like SUM or   COUNT to get summary results. Here’s a 
+sample syntax for your understanding,   Here, SELECT: Specifies the columns to be 
+retrieved in the result. column1: is the column   you want to group by. This can be any column in 
+the table. SUM(column2): The aggregate function   SUM calculates the total of values in column2 for 
+each group. table_name: The name of the table you   are querying. One thing you should remember 
+is that when you use the GROUP BY clause, the   SELECT statement should include either the columns 
+used for grouping or the aggregate functions used   to calculate values within each group. Next, 
+there’s another clause called ORDER BY which   is used to sort the result set in ascending or 
+descending order based on one or more columns.   And when combined with an aggregate function like 
+COUNT(), it allows us to sort the result based on   the count of occurrences of a specific value 
+or the number of rows returned for each group.   Here’s an example syntax, Here, SELECT: Specifies 
+the columns you want to retrieve from the table,   including the column you want to count occurrences 
+of. COUNT(column_name): counts the occurrences of   the specified column values. You can also use 
+COUNT(*) to count the total number of rows in   each group. AS count_alias: is somewhat 
+of an optional part. It allows you to   provide an alias (a.k.a a custom name) for the 
+count result, making the output more readable.   FROM table_name: Specifies the name of the table 
+from which you are retrieving the data from.   GROUP BY column_name: again, groups the result set 
+by the specified column, so the COUNT() function   calculates the count for each group separately. 
+And lastly, ORDER BY count_alias [ASC | DESC]:   This part sorts the result set based on the 
+count value. You can use either ASC (ascending)   or DESC (descending) to specify the sorting 
+order. Next, there’s the concept of a subquery,   which is also known as an inner query or nested 
+query. Fundamentally, by definition, it is a query   that is embedded within another query. It is used 
+to retrieve data that will be used as a filter or   condition in the main query. More on this in 
+a separate video, but here’s a sample syntax,   The main advantage of using a subquery is that 
+it allows us to perform complex filtering and   data retrieval in a more organized and efficient 
+manner. Next, we have Views, which are virtual   tables created by queries and can be used like 
+regular tables. They provide a way to simplify   complex queries and restrict access to sensitive 
+data. Here’s the sample syntax of a View,   Next, we have Transactions, that are nothing but 
+sequences of one or more SQL operations treated   as a single unit. The purpose of a transaction 
+is to ensure that a series of related database   operations either all succeed or all fail. This 
+is equally important as it helps in maintaining   data integrity and consistency in SQL. This 
+property of transactions is often referred   to as the ACID properties, which stands for 
+Atomicity, Consistency, Isolation, Durability.   Furthermore, transactions have a significant 
+impact on the reliability and correctness   of database operations as well. Here’s a 
+sample syntax of a transaction in SQL, Next,   we have the concept of Normalization, which is 
+fundamentally the process of organizing data in a   database to eliminate redundancy and improve data 
+integrity. It involves dividing a database into   tables and defining relationships between them. We 
+have another thing in SQL called Stored Procedures   which are primarily precompiled SQL code that can 
+be stored and executed on the database server.   They also help in improving performance and 
+security. Lastly, we have the concept of Triggers,   which are database objects that automatically 
+execute in response to specific events,   such as data modification, thereby, ensuring data 
+consistency and integrity. Here’s the syntax for   the same, CREATE [OR REPLACE] TRIGGER: This is 
+the beginning of the trigger creation statement.   The OR REPLACE keyword is optional and allows 
+us to modify an existing trigger with the same   name. trigger_name: is the name we give to the 
+trigger. {BEFORE | AFTER | INSTEAD OF}: specifies   when the trigger will be activated concerning the 
+triggering event. BEFORE triggers are executed   before the triggering event, AFTER triggers are 
+executed after the triggering event, and INSTEAD   OF triggers are executed instead of the triggering 
+event (used in certain cases like with views).   {INSERT | UPDATE | DELETE}: This specifies the 
+type of action that will activate the trigger.   [FOR EACH ROW]: is the clause used when you want 
+the trigger to be fired for each affected row   in the table. It is usually used in row-level 
+triggers and, BEGIN ... END; is the body of the   trigger where you write the SQL statements that 
+should be executed when the trigger is activated.   With that, I hope this video was helpful 
+and served value. If you like my content,   feel free to smash that like button and if 
+you haven't already subscribed to my channel,   please do, as it keeps me motivated and 
+helps me create more quality content for you

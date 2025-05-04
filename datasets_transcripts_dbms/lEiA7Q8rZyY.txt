@@ -1,0 +1,55 @@
+Hello and welcome to this first video on Database 
+Management System or DBMS. What is DBMS? In DBMS   introduction, let me say that a DBMS is a software 
+system that provides a centralized storage and   management of data. A DBMS can be accessed and 
+changed by multiple users in an organization.   Examples of DBMS are Microsoft SQL 
+Server, Oracle database and MySQL.   Before creating a database in the DBMS, first 
+we need to do conceptual database design.   For that, entity relationship model in DBMS 
+is a common technique. The Entity relationship   model shows entities that represent objects 
+or concepts, for example "Book" or "Purchase"   and the entity relationship model also 
+shows relationships between those entities,   for example "Author writes Book". This 
+is an entity relationship diagram or ERD   in Wikipedia's weak entity article. Now 
+entities are shown in ERD as rectangles.   Here Order, OrderItem, Customer 
+and Product are entities.   Now a rectangle or an entity has 
+attributes that are shown as ovals,   for example the Order entity has attributes: 
+OrderNumber, OrderDate, OrderPaymentInfo and   OrderShippingAddress. OrderNumber attribute 
+is underlined because it is the primary key.   Now relationships are shown in ERD as diamond 
+shapes, for example Customer entity has a   relationship OrderAuthor with Order. 1 and M 
+mean that one Customer entity may be related   to multiple Order entities. A weak entity 
+is shown in ERD as a double-lined rectangle.   A weak entity, for example OrderItem cannot 
+exist on its own and needs an owner entity   which is the Order entity in this ERD. Here the 
+relationship is shown as a double-lined diamond.   1 and M basically mean that one Order entity can 
+be related to multiple OrderItem weak entities.   In introduction to DBMS, you should know about the 
+relational model because the DBMS depends on it.   The relational model is a mathematical model 
+that represents data in the form of relations   or tables. Now each table 
+has rows here and columns. Each row represents an individual entity and 
+each column represents a single attribute,   for example this row represents the individual 
+Customer whose name is "Abe" and this is Abe's   address and this is Abe's CustomerID. This column 
+CustomerID represents the CustomerID attribute of   the Customer relation and in every cell it will 
+be the individual attribute of that entity. Another relation is the CustomerPhoneNumbers 
+relation, which has all these rows and it has   two columns CustomerID and PhoneNumber. Now 
+there is a relationship between CustomerID   of CustomerPhoneNumbers relation and the 
+CustomerID of the Customer's relation.   So, this is called a foreign key relationship 
+. This basically means that the CustomerID   of the CustomerPhoneNumbers is related to 
+the CustomerID of the Customer's relation.   Next in this DBMS tutorial is disk storage, which 
+refers to the physical storage of data on disks.   One option in DBMS is disk striping or RAID 0.   In disk striping or RAID 0, the data is divided 
+into blocks and stored on multiple disks   and in disk striping, the data is 
+read in parallel from multiple disks,   improving the performance. But the problem is 
+that data will be lost if one of the disk fails.   In disk mirroring or RAID 1, data is 
+stored simultaneously on multiple disks.   So this is mirror 1 and this is mirror 2. Because 
+the data is mirrored or duplicated across multiple   disks, even if one of the disk fails, the data 
+can still be retrieved from another mirrored disk.   In disk duplexing or RAID 0+1, the data is both 
+striped as well as mirrored. So, it provides   improved performance and data mirroring. So 
+disk duplexing is the best approach among these.   Next in DBMS explanation, hashing and indexing 
+are two separate techniques that increase   database performance and fetch data faster. In 
+hashing, there is conversion of actual data into   a fixed length value called hash for quick data 
+retrieval. The hash was called hash key earlier.   This hash value is used to locate data in a table,   for example the DBMS can convert every Customer 
+name to it's hash value and store it in the   same table. So, when you search for a Customer 
+name, say "Steve", it will generate the hash and   search only the hashes. So, it can go to that 
+particular Customer name faster. The thing to   note is that when searching hashes, the DBMS 
+has to do arithmetic comparison with each hash   so it can do it faster than comparing strings. 
+In indexing, a separate data structure called an   index is created by the DBMS. Unlike hashes, the 
+DBMS indexes are stored separately from the table.   In this video, I explained what is database 
+management system using my DBMS notes.   I will upload more DBMS tutorials for beginners 
+like this video for example, in the next video   I will explain about schema, DBMS structure 
+etc. so please view this complete database   management system full course in the database 
+management system in English playlist. Thank you 🙏

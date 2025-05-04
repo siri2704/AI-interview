@@ -1,0 +1,1 @@
+which of the following options can be used to create a database in SQL Server options are a SQL Server management Studio B transact SQL C both a and b d none of the above the correct option is C both A and B

@@ -1,0 +1,153 @@
+• 
+• 
+• 
+
+TheLIMITclause in SQL is used to control the number of rows returned in a query result. It is particularly useful when working with large datasets, allowing you to retrieve only the required number of rows for analysis or display. Whether we’re looking topaginate results, find top records, or just display a sample of data, theLIMIT clauseis an essential tool for controlling query output.
+
+In this article, we’ll cover the basicsyntaxof the LIMIT clause, explain how to use it withOFFSET, and explore practical examples for common use cases.
+
+
+### SQL LIMIT Clause
+TheLIMIT clauseallows you to specify themaximum number of recordsreturned by a query. It is commonly used for limiting query results when only a subset of the data is required, such as forpagination, filtering top values, or analyzing asmaller portionof a large table.
+
+Syntax:
+
+SELECT column1, column2, …FROM table_nameWHERE conditionORDER BY columnLIMIT [offset,] row_count;
+
+Key Terms
+
+• offset:number of rows to skip before returning the result set.
+• row_count:number of rows to return in the result set.
+
+
+### Examples of SQL LIMIT Clause
+Let’s look at some examples of theLIMIT clauseinSQLto understand it’s working. We will use the sample table name “Student” and write some LIMIT queries.
+
+Query:
+
+
+```python
+CREATE TABLE student (id INT PRIMARY KEY,name VARCHAR(50),age INT);INSERT INTO student (id, name, age)VALUES (1, 'Shubham Thakur', 18),(2, 'Aman Chopra', 19),(3, 'Bhavika uppala', 20),(4,'Anshi Shrivastava',22);
+```
+Output:
+
+Student Table
+
+
+### Example 1: Basic LIMIT Usage
+In this example, we will only retrieve 3 rows from the student table using LIMIT.
+
+Query:
+
+
+```python
+SELECT * FROM studentLIMIT 3;
+```
+Output:
+
+LIMIT Clause Example
+
+
+### Example 2: LIMIT with ORDER BY Clause
+In this example, we will use the LIMIT clause withORDER BYclause to retrieve the top 3 students sorted by their grade (assuming aGradecolumn exists).
+
+Query:
+
+
+```python
+SELECT*FROMStudentORDER BYGrade DESCLIMIT3;
+```
+Output:
+
+LIMIT with ORDER BY Clause
+
+Explanation:The LIMIT operator can be used in situations such as the above, where we need to find the top 3 students in a class and do not want to use any conditional statements.
+
+
+### SQL LIMIT OFFSET
+LIMIT OFFSET parameterskips a specified number of rows before returning the result set. OFFSET can only be used with theORDER BYclause. It cannot be used on its own. OFFSET value must begreater thanorequal to zero. It cannot benegative, else returns anerror.
+
+Syntax:
+
+SELECT * FROM table_name ORDER BY column_name LIMIT X OFFSET Y;
+
+OR
+
+SELECT * FROM table_name ORDER BY column_name LIMIT Y,X;
+
+• X→ Number of rows to return.
+• Y→ Number of rows to skip.
+
+
+### Example: Skipping First 2 Rows & Fetching 2 Rows
+
+```python
+SELECT *FROM StudentORDER BY ageLIMIT 2 OFFSET 2;
+```
+Output:
+
+SQL LIMIT OFFSET Example Output
+
+
+### Using LIMIT to Get the nth Highest or Lowest Value
+Now we will look forLIMITuse in findinghighestorlowestvalue we need to retrieve the rows with the nth highest or lowest value. In that situation, we can use the subsequent LIMIT clause to obtain the desired outcome.
+
+Syntax:
+
+SELECT column_listFROM table_nameORDER BY expressionLIMIT n-1, 1;
+
+
+### Example: Fetching the 3rd Highest Age
+
+```python
+SELECTageFROMStudentORDER BYage LIMIT 2, 1;
+```
+Output:
+
+SQL LIMIT to Get the nth Highest Value Example Output
+
+Explanation:
+
+• Orders records indescending order(highest age first).
+• Skips2 records(LIMIT 2) and retrieves thenext one(LIMIT 2,1).
+
+
+### Using LIMIT with WHERE Clause
+TheWHERE clausecan also be used with LIMIT. It produces the rows that matched the condition after checking the specified condition in the table.
+
+
+### Example: Fetching a Limited Set of Students Based on ID
+
+```python
+SELECT ageFROM StudentWHERE id<4ORDER BY ageLIMIT 2, 1;
+```
+Output:
+
+LIMIT with WHERE Clause Example Output
+
+
+### Restrictions on the LIMIT clause
+There are several limitations of SQL LIMIT. The following situations do not allow the LIMIT clause to be used:
+
+• With regard to defining a view
+• The use of nestedSELECT statements
+• Except for subqueries with table expressions specified in the FROM clause.
+• Embedded SELECT statements are used as expressions in a singleton SELECT (where max = 1) within an SPL routine where embedded SELECT statements are used as expressions.
+
+
+### Important Points About SQL LIMIT
+• The LIMIT clause is used to set an upper limit on the number of tuples returned by SQL.
+• It is important to note that this clause is not supported by all SQL versions.
+• The LIMIT clause can also be specified using the SQL 2008 OFFSET/FETCH FIRST clauses.
+• The limit/offset expressions must be a non-negative integer.
+
+
+### Conclusion
+TheLIMITclauseis a powerful tool for optimizing query performance byrestricting the number of rowsretrieved. It is widely used in pagination, data sampling, and retrievingtop-N records. CombiningLIMITwithORDER BY,OFFSET, andWHEREallows for moreflexible and efficientdata retrieval. Additionally, usingLIMIThelps reduce the load on databases by fetching only the necessary data, improving query execution speed.
+
+Ready to go from coding beginner to development pro? OurDSA to Development CodingGuide has everything you need to crush coding interviews and ace real-world projects! Limited spots available!
+
+• Databases
+• SQL
+• SQL-Clauses-Operators
+

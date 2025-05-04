@@ -1,0 +1,44 @@
+- Data is all around us. We used to store data on
+paper in big filing cabinets. But eventually we store them online in what we call databases.
+(bright ding) How do we easily pull the
+data we want to look at it? That's what SQL is for. It's a language that
+communicates with databases. (loud glitch music) Welcome back to Glitch. Your easy insights into Bob's big data and artificial intelligence. SQL stands for structured query language. People call it SQL or Sequel. In short, SQL is the name for a language that is used to
+communicate with databases. Databases that store your data. If you want to pull, edit,
+add information to a database, you can use the language
+of SQL to do that. But how does SQL work? Think of a database like a warehouse. Data tables like filing cabinets and data like files. This warehouse or database stores data. The warehouse database was
+built using coding languages like C++ or C or Java. Now imagine regular Lego people
+need to access the files. How do they do that? Option one. You could have a storefront
+built to the warehouse so that customers can ask for files, add files, delete files, but eventually this means
+you are building something that takes a lot of time, money. In the real world, this is the equivalent of building a whole app
+just to access the files in the database as to all comes in, which is the second option, SQL. This is like you hiring a
+specialized delivery-translator. Her name is Sally Sequel. She knows how to talk to the database and she knows how to speak
+in the language of SQL. So if you learn to speak SQL, then you can ask her to get files for you. (children cheering) Okay, so how do you speak
+Sally's SQL language? Here are the requests you can make. If you're a Lego Mayor
+and you want to know the name of your citizens,
+you'll ask Sally SQL, select name from lego_people. (bright boing) The request you select name,
+that column from lego_people, which is the name of the table. Or if you're a Lego
+doctor and want to know the name of citizens that are
+higher than three centimeters, you would ask Sally Sequel (chipmunk voice) select
+name from lego_height where centimeter is greater than three. (bright boing) She returned two Lego
+people, Sarah and Craig because their centimeters
+is greater than three and she pulled from the name column within the table called lego_height. Or if you're a statistician and you want to know both the
+height and age combination of citizens but this data is
+stored in two separate tables, here is what you'd say to Sally Sequel. (bright boing) Not all tables are found together, Sally join the two tables because what both two
+tables had in common, the names column, she was able to join the two matching by the
+names in each table. But you can also do other things. You can add data. If you want to add Joe, whose age 12. Or you can update data. Make Joe 13. You can also delete Joe altogether. From creating tables to joining
+tables to altering tables, Sally SQL could do it all. So here are three things you
+need to remember about SQL. One. SQL is the one language
+you probably should learn. If you are in business or
+marketing or sales or anything that you wouldn't normally
+think you need to learn to code, SQL is the one language
+you probably should learn. The reason why is because
+most companies nowadays have the online presence
+and are keeping records of data on a database. So the more you know how to communicate to this database and pull data, the better you can be at your job because now you can pull
+the data, analyze it. Two. SQL languages have variations. Different companies with
+different data SQL databases have different SQL syntaxes. They're a small variation. So it's the equivalent of having
+different Sally SQL Barbie with different accents. Three. SQL only speaks to a
+specific kind of database called a relational database, which is essentially a database
+that has a tabular schema. So it's a lot like a data
+table with rows and columns. Next time you hear about Sequel, just remember, Sally Sequel. Comment down below if the
+company you work for uses Sequel to pull data from the database. Thanks so much and I'll
+see you in the next video. (bright glitch music)

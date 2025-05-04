@@ -1,0 +1,78 @@
+• 
+• 
+• 
+
+SQL INNER JOINis a powerful and frequently used operation inrelational databases. It allows us to combine two or more tables based on a related column, returning only the records that satisfy the join condition
+
+This article will explore the fundamentals ofINNER JOIN, its syntax, practical examples, and the key differences betweenINNER JOINand other types of joins, such asOUTER JOIN.
+
+
+### What is SQL Inner Join?
+TheINNER JOINclause in SQL is used tocombine recordsfromtwoormore tables. The result contains only the rows that havematching valuesin both tables based on a specific condition. This makesINNER JOINa valuable tool when we need to work with related data across multiple tables in a database.
+
+The key feature of anINNER JOINis that itfilters out rowsfrom the result where there isno matching datain both tables. Essentially, it returns a “subset” of the data where the condition is satisfied.
+
+Syntax:
+
+SELECT columnsFROM table1INNER JOIN table2ON table1.column_name = table2.column_name;
+
+Key Terms
+
+• columns: The specific columns we want to retrieve.
+• table1andtable2: The two tables we are joining.
+• column_name: The columns from both tables that we want to match based on the join condition.
+
+
+### Example of SQL INNER JOIN
+Consider two tables:professorandteaches. Theprofessortable contains data aboutprofessors, while theteachestable holds information about thecoursesthat these professors teach. The common column between these tables isIDfrom theprofessortable andprof_idfrom theteachestable.
+
+
+### professor table
+
+### teacher Table
+Now, we will write a query to retrieve thecourse_id,prof_id,professor's Name, and theirSalaryby joining theprofessorandteachestables usingINNER JOIN. The query joins theprofessortable and theteachestable based on the condition that theIDfrom theprofessortable matches theprof_idin theteachestable.
+
+Query
+
+
+```python
+SELECT teaches.course_id, teaches.prof_id, professor.Name, professor.SalaryFROM professor INNER JOIN teaches ON professor.ID = teaches.prof_id;
+```
+Output
+
+Explanation:
+
+The output contains thedetails of professorsand the courses they teach. TheINNER JOINoperation ensures that only the records where a professor is assigned a course are included in the result. The professor who does not teach a course (like Aryan, who is not listed in the output) is excluded.
+
+
+### Difference Between INNER JOIN and OUTER JOIN
+
+### INNER JOIN
+• Returns records that have matching values in both tables.
+• Does not include records where there is no match between the tables.
+
+
+### OUTER JOIN
+• Returns records even if there is no match in one of the tables.
+• Can be aLEFT OUTER JOIN,RIGHT OUTER JOIN, orFULL OUTER JOIN, depending on whether we want to include unmatched records from the left, right, or both tables.
+
+
+### Key Points About SQL INNER JOIN
+1. Combines Data from Multiple Tables: INNER JOINallows us to combine data from multiple tables based on common columns, making it possible to work with related data stored in different tables.
+
+2. Excludes Non-Matching Records: INNER JOINonly returns records where there is a match in both tables based on the join condition. If there is no match, the record will be excluded from the result set.
+
+3. Simplifies Complex Queries: INNER JOINsimplifies complex queries by allowing you to work with multiple tables at once. It reduces the need for multiple subqueries and makes database management more efficient.
+
+4. Widely Used in Relational Databases: INNER JOINis widely used for tasks such as managing customer orders, product inventories, and many other relational datasets. It is essential for performing operations on normalized data.
+
+
+### Conclusion
+SQL INNER JOINis an essential tool for combining related data across multiple tables. By retrieving only the rows where a match is found, it helps filter relevant information efficiently. Whether we’re managingemployee data,courses, orcustomer orders, mastering the use ofINNER JOINis key to effectivedatabasequerying and management. It simplifies complex queries and enhances the performance ofSQLoperations by minimizing unnecessary data retrieval.
+
+Ready to go from coding beginner to development pro? OurDSA to Development CodingGuide has everything you need to crush coding interviews and ace real-world projects! Limited spots available!
+
+• Databases
+• SQL
+• DBMS-SQL
+

@@ -1,0 +1,137 @@
+Hi. In this video we are going to learn
+about different stages of a data model. But first, What is a data model ? A data
+model is simply a diagram that displays a set of tables and the relationship
+between them. We can understand a lot more by looking at a data model diagram
+than by looking at a list of tables. This helps us in understanding the purpose of
+the table as well as their dependency. A data model is applicable to any software
+development that involves creation of database objects, to store and manipulate
+data. Now this includes transactional systems as well as data warehouse
+systems. When the data model is being designed we progress through three main
+stages, they are - conceptual data model, logical and physical data model in this
+order. Now let's look at the first stage which is a conceptual data model. A conceptual data model is just a set of
+square shapes connected by a line. The square shape represents an entity, and
+the line represents a relationship between the entities. A conceptual data model can be easily
+drawn on a whiteboard or a piece of paper. It need not be a digital document.
+This makes it easy and quick to change, and can be rapidly updated. So what are
+some of the attributes of the conceptual data model. First it is highly abstract. When we say abstract we refer to the to
+the fact that we do not have too much details right? It is at a very high
+level, hence we call it highly abstract. It is easily understood. So whether the
+user is a technical or a non-technical person. It's easy for
+anyone to understand what this model is about so as you can look at this diagram
+it's easy to say that there are four main entities time product sales and
+store and all of the all of the three entities which is time product and store
+have a direct relationship with the sales entity right so that way there is
+a lot of information that can be easily obtained by looking at the conceptual
+data model and since it is not a digital document it can be easily enhanced and
+the thing to notice here is only the entities are visible but there is
+something else called as attributes those are not visible but we will be
+talking about it in just a bit and even the relationships are quite abstract
+meaning we just know that the product is connected to sales but what is the
+column on which the relationship is established that is not clear yet so
+this is a way of hiding the complexity at the very initial stages and since a
+conceptual model can be written on a piece of paper or a whiteboard you
+really do not need a software tool to create a conceptual data model that
+makes it a whole lot easier once the conceptual data model is finalized we
+can elaborate it into a logical data model so let's look at a logical data
+model so logical data model expands the conceptual data model by adding more
+detail to it and what are those details so first you'll notice the presence of
+attributes earlier what we used to be a simple square shape now has a list of
+attributes these attributes are further identified
+as key attributes and non-key attributes so key attributes or attributes that
+define the uniqueness of that entity such as in the time entity it's the date
+that's a key attribute similarly we have Product ID for product and store ID for
+store right so in the logical data model you draw a line within each entity all
+the attributes mentioned or displayed above the line form the key attribute
+and all the other attributes below the line are called non key attributes
+meaning they do not help in uniquely identifying the record an example is the
+category in the product entity so category something that could repeat for
+a number of Records hence it's a non key attribute and that is why it is listed
+below the line in this entity then we have the primary key foreign key
+relationships clearly defined so the key attributes that are mentioned here for
+each entity can also be used as a primary key and these primary keys are
+referred as foreign keys in the sales entity table as it is apparent from the
+word FK enclosed within paranthesis right so this is a detail that has been
+added and this was not available in in the conceptual data model the other
+thing to notice is the user friendly attribute names right so these are very
+easily readable right again any technical or a non-technical person can
+easily understand what each of this entities means and to help to help in
+the readability we have also given a single character space between each word
+right and these words are by the dictionary so it makes it very easy for
+anyone to read and understand and doesn't take too much time to to
+understand what each column means because they are self-explanatory and given all these changes that we have
+done or or new things we have added to the logical model it makes it more
+detailed than the conceptual model and at this stage this logical model is not
+dependent on any specific database meaning you can take this logical model
+and you can implement it in any database it may be Oracle it may be sequel server
+it could be even a OLAP tools such as sequel server analysis services and so
+on right so at this stage it can be really converted to any database type so
+that's the meaning of the word database agnostic meaning it is not specific
+rather it is gender ik now now that you have added all these details starting
+from the key attributes non-key attributes relationships primary key
+foreign key and so on given all this it makes it a little more difficult to
+enhance if there are any change in comparison to a conceptual model right
+and this is usually implemented using a software tools such as err win or power
+designer so these are tools that help you
+define a logical data model which you can share you can continuously update
+and then you can you can convert it to a physical model as well so we will look
+at the physical data model in in just a minute so given all these additional
+properties of a logical data model it makes it slightly more difficult than a
+conceptual model to update once you have finalized the logical data model we go
+into the last step of a data model design which is a physical data model so a physical data model looks a little
+similar to a logical data model however there are some significant changes okay
+so to begin with here we don't refer to the entities as entities instead we
+refer to them as tables and what we used to call as attributes in the logical
+data model now we refer to as columns so you see tables and columns are words
+specific to a database whereas entities and attributes are specific to a design
+a logical data model design so when we create a physical data model we should
+clearly be referring to these as tables and columns you the other thing that you notice is the
+column names these column names are no longer user-friendly instead they are
+database compatible names so if you have worked on a database you know that as a
+rule you do not use a space when naming a table name or column name although you
+can use a space it becomes very very difficult when you're writing queries
+using those lists of tables and columns right and hence you avoid using any
+special characters or any space between the words and one other thing that we do
+is we try to keep the column length as minimal as possible so as it's evident
+from here for product the short form is prod so product description has is now
+replaced here with prod underscore de SC right so these are these are database
+compatible so this makes the life of a DBA a lot easier by using names that are
+fully compatible with the database as well as any queries that we are going to
+write so the same applies for the table name as well as the column name and now
+we have introduced the concept of a data type right so these data types mention
+what is the type of data that is going to be stored in every column so as you
+can see here we have where care we have integer we have float date and other
+other other data types so these data types are specific to a database in this
+example this physical data model is created for sequel server which is the
+Microsoft sequel server database so these data types are specific to sequel
+server if you were creating a physical data model for a different database such
+as Oracle on my sequel these data types would be different hence a physical data
+model is specific to a certain database now this makes it difficult for users to
+understand so if you are talking about non-technical users they will have a
+hard time understanding what each of these tables mean what of what these
+columns mean and what are these data types for
+right so it's a usually it's not recommended to share the physical data
+model with the users you only share the logical data model now since business this has more details
+than a logical data model it makes it even more difficult in order to enhance
+in comparison to a logical modem so let's assume that you got a sign off on
+the logical data model and you go ahead and created a physical data model for a
+specific database now if there are any changes you first need to apply those
+changes in the logical data model and then to the physical data model so
+that's one kind of change which will take time the other changes let's
+suppose the database itself changed now you're thinking of implementing this
+entire data instead of sequel server which means a lot of effort has to be
+involved in converting these data types to something specific to terror data
+right so that is where we have tools like air wind and power designer that
+will help you in automatically porting over the data or or porting over the
+logical data model to a physical data model offer of a certain type and when
+it comes to a physical data model it will also include other objects that are
+not immediately visible on this diagram such as indexes constraints triggers and
+other DB objects such as stored procedures functions right so
+these are these are the objects that are very much required in order to implement
+a physical data money so to summarize a data model is a simple
+diagram that shows the list of tables and the relationships there are three
+stages in designing a data model we start with conceptual which is highly
+abstract then we move to the logical data model which has entities and
+attributes and finally we have a physical data model that has the tables
+and columns along with data types as well as additional database objects and
+a physical data model is specific to a database that's all there is to the stages of a
+data model I hope you find this video useful thank you

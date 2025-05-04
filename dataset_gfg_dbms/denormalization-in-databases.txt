@@ -1,0 +1,76 @@
+• 
+• 
+• 
+
+Denormalization focuses on combining multiple tables to make queries execute quickly. It adds redundancies in the database though.  In this article, we’ll explore Denormalization and how it impacts database design. This method can help us to avoid costly joins in a relational database made during normalization.
+
+
+### What is Denormalization in Databases?
+• Denormalization is a database optimization technique in which we add redundant data to one or more tables. This can help us avoid costly joins in a relational database. Note that denormalization does not mean ‘reversing normalization’ or ‘not to normalize’. It is an optimization technique that is applied after normalization.
+
+• Basically, The process of taking a normalized schema and making it non-normalized is called denormalization, and designers use it to tune the performance of systems to support time-critical operations.In a traditional normalized database, we store data in separate logical tables and attempt to minimize redundant data. We may strive to have only one copy of each piece of data in a database.
+
+• For example, in a normalized database, we might have a Courses table and a Teachers table. Each entry in Courses would store the teacherID for a Course but not the teacherName. When we need to retrieve a list of all Courses with the Teacher’s name, we would do a join between these two tables.
+
+• In some ways, this is great; if a teacher changes his or her name, we only have to update the name in one place. The drawback is that if tables are large, we may spend an unnecessarily long time doing joins on tables. Denormalization, then, strikes a different compromise. Under denormalization, we decide that we’re okay with some redundancy and some extra effort to update the database in order to get the efficiency advantages of fewer joins.
+
+
+### Step 1: Unnormalized Table
+This is the starting point where all the data is stored in a single table.
+
+What’s wrong with it?
+
+• Redundancy:For example, “Alice” and “Math” are repeated multiple times. Similarly, “Mr. Smith” is stored twice for the same class.
+• Update Anomalies:If “Mr. Smith” changes to “Mr. Brown,” we have to update multiple rows. Missing one row could lead to inconsistencies.
+• Inefficient Storage:Repeated information takes up unnecessary space.
+
+
+### Step 2: Normalized Structure
+To eliminate redundancy and avoid anomalies, we split the data into smaller, related tables. This process is called normalization. Each table now focuses on a specific aspect, such as students, classes, or subjects.
+
+Why is this better?
+
+• No Redundancy:“Mr. Smith” appears only once in the Classes Table, even if multiple subjects are associated with the class.
+• Easier Updates:If “Mr. Smith” changes to “Mr. Brown,” you only update the Classes Table, and it automatically reflects everywhere.
+• Efficient Storage:Repeated data is eliminated, saving space.
+
+
+### Step 3: Denormalized Table
+In some cases, normalization can make querying complex and slow because you need to join multiple tables to get the required information. To optimize performance, we can denormalize the data by combining related tables into a single table.
+
+What’s happening here?
+
+• All related information (student name, class name, teacher, and subject) is stored in a single table.
+• This simplifies querying because you don’t need to join multiple tables.
+
+
+### How is Denormalization Different From Normalization ?
+Normalizationand Denormalization both are the method which use in database but it works opposite to each other. One side normalization is used for reduce or removing the redundancy which means there will be no duplicate data or entries in the same table and also optimizes for data integrity and efficient storage, while Denormalization is used for add the redundancy into normalized table so that enhance the functionality and minimize the running time of database queries (likejoins operation) and optimizes for performance and query simplicity.
+
+In a system that demands scalability, like that of any major tech company, we almost always use elements of both normalized and denormalized databases.
+
+
+### Advantages of Denormalization
+• Improved Query Performance:Denormalization can improve query performance by reducing the number of joins required to retrieve data.
+• Reduced Complexity: By combining related data into fewer tables, denormalization can simplify the database schema and make it easier to manage.
+• Easier Maintenance and Updates:Denormalization can make it easier to update and maintain the database by reducing the number of tables.
+• Improved Read Performance:Denormalization can improve read performance by making it easier to access data.
+• Better Scalability:Denormalization can improve the scalability of a database system by reducing the number of tables and improving the overall performance.
+
+
+### Disadvantages of Denormalization
+• Reduced Data Integrity:By adding redundant data, denormalization can reduce data integrity and increase the risk of inconsistencies.
+• Increased Complexity:While denormalization can simplify thedatabase schemain some cases, it can also increase complexity by introducing redundant data.
+• Increased Storage Requirements:By adding redundant data, denormalization can increase storage requirements and increase the cost of maintaining thedatabase.
+• Increased Update and Maintenance Complexity:Denormalization can increase the complexity of updating and maintaining the database by introducing redundant data.
+• Limited Flexibility:Denormalization can reduce the flexibility of a database system by introducing redundant data and making it harder to modify the schema.
+
+
+### Conclusion
+Denormalization is the method which is used to add the redundancy so that execute the query quickly. It is used for decrease the number of tables so that execute the query quickly (like joins operation ). Denormalization improve the storage efficiency so that improve the query performance (like when read heavy systems ). Denormalization has many benefits in some situations but it requires management so that avoid data inconsistencies problems.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• DBMS-Normalization
+

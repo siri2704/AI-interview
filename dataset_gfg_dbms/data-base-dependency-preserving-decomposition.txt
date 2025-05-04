@@ -1,0 +1,148 @@
+• 
+• 
+• 
+
+In aDatabase Management System (DBMS),dependency-preserving decompositionrefers to the process of breaking down a complex database schema into simpler, smaller tables, such that all the functional dependencies of the original schema are still enforceable without needing to perform additional joins.
+
+This approach is crucial for database normalization as it minimizes redundancy, prevents anomalies, and improves the efficiency of database queries. To achieve dependency-preserving decomposition, algorithms likelossless join decompositionanddependency-preserving decompositionare applied, ensuring that all original dependencies can be represented directly in the decomposed tables.
+
+Example:
+
+Suppose R is a relational schema and F is the set of functional dependencies on R. If R is decomposed into relations R1, R2, ………….…… Rn , each holding functional dependencies F1, F2, …….……… Fn respectively. We can say, F` = F1 U F2 U ………..… U Fn.
+
+Now this decomposition will be considered as dependency preserving decomposition if and only if-Every dependency in F is logically implied by F` i.e. F`+= F+It is obvious that F1 ⊆ F+, F2 ⊆ F+and so on.If we verify that F` is satisfied in R, we have verified that decomposition is dependency preserving decomposition i.e. F1 U F2 = F.
+
+Let’s say:
+
+• The original relation R has a set of functional dependencies (FDs) called F.
+• When we decompose R into R1​ and R2​, each gets its own FDs:f1​: FDs in R1​f2​: FDs in R2
+• f1​: FDs in R1​
+• f2​: FDs in R2
+• The combined FDs from R1​ and R2​ are f1∪f2​.
+
+• f1​: FDs in R1​
+• f2​: FDs in R2
+
+Now, there are three possible cases:
+
+
+### Case 1: f1∪f2=F
+• This means the FDs from R1​ and R2​ together exactly match the original FDs F.
+• Result: The decomposition is dependency-preserving because we haven’t lost any FDs.
+
+Original R:| StudentID | CourseID | Instructor |
+
+Functional Dependencies F:
+
+• CourseID→Instructor
+• StudentID,CourseID→Instructor
+
+After decomposition:
+
+• R1(StudentID,CourseID): f1={StudentID,CourseID→Instructor}
+• R2(CourseID,Instructor): f2={CourseID→Instructor}
+
+Here, f1∪f2=F.The decomposition is dependency-preserving.
+
+
+### Case 2: f1∪f2⊂F
+• This means some FDs from the original set F are missing in f1∪f2.
+• Result: The decomposition is not dependency-preserving, as we’ve lost some FDs.
+
+Original R:| StudentID | CourseID | Instructor |
+
+Functional Dependencies F:
+
+• StudentID,CourseID→Instructor
+• CourseID→Instructor
+
+After decomposition:
+
+• R1(StudentID,CourseID): f1={StudentID,CourseID→Instructor}
+• R2(CourseID,Instructor): f2={}
+
+Here, f1∪f2⊂F.The FD CourseID→InstructorCourseID is missing.The decomposition is not dependency-preserving.
+
+
+### Case 3: f1∪f2⊃F
+• This means the FDs from R1R_1R1​ and R2R_2R2​ contain extra dependencies that were not part of F.
+• Result: This case is technically possible but uncommon. These extra dependencies may not cause direct problems but could lead to inconsistencies or unexpected behavior.
+
+Original R:| StudentID | CourseID | Instructor |
+
+Functional Dependencies F:
+
+• CourseID→Instructor
+
+After decomposition:
+
+• R1(StudentID,CourseID): f1={CourseID→Instructor}
+• R2(CourseID,Instructor): f2={Instructor→CourseID}
+
+Here, f1∪f2⊃F, as the FD Instructor→CourseID was added unnecessarily.The decomposition has extra dependencies, which could lead to confusion but doesn’t directly violate dependency preservation.
+
+
+### Key Concepts of Dependency Preserving Decomposition in DBMS
+The key concepts of dependency-preserving decomposition include:
+
+• Functional Dependency Preservation:This means that after decomposition, the functional dependencies in the original schema must still hold true in the decomposed schema.
+• Lossless Join Property:The decomposition must allow for the original relation to be reconstructed from the decomposed relations without any data loss, ensuring no information is discarded.
+• Normalization:The decomposition often aims to normalize the schema to higher normal forms (like 3NF or BCNF), which further eliminates redundancy and dependency anomalies.
+• Minimal Redundancy:By ensuring the decomposition preservesfunctional dependencies, it minimizes data redundancy and helps in avoiding data anomalies.
+
+
+### Problem:Let a relation R (A, B, C, D ) and functional dependency {AB –> C, C –> D, D –> A}. Relation R is decomposed into R1( A, B, C) and R2(C, D). Check whether decomposition is dependency preserving or not.
+
+### Solution:
+R1(A, B, C) and R2(C, D)
+
+Let us find closure of F1 and F2To find closure of F1, consider all combination of ABC. i.e., find closure of A, B, C, AB, BC and ACNote ABC is not considered as it is always ABC
+
+closure(A) = { A }  // Trivialclosure(B) = { B }  // Trivialclosure(C) = {C, A, D} but D can’t be in closure as D is not present R1.= {C, A}C–> A   // Removing C from right side as it is trivial attribute
+
+closure(AB) = {A, B, C, D}= {A, B, C}AB –> C  // Removing AB from right side as these are trivial attributes
+
+closure(BC) = {B, C, D, A}= {A, B, C}BC –> A  // Removing BC from right side as these are trivial attributes
+
+closure(AC) = {A, C, D}NULL SET
+
+F1 {C–> A, AB –> C, BC –> A}.Similarly F2 { C–> D }
+
+In the original Relation Dependency { AB –> C , C –> D , D –> A}.AB –> C is present in F1.C –> D is present in F2.D –> A is not preserved.
+
+F1 U F2 is a subset of F. Sogiven decomposition is not dependency preserving.
+
+
+### How Dependency Preserving Decomposition Enhances Database Efficiency?
+Dependency-preserving decomposition enhances database efficiency by:
+
+• Eliminating Redundancy:It helps reduce unnecessary repetition of data, leading to smaller storage requirements.
+• Maintaining Integrity:By preserving functional dependencies, the database ensures consistent data with fewer chances of anomalies like update, insert, or delete anomalies.
+• Improving Query Performance:With a well-decomposed schema, it’s easier to optimize queries as the smaller tables are often faster to process.
+• Simplifying Updates:Since data is more normalized, updates become simpler and more efficient, reducing the risk of inconsistencies.
+
+Imp Note:The 1NF, 2NF, and 3NF are valid for dependency-preserving decomposition.
+
+
+### Step-by-Step Approach to Dependency Preserving Decomposition in DBMS
+• In this technique, the original relation is decomposed into smaller relations in such a way that the resulting relations preserve the functional dependencies of the original relation. This is important because if the decomposition results in losing any of the original functional dependencies, it can lead to data inconsistencies and anomalies.
+
+• To achieve dependency preserving decomposition, there are various algorithms available, such as the Boyce-Codd Normal Form (BCNF) decomposition and the Third Normal Form (3NF) decomposition. These algorithms are based on the concept of functional dependencies and are used to identify the attributes that should be grouped together to form smaller relations.
+
+• The BCNF decomposition algorithm is used to decompose a relation into smaller relations in such a way that each resulting relation is in BCNF. BCNF is a higher normal form than 3NF and is used when there are multiple candidate keys in a relation.
+
+• The3NF decompositionalgorithm is used to decompose a relation into smaller relations in such a way that each resulting relation is in 3NF. 3NF is a normal form that ensures that there are no transitive dependencies between the attributes of a relation.
+
+• Overall, dependency preserving decomposition is an important technique inDBMSfor improving database efficiency while maintaining data consistency and integrity. It is important to choose the right decomposition algorithm based on the specific requirements of the database to achieve the desired results.
+
+
+### GATE Previous Year Question’s
+GATE-CS-2001
+
+For further details you can also refer to the Quiz of the previous year’s GATE Questions.https://www.geeksforgeeks.org/dbms-gq/database-design-normal-forms-gq/
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• DBMS-Normalization
+

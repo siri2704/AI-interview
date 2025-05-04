@@ -1,0 +1,29 @@
+ Dear students, welcome to GATE SMASHERS  In this video I am going to explain the concept of hashing  So all the important points related to 
+hashing I will explain to you in this video  Hashing is if we talk about competitive exams  So like GATE exam, NET exam, different PSUs  Every exam contains at least one to
+ two questions from the hashing  And it is a very simple topic but it is important  Even it is very important for your college and university exams  So I will give you at least 2-3 videos on hashing
+ so that I can tell you the whole concept  So guys like the video quickly and subscribe the channel  If you haven't done it yet and if you have done it  Then you can get it subscribed from other devices by sharing because subscribers are very important  So let's start  If we talk about hashing, then what is it actually?  It is a method for storing and retrieving the 
+data from database in order of one time  Means we are storing data in constant 
+time and retrieving it from the database  It is also called mapping technique  Because we try to map larger values into 
+smaller values by using the concept of hashing  Now in hashing, what are the terms that come?  So first comes search key  You are told that these are search 
+keys, put them in the hash table  So what is the search key? We search on
+ the basis of some key in the database  Like if we take the student's data, we 
+put role number or registration number  In the data of passport, we put it in the passport number  So there is some search key on which we store the data  So where do we put those search keys?  We have to put it in the hash table  So what are the keys? They will be given to you in the maximum question  Sometimes we can put the record too there is a lot in record, in database record there is the student's name, father's name, mother's name  If you don't put all these values in the hash
+ table,  then what will you put? Search Key  If we talk about the hash table, what is the hash table?  It is a data structure that actually provides you a methodology that you can store the data properly  And what is this in a way? It is an array type  Like our indexes are in the array, there are indexes in this too  But when we have to search or insert or delete any data in this  Then we don't need to scan it, with the help of hash
+ function we will do this in order of one time  I will tell you from the example  If we talk about such hash functions, then K mod N, K mod N, mid square method, folding method, different methods  But these two methods are used the most  So see, first came 24 I have a key and let's say I have
+ taken this function K mod 10  Which hash function I took? K mod 10  Now I will map this key from this function, where will this go?  So to do this, you have to do what is the key value? 24  So 24 mod 10, what to do? 24 mod 10  If you divide any value from 10, then the 
+remainder will come, that is what? Mod value  So see the remainder, what will come? 4  So you got its hash value, what did you get?  You got the hash value, means you go 
+to the 4th number index and put 24  Simple, if you have given K mod N, then the 
+value of N will be that you have this number of keys  The number of keys will be 0 to N-1, you make a table of it  If you have given K mod 10, then you have made a table of 0 to 9  Let's say mid-square, what is mid-square?
+ Listen to this method, sometimes it comes in theory  Like if you have given 123, then what you have to do is take the mid-value square and store the data there  Similarly, you are given folding many 
+times, let's say I have data 123456  Now I have to store this much data and
+ let's say the table I have is between 0 to 999  Now this data will not come in it, so what you have to do is  Fold 123456, you have added 123, 
+separated 4 and 5, 6 separately  You have added these two, 9, 7, 5  So you can put this value in this location and store it  So there are different methods but remember
+ these methods are the main ones  Next is 52, so 52 mod 10, what will come? 2, done  Next what will come? 91 mod 10, what will be the answer? 1  Because what will be the remainder? 67, 67 went to 7th position  48 went to this place and 83 went to 3rd location  So your insertion is in order of 1 time, why?  Because you have to just calculate the value and on the basis of that you can 
+put that value in the hash table  Now you have to search, so what
+ you have to do while searching?  Same way, let's say you want to search for 67, so you will do 67 mod 10, what will be the answer? 7  So means you have to go to index number 7 and pick up that value  And if you have to pick up a record of that
+ value then it must be in the database  If it is in disk then pick it up, so this 
+pointer will point the database ahead  It will be used like an index, so insertion in order of 1 time  You have to do deletion also, so search the same value  Delete the data from which index you want to go  So all the operations will be completed in order of 1 time  So this is a simple concept of hashing  Next we will talk here, if let's say you are 
+thinking in the mind of many students  That sir let's say data is 62, 
+62 mod 10, what will be the answer? 2  2 data is there, so in 2 already 52 is 
+there, so where will you insert 62?  This is called concept of collision, when collision occurs in hash table  Then how we resolve the collisions, we will 
+discuss all those methods in the next video Thank You.

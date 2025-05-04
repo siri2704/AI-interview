@@ -1,0 +1,90 @@
+• 
+• 
+• 
+
+Anomalies in the relational model refer to inconsistencies or errors that can arise when working with relational databases, specifically in the context of data insertion, deletion, and modification. There are different types of anomalies that can occur in referencing and referenced relations which can be discussed as:
+
+These anomalies can be categorized into three types:
+
+• Insertion Anomalies
+• Deletion Anomalies
+• Update Anomalies.
+
+
+### How Are Anomalies Caused in DBMS?
+Anomalies in DBMS are caused by poor management of storing everything in the flat database, lack of normalization, data redundancy, and improper use of primary or foreign keys. These issues result in inconsistencies during insert, update, or delete operations, leading to data integrity problems. The three primary types of anomalies are:
+
+• Insertion Anomalies:These anomalies occur when it is not possible to insert data into a database because the required fields are missing or because the data is incomplete. For example, if a database requires that every record has aprimary key, but no value is provided for a particular record, it cannot be inserted into thedatabase.
+• Deletion anomalies:These anomalies occur when deleting a record from a database and can result in the unintentional loss of data. For example, if a database contains information about customers and orders, deleting a customer record may also delete all the orders associated with that customer.
+• Update anomalies:These anomalies occur when modifying data in a database and can result in inconsistencies or errors. For example, if a database contains information about employees and their salaries, updating an employee’s salary in one record but not in all related records could lead to incorrect calculations and reporting.
+
+These anomalies can be removed with the process ofNormalization, which generally splits the database which results in reducing the anomalies in the database.
+
+STUDENT Table
+
+Table 1
+
+STUDENT_COURSE
+
+Table 2
+
+Insertion Anomaly:If a tuple is inserted in referencing relation and referencing attribute value is not present in referenced attribute, it will not allow insertion in referencing relation.
+
+OR
+
+An insertion anomaly occurs when adding a new row to a table leads to inconsistencies.
+
+Example:If we try to insert a record into the STUDENT_COURSE table withSTUD_NO = 7, it will not be allowed because there is no correspondingSTUD_NO = 7in the STUDENT table.
+
+Deletion and Updation Anomaly:If a tuple is deleted or updated from referenced relation and the referenced attribute value is used by referencing attribute in referencing relation, it will not allow deleting the tuple from referenced relation.
+
+Example:If we want to update a record from STUDENT_COURSE with STUD_NO =1, We have to update it in both rows of the table. If we try to delete a record from the STUDENT table withSTUD_NO = 1, it will not be allowed because there are corresponding records in the STUDENT_COURSE table referencingSTUD_NO = 1. Deleting the record would violate theforeign keyconstraint, which ensures data consistency between the two tables.
+
+To avoid this, the following can be used in query:
+
+• ON DELETE/UPDATE SET NULL:If a tuple is deleted or updated from referenced relation and the referenced attribute value is used by referencing attribute in referencing relation, it will delete/update the tuple from referenced relation and set the value of referencing attribute to NULL.
+• ON DELETE/UPDATE CASCADE:If a tuple is deleted or updated from referenced relation and the referenced attribute value is used by referencing attribute in referencing relation, it will delete/update the tuple from referenced relation and referencing relation as well.
+
+
+### Removal of Anomalies
+Anomalies in DBMS can be removed by applying normalization. Normalization involves organizing data into tables and applying rules to ensure data is stored in a consistent and efficient manner. By reducing data redundancy and ensuring data integrity, normalization helps to eliminate anomalies and improve the overall quality of the database
+
+According toE.F.Codd, who is the inventor of theRelational Database, the goals of Normalization include:
+
+• It helps in vacating all the repeated data from the database.
+• It helps in removing undesirable deletion, insertion, and update anomalies.
+• It helps in making a proper and useful relationship between tables.
+
+Key steps include:
+
+• First Normal Form (1NF): Ensures each column contains atomic values and removes repeating groups.
+• Second Normal Form (2NF): Eliminates partial dependencies by ensuring all non-key attributes are fully dependent on the primary key.
+• Third Normal Form (3NF): Removes transitive dependencies by ensuring non-key attributes depend only on the primary key.
+
+By implementing these normalization steps, the database becomes more structured, reducing the likelihood of insertion, update, and deletion anomalies.
+
+Read more aboutNormal Forms in DBMS.
+
+
+### Conclusion
+Ensuring data integrity requires addressing anomalies such asinsertion,update, anddeletionproblems in the Relational Model. By effectively arranging data, normalization techniques offer a solution that guarantees consistency and dependability in relational databases.
+
+Normalization is the process of splitting the tables into smaller ones so as to remove anomalies in the database. It helps in reducingredundancyin the database.
+
+
+### Q.2: What are Anomalies in the Relational Model?
+Answer:
+
+An anomaly is a fault that is present in the database which occurs because of the poor maintenance and poor storing of the data in the flat database. Normalization is the process of removing anomalies from the database.
+
+
+### Q.3: How Anomalies can be removed?
+Answer:
+
+Anomalies can be removed with the process of Normalization. Normalization involves organizing data into tables and applying rules to ensure data is stored in a consistent and efficient manner.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• DBMS-Relational Model
+

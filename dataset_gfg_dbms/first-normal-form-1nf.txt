@@ -1,0 +1,70 @@
+• 
+• 
+• 
+
+Normalization in database management is the process of organizing data to minimize redundancy and dependency, ensuring efficiency, consistency, and integrity. This involves structuring data into smaller, logically related tables and defining relationships between them to streamline data storage and retrieval.
+
+Normal Forms are a set of guidelines in database normalization that define how to structure data in tables to reduce redundancy and improve integrity. Each normal form builds on the previous one, progressively organizing data more efficiently.
+
+
+### Levels of Normalization
+There are various levels of normalization. These are some of them:
+
+• First Normal Form (1NF)
+• Second Normal Form (2NF)
+• Third Normal Form (3NF)
+• Boyce-Codd Normal Form (BCNF)
+• Fourth Normal Form (4NF)
+• Fifth Normal Form (5NF)
+
+In this article, we will discuss the First Normal Form (1NF).
+
+
+### First Normal Form
+If a relation contains a composite or multi-valued attribute, it violates the first normal form, or the relation is in the first normal form if it does not contain any composite ormulti-valued attribute. A relation is in first normal form if every attribute in that relation is single-valued attribute.
+
+A table is in 1 NF if:
+
+• There are only Single Valued Attributes.
+• Attribute Domain does not change.
+• There is a unique name for every Attribute/Column.
+• The order in which data is stored does not matter.
+
+
+### Rules for First Normal Form (1NF) in DBMS
+To follow the First Normal Form (1NF) in a database, these simple rules must be followed:
+
+1. Every Column Should Have Single ValuesEach column in a table must contain only one value in a cell. No cell should hold multiple values. If a cell contains more than one value, the table does not follow 1NF.
+
+• Example:A table with columns like [Writer 1], [Writer 2], and [Writer 3] for the same book ID is not in 1NF because it repeats the same type of information (writers). Instead, all writers should be listed in separate rows.
+
+2. All Values in a Column Should Be of the Same TypeEach column must store the same type of data. You cannot mix different types of information in the same column.
+
+• Example:If a column is meant for dates of birth (DOB), you cannot use it to store names. Each type of information should have its own column.
+
+3. Every Column Must Have a Unique NameEach column in the table must have a unique name. This avoids confusion when retrieving, updating, or adding data.
+
+• Example:If two columns have the same name, the database system may not know which one to use.
+
+4. The Order of Data Doesn’t MatterIn 1NF, the order in which data is stored in a table doesn’t affect how the table works. You can organize the rows in any way without breaking the rules.
+
+
+### Example:
+Consider the below COURSES Relation :
+
+
+
+• In the above table, Courses has a multi-valued attribute, so it is not in 1NF. The Below Table is in 1NF as there is no multi-valued attribute.
+
+
+
+
+### Conclusion
+In Conclusion, First Normal Form (1NF) is a key idea in relationaldatabasearchitecture. It guarantees that data is organized to facilitate data processing, remove redundancy, and support data integrity. 1NF establishes the foundation for more complexnormalizationstrategies that further improve the correctness and efficiency of database systems by imposing atomic values and forbidding recurring groupings inside rows.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• GATE CS
+• DBMS-Normalization
+

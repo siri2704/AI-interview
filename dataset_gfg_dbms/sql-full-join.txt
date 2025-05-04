@@ -1,0 +1,85 @@
+• 
+• 
+• 
+
+InSQL, theFULL JOIN(orFULL OUTER JOIN) is a powerful technique used to combine records from two or more tables. Unlike an INNER JOIN, which only returns rows where there are matches in both tables, aFULL JOIN retrieves all rows from both tables, filling inNULLvalues where matches do not exist. In this article, We will learn aboutSQL FULL JOINby understanding various examples in detail.
+
+In this article, we will delve into the concept of SQL FULL JOIN, understand its syntax, and explore practical examples to help you master its use in SQL queries.
+
+
+### SQL FULL JOIN
+• TheFULL JOINorFULL OUTER JOINinSQLis used to retrieve all rows from both tables involved in thejoin, regardless of whether there is a match between the rows in the two tables.
+• It combines the results of both aLEFT JOINand aRIGHT JOIN.
+• When there is no match, the result will includeNULLsfor the columns of the table that do not have a matching row.
+
+Tip: We can useFULL JOINto combine multiple tables, by sequentially performingFULL JOINon two tables at a time.
+
+Syntax:
+
+
+```python
+SELECT columnsFROM table1FULL JOIN table2ON table1.column = table2.column;
+```
+Explanation:
+
+• SELECT columns: Specifies the columns to retrieve.
+• FROM table1:The first table to be joined.
+• FULL JOIN table2: Specifies the second table to join with the first table using a FULL JOIN.
+• ON table1.column = table2.column: Defines the condition to match rows between the two tables.
+
+This query retrieves all records from bothtable1andtable2, returning NULL where there are no matches.
+
+
+### Examples of SQL FULL JOIN
+Let's look at some examples of the FULL JOIN in SQL and understand it's working.
+
+First, let's create a demo database and two tables on which we will perform theJOIN.
+
+
+### Table 1- Students
+
+### Table 2- Library
+
+### Example 1: Joining Multiple Tables with Full Join
+We want to demonstrate how to useFULL JOINto combine two or more tables based on common columns. In this case, we will create two additional tables:AuthorsandPublishers, and join them with theBookstable using aFULL JOIN.
+
+Query:
+
+
+```python
+SELECTb.BOOK_ID,b.BOOK_NAME,a.AUTHOR_NAME,p.PUBLISHER_NAMEFROMBooks bFULL JOIN Authors a ON b.BOOK_ID = a.AUTHOR_IDFULL JOIN Publishers p ON b.BOOK_ID = p.PUBLISHER_ID;
+```
+Output:
+
+Explanation:
+
+In this query, we usedFULL JOINto join three tables:Books,Authors, andPublishers. TheFULL JOINensures that all records from both tables are included, whether or not they match. Here, each book has a corresponding author and publisher. If any book didn't have an author or publisher, the result would still include that row withNULLin the respective columns.
+
+
+### Example 2: Full Join with WHERE Clause
+Now, we want to filter the results from the above join based on a specific condition. We will select only books that have "Sharma" in the book name.
+
+Query:
+
+
+```python
+SELECTb.BOOK_ID,b.BOOK_NAME,a.AUTHOR_NAME,p.PUBLISHER_NAMEFROMBooks bFULL JOIN Authors a ON b.BOOK_ID = a.AUTHOR_IDFULL JOIN Publishers p ON b.BOOK_ID = p.PUBLISHER_IDWHEREb.BOOK_NAME LIKE '%Sharma%';
+```
+Output:
+
+Explanation:
+
+In this example, theWHEREclause filters out all books that do not contain the word "Sharma" in their name. After applying the filter, only the record for "RD SHARMA" remains.
+
+
+### Conclusion
+TheFULL JOINin SQL is an essential tool when you need to combine data from multiple tables while ensuring that no rows are omitted, even if there are no matches between the tables. It allows you to retrieve complete datasets, with NULL values indicating missing data from either side. Adding WHERE clauses allows for further refinement of the results, providing a flexible mechanism for managing data from multiple sources.
+
+Ready to go from coding beginner to development pro? OurDSA to Development CodingGuide has everything you need to crush coding interviews and ace real-world projects! Limited spots available!
+
+G
+
+• SQL
+• Databases
+• DBMS-Join
+

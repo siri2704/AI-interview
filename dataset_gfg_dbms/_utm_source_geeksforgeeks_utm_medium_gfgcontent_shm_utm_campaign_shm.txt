@@ -1,0 +1,341 @@
+• 
+• 
+• 
+
+Databases and data are the fundamental building blocks of new technology. Data is the building blocks of information, like numbers, words, pictures, and more, that computers use and process.Databases, on the other hand, are like organized libraries, making sure this data isstored,retrieved, andmanagedeffectively.
+
+In this article, we’ll explore the differenttypes of databasesfrom the classicSQLto the trendyNoSQLand evenCloud databases. We will also explore the different databases for web development, backend development, mobile development, DevOps, data engineering, data science, artificial intelligence, cloud computing, and even blockchain/web 3.0.
+
+Types of Databases
+
+Table of Content
+
+• What are Data & Databases?
+• What is DBMS?
+• Types of Databases
+• Databases Cheat Sheet
+• Databases Interview Questions
+• Database Query Based Questions
+• Databases Comprehensive Learning Path
+• Database Design
+• Database Connectivity
+• Database Interview Experience
+• Databases Required for Different Technology
+• Types of Database Jobs
+• Tips & Tricks to Improve Database Knowledge
+
+
+### What are Data & Databases?
+Datarefers to any piece ofinformation. It can benumbers,words,images,sounds, or any other information that a computer canstoreand process. Data can be raw or processed.
+
+Adatabaseis a structuredcollectionof data that is organized in a way to facilitates efficientstorage,retrieval, andmanipulationof information. It acts as a centralized and organized repository where data can be stored, managed, and accessed by various applications or users.
+
+
+### What is DBMS?
+ADatabase Management System(DBMS) is asoftwaresystem that enables users todefine,create,maintain, andmanipulatedatabases. It provides an interface between the database and the users or applications, allowing them to access and manage data efficiently.
+
+
+
+The primary functions of a DBMS include:
+
+• Data Definition:Defining the database structure, including specifying data types, relationships between data elements, and constraints.
+• Data Manipulation:Inserting, updating, deleting, and retrieving data from the database using queries and commands.
+• Data Security:Enforcing access control to ensure that only authorized users can access and modify the data.
+• Data Integrity:Maintaining the accuracy, consistency, and reliability of the data through validation rules and constraints.
+• Concurrency Control:Managing simultaneous access to the database by multiple users or applications to prevent conflicts and ensure data consistency.
+• Backup and Recovery:Providing mechanisms for backing up data and recovering it in case of system failures or data corruption.
+
+
+### Types of Databases
+There are various types of databases, each designed for specific use cases and requirements. Here are some common types of databases:
+
+
+### 1. Relational Databases (SQL databases)
+Relational databases(RDBMS) organize data into tables, where each table hasrows and columns. These databases usestructured query language(SQL) for defining and manipulating data.
+
+
+
+These are the following relational databases:
+
+• MySQL
+• PostgreSQL
+• Oracle (PL/SQL, programming language extension for Oracle Database)
+• SQL Server
+• SQLite
+• MariaDB
+• IBM Db2
+
+
+### 2. NoSQL Databases
+These databases are designed to handle large volumes ofunstructured,semi-structured, orstructureddata.NoSQLprovide flexible schema designs and often offerhorizontal scalability.
+
+
+
+Types of NoSQL databases
+
+• Document databases:Store data in flexible, JSON-like documents.MongoDBCouchbase
+• MongoDB
+• Couchbase
+• Key-value stores:Simplest NoSQL databases, storing data as key-value pairs.RedisAmazonDynamoDB.
+• Redis
+• AmazonDynamoDB.
+• Column-family stores:Store data in columns rather than rows.Apache CassandraHBase.
+• Apache Cassandra
+• HBase.
+• Graph databases:Optimize for data with complex relationships.Neo4jAmazon Neptune.
+• Neo4j
+• Amazon Neptune.
+
+• MongoDB
+• Couchbase
+
+• Redis
+• AmazonDynamoDB.
+
+• Apache Cassandra
+• HBase.
+
+• Neo4j
+• Amazon Neptune.
+
+
+### 3. Cloud Databases
+Cloud databases are online databases that store and manage data in acloud computingenvironment. They offer various advantages such asscalability,reliability, andaccessibility.
+
+Cloud Database
+
+• Amazon RDS (Relational Database Service)
+• Amazon Aurora
+• Azure SQL Database
+• Google Cloud SQL
+• Microsoft Azure SQL Database
+• IBM Db2 on Cloud
+• Amazon DynamoDB
+• Azure Cosmos DB
+• Cloud Firestore(Google Cloud Firebase)
+
+
+### 4. In-Memory Databases
+In-memory databasesstore dataprimarily inRAMrather than on disk, resulting in faster data access.
+
+• Redis
+• Memcached
+
+
+### 5. Time-Series Databases
+Time-series databases are optimized forstoringand queryingtime-stamped data, such as sensor data,IoTdata, and financial market data.
+
+• InfluxDB
+• Prometheus
+
+
+### 6. NewSQL Databases
+NewSQL databases aim to combine the scalability and flexibility of NoSQL databases with the ACID compliance and SQL querying capabilities of traditional relational databases.
+
+• CockroachDB
+• Google Spanner.
+
+
+### 7. Object-Oriented Databases
+Object-oriented databasesorganize and store datain a way that reflects the principles of object-oriented programming (OOP). In OODBs, data is represented as objects, which encapsulate both data and the methods or functions that operate on that data.
+
+• db4o
+• ObjectDB
+
+
+### 8. Hierarchical Databases
+Hierarchical databases organize data in atree-like structurewhere each record has one parent record and multiple child records, forming a hierarchy. Records are linked together inparent-child relationships, with each child record having only one parent.
+
+• IMS (Information Management System)
+
+
+### 9. Network databases
+Network databases are a type of database model that represents data ascollections of recordsand sets, with relationships defined between records. Unlike hierarchical databases, where records form a strictparent-child hierarchy, network databases allow records to have multiple parent and child records, forming a network structure.
+
+• IDMS (Integrated Database Management System)
+
+
+### 10. Centralized Database
+Centralized databases are a type of database architecture wheredataisstoredandmanagedin asingle locationor server. In this architecture, all data processing and management tasks are performed on the central server, and clients access the database remotely.
+
+• ISAM (Indexed Sequential Access Method)
+
+
+### 11. Operational Database
+Operational databases are databases optimized for supporting day-to-day operations and transactional processing within an organization. They are designed to efficiently handle tasks such asadding,modifying, andretrieving datainreal-timeto support business operations.
+
+• Amazon Aurora
+• Teradata
+
+
+### Databases Cheat Sheet
+Cheat sheets are concise, quick-reference guides that provide key information about a particular topic. These are the cheat sheet of Different Databases.
+
+• SQL Cheat Sheet
+• SQL Command Cheat Sheet
+• MySQL Cheat Sheet
+• PL/SQL Cheat Sheet
+• PostgreSQL Cheat Sheet
+
+
+### Databases Interview Questions
+Whether you’re preparing for ajob interviewor aiming to brush up on your database fundamentals, theseinterview questionwill help through some common and advanced database interview.
+
+• SQL Interview Questions
+• SQL Query Interview Questions
+• MySQL Interview Questions
+• PL/SQL Interview Questions
+
+
+### Database Query Based Questions
+Query-based database questions are an essential component ofpracticingandmastering database skills. These questions typically involveretrieving,manipulating, and analyzing data stored within a database using SQL (Structured Query Language) or other query languages specific to the database management system being used.
+
+• Database Query Questions
+• SQL Exercises
+• MySQL Exercises
+• PostgreSQL Exercises
+• PL/SQL Exercises
+• MongoDB Exercises
+
+
+### Databases Comprehensive Learning Path
+Whether you’re just starting your journey into the world ofdatabasesor aiming to enhance your expertise, thiscurated learning pathisdesignedto guide us from thefundamentalstoadvancedconcepts in a structured and accurate manner.
+
+• Learn SQL and Database
+
+
+### Database Design
+Database design is a critical aspect of product development, providing the foundation for storing, managing, and accessing data effectively. It ensures that the product can scale, perform optimally, and maintain data integrity, ultimately contributing to its success in the market.
+
+• Database Design
+• How to Design a Database for a New Project?
+• How to Design Database for Logistics and Transportation
+• How to Design Database for Social Media Platform
+• How to Design Database for Flight Reservation System
+• How to Design ER Diagrams for E-commerce Website
+
+
+### Database Connectivity
+Database Connectivity refers to the capability of software applications to interact with and access data stored in databases. Database Connectivity is crucial for various types of applications, including web applications, mobile apps, desktop applications, and APIs.
+
+• How to Connect Database with Web Application
+• How to retrieve data from database to frontend?
+• How to send data from frontend to database?
+• How to connect frontend to SQL database?
+• How do you connect backend to database?
+• How to connect API to a database?
+
+There are several mechanisms for establishing connectivity between applications and databases
+
+• ORM (Object-Relational Mapping)
+• ODM (Object-Document Mapping)
+• ODBC (Open Database Connectivity)
+
+
+### Database Interview Experience
+In database interview experience series, we share some of theinterview experienceof individuals who’ve faced the challenges of database interviews. FromSQLtoNoSQL, each article offers insights and tips to help you ace your next interview.
+
+• MongoDB
+
+
+### Databases Required for Different Technology
+In today’s technology-driven world, databases play a pivotal role in powering diverse applications across different domains. FromFrontend DevelopmenttoArtificial Intelligence, each technology has unique requirements fordata storage,retrieval, andmanagement. Let’s delve into the specific databases required for various technological domains.
+
+
+### 1. Databases for Web Developement
+In web development, databases serve as the backbone forstoring,retrieving, andmanagingdata critical forweb applications. Whether you’re building a simple blog or a complex e-commerce platform, understanding databases is essential for creating dynamic and interactive websites. here we can learn in more depth aboutWhich Database You Should Choose For Web Development?
+
+
+### 2. Database for Mobile Development
+In mobile development, databases play a pivotal role in storing, accessing, and organizing data crucial formobile applications. Whether you’re crafting a fitness tracker or a social networking app, a solid understanding of databases is fundamental for delivering efficient and seamless user experiences.
+
+
+### 3. Database for DevOps
+In the DevOps, where the seamless integration of development and operations is paramount, the choice of database plays a crucial role in enabling efficient collaboration,continuous delivery, andautomated deployment pipelines.DevOpsteams typically require databases that offer highavailability,scalability, and compatibility with automation tools.
+
+
+### 4. Database for DataEngineer
+Data engineers play a pivotal role inbuildingandmaintainingdata infrastructure that powers analytics,machine learning, anddecision-makingprocesses within organizations. When selecting a database for data engineering tasks, considerations such as data volume, velocity, variety, and the need forreal-time processingcome to the forefront.
+
+
+### 5. Database for DataScientist
+For data scientists, the choice of database is critical as it directly impacts the efficiency ofdata exploration,modeling, and analysis tasks. Data scientists typically require databases that support complex queries, provide efficient data retrieval mechanisms, and seamlessly integrate with populardata sciencetools and libraries.
+
+
+### 6. Database for Artificial Intelligence
+Artificial intelligence (AI) applications rely heavily ondatatotrainmachine learning models, make predictions, anddrive decision-making processes. When selecting a database for AI tasks, considerations such as data scalability, model training efficiency, and real-time inference capabilities are paramount.
+
+
+### 7. Database for Cloud Computing
+Cloud computing has revolutionized the way organizationsdeploy,manage, and scale their IT infrastructure. When selecting adatabaseforcloud computingenvironments, considerations such as scalability, reliability, and integration with cloud services become paramount.
+
+
+### 8. Database for Blockchain/Web3.0
+Blockchain technology, synonymous withdecentralization and immutability, has revolutionized various industries,including finance,supply chain, andhealthcare. When selecting a database forblockchainandWeb3.0applications, considerations such as data integrity, transparency, and consensus mechanisms come to the forefront.
+
+
+### Types of Database Jobs
+The field of databases offers adiverse range of job roles, each requiring different levels ofexperienceandexpertise. As professionals progress in their careers, they can specialize in roles that align with their skills and interests. Let’s explore into different types of job roles, considering the required experience levels.
+
+Job Role
+
+Experience
+
+Sallary
+
+Database Administrator (DBA)
+
+Entry-level require 1-3 years of experience, while senior roles require 5+ years.
+
+4 to 15 LPA
+
+Database Developer
+
+Entry-level roles 1-3 years of experience, while senior developers need 5+ years.
+
+4 to 12 LPA
+
+Data Analyst
+
+Entry-level positions require 1-3 years of experience, while senior data analysts need 5+ years.
+
+3 to 8 LPA
+
+Data Engineer
+
+Entry-level roles require 1-3 years of experience, while senior data engineers need 5+ years
+
+4 to 15 LPA
+
+Database Architect
+
+Entry-level positions require 3-5 years of experience, while senior architects need 8+ years.
+
+7 to 24 LPA
+
+Database Manager
+
+Mid-level management require 5-8 years of experience, while senior management roles need 10+ years.
+
+8 to 18 LPA
+
+
+### Tips & Tricks to Improve Database Knowledge
+Improving your database knowledge can be both rewarding and valuable in various fields, includingsoftware development,data analysis, and system administration. Here are sometips and tricksto help you enhance your understanding:
+
+• Understand the Fundamentals: Start by grasping the basic concepts such astables,rows,columns, primary keys, foreign keys, indexes, and normalization. These form the foundation of database management.
+• Learn SQL:SQL (Structured Query Language) is the language used to communicate with relational databases. Familiarize yourself with SQL syntax, data manipulation (SELECT,INSERT,UPDATE,DELETE), data definition (CREATE, ALTER, DROP), and data control (GRANT, REVOKE) statements.
+• Practice Regularly:The best way to solidify your knowledge is through practice. Work onSQL queries,database design,databaseexercises, and data manipulation tasks regularly.
+• Build Projects:Apply your database skills by working onreal-world projects. Create a personaldatabase-backed application,such as a task tracker, inventory management system, or blogging platform. Building something tangible reinforces your understanding and showcases your abilities.
+• Explore Different Database Systems:Get hands-on experience with various database management systems (DBMS) such asMySQL, PostgreSQL, SQLite,MongoDB, or Redis. Each has its strengths, weaknesses, and use cases. Understanding multiple systems broadens your perspective and versatility.
+• Study Database Design:Learn about database design principles likenormalization,denormalization, entity-relationship modeling, and schema design. A well-designed database is crucial for efficient data storage, retrieval, and maintenance.
+• Stay Updated:The field of database management is continually evolving with new technologies, best practices, and trends. Stay updated with the latest advancements, tools, and techniques by following industry news, attending webinars, and participating in conferences.
+
+
+### Conclusion
+Well, this end of this amazing written getting started with Database. While database looks bit complex at first but through this guide you will learn database easily. So keep exploring and try to get mastery in it.
+
+
+
+• Databases
+

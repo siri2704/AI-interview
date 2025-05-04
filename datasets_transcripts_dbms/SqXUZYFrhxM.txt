@@ -1,0 +1,96 @@
+Hello. In this video, we will learn the fundamentals
+of database, SQL (Structured Query Language), database management system, client-server architecture, relational
+database management system, MSSQL and SQL Management Studio. Let's get started. What is database? A database is an organized collection of structured information, or data,
+typically stored electronically in a computer system. It is controlled by a database management
+system (DBMS), which, along with the applications associated with it, is referred to as a database system. Databases are designed to efficiently store, manage, modify,
+update, control, and organize data. Structured Query Language (SQL) is use to writing and querying data. The primary differences between databases and spreadsheets
+include the way data is stored and manipulated, who can access the data,
+and the amount of data that can be stored. Databases are capable of holding much larger collections
+of organized information and allow multiple users to access and query the data using complex logic and language. In simpler terms, a database is essentially
+an organized collection of data stored and accessed electronically on a computer system. Imagine it like a giant filing cabinet,
+but instead of folders and paper, it uses digital storage and software to manage information. This structure allows for efficient
+searching, sorting, and analysis of the data. Common uses of databases include e-commerce websites, social
+media platforms, banking systems, and library catalogs. What is SQL? SQL, which stands for Structured Query Language, 
+is a domain-specific language used in programming for managing data
+in relational database management systems (RDBMS)
+or relational data stream management systems (RDSMS). It is designed for handling structured data
+where relations exist between different entities/variables. SQL encompasses data query, manipulation (insert, update, delete), 
+definition (schema creation and modification), and access control. SQL is essential for working with databases, used widely in industries
+for data analysis, application development, and management. on defining and manipulating data
+rather than just querying it. It’s a powerful tool for managing and organizing data
+in databases, widely used in applications worldwide. Relational: SQL databases store data in tables with rows and columns,
+representing records and data fields, respectively. Standardized: ANSI and ISO standardize SQL. Core commands like `SELECT`, `UPDATE`, `DELETE`,
+`INSERT`, `WHERE` remain consistent across database systems. Scalable: SQL databases handle various data types
+and large amounts of data, suitable for diverse applications from small to large-scale systems.
+Queries: Retrieve specific data using conditions and filters. Schemas: Predefined structure for data,
+including data types and table relationships. Transactions: Execute operations
+as a single unit of work for data integrity. Data Integrity Constraints: Enforce data accuracy, reliability, and 
+consistency using constraints like primary keys, foreign keys, etc. Joins: Combine rows from multiple tables based on related columns 
+using various types of joins (INNER JOIN, LEFT JOIN, etc.). What is database management system? Database Management System (DBMS) oversees structured data
+collections, acting as a central hub for storage, organization, and retrieval. It facilitates: Data Creation and Management: Tools
+for defining database structures and manipulating data. Data Security: Access controls
+to safeguard sensitive information. Data Integrity: Enforcement of rules
+to maintain accuracy and consistency. Data Retrieval: Support for query languages
+like SQL to efficiently extract information. Performance Optimization: Techniques
+such as indexing and caching for efficient operation. Backup and Recovery: Mechanisms
+to prevent data loss and restore from backups. In essence, a DBMS manages
+data storage, security, integrity, retrieval, performance, and recovery,
+ensuring vital functions for users and applications. The client server architecture The Client-Server
+architecture in SQL Server delineates the interaction between a client application and the server-side SQL Server
+software, facilitating efficient data exchange. Client Application: The front-end interface where user interactions occur, initiating requests
+to the server for operations like data retrieval or updates. Server (SQL Server): Hosts the SQL Server software, managing
+client requests, and database operations. Communication Protocols: Facilitate client-server communication
+over the network, including Shared Memory, TCP/IP, Named Pipes, and SQL Server Network Interface (SNI). Operation Workflow with Authentication and SQL Queries:
+Client initiates request with authentication. The client application sends a request
+along with authentication credentials to the SQL Server for data manipulation
+or retrieval. For instance; querying username and password Upon receiving the request, the SQL Server verifies
+the authentication credentials provided by the client. This ensures that only authorized users
+can access the database. after successful authentication. The server parses SQL statements to understand the client's
+request and executes the appropriate queries. For instance, querying a customer's orders. The SQL Server sends the query results or operation
+confirmations back to the client. For instance, if querying for orders. The client application receives the response
+from the SQL Server and interprets it accordingly, updating the user interface
+or taking necessary actions based on the data received. Relational database management system
+A Relational Database Management System (RDBMS) is a type of database management system that stores data in tables,
+which are organized into rows and columns. Each table represents a different kind of entity,
+and the columns represent attributes of those entities. The power of an RDBMS comes from its ability
+to efficiently retrieve and manipulate data through relationships between tables, typically using a language
+like SQL (Structured Query Language). Here’s how the example can be converted to a three-table database
+involving students, courses, and their credit grades. In this structure, the Grades table acts as a junction table
+that links Students and Courses through foreign keys. This allows for the association of students with the courses
+they are taking and their respective grades. In a non-relational database setup, the Grades table would need to include all the details about students
+and courses directly within it, leading to redundant data. Without Relational Database: The Grades table would repeat student names, course names,
+and other attributes for each grade entry. With Relational Database:
+The Grades table contains only the StudentID and CourseID, which point to the respective tables
+without repeating the actual data. This design ensures that each piece of information is stored
+only once, reducing storage space and simplifying updates. If a student’s name or a course’s details change,
+you only need to update one record in the respective table, and all related entries
+in the Grades table remain accurate and consistent. In summary, foreign keys in a relational database
+provide a way to reference data across different tables, which prevents unnecessary repetitions
+and maintains data integrity. It's a relational database management system
+(RDBMS) developed by Microsoft. Imagine a digital filing cabinet where you can store
+information in structured tables with rows and columns. MSSQL excels at organizing, managing, and querying
+this data. Here are the common uses of MSSQL: 
+Websites and applications, e-commerce platforms, Customer Relationship Management (CRM), inventory control, financial reporting, and business
+intelligence (BI) and data analysis. Some key strengths of MSSQL
+include providing high performance and scalability, robust security features ensuring data integrity, advanced querying
+and reporting tools for effective data extraction and analysis, as well as a relatively
+user-friendly interface for database management. What is SQL Server Management Studio? SQL Server Management Studio is a free tool developed
+by Microsoft specifically for managing MSSQL databases. Think of it as the user interface
+for interacting with your data stored in MSSQL. With SSMS, you can create, manage,
+and delete databases, work with database objects like tables and stored procedures, backup and restore databases,
+write and execute T-SQL queries, and generate reports. It's an essential tool for MSSQL database
+administrators, developers, and data analysts. Until this stage of the training,
+we have learned: What a database is. Introduced the SQL querying language
+and learned its basic features. Learned what a Database Management System (DBMS) is. Learned how Database Management Systems
+work with client-server architecture. Learned about relational databases and their advantages. Learned the purpose of MSSQL
+and SQL Server Management Studio. In the next stage, we will install MSSQL and SQL Server
+Management Studio software and write basic SQL codes. I hope you’re all enjoying our SQL training sessions so far. I wanted to inform you that our SQL training will continue in future sessions, and I’m excited
+to delve deeper into this essential skill together. I understand that some of you might have been using MSSQL and SQL Server
+Management Studio for completing the exercises. However, I want to assure you that for our future trainings,
+there’s no need to rely solely on these specific tools. You can achieve the same functionality and practice
+your SQL skills effectively using online coding platforms. Online coding platforms provide a convenient and accessible environment for practicing SQL
+queries, data manipulation, and database management tasks. They offer interactive interfaces
+where you can write SQL queries, execute them, and see immediate results, just like you would
+in MSSQL or SQL Server Management Studio. I will be sharing resources and links to recommended online coding platforms
+where you can practice SQL outside of our sessions. Feel free to explore these platforms and use them
+to reinforce your learning. thank you for watching

@@ -1,0 +1,131 @@
+• 
+• 
+• 
+
+While Third Normal Form (3NF) is generally sufficient for organizing relational databases, it may not completely eliminate redundancy. Redundancy can still occur if there’s a dependency X→X where X is not a candidate key. This issue is addressed by a stronger normal form known asBoyce-Codd Normal Form (BCNF).
+
+Applying the rules of 2NF and 3NF can help identify some redundancies caused by dependencies that violate candidate keys. However, even with these rules, certain dependencies may still lead to redundancy in 3NF. To overcome this limitation, BCNF was introduced by Codd in 1974 as a more robust solution.
+
+
+### Boyce-Codd Normal Form (BCNF)
+Boyce-Codd Normal Form (BCNF) is a stricter version of Third Normal Form (3NF) that ensures a more simplified and efficient database design. It enforces that every non-trivial functional dependency must have a superkey on its left-hand side. This approach addresses potential issues with candidate keys and ensures the database is free from redundancy.
+
+BCNF eliminates redundancy more effectively than 3NF by strictly requiring that all functional dependencies originate from super-keys.
+
+BCNF is essential for gooddatabase schema designin higher-level systems where consistency and efficiency are important, particularly when there are many candidate keys (as one often finds with a delivery system).
+
+
+### Rules for BCNF
+Rule 1:The table should be in the 3rd Normal Form.
+
+Rule 2:X should be a super-key for every functional dependency (FD) X−>Y in a given relation.
+
+Note:To test whether a relation is in BCNF, we identify all the determinants and make sure that they are candidate keys.
+
+To determine the highest normal form of a given relation R with functional dependencies, the first step is to check whether the BCNF condition holds. If R is found to be in BCNF, it can be safely deduced that the relation is also in3NF,2NF,and1NF. The 1NF has the least restrictive constraint – it only requires a relation R to have atomic values in each tuple. The 2NF has a slightly more restrictive constraint.
+
+The 3NF has a more restrictive constraint than the first two normal forms but is less restrictive than the BCNF. In this manner, the restriction increases as we traverse down the hierarchy.
+
+We are going to discuss some basic examples which let you understand the properties of BCNF. We will discuss multiple examples here.
+
+
+### Example 1
+Consider a relation R with attributes (student, teacher, subject).
+
+
+
+
+```python
+FD: { (student, Teacher) -> subject, (student, subject) -> Teacher, (Teacher) -> subject}
+```
+• Candidate keysare (student, teacher) and (student, subject).
+• The above relation is in 3NF (since there is no transitive dependency). A relation R is in BCNF if for every non-trivial FD X->Y, X must be a key.
+• The above relation is not in BCNF, because in the FD (teacher->subject), teacher is not a key. This relation suffers with anomalies −
+• For example, if we delete the student Tahira , we will also lose the information that N.Gupta teaches C. This issue occurs because the teacher is a determinant but not a candidate key.
+
+
+
+R is divided into two relations R1(Teacher, Subject) and R2(Student, Teacher).
+
+For more, refer toBCNF in DBMS.
+
+
+### How to Satisfy BCNF?
+For satisfying this table in BCNF, we have to decompose it into further tables. Here is the full procedure through which we transform this table into BCNF. Let us first divide this main table into two tablesStu_BranchandStu_CourseTable.
+
+Stu_Branch Table
+
+Candidate Key for this table:Stu_ID.
+
+Stu_Course Table
+
+Candidate Key for this table:Stu_Course.
+
+Stu_Enroll Table
+
+Candidate Key for this table:{Stu_ID, Stu_Course_No}.
+
+After decomposing into further tables, now it is in BCNF, as it is passing the condition of Super Key, that in functional dependency X−>Y, X is a Super Key.
+
+
+### Example 3
+Find the highest normal form of a relation R(A, B, C, D, E) with FD set as:
+
+
+```python
+{ BC->D, AC->BE, B->E }
+```
+Explanation:
+
+• Step-1:As we can see, (AC)+ ={A, C, B, E, D} but none of its subsets can determine all attributes of the relation, So AC will be the candidate key. A or C can’t be derived from any other attribute of the relation, so there will be only 1 candidate key {AC}.
+• Step-2:Prime attributes are those attributes that are part of candidate key {A, C} in this example and others will be non-prime {B, D, E} in this example.
+• Step-3:The relation R is in 1st normal form as a relational DBMS does not allow multi-valued or composite attributes.
+
+The relation is in 2nd normal form because BC->D is in 2nd normal form (BC is not a proper subset of candidate key AC) and AC->BE is in 2nd normal form (AC is candidate key) and B->E is in 2nd normal form (B is not a proper subset of candidate key AC).
+
+The relation isnotin 3rd normal form because in BC->D (neither BC is a super key nor D is a prime attribute) and in B->E (neither B is a super key nor E is a prime attribute) but to satisfy 3rd normal for, either LHS of an FD should be super key or RHS should be a prime attribute. So the highest normal form of relation will be the 2nd Normal form.
+
+Note:A prime attribute cannot be transitively dependent on a key in BCNF relation.
+
+Consider these functional dependencies of some relation R
+
+
+```python
+AB ->CC ->BAB ->B
+```
+From the above functional dependency, we get that the candidate key of R is AB and AC. A careful observation is required to conclude that the above dependency is a Transitive Dependency as the prime attribute B transitively depends on the key AB through C. Now, the first and the third FD are in BCNF as they both contain the candidate key (or simply KEY) on their left sides. The second dependency, however, is not in BCNF but is definitely in 3NF due to the presence of the prime attribute on the right side. So, the highest normal form of R is 3NF as all three FDs satisfy the necessary conditions to be in 3NF.
+
+
+### Example 3
+For example consider relation R(A, B, C)
+
+
+```python
+A -> BC,B -> A
+```
+A and B both are super keys so the above relation is in BCNF.
+
+Note:BCNF decomposition may always not be possible withdependency preserving, however, it always satisfies thelossless joincondition. For example, relation R (V, W, X, Y, Z), with functional dependencies:
+
+
+```python
+V, W -> XY, Z -> XW -> Y
+```
+It would not satisfy dependency preserving BCNF decomposition.
+
+Note:Redundancies are sometimes still present in a BCNF relation as it is not always possible to eliminate them completely.
+
+There are also some higher-order normal forms, like the 4th Normal Form and the 5th Normal Form.
+
+For more, refer to the4th and 5th Normal Forms.
+
+
+### Conclusion
+In conclusion, we can say that Boyce-Codd Normal Form (BCNF) is very much essential as far asdatabase normalizationare concerned which help us in doing normalizing beyond the limits of 3NF. By making sure allfunctional dependenciesdepend on super-keys, this is how BCNF helps us avoid redundancy and update anomalies. This makes the BCNF a highly desirable property and helps in achieving Data Integrity which is number one concern for any Database Designer.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• GATE CS
+• DBMS-Normalization
+

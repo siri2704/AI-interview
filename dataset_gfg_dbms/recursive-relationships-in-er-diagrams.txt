@@ -1,0 +1,67 @@
+• 
+• 
+• 
+
+A relationship between two entities of the same entity set is called a recursive relationship or repeated relationship. Here the same entity set participates more than once in a relationship type with a different role for each instance.
+
+• Recursive relationships are often used to represent hierarchies or networks, where an entity can be connected to other entities of the same type.
+
+• For example, in an organizational chart, an employee can have a relationship with other employees who are also in a managerial position. Similarly, in a social network, a user can have a relationship with other users who are their friends.
+
+• To represent a recursive relationship in an ER diagram, we use a self-join, which is a join between a table and itself. In other words, we create a relationship between the same entity type. The self-join involves creating two instances of the same entity and connecting them with a relationship. One instance is considered the parent, and the other instance is considered the child.
+
+We use cardinality constraints to specify the number of instances of the entity that can participate in the relationship. For example, in an organizational chart, an employee can have many subordinates, but each subordinate can only have one manager. This is represented as a one-to-many (1:N) relationship between the employee entity and itself.
+
+Example:
+
+
+
+Let us suppose that we have an employee table. A manager supervises a subordinate. Every employee can have a supervisor except the CEO and there can be at most one boss for each employee. One employee may be the boss of more than one employee.
+
+Let’s suppose that REPORTS_TO is a recursive relationship on the Employee entity type where each Employee plays two roles.
+
+• Supervisor
+• Subordinate
+
+
+
+Here, “Supervisor” and “Subordinate” are referred to asrole names. The degree of theREPORTS_TOrelationship is 1 (i.e., a unary relationship
+
+• Theminimum cardinalityof theSupervisorrole is 0 because the lowest-level employee (e.g., a subordinate) may not manage anyone.
+• Themaximum cardinalityof theSupervisorrole is N, as an employee can manage many subordinates.
+
+For the Subordinate role:
+
+• Theminimum cardinalityis 0, as the CEO, for example, is not a subordinate to anyone.
+• Themaximum cardinalityis 1, as a subordinate can have only one manager.
+
+Note: In this case, neither of the participants has total participation since the minimum cardinality for both roles is 0. Therefore, the relationship is represented with asingle line(not a double line) in the ER diagram
+
+
+### Implementing a Recursive Relationship
+To implement a recursive relationship, a foreign key of the employee’s manager number would be held in each employee record. A Sample table would look something like this:-
+
+
+```python
+Emp_entity( Emp_no,Emp_Fname, Emp_Lname, Emp_DOB, Emp_NI_Number, Manager_no);Manager no - (this is the employee no of the employee's manager)
+```
+Example:
+
+
+```python
+CREATE TABLE employee (id INT PRIMARY KEY,name VARCHAR(50),manager_id INT,FOREIGN KEY (manager_id) REFERENCES employee(id));
+```
+Here, the employee table has a foreign key column calledmanager_idthat references theidcolumn of the sameemployeetable. This allows you to create a recursive relationship where an employee can have a manager who is also an employee.
+
+
+### Sample Employee Table Structure:
+In this table:
+
+• Manager_norefers to theEmp_noof the employee’s manager.
+• The CEO (employee 1 in this example) does not have a manager, hence theirManager_noisNULL.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• GATE CS
+

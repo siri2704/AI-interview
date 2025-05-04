@@ -1,0 +1,369 @@
+• 
+• 
+• 
+
+1. What are the advantages of DBMS over traditional file-based systems?
+
+Database management systems were developed to handle the following difficulties of typical File-processing systems supported by conventional operating systems.1. Data redundancy and inconsistency2. Difficulty in accessing data3. Data isolation – multiple files and formats4. Integrity problems5. Atomicity of updates6. Concurrent access by multiple users7. Security problems
+
+2. What are super, primary, candidate,and foreign keys?Asuper keyis a set of attributes of a relation schema upon which all attributes of the schema are functionally dependent. No two rows can have the same value of super key attributes.ACandidate keyis a minimal superkey, i.e., no proper subset of Candidate key attributes can be a superkey.APrimary Keyis one of the candidate keys. One of the candidate keys is selected as most important and becomes the primary key. There cannot be more than one primary key in a table..AForeign keyis a field (or collection of fields) in one table that uniquely identifies a row of another table.
+
+3. What is the difference between primary key and unique constraints?The primary key cannot have NULL value, the unique constraints can have NULL values. There is only one primary key in a table, but there can be multiple unique constrains.
+
+4.What is database normalization?It is a process of analyzing the given relation schemas based on their functional dependencies and primary keys to achieve the following desirable properties:1. Minimizing Redundancy2. Minimizing the Insertion, Deletion, And Update Anomalies Relation schemas that do not meet the properties are decomposed into smaller relation schemas that could meet desirable properties.
+
+5. Why is the use of DBMS recommended? Explain by listing some of its major advantages?
+
+Some of the major advantages of DBMS are as follows:
+
+• Controlled Redundancy:DBMS supports a mechanism to control the redundancy of data inside the database by integrating all the data into a single database and as data is stored in only one place, the duplicity of data does not happen.
+• Data Sharing:Sharing of data among multiple users simultaneously can also be done in DBMS as the same database will be shared among all the users and by different application programs.
+• Backup and Recovery Facility:DBMS minimizes the pain of creating the backup of data again and again by providing a feature of ‘backup and recovery’ which automatically creates the data backup and restores the data whenever required.
+• Enforcement of Integrity Constraints:Integrity Constraints are very important to be enforced on the data so that the refined data after putting some constraints are stored in the database and this is followed by DBMS.
+• Independence of Data:It simply means that you can change the structure of the data without affecting the structure of any of the application programs.
+
+6. What are the differences between DDL, DML,and DCL in SQL?Following are some details of three :DDLstands for Data Definition Language. SQL queries like CREATE, ALTER, DROP, TRUNCATE and RENAME come under this.DMLstands for Data Manipulation Language. SQL queries like SELECT, INSERT, DELETE and UPDATE come under this.DCLstands for Data Control Language. SQL queries like GRANT and REVOKE come under this.
+
+7. What is the difference between having and where clause?HAVING is used to specify a condition for a group or an aggregate function used in a select statement. The WHERE clause selects before grouping. The HAVING clause selects rows after grouping. Unlike the HAVING clause, the WHERE clause cannot contain aggregate functions. (Seethisfor examples). SeeHaving vs Where Clause?for more details
+
+8.How to print duplicate rows in a table?Seehttps://www.geeksforgeeks.org/how-to-print-duplicate-rows-in-a-table/
+
+9. What is Join?An SQL Join is used to combine data from two or more tables, based on a common field between them. For example, consider the following two tables.
+
+Table –Student Table
+
+Table –StudentCourse TableCourseIDEnrollNo1100021000310001100221003Following is a join query that shows the names of students enrolled in different courseIDs.SELECT StudentCourse.CourseID, Student.StudentNameFROM StudentCourseINNER JOIN StudentON StudentCourse.EnrollNo = Student.EnrollNoORDER BY StudentCourse.CourseID;The above query would produce the following result.CourseIDStudentName1geek11geek32geek13geek19. What is Identity?Identity (or AutoNumber) is a column that automatically generates numeric values. A start and increment value can be set, but most DBA leave these at 1. A GUID column also generates numbers; the value of this cannot be controlled. Identity/GUID columns do not need to be indexed.10.What is a view in SQL? How to create a view?Aviewis a virtual table based on the result-set of an SQL statement. We can create it using create view syntax.CREATE VIEW view_name ASSELECT column_name(s)FROM table_nameWHERE condition11.What are the uses of view?1. Views can represent a subset of the data contained in a table; consequently, a view can limit the degree of exposure of the underlying tables to the outer world: a given user may have permission to query the view, while denied access to the rest of the base table.2. Views can join and simplify multiple tables into a single virtual table.3. Views can act as aggregated tables, where the database engine aggregates data (sum, average, etc.) and presents the calculated results as part of the data.4. Views can hide the complexity of data.5. Views take very little space to store; the database contains only the definition of a view, not a copy of all the data which it presents.6. Depending on the SQL engine used, views can provide extra security.12. What is a Trigger?A Trigger is a code associated with insert, update or delete operations. The code is executed automatically whenever the associated query is executed on a table. Triggers can be useful to maintain integrity in the database.13. What is a stored procedure?A stored procedure is like a function that contains a set of operations compiled together. It contains a set of operations that are commonly used in an application to do some common database tasks.14. What is the difference between Trigger and Stored Procedure?Unlike Stored Procedures, Triggers cannot be called directly. They can only be associated with queries.15. What is a transaction? What are ACID properties?A Database Transaction is a set of database operations that must be treated as a whole, which means either all operations are executed or none of them. An example can be a bank transaction from one account to another account. Either both debit and credit operations must be executed or none of them. ACID(Atomicity, Consistency, Isolation, Durability) is a set of properties that guarantee that database transactions are processed reliably.16. What are indexes?A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and the use of more storage space to maintain the extra copy of data. Data can be stored only in one order on a disk. To support faster access according to different values, faster search like binary search for different values is desired, For this purpose, indexes are created on tables. These indexes need extra space on the disk, but they allow faster search according to different frequently searched values.17. What are clustered and non-clustered Indexes?Clustered indexes are the index according to which data is physically stored on a disk. Therefore, only one clustered index can be created on a given database table.Non-clustered indexes don’t define the physical ordering of data, but logical ordering. Typically, a tree is created whose leaf point to disk records. B-Tree or B+ tree are used for this purpose.18. What is Denormalization?Denormalization is a database optimization technique in which we add redundant data to one or more tables.19. What is CLAUSE in SQL?A clause in SQL is a part of a query that lets you filter or customize how you want your data to be queried to you.20. What is a Live Lock?Livelock situation can be defined as when two or more processes continually repeat the same interaction in response to changes in the other processes without doing any useful work These processes are not in the waiting state, and they are running concurrently. This is different from a deadlock because in a deadlock all processes are in the waiting state.21. What is QBE?Query-by-example represents a visual/graphical approach for accessing information in a database through the use of query templates called skeleton tables. It is used by entering example values directly into a query template to represent what is to be achieved. QBE is used by many database systems for personal computers. QBE is a very powerful facility that gives the user the capability to access the information a user wants without the knowledge of any programming language. Queries in QBE are expressed by skeleton tables. QBE has two distinct features:QBE has the two-dimensional syntax: Queries look like tables.22. Why are cursors necessary in embedded SQL?A cursor is an object used to store the output of a query for row-by-row processing by the application programs. SQL statements operate on a set of data and return a set of data. On other hand, host language programs operate on a row at a time. The cursors are used to navigate through a set of rows returned by an embedded SQL SELECT statement. A cursor can be compared to a pointer.23. What is the purpose of normalization in DBMS?Database normalization is the process of organizing the attributes of the database to reduce or eliminate data redundancy (having the same data but at different places).Purpose of normalization:It is used to remove duplicate data and database anomalies from the relational table.Normalization helps to reduce redundancy and complexity by examining new data types used in the table.It is helpful to divide the large database table into smaller tables and link them using relationships.It avoids duplicate data or no repeating groups into a table.It reduces the chances for anomalies to occur in a database.24. What is the difference between a database schema and a database state?The collection of information stored in a database at a particular moment in time is called database state while the overall design of the database is called the database schema.25. What is the purpose of SQL?SQL stands for Structured Query Language whose main purpose is to interact with the relational databases in the form of inserting, deleting and updating/modifying the data in the database.26. Explain the concepts of a Primary key and Foreign Key.Primary Key is used to uniquely identify the records in a database table while Foreign Key is mainly used to link two or more tables together, as this is a particular field(s) in one of the database tables which are the primary key of some other table.Example: There are 2 tables – Employee and Department. Both have one common field/column as ‘ID’ where ID is the primary key of the Employee table while this is the foreign key for the Department table.27.What are the main differences between Primary key and Unique Key?Given below are few differences:The main difference between the Primary key and the Unique key is that the Primary key can never have a null value while the Unique key may consist of a null value.In each table, there can be only one primary key while there can be more than one unique key in a table.28. What is the concept of sub-query in terms of SQL?Sub-query is basically the query that is included inside some other query and can also be called an inner query which is found inside the outer query.29. What is the use of the DROP command and what are the differences between DROP, TRUNCATE and DELETE commands?DROP command is a DDL command which is used to drop/delete the existing table, database, index, or view from the database.The major difference between DROP, TRUNCATE and DELETE commands are:DROP and TRUNCATE commands are the DDL commands which are used to delete tables from the database.And when we make use of a DROP command, the tables get deleted permanently all the privileges and indexes that are related to the table also get deleted. This operation cannot be rolled back and so should be used only when necessary.However in case of TRUNCATE, only the data stored in a table is deleted and the structure of the table is preserved and you can re-insert data by the use of“INSERT INTO clause”.It can be rolled back until the commit has been made.DELETE command, on the other hand, is a DML Command which is used to delete rows from the table and this can be rolled back, however its considered slower  than truncate. Using the delete command, we can delete 1 or more specific rows from the table.30. What is the main difference between UNION and UNION ALL?UNION and UNION ALL are used to join the data from 2 or more tables but UNION removes duplicate rows and picks the rows which are distinct after combining the data from the tables whereas UNION ALL does not remove the duplicate rows, it just picks all the data from the tables.31. What is Correlated Subquery in DBMS?A Subquery is also known as a nested query i.e. a query written inside some query. When a Subquery is executed for each of the rows of the outer query then it is termed as a Correlated Subquery.An example of Non-Correlated Subquery is:SELECT * from EMP WHERE ‘RIYA’ IN (SELECT Name from DEPT WHERE EMP.EMPID=DEPT.EMPID);Here, the inner query is not executed for each of the rows of the outer query.32.  Explain Entity, Entity Type, and Entity Set in DBMS?The entity is an object, place, or thing which has its independent existence in the real world and about which data can be stored in a database. For Example, any person, book, etc.Entity Type is a collection of entities that have the same attributes. For Example, the STUDENT table contains rows in which each row is an entity holding the attributes like name, age, and id of the students, hence STUDENT is an Entity Type that holds the entities having the same attributes.Entity Set is a collection of entities of the same type. For Example, A collection of the employees of a firm.33. What are the different levels of abstraction in the DBMS?There are 3 levels of data abstraction in the DBMS.They include:Physical Level: This is the lowest level of the data abstraction which states how the data is stored in the database.Logical Level: This is the next level of the data abstraction which states the type of the data and the relationship among the data that is stored in the database.View Level: This is the highest level in the data abstraction which shows/states only a part of the database.34 . What integrity rules exist in the DBMS?There are two major integrity rules that exist in the DBMS.Entity Integrity:This states a very important rule that the value of a Primary key can never have a NULL value.Referential Integrity:This rule is related to the Foreign key which states that either the value of a Foreign key is a NULL value or it should be the primary key of any other relation.35. What is E-R model in the DBMS?E-R model is known as an Entity-Relationship model in the DBMS which is based on the concept of the Entities and the relationship that exists among these entities.36. What is a functional dependency in the DBMS?This is basically a constraint that is useful in describing the relationship among the different attributes in a relation.Example: If there is some relation ‘R1’ which has 2 attributes as Y and Z then the functional dependency among these 2 attributes can be shown as Y->Z which states that Z is functionally dependent on Y.37. What is 1NF in the DBMS?1NF is known as the First Normal Form.This is the easiest form of the normalization process which states that the domain of an attribute should have only atomic values. The objective of this is to remove the duplicate columns that are present in the table.38.  What is 2NF in the DBMS?2NF is the Second Normal Form.Any table is said to have in the 2NF if it satisfies the following 2 conditions:A table is in the 1NF.Each non-prime attribute of a table is said to be functionally dependent in totality on the primary key.39.  What is 3NF in the DBMS?3NF is the Third Normal Form.Any table is said to have in the 3NF if it satisfies the following 2 conditions:A table is in the 2NF.Each non-prime attribute of a table is said to be non-transitively dependent on every key of the table.40.  What is BCNF in the DBMS?BCNF is the Boyce Codd Normal Form which is stricter than the 3NF.Any table is said to have in the BCNF if it satisfies the following 2 conditions:A table is in the 3NF.For each of the functional dependencies X->Y that exists, X is the super key of a table.41. What is a CLAUSE in terms of SQL?This is used with the SQL queries to fetch specific data as per the requirements on the basis of the conditions that are put in the SQL. This is very helpful in picking the selective records from the complete set of records.For Example, There is a query that has a WHERE condition or the query with the HAVING clause.42.How can you get the alternate records from the table in the SQL?If you want to fetch the odd numbers then the following query can be used:SELECT EmpId from (SELECT rowno,EmpId from Emp) WHERE mod(rowno,2)=1;If you want to fetch the even numbers, then the following query can be used:SELECT EmpId from (SELECT rowno,EmpId from Emp) WHERE mod(rowno,2)=0;43.  How is the pattern matching done in the SQL?Answer: With the help of the LIKE operator, pattern matching is possible in the SQL.’%’ is used with the LIKE operator when it matches with the 0 or more characters, and ‘_’ is used to match the one particular character.Example:SELECT * from Emp WHERE name like ‘b%’;SELECT * from Emp WHERE name like ‘hans_’;44. What is a join in the SQL?A Join is one of the SQL statements which is used to join the data or the rows from 2 or more tables on the basis of a common field/column among them.45. What are the different types of joins in SQL?There are 4 types of SQL Joins:Inner Join: This type of join is used to fetch the data among the tables which are common in both tables.Left Join: This returns all the rows from the table which is on the left side of the join but only the matching rows from the table which is on the right side of the join.Right Join: This returns all the rows from the table which is on the right side of the join but only the matching rows from the table which is on the left side of the join.Full Join: This returns the rows from all the tables on which the join condition has been put and the rows which do not match hold null values.46. Explain the Stored Procedure.A Stored Procedure is a group of SQL statements in the form of a function that has some unique name and is stored in relational database management systems(RDBMS) and can be accessed whenever required.47. What is RDBMS?RDBMS is the Relational Database Management System which contains data in the form of the tables and data is accessed on the basis of the common fields among the tables.48. What are the different types of relationships in the DBMS?A Relationship in DBMS depicts an association between the tables.Different types of relationships are:One-to-One: This basically states that there should be a one-to-one relationship between the tables i.e. there should be one record in both the tables.One-to-Many: This states that there can be many relationships for one i.e. a primary key table hold only one record which can have many, one, or none records in the related table.Many-to-Many: This states that both the tables can be related to many other tables.49. What do you mean by Entity type extension?Compilation of similar entity types into one particular type which is grouped together as an entity set is known as entity type extension.50. What is conceptual design in dbms?Conceptual design is the first stage in the database design process. The goal at this stage is to design a database that is independent of database software and physical details. The output of this process is a conceptual data model that describes the main data entities, attributes, relationships, and constraints of a given problem domain.51. Differentiate between logical database design and physical database design. Show how this separation leads to data independence.ParametersLogical Database DesignPhysical Database DesignTaskMaps or transforms the conceptual schema (or an ER schema) from the high-level data model into a relational database schema.The specifications for the stored database in terms of physical storage structures, record placement, and indexes are designed.Choice of criteriaThe mapping can proceed in two stages:System-independent mapping but data model-dependentTailoring the schemas to a specific DBMSThe following criteria are often used to guide the choice of physical database design options:Response TimeSpace UtilizationTransaction ThroughputResultDDL statements in the language of the chosen DBMS that specify the conceptual and external level schemas of the database system. But if the DDL statements include some physical design parameters, a complete DDL specification must wait until after the physical  database design phase is completed.An initial determination of storage structures and the access paths for the database files. This corresponds to defining the internal schema in terms of Data Storage Definition Language.The database design is divided into several phases. The logical database design and physical database design are two of them. This separation is generally based on the concept of the three-level architecture of DBMS, which provides data independence. Therefore, we can say that this separation leads to data independence because the output of the logical database design is the conceptual and external level schemas of the database system which is independent of the output of the physical database design that is an internal schema.52. What are temporary tables? When are they useful?Temporary tables exist solely for a particular session, or whose data persists for the duration of the transaction. The temporary tables are generally used to support specialized rollups or specific application processing requirements. Unlike a permanent table, space is not allocated to a temporary table when it is created. Space will be dynamically allocated for the table as rows are inserted. The CREATE GLOBAL TEMPORARY TABLE command is used to create a temporary table in Oracle.53. Explain different types of failures that occur in theOracle database.Types of Failures –In the Oracle database following types of failures can occur:Statement Failure·Bad data typeInsufficient spaceInsufficient Privileges(e.g., object privileges to a role)User Process FailureThe user performed an abnormal disconnectThe user’s session was abnormally terminatedThe user’s program raised an address exceptionUser ErrorThe user drops a tableUser damages data by modificationInstance FailureMedia FailureThe user drops a tableUser damages data by modificationAlert LogsRecords informational and error messagesAll Instance startups and shutdowns are recorded in the log54. What is the main goal of RAID technology?RAIDstands forRedundantArray ofInexpensive (or sometimes “Independent”)Disks.RAID is a method of combining several hard disk drives into one logical unit (two or more disks grouped together to appear as a single device to the host system). RAID technology was developed to address the fault-tolerance and performance limitations of conventional disk storage. It can offer fault tolerance and higher throughput levels than a single hard drive or group of independent hard drives. While arrays were once considered complex and relatively specialized storage solutions, today they are easy to use and essential for a broad spectrum of client/server applications.CommentMore infoAdvertise with usNext ArticleCommonly asked DBMS Interview Questions | Set 2GeeksforGeeksImproveArticle Tags :DBMSInterview QuestionsInterview-Questions
+
+Table –StudentCourse Table
+
+Following is a join query that shows the names of students enrolled in different courseIDs.SELECT StudentCourse.CourseID, Student.StudentNameFROM StudentCourseINNER JOIN StudentON StudentCourse.EnrollNo = Student.EnrollNoORDER BY StudentCourse.CourseID;The above query would produce the following result.CourseIDStudentName1geek11geek32geek13geek19. What is Identity?Identity (or AutoNumber) is a column that automatically generates numeric values. A start and increment value can be set, but most DBA leave these at 1. A GUID column also generates numbers; the value of this cannot be controlled. Identity/GUID columns do not need to be indexed.10.What is a view in SQL? How to create a view?Aviewis a virtual table based on the result-set of an SQL statement. We can create it using create view syntax.CREATE VIEW view_name ASSELECT column_name(s)FROM table_nameWHERE condition11.What are the uses of view?1. Views can represent a subset of the data contained in a table; consequently, a view can limit the degree of exposure of the underlying tables to the outer world: a given user may have permission to query the view, while denied access to the rest of the base table.2. Views can join and simplify multiple tables into a single virtual table.3. Views can act as aggregated tables, where the database engine aggregates data (sum, average, etc.) and presents the calculated results as part of the data.4. Views can hide the complexity of data.5. Views take very little space to store; the database contains only the definition of a view, not a copy of all the data which it presents.6. Depending on the SQL engine used, views can provide extra security.12. What is a Trigger?A Trigger is a code associated with insert, update or delete operations. The code is executed automatically whenever the associated query is executed on a table. Triggers can be useful to maintain integrity in the database.13. What is a stored procedure?A stored procedure is like a function that contains a set of operations compiled together. It contains a set of operations that are commonly used in an application to do some common database tasks.14. What is the difference between Trigger and Stored Procedure?Unlike Stored Procedures, Triggers cannot be called directly. They can only be associated with queries.15. What is a transaction? What are ACID properties?A Database Transaction is a set of database operations that must be treated as a whole, which means either all operations are executed or none of them. An example can be a bank transaction from one account to another account. Either both debit and credit operations must be executed or none of them. ACID(Atomicity, Consistency, Isolation, Durability) is a set of properties that guarantee that database transactions are processed reliably.16. What are indexes?A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and the use of more storage space to maintain the extra copy of data. Data can be stored only in one order on a disk. To support faster access according to different values, faster search like binary search for different values is desired, For this purpose, indexes are created on tables. These indexes need extra space on the disk, but they allow faster search according to different frequently searched values.17. What are clustered and non-clustered Indexes?Clustered indexes are the index according to which data is physically stored on a disk. Therefore, only one clustered index can be created on a given database table.Non-clustered indexes don’t define the physical ordering of data, but logical ordering. Typically, a tree is created whose leaf point to disk records. B-Tree or B+ tree are used for this purpose.18. What is Denormalization?Denormalization is a database optimization technique in which we add redundant data to one or more tables.19. What is CLAUSE in SQL?A clause in SQL is a part of a query that lets you filter or customize how you want your data to be queried to you.20. What is a Live Lock?Livelock situation can be defined as when two or more processes continually repeat the same interaction in response to changes in the other processes without doing any useful work These processes are not in the waiting state, and they are running concurrently. This is different from a deadlock because in a deadlock all processes are in the waiting state.21. What is QBE?Query-by-example represents a visual/graphical approach for accessing information in a database through the use of query templates called skeleton tables. It is used by entering example values directly into a query template to represent what is to be achieved. QBE is used by many database systems for personal computers. QBE is a very powerful facility that gives the user the capability to access the information a user wants without the knowledge of any programming language. Queries in QBE are expressed by skeleton tables. QBE has two distinct features:QBE has the two-dimensional syntax: Queries look like tables.22. Why are cursors necessary in embedded SQL?A cursor is an object used to store the output of a query for row-by-row processing by the application programs. SQL statements operate on a set of data and return a set of data. On other hand, host language programs operate on a row at a time. The cursors are used to navigate through a set of rows returned by an embedded SQL SELECT statement. A cursor can be compared to a pointer.23. What is the purpose of normalization in DBMS?Database normalization is the process of organizing the attributes of the database to reduce or eliminate data redundancy (having the same data but at different places).Purpose of normalization:It is used to remove duplicate data and database anomalies from the relational table.Normalization helps to reduce redundancy and complexity by examining new data types used in the table.It is helpful to divide the large database table into smaller tables and link them using relationships.It avoids duplicate data or no repeating groups into a table.It reduces the chances for anomalies to occur in a database.24. What is the difference between a database schema and a database state?The collection of information stored in a database at a particular moment in time is called database state while the overall design of the database is called the database schema.25. What is the purpose of SQL?SQL stands for Structured Query Language whose main purpose is to interact with the relational databases in the form of inserting, deleting and updating/modifying the data in the database.26. Explain the concepts of a Primary key and Foreign Key.Primary Key is used to uniquely identify the records in a database table while Foreign Key is mainly used to link two or more tables together, as this is a particular field(s) in one of the database tables which are the primary key of some other table.Example: There are 2 tables – Employee and Department. Both have one common field/column as ‘ID’ where ID is the primary key of the Employee table while this is the foreign key for the Department table.27.What are the main differences between Primary key and Unique Key?Given below are few differences:The main difference between the Primary key and the Unique key is that the Primary key can never have a null value while the Unique key may consist of a null value.In each table, there can be only one primary key while there can be more than one unique key in a table.28. What is the concept of sub-query in terms of SQL?Sub-query is basically the query that is included inside some other query and can also be called an inner query which is found inside the outer query.29. What is the use of the DROP command and what are the differences between DROP, TRUNCATE and DELETE commands?DROP command is a DDL command which is used to drop/delete the existing table, database, index, or view from the database.The major difference between DROP, TRUNCATE and DELETE commands are:DROP and TRUNCATE commands are the DDL commands which are used to delete tables from the database.And when we make use of a DROP command, the tables get deleted permanently all the privileges and indexes that are related to the table also get deleted. This operation cannot be rolled back and so should be used only when necessary.However in case of TRUNCATE, only the data stored in a table is deleted and the structure of the table is preserved and you can re-insert data by the use of“INSERT INTO clause”.It can be rolled back until the commit has been made.DELETE command, on the other hand, is a DML Command which is used to delete rows from the table and this can be rolled back, however its considered slower  than truncate. Using the delete command, we can delete 1 or more specific rows from the table.30. What is the main difference between UNION and UNION ALL?UNION and UNION ALL are used to join the data from 2 or more tables but UNION removes duplicate rows and picks the rows which are distinct after combining the data from the tables whereas UNION ALL does not remove the duplicate rows, it just picks all the data from the tables.31. What is Correlated Subquery in DBMS?A Subquery is also known as a nested query i.e. a query written inside some query. When a Subquery is executed for each of the rows of the outer query then it is termed as a Correlated Subquery.An example of Non-Correlated Subquery is:SELECT * from EMP WHERE ‘RIYA’ IN (SELECT Name from DEPT WHERE EMP.EMPID=DEPT.EMPID);Here, the inner query is not executed for each of the rows of the outer query.32.  Explain Entity, Entity Type, and Entity Set in DBMS?The entity is an object, place, or thing which has its independent existence in the real world and about which data can be stored in a database. For Example, any person, book, etc.Entity Type is a collection of entities that have the same attributes. For Example, the STUDENT table contains rows in which each row is an entity holding the attributes like name, age, and id of the students, hence STUDENT is an Entity Type that holds the entities having the same attributes.Entity Set is a collection of entities of the same type. For Example, A collection of the employees of a firm.33. What are the different levels of abstraction in the DBMS?There are 3 levels of data abstraction in the DBMS.They include:Physical Level: This is the lowest level of the data abstraction which states how the data is stored in the database.Logical Level: This is the next level of the data abstraction which states the type of the data and the relationship among the data that is stored in the database.View Level: This is the highest level in the data abstraction which shows/states only a part of the database.34 . What integrity rules exist in the DBMS?There are two major integrity rules that exist in the DBMS.Entity Integrity:This states a very important rule that the value of a Primary key can never have a NULL value.Referential Integrity:This rule is related to the Foreign key which states that either the value of a Foreign key is a NULL value or it should be the primary key of any other relation.35. What is E-R model in the DBMS?E-R model is known as an Entity-Relationship model in the DBMS which is based on the concept of the Entities and the relationship that exists among these entities.36. What is a functional dependency in the DBMS?This is basically a constraint that is useful in describing the relationship among the different attributes in a relation.Example: If there is some relation ‘R1’ which has 2 attributes as Y and Z then the functional dependency among these 2 attributes can be shown as Y->Z which states that Z is functionally dependent on Y.37. What is 1NF in the DBMS?1NF is known as the First Normal Form.This is the easiest form of the normalization process which states that the domain of an attribute should have only atomic values. The objective of this is to remove the duplicate columns that are present in the table.38.  What is 2NF in the DBMS?2NF is the Second Normal Form.Any table is said to have in the 2NF if it satisfies the following 2 conditions:A table is in the 1NF.Each non-prime attribute of a table is said to be functionally dependent in totality on the primary key.39.  What is 3NF in the DBMS?3NF is the Third Normal Form.Any table is said to have in the 3NF if it satisfies the following 2 conditions:A table is in the 2NF.Each non-prime attribute of a table is said to be non-transitively dependent on every key of the table.40.  What is BCNF in the DBMS?BCNF is the Boyce Codd Normal Form which is stricter than the 3NF.Any table is said to have in the BCNF if it satisfies the following 2 conditions:A table is in the 3NF.For each of the functional dependencies X->Y that exists, X is the super key of a table.41. What is a CLAUSE in terms of SQL?This is used with the SQL queries to fetch specific data as per the requirements on the basis of the conditions that are put in the SQL. This is very helpful in picking the selective records from the complete set of records.For Example, There is a query that has a WHERE condition or the query with the HAVING clause.42.How can you get the alternate records from the table in the SQL?If you want to fetch the odd numbers then the following query can be used:SELECT EmpId from (SELECT rowno,EmpId from Emp) WHERE mod(rowno,2)=1;If you want to fetch the even numbers, then the following query can be used:SELECT EmpId from (SELECT rowno,EmpId from Emp) WHERE mod(rowno,2)=0;43.  How is the pattern matching done in the SQL?Answer: With the help of the LIKE operator, pattern matching is possible in the SQL.’%’ is used with the LIKE operator when it matches with the 0 or more characters, and ‘_’ is used to match the one particular character.Example:SELECT * from Emp WHERE name like ‘b%’;SELECT * from Emp WHERE name like ‘hans_’;44. What is a join in the SQL?A Join is one of the SQL statements which is used to join the data or the rows from 2 or more tables on the basis of a common field/column among them.45. What are the different types of joins in SQL?There are 4 types of SQL Joins:Inner Join: This type of join is used to fetch the data among the tables which are common in both tables.Left Join: This returns all the rows from the table which is on the left side of the join but only the matching rows from the table which is on the right side of the join.Right Join: This returns all the rows from the table which is on the right side of the join but only the matching rows from the table which is on the left side of the join.Full Join: This returns the rows from all the tables on which the join condition has been put and the rows which do not match hold null values.46. Explain the Stored Procedure.A Stored Procedure is a group of SQL statements in the form of a function that has some unique name and is stored in relational database management systems(RDBMS) and can be accessed whenever required.47. What is RDBMS?RDBMS is the Relational Database Management System which contains data in the form of the tables and data is accessed on the basis of the common fields among the tables.48. What are the different types of relationships in the DBMS?A Relationship in DBMS depicts an association between the tables.Different types of relationships are:One-to-One: This basically states that there should be a one-to-one relationship between the tables i.e. there should be one record in both the tables.One-to-Many: This states that there can be many relationships for one i.e. a primary key table hold only one record which can have many, one, or none records in the related table.Many-to-Many: This states that both the tables can be related to many other tables.49. What do you mean by Entity type extension?Compilation of similar entity types into one particular type which is grouped together as an entity set is known as entity type extension.50. What is conceptual design in dbms?Conceptual design is the first stage in the database design process. The goal at this stage is to design a database that is independent of database software and physical details. The output of this process is a conceptual data model that describes the main data entities, attributes, relationships, and constraints of a given problem domain.51. Differentiate between logical database design and physical database design. Show how this separation leads to data independence.ParametersLogical Database DesignPhysical Database DesignTaskMaps or transforms the conceptual schema (or an ER schema) from the high-level data model into a relational database schema.The specifications for the stored database in terms of physical storage structures, record placement, and indexes are designed.Choice of criteriaThe mapping can proceed in two stages:System-independent mapping but data model-dependentTailoring the schemas to a specific DBMSThe following criteria are often used to guide the choice of physical database design options:Response TimeSpace UtilizationTransaction ThroughputResultDDL statements in the language of the chosen DBMS that specify the conceptual and external level schemas of the database system. But if the DDL statements include some physical design parameters, a complete DDL specification must wait until after the physical  database design phase is completed.An initial determination of storage structures and the access paths for the database files. This corresponds to defining the internal schema in terms of Data Storage Definition Language.The database design is divided into several phases. The logical database design and physical database design are two of them. This separation is generally based on the concept of the three-level architecture of DBMS, which provides data independence. Therefore, we can say that this separation leads to data independence because the output of the logical database design is the conceptual and external level schemas of the database system which is independent of the output of the physical database design that is an internal schema.52. What are temporary tables? When are they useful?Temporary tables exist solely for a particular session, or whose data persists for the duration of the transaction. The temporary tables are generally used to support specialized rollups or specific application processing requirements. Unlike a permanent table, space is not allocated to a temporary table when it is created. Space will be dynamically allocated for the table as rows are inserted. The CREATE GLOBAL TEMPORARY TABLE command is used to create a temporary table in Oracle.53. Explain different types of failures that occur in theOracle database.Types of Failures –In the Oracle database following types of failures can occur:Statement Failure·Bad data typeInsufficient spaceInsufficient Privileges(e.g., object privileges to a role)User Process FailureThe user performed an abnormal disconnectThe user’s session was abnormally terminatedThe user’s program raised an address exceptionUser ErrorThe user drops a tableUser damages data by modificationInstance FailureMedia FailureThe user drops a tableUser damages data by modificationAlert LogsRecords informational and error messagesAll Instance startups and shutdowns are recorded in the log54. What is the main goal of RAID technology?RAIDstands forRedundantArray ofInexpensive (or sometimes “Independent”)Disks.RAID is a method of combining several hard disk drives into one logical unit (two or more disks grouped together to appear as a single device to the host system). RAID technology was developed to address the fault-tolerance and performance limitations of conventional disk storage. It can offer fault tolerance and higher throughput levels than a single hard drive or group of independent hard drives. While arrays were once considered complex and relatively specialized storage solutions, today they are easy to use and essential for a broad spectrum of client/server applications.CommentMore infoAdvertise with usNext ArticleCommonly asked DBMS Interview Questions | Set 2GeeksforGeeksImproveArticle Tags :DBMSInterview QuestionsInterview-Questions
+
+Following is a join query that shows the names of students enrolled in different courseIDs.
+
+
+```python
+SELECT StudentCourse.CourseID, Student.StudentNameFROM StudentCourseINNER JOIN StudentON StudentCourse.EnrollNo = Student.EnrollNoORDER BY StudentCourse.CourseID;
+```
+The above query would produce the following result.
+
+9. What is Identity?Identity (or AutoNumber) is a column that automatically generates numeric values. A start and increment value can be set, but most DBA leave these at 1. A GUID column also generates numbers; the value of this cannot be controlled. Identity/GUID columns do not need to be indexed.
+
+10.What is a view in SQL? How to create a view?Aviewis a virtual table based on the result-set of an SQL statement. We can create it using create view syntax.
+
+
+```python
+CREATE VIEW view_name ASSELECT column_name(s)FROM table_nameWHERE condition
+```
+11.What are the uses of view?1. Views can represent a subset of the data contained in a table; consequently, a view can limit the degree of exposure of the underlying tables to the outer world: a given user may have permission to query the view, while denied access to the rest of the base table.2. Views can join and simplify multiple tables into a single virtual table.3. Views can act as aggregated tables, where the database engine aggregates data (sum, average, etc.) and presents the calculated results as part of the data.4. Views can hide the complexity of data.5. Views take very little space to store; the database contains only the definition of a view, not a copy of all the data which it presents.6. Depending on the SQL engine used, views can provide extra security.
+
+12. What is a Trigger?A Trigger is a code associated with insert, update or delete operations. The code is executed automatically whenever the associated query is executed on a table. Triggers can be useful to maintain integrity in the database.
+
+13. What is a stored procedure?A stored procedure is like a function that contains a set of operations compiled together. It contains a set of operations that are commonly used in an application to do some common database tasks.
+
+14. What is the difference between Trigger and Stored Procedure?Unlike Stored Procedures, Triggers cannot be called directly. They can only be associated with queries.
+
+15. What is a transaction? What are ACID properties?A Database Transaction is a set of database operations that must be treated as a whole, which means either all operations are executed or none of them. An example can be a bank transaction from one account to another account. Either both debit and credit operations must be executed or none of them. ACID(Atomicity, Consistency, Isolation, Durability) is a set of properties that guarantee that database transactions are processed reliably.
+
+16. What are indexes?A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and the use of more storage space to maintain the extra copy of data. Data can be stored only in one order on a disk. To support faster access according to different values, faster search like binary search for different values is desired, For this purpose, indexes are created on tables. These indexes need extra space on the disk, but they allow faster search according to different frequently searched values.
+
+17. What are clustered and non-clustered Indexes?Clustered indexes are the index according to which data is physically stored on a disk. Therefore, only one clustered index can be created on a given database table.Non-clustered indexes don’t define the physical ordering of data, but logical ordering. Typically, a tree is created whose leaf point to disk records. B-Tree or B+ tree are used for this purpose.
+
+18. What is Denormalization?
+
+Denormalization is a database optimization technique in which we add redundant data to one or more tables.
+
+19. What is CLAUSE in SQL?
+
+A clause in SQL is a part of a query that lets you filter or customize how you want your data to be queried to you.
+
+20. What is a Live Lock?
+
+Livelock situation can be defined as when two or more processes continually repeat the same interaction in response to changes in the other processes without doing any useful work These processes are not in the waiting state, and they are running concurrently. This is different from a deadlock because in a deadlock all processes are in the waiting state.
+
+21. What is QBE?
+
+Query-by-example represents a visual/graphical approach for accessing information in a database through the use of query templates called skeleton tables. It is used by entering example values directly into a query template to represent what is to be achieved. QBE is used by many database systems for personal computers. QBE is a very powerful facility that gives the user the capability to access the information a user wants without the knowledge of any programming language. Queries in QBE are expressed by skeleton tables. QBE has two distinct features:
+
+QBE has the two-dimensional syntax: Queries look like tables.
+
+22. Why are cursors necessary in embedded SQL?
+
+A cursor is an object used to store the output of a query for row-by-row processing by the application programs. SQL statements operate on a set of data and return a set of data. On other hand, host language programs operate on a row at a time. The cursors are used to navigate through a set of rows returned by an embedded SQL SELECT statement. A cursor can be compared to a pointer.
+
+23. What is the purpose of normalization in DBMS?
+
+Database normalization is the process of organizing the attributes of the database to reduce or eliminate data redundancy (having the same data but at different places).
+
+Purpose of normalization:
+
+It is used to remove duplicate data and database anomalies from the relational table.
+
+Normalization helps to reduce redundancy and complexity by examining new data types used in the table.
+
+It is helpful to divide the large database table into smaller tables and link them using relationships.
+
+It avoids duplicate data or no repeating groups into a table.
+
+It reduces the chances for anomalies to occur in a database.
+
+24. What is the difference between a database schema and a database state?
+
+The collection of information stored in a database at a particular moment in time is called database state while the overall design of the database is called the database schema.
+
+25. What is the purpose of SQL?
+
+SQL stands for Structured Query Language whose main purpose is to interact with the relational databases in the form of inserting, deleting and updating/modifying the data in the database.
+
+26. Explain the concepts of a Primary key and Foreign Key.
+
+Primary Key is used to uniquely identify the records in a database table while Foreign Key is mainly used to link two or more tables together, as this is a particular field(s) in one of the database tables which are the primary key of some other table.
+
+Example: There are 2 tables – Employee and Department. Both have one common field/column as ‘ID’ where ID is the primary key of the Employee table while this is the foreign key for the Department table.
+
+27.What are the main differences between Primary key and Unique Key?
+
+Given below are few differences:
+
+The main difference between the Primary key and the Unique key is that the Primary key can never have a null value while the Unique key may consist of a null value.
+
+In each table, there can be only one primary key while there can be more than one unique key in a table.
+
+28. What is the concept of sub-query in terms of SQL?
+
+Sub-query is basically the query that is included inside some other query and can also be called an inner query which is found inside the outer query.
+
+29. What is the use of the DROP command and what are the differences between DROP, TRUNCATE and DELETE commands?
+
+DROP command is a DDL command which is used to drop/delete the existing table, database, index, or view from the database.
+
+The major difference between DROP, TRUNCATE and DELETE commands are:
+
+DROP and TRUNCATE commands are the DDL commands which are used to delete tables from the database.
+
+And when we make use of a DROP command, the tables get deleted permanently all the privileges and indexes that are related to the table also get deleted. This operation cannot be rolled back and so should be used only when necessary.
+
+However in case of TRUNCATE, only the data stored in a table is deleted and the structure of the table is preserved and you can re-insert data by the use of“INSERT INTO clause”.It can be rolled back until the commit has been made.
+
+DELETE command, on the other hand, is a DML Command which is used to delete rows from the table and this can be rolled back, however its considered slower  than truncate. Using the delete command, we can delete 1 or more specific rows from the table.
+
+30. What is the main difference between UNION and UNION ALL?
+
+UNION and UNION ALL are used to join the data from 2 or more tables but UNION removes duplicate rows and picks the rows which are distinct after combining the data from the tables whereas UNION ALL does not remove the duplicate rows, it just picks all the data from the tables.
+
+31. What is Correlated Subquery in DBMS?
+
+A Subquery is also known as a nested query i.e. a query written inside some query. When a Subquery is executed for each of the rows of the outer query then it is termed as a Correlated Subquery.
+
+An example of Non-Correlated Subquery is:
+
+Here, the inner query is not executed for each of the rows of the outer query.
+
+32.  Explain Entity, Entity Type, and Entity Set in DBMS?
+
+The entity is an object, place, or thing which has its independent existence in the real world and about which data can be stored in a database. For Example, any person, book, etc.
+
+Entity Type is a collection of entities that have the same attributes. For Example, the STUDENT table contains rows in which each row is an entity holding the attributes like name, age, and id of the students, hence STUDENT is an Entity Type that holds the entities having the same attributes.
+
+Entity Set is a collection of entities of the same type. For Example, A collection of the employees of a firm.
+
+33. What are the different levels of abstraction in the DBMS?
+
+There are 3 levels of data abstraction in the DBMS.
+
+They include:
+
+Physical Level: This is the lowest level of the data abstraction which states how the data is stored in the database.
+
+Logical Level: This is the next level of the data abstraction which states the type of the data and the relationship among the data that is stored in the database.
+
+View Level: This is the highest level in the data abstraction which shows/states only a part of the database.
+
+34 . What integrity rules exist in the DBMS?
+
+There are two major integrity rules that exist in the DBMS.
+
+Entity Integrity:This states a very important rule that the value of a Primary key can never have a NULL value.
+
+Referential Integrity:This rule is related to the Foreign key which states that either the value of a Foreign key is a NULL value or it should be the primary key of any other relation.
+
+35. What is E-R model in the DBMS?
+
+E-R model is known as an Entity-Relationship model in the DBMS which is based on the concept of the Entities and the relationship that exists among these entities.
+
+36. What is a functional dependency in the DBMS?
+
+This is basically a constraint that is useful in describing the relationship among the different attributes in a relation.
+
+Example: If there is some relation ‘R1’ which has 2 attributes as Y and Z then the functional dependency among these 2 attributes can be shown as Y->Z which states that Z is functionally dependent on Y.
+
+37. What is 1NF in the DBMS?
+
+1NF is known as the First Normal Form.
+
+This is the easiest form of the normalization process which states that the domain of an attribute should have only atomic values. The objective of this is to remove the duplicate columns that are present in the table.
+
+38.  What is 2NF in the DBMS?
+
+2NF is the Second Normal Form.
+
+Any table is said to have in the 2NF if it satisfies the following 2 conditions:
+
+A table is in the 1NF.
+
+Each non-prime attribute of a table is said to be functionally dependent in totality on the primary key.
+
+39.  What is 3NF in the DBMS?
+
+3NF is the Third Normal Form.
+
+Any table is said to have in the 3NF if it satisfies the following 2 conditions:
+
+A table is in the 2NF.
+
+Each non-prime attribute of a table is said to be non-transitively dependent on every key of the table.
+
+40.  What is BCNF in the DBMS?
+
+BCNF is the Boyce Codd Normal Form which is stricter than the 3NF.
+
+Any table is said to have in the BCNF if it satisfies the following 2 conditions:
+
+A table is in the 3NF.
+
+For each of the functional dependencies X->Y that exists, X is the super key of a table.
+
+41. What is a CLAUSE in terms of SQL?
+
+This is used with the SQL queries to fetch specific data as per the requirements on the basis of the conditions that are put in the SQL. This is very helpful in picking the selective records from the complete set of records.
+
+For Example, There is a query that has a WHERE condition or the query with the HAVING clause.
+
+42.How can you get the alternate records from the table in the SQL?
+
+If you want to fetch the odd numbers then the following query can be used:
+
+If you want to fetch the even numbers, then the following query can be used:
+
+43.  How is the pattern matching done in the SQL?
+
+Answer: With the help of the LIKE operator, pattern matching is possible in the SQL.’%’ is used with the LIKE operator when it matches with the 0 or more characters, and ‘_’ is used to match the one particular character.
+
+Example:
+
+
+
+44. What is a join in the SQL?
+
+A Join is one of the SQL statements which is used to join the data or the rows from 2 or more tables on the basis of a common field/column among them.
+
+45. What are the different types of joins in SQL?
+
+There are 4 types of SQL Joins:
+
+Inner Join: This type of join is used to fetch the data among the tables which are common in both tables.
+
+Left Join: This returns all the rows from the table which is on the left side of the join but only the matching rows from the table which is on the right side of the join.
+
+Right Join: This returns all the rows from the table which is on the right side of the join but only the matching rows from the table which is on the left side of the join.
+
+Full Join: This returns the rows from all the tables on which the join condition has been put and the rows which do not match hold null values.
+
+46. Explain the Stored Procedure.
+
+A Stored Procedure is a group of SQL statements in the form of a function that has some unique name and is stored in relational database management systems(RDBMS) and can be accessed whenever required.
+
+47. What is RDBMS?
+
+RDBMS is the Relational Database Management System which contains data in the form of the tables and data is accessed on the basis of the common fields among the tables.
+
+48. What are the different types of relationships in the DBMS?
+
+A Relationship in DBMS depicts an association between the tables.
+
+Different types of relationships are:
+
+One-to-One: This basically states that there should be a one-to-one relationship between the tables i.e. there should be one record in both the tables.
+
+One-to-Many: This states that there can be many relationships for one i.e. a primary key table hold only one record which can have many, one, or none records in the related table.
+
+Many-to-Many: This states that both the tables can be related to many other tables.
+
+49. What do you mean by Entity type extension?
+
+Compilation of similar entity types into one particular type which is grouped together as an entity set is known as entity type extension.
+
+50. What is conceptual design in dbms?
+
+Conceptual design is the first stage in the database design process. The goal at this stage is to design a database that is independent of database software and physical details. The output of this process is a conceptual data model that describes the main data entities, attributes, relationships, and constraints of a given problem domain.
+
+51. Differentiate between logical database design and physical database design. Show how this separation leads to data independence.
+
+Maps or transforms the conceptual schema (or an ER schema) from the high-level data model into a relational database schema.
+
+The specifications for the stored database in terms of physical storage structures, record placement, and indexes are designed.
+
+The mapping can proceed in two stages:
+
+• System-independent mapping but data model-dependent
+• Tailoring the schemas to a specific DBMS
+
+The following criteria are often used to guide the choice of physical database design options:
+
+• Response Time
+• Space Utilization
+• Transaction Throughput
+
+DDL statements in the language of the chosen DBMS that specify the conceptual and external level schemas of the database system. But if the DDL statements include some physical design parameters, a complete DDL specification must wait until after the physical  database design phase is completed.
+
+An initial determination of storage structures and the access paths for the database files. This corresponds to defining the internal schema in terms of Data Storage Definition Language.
+
+The database design is divided into several phases. The logical database design and physical database design are two of them. This separation is generally based on the concept of the three-level architecture of DBMS, which provides data independence. Therefore, we can say that this separation leads to data independence because the output of the logical database design is the conceptual and external level schemas of the database system which is independent of the output of the physical database design that is an internal schema.
+
+52. What are temporary tables? When are they useful?Temporary tables exist solely for a particular session, or whose data persists for the duration of the transaction. The temporary tables are generally used to support specialized rollups or specific application processing requirements. Unlike a permanent table, space is not allocated to a temporary table when it is created. Space will be dynamically allocated for the table as rows are inserted. The CREATE GLOBAL TEMPORARY TABLE command is used to create a temporary table in Oracle.
+
+53. Explain different types of failures that occur in theOracle database.Types of Failures –In the Oracle database following types of failures can occur:
+
+• Statement Failure·
+• Bad data typeInsufficient space
+• Insufficient space
+• Insufficient Privileges(e.g., object privileges to a role)
+• User Process FailureThe user performed an abnormal disconnectThe user’s session was abnormally terminatedThe user’s program raised an address exception
+• The user performed an abnormal disconnect
+• The user’s session was abnormally terminated
+• The user’s program raised an address exception
+• User ErrorThe user drops a tableUser damages data by modification
+• The user drops a table
+• User damages data by modification
+• Instance Failure
+• Media FailureThe user drops a tableUser damages data by modification
+• The user drops a table
+• User damages data by modification
+• Alert LogsRecords informational and error messagesAll Instance startups and shutdowns are recorded in the log
+• Records informational and error messages
+• All Instance startups and shutdowns are recorded in the log
+
+• Insufficient space
+
+• The user performed an abnormal disconnect
+• The user’s session was abnormally terminated
+• The user’s program raised an address exception
+
+• The user drops a table
+• User damages data by modification
+
+• The user drops a table
+• User damages data by modification
+
+• Records informational and error messages
+• All Instance startups and shutdowns are recorded in the log
+
+54. What is the main goal of RAID technology?
+
+RAIDstands forRedundantArray ofInexpensive (or sometimes “Independent”)Disks.
+
+RAID is a method of combining several hard disk drives into one logical unit (two or more disks grouped together to appear as a single device to the host system). RAID technology was developed to address the fault-tolerance and performance limitations of conventional disk storage. It can offer fault tolerance and higher throughput levels than a single hard drive or group of independent hard drives. While arrays were once considered complex and relatively specialized storage solutions, today they are easy to use and essential for a broad spectrum of client/server applications.
+
+• DBMS
+• Interview Questions
+• Interview-Questions
+

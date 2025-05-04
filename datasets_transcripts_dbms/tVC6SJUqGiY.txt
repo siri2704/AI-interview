@@ -1,0 +1,1 @@
+dbms symbols in ER diagram name of symbol symbol meaning rectangle entity set strong double rectangle and it is set week ellipse attribute diamond relationship set Double Diamond identifying relationship type double ellipse multi-valued attributes

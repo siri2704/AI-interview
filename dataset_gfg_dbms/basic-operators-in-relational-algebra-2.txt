@@ -1,0 +1,136 @@
+• 
+• 
+• 
+
+The Relational Model is a way of structuring data using relations, which are a collection of tuples that have the same attributes. Relational Algebra is a procedural query language that takes relations as input and returns relations as output. It uses a set of operators to manipulate and retrieve data from these relations. Here, we’ll explore the basic operators of Relational Algebra using the STUDENT_SPORTS, EMPLOYEE, and STUDENT relations from Table 1, Table 2, and Table 3, respectively.
+
+Table 1: STUDENT_SPORTS
+
+Table 2: EMPLOYEE
+
+Table 3: STUDENT
+
+
+### 1. Selection operator (σ)
+Selection operator is used to selecting tuples from a relation based on some condition. Syntax:
+
+
+```python
+σ(Cond)(Relation Name)
+```
+Extract students whose age is greater than 18 from STUDENT relation given in Table 3
+
+
+```python
+σ(AGE>18)(STUDENT)
+```
+[Note:SELECT operationdoes not show any result, the projection operator must be called before the selection operator to generate or project the result. So, the correct syntax to generate the result is:∏(σ(AGE>18)(STUDENT))]
+
+RESULT:
+
+
+### 2. Projection Operator (∏)
+Projection operator is used to project particular columns from a relation. Syntax:
+
+
+```python
+∏(Column 1,Column 2….Column n)(Relation Name)
+```
+Extract ROLL_NO and NAME from STUDENT relation given in Table 3
+
+
+```python
+∏(ROLL_NO,NAME)(STUDENT)
+```
+RESULT:
+
+Note:If the resultant relation after projection has duplicate rows, it will be removed. For Example∏(ADDRESS)(STUDENT) will remove one duplicate row with the value DELHI and return three rows.
+
+
+### 3. Cross Product(X)
+Cross product is used to join two relations. For every row of Relation1, each row of Relation2 is concatenated. If Relation1 has m tuples and and Relation2 has n tuples, cross product of Relation1 and Relation2 will have m X n tuples. Syntax:
+
+
+```python
+Relation1 X Relation2
+```
+To apply Cross Product on STUDENT relation given in Table 1 and STUDENT_SPORTS relation given in Table 2,
+
+
+```python
+STUDENT X STUDENT_SPORTS
+```
+RESULT:
+
+
+### 4. Union (U)
+Union on two relations R1 and R2 can only be computed if R1 and R2 areunion compatible(These two relations should have the same number of attributes and corresponding attributes in two relations have the same domain). Union operator when applied on two relations R1 and R2 will give a relation with tuples that are either in R1 or in R2. The tuples which are in both R1 and R2 will appear only once in the result relation. Syntax:
+
+
+```python
+Relation1 U Relation2
+```
+Find the person who is either student or employees, we can use Union operators like:
+
+
+```python
+STUDENT U EMPLOYEE
+```
+RESULT:
+
+
+### 5. Minus (-) or Set Difference
+Minus on two relations R1 and R2 can only be computed if R1 and R2 areunion compatible. Minus operator when applied on two relations as R1-R2 will give a relation with tuples that are in R1 but not in R2. Syntax:
+
+
+```python
+Relation1 - Relation2
+```
+Find the person who is a student but not an employee, we can use minus operator like:
+
+
+```python
+STUDENT - EMPLOYEE
+```
+RESULT:
+
+
+### 6. Rename(ρ)
+Rename operatoris used to giving another name to a relation. Syntax:
+
+
+```python
+ρ(Relation2, Relation1)
+```
+To rename STUDENT relation to STUDENT1, we can use rename operator like:
+
+
+```python
+ρ(STUDENT1, STUDENT)
+```
+If you want to create a relation STUDENT_NAMES with ROLL_NO and NAME from STUDENT, it can be done using rename operator as:
+
+
+```python
+ρ(STUDENT_NAMES, ∏(ROLL_NO, NAME)(STUDENT))
+```
+
+### Extended Relational Algebra Operators
+• Intersection (∩)
+• Division (÷)
+• Join Operations (⋈)
+• Natural Join
+• Theta Join
+• Equi Join
+
+These operators provide more functionality for complex queries in relational databases.
+
+
+### Conclusion
+Relational Algebraprovides a fundamental toolkit for querying and manipulating relations in adatabase. It offers a set of operators that allow users to perform basic operations like selection, projection, union, and more. Understanding these operators is essential for working with relational databases and forms the basis for more advancedSQLoperations.
+
+Dreaming ofM.Tech in IIT? Get AIR under 100 with ourGATE 2026 CSE & DA courses! Get flexibleweekday/weekendoptions,live mentorship, andmock tests. Access exclusive features likeAll India Mock Tests, and Doubt Solving—your GATE success starts now!
+
+• DBMS
+• DBMS-Relational Algebra
+
